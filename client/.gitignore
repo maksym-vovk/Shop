@@ -27,3 +27,4 @@ yarn-error.log*
 .vscode/
 *.iml
 package-lock.json
+.stylelintcache
