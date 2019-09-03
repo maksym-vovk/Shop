@@ -8,4 +8,5 @@ before_script:
   - npm install --prefix ./client
 
 script:
+  - npm run eslint --prefix ./client
   - npm run test --prefix ./client
