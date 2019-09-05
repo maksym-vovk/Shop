@@ -1,0 +1,15 @@
+@import "/static/fonts/SanFrancisco/stylesheet.css";
+
+.App {
+  text-align: center;
+  & .container {
+    font-family: 'SF UI Text', serif;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
