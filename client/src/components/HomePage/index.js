@@ -1,10 +1,12 @@
 import React from 'react'
+import {HomePageSlider} from "../Slider";
 import './style.scss'
 
 export const HomePage = (props) => {
-  return (
-    <div className='home-page'>
-            This is Home Page
-    </div>
-  )
-}
+    return (
+        <div>
+            <HomePageSlider/>
+            <div className='home-page'></div>
+        </div>
+    )
+};
