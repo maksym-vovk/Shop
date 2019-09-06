@@ -1,15 +1,17 @@
 import React from 'react';
-import './App.css';
-import {BrowserRouter as Router, Link} from "react-router-dom";
-import {ProductCard, HomePage} from "./components";
+import './App.scss';
+import { Header } from './commons';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {HomePage} from './components';
 
 function App() {
   return (
+    <div className="App">
       <Router>
-          <div className="App">
-              <HomePage/>
-          </div>
+        <Header/>
+        <HomePage/>
       </Router>
+    </div>
   );
 }
 
