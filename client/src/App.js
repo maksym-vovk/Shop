@@ -1,17 +1,18 @@
 import React from 'react';
 import './App.scss';
-import { Header } from './commons';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import {HomePage} from './components';
+import {Header, Footer} from './commons';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {HomePage} from "./components/HomePage";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <Header/>
         <HomePage/>
-      </Router>
-    </div>
+        <Footer/>
+      </div>
+    </Router>
   );
 }
 
