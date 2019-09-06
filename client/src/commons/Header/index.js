@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Logo, MainMenu, SearchIcon} from '../';
 
 import './index.scss';
 
 export const Header = () => {
-    return (
-        <header>
-            <div className='container'>
-                <Logo/>
-                <MainMenu/>
-                <SearchIcon/>
-            </div>
-        </header>
-    );
+  const {modalState, setModalState} = useState(false);
+
+  return (
+    <header>
+      <div className='container'>
+        <Logo/>
+        <MainMenu/>
+        <SearchIcon/>
+      </div>
+    </header>
+  );
 };
