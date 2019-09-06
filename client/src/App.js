@@ -1,13 +1,16 @@
 import React from 'react';
-import './App.scss';
+import {Provider} from 'react-redux';
 
+import './App.scss';
 import {Header, Footer} from './commons';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import store from './store';
 import {HomePage} from "./components/HomePage";
 
 
 function App() {
   return (
+   <Provider store={store}>
     <Router>
       <div className="App">
         <Header/>
@@ -15,6 +18,7 @@ function App() {
         <Footer/>
       </div>
     </Router>
+   </Provider>
   );
 }
 
