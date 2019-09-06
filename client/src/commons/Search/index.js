@@ -7,10 +7,6 @@ export const SearchIcon = (props) => {
     <div className='wrapIcon'>
       <div>
         <svg className='search-icon main-menu_icon'
-
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
-          viewBox="0 0 100 100"
           xmlns="http://www.w3.org/2000/svg"
           x="0"
           y="0"
@@ -24,8 +20,6 @@ export const SearchIcon = (props) => {
       </div>
       <div>
         <svg className='cart-icon main-menu_icon'
-          height='100%'
-          width='22px'
           xmlns="http://www.w3.org/2000/svg"
           x="0"
           y="0"

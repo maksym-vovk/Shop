@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.scss';
-import { Header, Login } from './commons';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {Header, Footer} from './commons';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {HomePage} from "./components/HomePage";
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <Header/>
-        <Switch>
-          <Route path="/login" component={Login} />
-        </Switch>
-      </Router>
-    </div>
+        <HomePage/>
+        <Footer/>
+      </div>
+    </Router>
   );
 }
 
