@@ -1,5 +1,9 @@
 @import "/static/fonts/SanFrancisco/stylesheet.css";
 
+body {
+  padding-top: 7vh;
+}
+
 .App {
   text-align: center;
   & .container {
