@@ -22,7 +22,6 @@ export const Footer = () => {
                 Copyright © 2019 Apple Inc. All rights reserved.
         </span>
       </div>
-
     </footer>
   )
 };
