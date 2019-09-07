@@ -6,7 +6,9 @@ export const HomePage = props => {
   return (
     <div>
       <HomePageSlider />
-      <div className="home-page container"></div>
+      <div className="home-page container">
+        
+      </div>
     </div>
   );
 };
