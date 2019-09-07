@@ -1,7 +1,12 @@
+h2 {
+  text-align: center;
+}
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 40%;
+  margin: 15px auto;
 }
 .error-message {
   color: red;
@@ -9,18 +14,21 @@ form {
   transition: all 4s ease-out;
 }
 
-.ee {
-  transition: all 4s ease-out
-}
 form label {
   width: 230px;
   color: #4d4b4b;
   text-align: left;
 }
 
+.required-field {
+  margin-left: 3px;
+  color: #cc1b1b;
+  font-weight: 700;
+}
+
 .options-container {
-  width: 50%;
-  min-width: 300px;
+  width: 100%;
+  min-width: 270px;
   margin-top: 10px;
 }
 
@@ -45,4 +53,15 @@ form label {
   font-size: 16px;
   border: 1px solid #d2d2d2;
   border-radius: 4px;
+}
+
+.sign-up-btn {
+  min-width: 120px;
+  margin-top: 10px;
+  padding: 10px 30px;
+  color: #eee;
+  text-transform: uppercase;
+  background-color: black;
+  border: none;
+  cursor: pointer;
 }
