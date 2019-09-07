@@ -9,8 +9,11 @@
     color: #fff;
     text-decoration: none;
     transition: all .3s;
-    &:hover{
-      color:#979797;
+    &:hover {
+      color: #979797;
+    }
+    &.active {
+      color: #979797;
     }
   }
 }
