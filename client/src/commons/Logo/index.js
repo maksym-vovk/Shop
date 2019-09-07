@@ -7,7 +7,7 @@ export const Logo = () => {
   return (
     <Link className="logo" to="/">
       <svg
-        className='logo-image'
+        className='logo__image'
         xmlns="http://www.w3.org/2000/svg"
         x="0"
         y="0"
