@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/maksym-vovk/Shop#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "concurrently": "^4.1.2",
     "node-sass": "^4.12.0"
   },
