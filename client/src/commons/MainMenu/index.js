@@ -6,11 +6,11 @@ import './index.scss';
 export const MainMenu = () => {
   return (
     <nav className='main-menu'>
-      <NavLink className='main-menu-item' to="/mac">Mac</NavLink>
-      <NavLink className='main-menu-item' to="/macbook">MacBook</NavLink>
-      <NavLink className='main-menu-item' to="/ipad">iPad</NavLink>
-      <NavLink className='main-menu-item' to="/iphone">iPhone</NavLink>
-      <NavLink className='main-menu-item' to="/accessories">Accessories</NavLink>
+      <NavLink className='main-menu__item' to="/imac">iMac</NavLink>
+      <NavLink className='main-menu__item' to="/macbook">MacBook</NavLink>
+      <NavLink className='main-menu__item' to="/ipad">iPad</NavLink>
+      <NavLink className='main-menu__item' to="/iphone">iPhone</NavLink>
+      <NavLink className='main-menu__item' to="/watch">Watch</NavLink>
     </nav>
   );
 };
