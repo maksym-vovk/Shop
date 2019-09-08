@@ -17,11 +17,10 @@ export const ProductsList = props => {
   };
 
   return (
-    <div>
-      <h1>ProductsList</h1>
-      {data.map((item, index) => {
-        return <ProductCard key={index} state={item} />;
-      })}
-    </div>
+      <section className="product-list-wrapper container">
+        {data.map((item, index) => {
+          return <ProductCard key={index} state={item} />;
+        })}
+      </section>
   );
 };
