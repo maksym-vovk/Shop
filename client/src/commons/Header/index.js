@@ -1,20 +1,15 @@
-import React, {useState} from 'react';
-import {Logo, MainMenu, SearchIcon, Login} from '../';
+import React from 'react';
+import {Logo, MainMenu, Extras} from '../';
 
 import './index.scss';
 
 export const Header = () => {
-  const [modalState, setModalState] = useState(false);
-
   return (
-    <header>
-      <div className='container'>
+    <header className='page-header'>
+      <div className='page-header__wrapper container'>
         <Logo/>
         <MainMenu/>
-        <SearchIcon openModal={setModalState}/>
-        {modalState
-          ? <Login openModal={setModalState}/>
-          : null}
+        <Extras/>
       </div>
     </header>
   );
