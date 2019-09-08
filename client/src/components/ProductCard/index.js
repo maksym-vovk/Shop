@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 
 export const ProductCard = props => {
-  console.log('props', props);
+  // console.log('props', props);
   const state = props.state;
   // console.log(state.image[0]);
   return (

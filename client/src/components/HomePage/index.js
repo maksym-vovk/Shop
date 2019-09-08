@@ -7,9 +7,6 @@ export const HomePage = props => {
     <div>
       <HomePageSlider />
       <ProductsList />
-      <div className="home-page container">
-       
-      </div>
     </div>
   );
 };

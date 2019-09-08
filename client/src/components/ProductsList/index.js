@@ -5,14 +5,14 @@ import axios from 'axios';
 import { ProductCard } from '../';
 
 export const ProductsList = props => {
-  console.log('props2', props);
+  // console.log('props2', props);
   const [data, setData] = useState([]);
   useEffect(() => {
     fetchData();
   }, []);
   const fetchData = async () => {
     const result = await axios('/cards');
-    console.log(result.data);
+    // console.log(result.data);
     setData(result.data);
   };
 
