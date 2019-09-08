@@ -20,20 +20,19 @@ export const HomePageSlider = () => {
   return (
     <Slider {...settings}>
       <div>
-        <img
-          src="static/img/slider/1.png" alt="macbook"/>
+        <img src="static/img/slider/1.png" alt="macbook" />
       </div>
       <div>
-        <img src="static/img/slider/2.png" alt="macbook"/>
+        <img src="static/img/slider/2.png" alt="macbook" />
       </div>
       <div>
-        <img src="static/img/slider/3.png" alt="imac"/>
+        <img src="static/img/slider/3.png" alt="imac" />
       </div>
       <div>
-        <img src="static/img/slider/4.png" alt="ipad"/>
+        <img src="static/img/slider/4.png" alt="ipad" />
       </div>
       <div>
-        <img src="static/img/slider/5.png" alt="ipad"/>
+        <img src="static/img/slider/5.png" alt="ipad" />
       </div>
     </Slider>
   );
