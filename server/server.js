@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 
 const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const config = require('./config');
 const app = express();
@@ -15,6 +16,7 @@ app.use(
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'static/build')));
 app.use(productRoutes);
+app.use(userRoutes);
 // app.use('/', (req, res) => res.sendFile(path.join(__dirname, 'static/build/index.html')))
 
 const run = async () => {
