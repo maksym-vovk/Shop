@@ -15,7 +15,9 @@ export const ProductCard = props => {
         </div>
         <h3 className="product-card__title">{state.model}</h3>
         <p className="product-card__subtitle">{state.connectivity}</p>
-        <span className="product-card__description">{state.description}</span>
+        <span className="product-card__description">
+          {state.description.slice(0, 40) + '...'}
+        </span>
         <h3 className="product-card__price">{state.price}</h3>
       </article>
     </Link>
