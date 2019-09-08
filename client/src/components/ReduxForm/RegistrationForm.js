@@ -74,7 +74,7 @@ const FieldLevelValidationForm = props => {
         warn={alphaNumeric}
       />
       <Field
-        name="userSurname"
+        name="last_name"
         type="text"
         component={renderField}
         label="Surname"
