@@ -1,17 +1,18 @@
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import store, { setEmailState, setLoginState, setAuthState } from '../../store';
 
-export default (async function showResults(values) {
+export default async function showResults(values) {
   console.log(window.location.origin + '/customers');
   await axios.post(window.location.origin + '/customers', values)
     .then(res => {
+      store.dispatch(setEmailState(false));
+      store.dispatch(setLoginState(false));
       if (res.data.errors) {
-        let message = '';
-        for (const key in res.data.errors) {
-          message += `${key} ${res.data.errors[key].message} \n`;
-        }
-        alert(message);
+        if (res.data.errors.email) { store.dispatch(setEmailState(true)) }
+        if (res.data.errors.login) { store.dispatch(setLoginState(true)) }
       } else {
-        window.location = '/'
+        store.dispatch(setAuthState(true));
       }
     });
-});
+};
