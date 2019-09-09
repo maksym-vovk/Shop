@@ -1,7 +1,18 @@
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+import axios from 'axios';
+import { withRouter } from 'react-router-dom';
+import store, { setEmailState, setLoginState, setAuthState } from '../../store';
 
-export default (async function showResults(values) {
-  await sleep(500); // simulate server latency
-  console.log(JSON.stringify(values));
-  window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`);
-});
+export default async function showResults(values) {
+  console.log(window.location.origin + '/customers');
+  await axios.post(window.location.origin + '/customers', values)
+    .then(res => {
+      store.dispatch(setEmailState(false));
+      store.dispatch(setLoginState(false));
+      if (res.data.errors) {
+        if (res.data.errors.email) { store.dispatch(setEmailState(true)) }
+        if (res.data.errors.login) { store.dispatch(setLoginState(true)) }
+      } else {
+        store.dispatch(setAuthState(true));
+      }
+    });
+};
