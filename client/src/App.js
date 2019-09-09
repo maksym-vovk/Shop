@@ -14,6 +14,7 @@ import {
   Watch,
   RegisterForm
 } from './components';
+import { ProductViewPage } from './components/ProductViewPage';
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
               <Route path="/macbook" component={MacBook} />
               <Route path="/ipad" component={IPad} />
               <Route path="/iphone" component={IPhone} />
-              <Route path="/watch" component={Watch} />
+              <Route exact path="/watch" component={Watch} />
+              <Route path="/watch/:id" component={ProductViewPage} />
               <Route path="/sign_up" component={RegisterForm} />
             </Switch>
           </main>

@@ -5,22 +5,27 @@ import axios from 'axios';
 import { ProductCard } from '../';
 
 export const ProductsList = props => {
-  // console.log('props2', props);
+  console.log('props', props);
   const [data, setData] = useState([]);
   useEffect(() => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    const result = await axios('/cards');
+    const result = await axios(props.path);
     // console.log(result.data);
     setData(result.data);
   };
 
   return (
       <section className="product-list-wrapper container">
-        {data.map((item, index) => {
+        {props.slice?
+        data.slice(0, props.slice).map((item, index) => {
           return <ProductCard key={index} state={item} />;
-        })}
+        }):
+        data.map((item, index) => {
+          return <ProductCard key={index} state={item} />;
+        })
+        }
       </section>
   );
 };
