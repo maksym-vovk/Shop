@@ -14,7 +14,18 @@ router.get('/phones', async (req, res) => {
   res.json(products);
 });
 
+router.get('/watch', async (req, res) => {
+  const products = await Product.find({
+    category: 'watch'
+  });
+  res.json(products);
+});
+
 router.post('/cards', async (req, res) => {
-  const card = await new Product(req.body).save();
-  res.send(card);
+  try {
+    const card = await new Product(req.body).save();
+    res.send(card);
+  } catch (error) {
+    res.send(error)
+  }
 });
