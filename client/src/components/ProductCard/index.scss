@@ -32,24 +32,31 @@
   }
   &__title {
     color: #cc1b1b;
-    font-weight: 700;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 14px;
     letter-spacing: 3px;
     text-transform: uppercase;
   }
   &__subtitle {
-    margin-bottom: 10px;
     color: #cc1b1b;
-    font-size: 13px;
+    font-weight: 200;
+    font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
   }
+  &__size {
+    margin-bottom: 10px;
+    font-weight: 300;
+    font-size: 12px;
+  }
   &__description {
     margin-bottom: 25px;
+    font-weight: 200;
     font-size: 13px;
   }
   &__price {
     margin-bottom: 30px;
+    font-weight: 400;
     font-size: 20px;
     &::before {
       margin-right: 5px;

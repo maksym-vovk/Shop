@@ -1,19 +1,14 @@
 const { Schema, model } = require('mongoose');
 
 const schema = new Schema({
-  category: String,
-  model: String,
-  connectivity: String,
-  price: Number,
-  description: String,
-  color: String,
+  filter: {},
   images: {
     mainImage: String,
     tabsImages: [String]
   },
+  description:String,
   technicalInfo: [
     {
-      title: String,
       text: String
     }
   ],

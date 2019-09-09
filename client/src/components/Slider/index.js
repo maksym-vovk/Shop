@@ -19,10 +19,36 @@ export const HomePageSlider = () => {
   };
   return (
     <Slider {...settings}>
-      <div>
-        <img src="static/img/slider/1.png" alt="macbook" />
+      <div className="slide">
+        <div className="text">
+          <h2>The sound of freedom.</h2>
+          <p>Engraving available exclusively online.</p>
+        </div>
+        <img src="static/img/slider/6.png" alt="macbook" />
       </div>
-      <div>
+      <div className="slide">
+        <div className="text">
+          <h2>
+            Choose the
+            <br />
+            Apple Watch
+            <br />
+            that’s right
+            <br />
+            for you.
+          </h2>
+        </div>
+        <img src="static/img/slider/7.png" alt="macbook" />
+      </div>
+      <div className="slide">
+        <div className="text">
+          <h2>The sound of freedom.</h2>
+          <p>Engraving available exclusively online.</p>
+        </div>
+        <img src="static/img/slider/6.png" alt="macbook" />
+      </div>
+
+      {/* <div>
         <img src="static/img/slider/2.png" alt="macbook" />
       </div>
       <div>
@@ -33,7 +59,7 @@ export const HomePageSlider = () => {
       </div>
       <div>
         <img src="static/img/slider/5.png" alt="ipad" />
-      </div>
+      </div> */}
     </Slider>
   );
 };
