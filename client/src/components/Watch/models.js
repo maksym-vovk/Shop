@@ -10,7 +10,8 @@ export const models = {
       caseMaterial: 'Stainless steel',
       bandType: 'Stainless Steel',
       bandColor: 'black',
-      price: 849
+      price: 849,
+      category:'watch'
     },
     description: 'Space Black Stainless Steel Case with Space Black Milanese Loop',
     images: {
