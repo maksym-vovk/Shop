@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
 import store, { setEmailState, setLoginState, setAuthState } from '../../store';
 
 export default async function showResults(values) {
   console.log(window.location.origin + '/customers');
   await axios.post(window.location.origin + '/customers', values)
     .then(res => {
+      console.log(res.data);
       store.dispatch(setEmailState(false));
       store.dispatch(setLoginState(false));
       if (res.data.errors) {
@@ -16,3 +16,16 @@ export default async function showResults(values) {
       }
     });
 };
+
+export const getUser = async(login) => {
+  console.log(login);
+  await axios.post(window.location.origin + '/find_user', {login})
+    .then(res => {
+      if (res.data[0]) {
+        console.log(res.data[0]);
+        return true;
+      }
+      console.log('ret fa')
+      return false
+    })
+}

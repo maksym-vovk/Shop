@@ -1,14 +1,19 @@
 import React from 'react'
+import {connect} from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 import './index.scss'
+import {getUser} from './showResults';
 
 const required = value => (value || typeof value === 'number' ? undefined : 'Required field');
+
 const maxLength = max => value =>
   value && value.length > max ? `Must be ${max} characters or less` : undefined;
 const maxLength15 = maxLength(15);
+
 export const minLength = min => value =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined;
 export const minLength2 = minLength(2);
+
 const number = value =>
   value && isNaN(Number(value)) ? 'Must be a number' : undefined;
 const email = value =>
@@ -19,14 +24,27 @@ const aol = value =>
   value && /.+@aol\.com/.test(value)
     ? 'Really? You still use AOL for your email?'
     : undefined;
+
 const alphaNumeric = value =>
   value && /[^a-zA-Z0-9 ]/i.test(value)
     ? 'Only alphanumeric characters'
     : undefined;
+
 const match = matchName => (value, allValues) =>
   value !== allValues[matchName]
     ? `This field must be equal to ${matchName}`
     : undefined;
+
+// const tt = getUser();
+// console.log(tt)
+
+const loog = async(value) =>
+  await getUser(value) ? 'res true' : undefined;
+
+const mapStateToProps = state => ({
+  email: state.popup.email,
+  login: state.popup.login,
+});
 
 export const phoneNumber = value => {
   return value.replace(/[^\d]/g, '');
@@ -54,7 +72,9 @@ const renderField = ({
   </div>
 );
 
-const FieldLevelValidationForm = props => {
+const FieldLevelValidationForm = connect(mapStateToProps)(props => {
+  console.log(props);
+
   const { handleSubmit, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
@@ -63,8 +83,9 @@ const FieldLevelValidationForm = props => {
         type="text"
         component={renderField}
         label="Login"
-        validate={required}
+        validate={[required, loog]}
       />
+
       <Field
         name="first_name"
         type="text"
@@ -146,7 +167,7 @@ const FieldLevelValidationForm = props => {
       </div>
     </form>
   )
-};
+});
 
 export default reduxForm({
   form: 'fieldLevelValidation', // a unique identifier for this form
