@@ -7,6 +7,8 @@ import { HomePage, IMac, MacBook, IPad, IPhone, Watch, RegisterForm, Cart } from
 
 import './App.scss';
 
+import './App.scss';
+
 function App() {
   return (
     <Provider store={store}>
@@ -21,7 +23,6 @@ function App() {
             <Route path="/iphone" component={IPhone} />
             <Route path="/watch" component={Watch} />
             <Route path="/cart" component={Cart} />
-            <Route path='/sig_in'/>
             <Route path="/sign_up" component={RegisterForm} />
           </Switch>
           <Footer />
