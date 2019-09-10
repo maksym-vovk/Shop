@@ -1,19 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {EmptyCart, FullCart} from '../index.js';
 
 import './index.scss'
 
 export const Cart = () => {
-  return (
-    <div className='container container-cart'>
-      <div className='wrap-cart'>
-        <h1 className='cart-title'> Your bag is empty. </h1>
-        <span className='cart-title'>Sign in to see if you have any saved items. Or continue shopping.</span>
-        <div className= 'img-empty-cart'>
-          <span>
+  const [state, setState] = useState(false);
 
-          </span>
-        </div>
-      </div>
+  return (
+  // state ?
+    <div className='container container-cart'>
+      <FullCart/>
+      {/* <EmptyCart/> */}
     </div>
   )
 };
