@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux';
 import { Field, reduxForm } from 'redux-form'
 import './index.scss'
-import {getUser} from './showResults';
+import axios from 'axios';
 
 const required = value => (value || typeof value === 'number' ? undefined : 'Required field');
 
@@ -38,8 +38,15 @@ const match = matchName => (value, allValues) =>
 // const tt = getUser();
 // console.log(tt)
 
-const loog = async(value) =>
-  await getUser(value) ? 'res true' : undefined;
+const asyncValidate = async(login) => {
+  return await axios.post(window.location.origin + '/find_user', login)
+    .then(res => {
+      if (res.data[0]) {
+        console.log(res.data[0]);
+        throw {login: 'That login is taken'}
+      }
+    })
+}
 
 const mapStateToProps = state => ({
   email: state.popup.email,
@@ -54,12 +61,12 @@ const renderField = ({
   input,
   label,
   type,
-  meta: { touched, error, warning }
+  meta: { asyncValidating, touched, error, warning }
 }) => (
   <div className="options-container">
     <div className="options-field">
       <label>{label}<span className="required-field">*</span></label>
-      <div className="input-container">
+      <div className={asyncValidating ? 'input-container async-validating' : 'input-container'}>
         {
           (type === 'password') ? <input autoComplete="off" className="input-style" {...input} type={type} />
             : <input className="input-style" {...input} type={type} />
@@ -72,7 +79,7 @@ const renderField = ({
   </div>
 );
 
-const FieldLevelValidationForm = connect(mapStateToProps)(props => {
+const FieldLevelValidationForm = props => {
   console.log(props);
 
   const { handleSubmit, submitting } = props;
@@ -83,7 +90,7 @@ const FieldLevelValidationForm = connect(mapStateToProps)(props => {
         type="text"
         component={renderField}
         label="Login"
-        validate={[required, loog]}
+        validate={required}
       />
 
       <Field
@@ -167,10 +174,12 @@ const FieldLevelValidationForm = connect(mapStateToProps)(props => {
       </div>
     </form>
   )
-});
+};
 
 export default reduxForm({
   form: 'fieldLevelValidation', // a unique identifier for this form
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+  asyncValidate,
+  asyncBlurFields: ['login']
 })(FieldLevelValidationForm)
