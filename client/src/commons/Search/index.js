@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './index.scss';
 
-export const SearchIcon = () => {
+export const Search = () => {
   return (
     <div className='wrapIcon'>
       <div>
@@ -46,5 +46,5 @@ export const SearchIcon = () => {
         </svg>
       </Link>
     </div>
-  )
+  );
 };
