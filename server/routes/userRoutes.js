@@ -11,4 +11,9 @@ router.post('/customers', async (req, res) => {
   }
 });
 
+router.post('/customers/auth', async (req, res) => {
+  const answer = await User.find(req.body);
+  res.json(answer);
+})
+
 module.exports = router;

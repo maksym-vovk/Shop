@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
 import store, { setEmailState, setLoginState, setAuthState } from '../../store';
 
 export default async function showResults(values) {
