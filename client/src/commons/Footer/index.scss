@@ -1,14 +1,15 @@
 .footer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 150px;
+  text-align: left;
   background-color: #F2F2F2;
-  & .container{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-  }
+
   & .footer__retailer {
     border-top: 1px solid #D6D6D6;
     border-bottom: 1px solid #D6D6D6;
   }
+
   & .footer__sub-text {
     padding: 10px 0;
     color: #888888;
