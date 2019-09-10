@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './index.scss';
 
@@ -18,6 +19,38 @@ export const Footer = () => {
         <span className='footer__retailer footer__sub-text'>
                 More ways to shop: Find an Apple Store or other retailer near you. Or call 1-800-MY-APPLE.
         </span>
+        <div className='section'>
+          <div className='section__item'>
+            <h4 className='section__item--title'>Help</h4>
+            <ul>
+              <li><Link to='/'>Shipping and payment</Link></li>
+              <li><Link to='/'>Warranty</Link></li>
+              <li><Link to='/'>Purchase returns</Link></li>
+              <li><Link to='/'>Service centres</Link></li>
+              <li><Link to='/'>Questions and answers</Link></li>
+            </ul>
+          </div>
+          <div className='section__item section__product'>
+            <h4 className='section__item--title'>Help</h4>
+            <ul>
+              <li><Link to='/'>Shipping and payment</Link></li>
+              <li><Link to='/'>Warranty</Link></li>
+              <li><Link to='/'>Purchase returns</Link></li>
+              <li><Link to='/'>Service centres</Link></li>
+              <li><Link to='/'>Questions and answers</Link></li>
+            </ul>
+          </div>
+          <div className='section__item'>
+            <h4 className='section__item--title'>Help</h4>
+            <ul>
+              <li><Link to='/'>Shipping and payment</Link></li>
+              <li><Link to='/'>Warranty</Link></li>
+              <li><Link to='/'>Purchase returns</Link></li>
+              <li><Link to='/'>Service centres</Link></li>
+              <li><Link to='/'>Questions and answers</Link></li>
+            </ul>
+          </div>
+        </div>
         <span className='footer__copyright footer__sub-text'>
                 Copyright © 2019 Apple Inc. All rights reserved.
         </span>
