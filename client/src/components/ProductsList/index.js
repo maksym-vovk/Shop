@@ -7,25 +7,22 @@ import { ProductCard } from '../';
 export const ProductsList = props => {
   console.log('props', props);
   const [data, setData] = useState([]);
+  const path = '/cards';
   useEffect(() => {
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    const result = await axios(props.path);
-    // console.log(result.data);
+    fetchData(path);
+  }, [path]);
+  const fetchData = async path => {
+    const result = await axios(path);
+    console.log(result.data);
     setData(result.data);
   };
 
   return (
-      <section className="product-list-wrapper container">
-        {props.slice?
-        data.slice(0, props.slice).map((item, index) => {
-          return <ProductCard key={index} state={item} />;
-        }):
-        data.map((item, index) => {
-          return <ProductCard key={index} state={item} />;
-        })
-        }
-      </section>
+    <section className="product-list-wrapper container">
+      {data.map((item, index) => {
+        console.log(item);
+        return <ProductCard state={item} key={index}/>
+      })}
+    </section>
   );
 };

@@ -1,18 +1,29 @@
 const { Schema, model } = require('mongoose');
 
 const schema = new Schema({
-  filter: {},
-  images: {
-    mainImage: String,
-    tabsImages: [String]
+  category: String,
+  minPrice: String,
+  filter: {
+    model: String,
+    caseMaterial: String,
+    caseFinish: String,
+    bandType: String
   },
-  description:String,
-  technicalInfo: [
-    {
-      text: String
+  colors: {},
+  description: String,
+  connectivity: {
+    GPS: {
+      size_40_price: String,
+      size_44_price: String
+    },
+    CELLULAR: {
+      size_40_price: String,
+      size_44_price: String
     }
-  ],
-  warehouseCount: Number
+  },
+  techSpecs: {},
+  warehouseCount: Number,
+  status: Boolean
 });
 
 module.exports = model('Product', schema);

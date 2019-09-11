@@ -4,11 +4,12 @@ const Product = require('../models/Product');
 module.exports = router;
 
 router.get('/cards', async (req, res) => {
-  const products = await Product.find({});
+  console.log('req.query',req.query)
+  const products = await Product.find(req.query);
   res.json(products);
 });
 router.get('/cards/:id', async (req, res) => {
-  console.log(req.params)
+  // console.log(req.params)
   const product = await Product.find({
     _id: req.params.id
   });

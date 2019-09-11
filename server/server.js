@@ -23,7 +23,8 @@ const run = async () => {
   try {
     await mongoose.connect(config.DB, {
       useNewUrlParser: true,
-      useFindAndModify: false
+      useFindAndModify: false,
+      useCreateIndex: true,
     });
     app.listen(config.PORT, () => {
       console.log(`Connected on port ${config.PORT}`);
