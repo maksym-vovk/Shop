@@ -14,13 +14,8 @@ export const Header = connect(mapStateToProps)((props) => {
       <div className='page-header__wrapper container'>
         <Logo/>
         { props.status
-          ? <React.Fragment>
-            <SearchInput/>
-
-          </React.Fragment>
-          : <React.Fragment>
-            <MainMenu/>
-          </React.Fragment>
+          ? <SearchInput/>
+          : <MainMenu/>
         }
         <Extras/>
       </div>
