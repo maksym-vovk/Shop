@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux';
+
 import { Field, reduxForm } from 'redux-form'
 import './index.scss'
 import axios from 'axios';
@@ -13,6 +13,11 @@ const maxLength15 = maxLength(15);
 export const minLength = min => value =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined;
 export const minLength2 = minLength(2);
+
+const login = value =>
+  value && !/[\w[\]`!@#$%^&*()={}:;<>+'-]*$/i.test(value)
+    ? 'Use english letters'
+    : undefined;
 
 const number = value =>
   value && isNaN(Number(value)) ? 'Must be a number' : undefined;
@@ -35,23 +40,15 @@ const match = matchName => (value, allValues) =>
     ? `This field must be equal to ${matchName}`
     : undefined;
 
-// const tt = getUser();
-// console.log(tt)
-
 const asyncValidate = async(login) => {
-  return await axios.post(window.location.origin + '/find_user', login)
+  await axios.post(window.location.origin + '/find_user', login)
     .then(res => {
       if (res.data[0]) {
         console.log(res.data[0]);
         throw {login: 'That login is taken'}
       }
     })
-}
-
-const mapStateToProps = state => ({
-  email: state.popup.email,
-  login: state.popup.login,
-});
+};
 
 export const phoneNumber = value => {
   return value.replace(/[^\d]/g, '');
@@ -90,7 +87,7 @@ const FieldLevelValidationForm = props => {
         type="text"
         component={renderField}
         label="Login"
-        validate={required}
+        validate={[required, login]}
       />
 
       <Field
