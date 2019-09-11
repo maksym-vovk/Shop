@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './index.scss';
 import { Search, Cart, Auth } from '../';
 
