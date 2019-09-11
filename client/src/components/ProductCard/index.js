@@ -17,7 +17,11 @@ export const ProductCard = props => {
             alt="apple-watch"
           />
         </div>
-        <p className="product-card__description">{state.description}</p>
+        <p className="product-card__description">{
+          state.description.length>40?
+          state.description.slice(0,40).trim()+'...':
+          state.description}
+          </p>
         <h3 className="product-card__price">
           <span>From $</span>
           {state.minPrice}
