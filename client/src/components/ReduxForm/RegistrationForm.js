@@ -40,13 +40,10 @@ const match = matchName => (value, allValues) =>
     ? `This field must be equal to ${matchName}`
     : undefined;
 
-const asyncValidate = async(login) => {
-  await axios.post(window.location.origin + '/find_user', login)
+const asyncValidate = async(value) => {
+  await axios.post(window.location.origin + '/find_user', {login: value.login ? value.login : '', email: value.email ? value.email : ''})
     .then(res => {
-      if (res.data[0]) {
-        console.log(res.data[0]);
-        throw {login: 'That login is taken'}
-      }
+      for (const key in res.data) { if (res.data[key]) { throw {[key]: 'Already registrated'} } }
     })
 };
 
@@ -76,7 +73,7 @@ const renderField = ({
   </div>
 );
 
-const FieldLevelValidationForm = props => {
+const RegistrationForm = props => {
   console.log(props);
 
   const { handleSubmit, submitting } = props;
@@ -174,9 +171,9 @@ const FieldLevelValidationForm = props => {
 };
 
 export default reduxForm({
-  form: 'fieldLevelValidation', // a unique identifier for this form
+  form: 'registrationForm', // a unique identifier for this form
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   asyncValidate,
-  asyncBlurFields: ['login']
-})(FieldLevelValidationForm)
+  asyncBlurFields: ['login', 'email']
+})(RegistrationForm)

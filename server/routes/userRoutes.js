@@ -3,10 +3,13 @@ const router = Router();
 const User = require('../models/User');
 
 router.post('/find_user',  async (req, res) => {
-  console.log(req.body);
-  const user = await User.find(req.body);
-  console.log(user);
-  res.send(user)
+  const userByLogin = await User.find({login: req.body.login});
+  const userByEmail = await User.find({email: req.body.email});
+  const answer = {
+  	login: userByLogin[0] ? true : false,
+  	email: userByEmail[0] ? true : false
+  }
+  res.send(answer)
 })
 
 router.post('/customers', async (req, res) => {
