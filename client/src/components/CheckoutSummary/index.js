@@ -1,11 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 
 //styles
 import './index.scss';
 
 export const CheckoutSummary = () => {
+    const [summary, setSummary] = useState(true);
+
     return (
-        <div className="background">
+        <div>
+        <div onClick={() => setSummary(false)} className="background">
             <div className="summary">
                 <div className="summary-container">
                     <div className="total">
@@ -41,6 +44,7 @@ export const CheckoutSummary = () => {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 };

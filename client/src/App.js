@@ -5,7 +5,7 @@ import './App.scss';
 import { Header, Footer } from './commons';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import store from './store';
-import { HomePage, IMac, MacBook, IPad, IPhone, Watch, CheckoutPage, CheckoutSummary, ShippingDetails } from './components';
+import { HomePage, IMac, MacBook, IPad, IPhone, Watch, CheckoutPage, ShippingDetails } from './components';
 
 function App() {
   return (
@@ -21,7 +21,6 @@ function App() {
             <Route path="/iphone" component={IPhone} />
             <Route path="/watch" component={Watch} />
             <Route exact path="/checkout" component={CheckoutPage} />
-            <Route path="/checkout/summary" component={CheckoutSummary} />
             <Route path="/checkout/details" component={ShippingDetails} />
           </Switch>
           <Footer />
