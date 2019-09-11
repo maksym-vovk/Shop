@@ -43,7 +43,9 @@ const match = matchName => (value, allValues) =>
 const asyncValidate = async(value) => {
   await axios.post(window.location.origin + '/find_user', {login: value.login ? value.login : '', email: value.email ? value.email : ''})
     .then(res => {
-      for (const key in res.data) { if (res.data[key]) { throw {[key]: 'Already registrated'} } }
+      const errs = {}
+      for (const key in res.data) { if (res.data[key]) { errs[key] = 'Already registrated' } }
+      throw errs
     })
 };
 
@@ -74,8 +76,6 @@ const renderField = ({
 );
 
 const RegistrationForm = props => {
-  console.log(props);
-
   const { handleSubmit, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
