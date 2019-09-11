@@ -1,7 +1,5 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-
-import './App.scss';
 import { Header, Footer } from './commons';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import store from './store';
@@ -12,9 +10,11 @@ import {
   IPad,
   IPhone,
   Watch,
-  RegisterForm
+  RegisterForm,
+  Cart
 } from './components';
 import { ProductViewPage } from './components/ProductViewPage';
+import './App.scss';
 
 function App() {
   return (
@@ -32,6 +32,7 @@ function App() {
               <Route exact path="/watch" component={Watch} />
               <Route path="/watch/:id" component={ProductViewPage} />
               <Route path="/sign_up" component={RegisterForm} />
+              <Route path="/cart" component={Cart} />
             </Switch>
           </main>
           <Footer />
