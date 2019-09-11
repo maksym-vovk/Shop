@@ -46,4 +46,4 @@ export const Search = connect(mapStateToProps, {setSearchStatus})((props) => {
       }
     </div>
   );
-})
+});

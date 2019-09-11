@@ -19,6 +19,7 @@ function App() {
             <Route path="/ipad" component={IPad} />
             <Route path="/iphone" component={IPhone} />
             <Route path="/watch" component={Watch} />
+            <Route path="/cart" component={Cart} />
             <Route path="/sign_up" component={RegisterForm} />
           </Switch>
           <Footer />
