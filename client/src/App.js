@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Header, Footer } from './commons';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import store from './store';
 import {
   HomePage,

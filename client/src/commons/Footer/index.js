@@ -1,25 +1,51 @@
 import React from 'react';
+import {Link, NavLink} from 'react-router-dom';
 
 import './index.scss';
 
 export const Footer = () => {
   return (
     <footer className='footer'>
-      <div className='container'>
-        <p className='footer__main-text footer__sub-text'>
-                * iPhone XR pricing is after trade‑in of iPhone 7 Plus in good condition. Monthly pricing requires a
-                24‑month installment loan with a 0% APR, and iPhone activation. Applicable sales tax and fees due at
-                time of purchase. Last payment may be less depending on remaining balance. Additional trade‑in values
-                require purchase of a new iPhone, subject to availability and limits. You must be at least 18 years old.
-                In‑store trade‑in requires presentation of a valid, government‑issued photo ID (local law may require
-                saving this information). Additional terms from Apple or Apple’s trade‑in partners may apply. Full terms
-                apply.
-        </p>
-        <span className='footer__retailer footer__sub-text'>
-                More ways to shop: Find an Apple Store or other retailer near you. Or call 1-800-MY-APPLE.
-        </span>
+      <div className='container footer__container'>
+        <div className='section'>
+          <div className='section__item'>
+            <div>
+              <h4 className='section__item--title'>Menu</h4>
+              <ul>
+                <li><Link to="/all">All Watch</Link></li>
+                <li><Link to="/origin">Origin Watch</Link></li>
+                <li><Link to="/nike">Nike Watch</Link></li>
+                <li><Link to="/hermes">Hermès Watch</Link></li>
+                <li><Link to="/edition">Edition Watch</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className='section__item'>
+            <div>
+              <h4 className='section__item--title'>Help</h4>
+              <ul>
+                <li><Link to='/'>Shipping and payment</Link></li>
+                <li><Link to='/'>Warranty</Link></li>
+                <li><Link to='/'>Purchase returns</Link></li>
+                <li><Link to='/'>Service centres</Link></li>
+                <li><Link to='/'>Questions and answers</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className='section__item section__product'>
+            <div>
+              <h4 className='section__item--title'>Information</h4>
+              <ul>
+                <li><Link to='/'>About Us</Link></li>
+                <li><Link to='/'>Terms of Use</Link></li>
+                <li><Link to='/'>Jobs</Link></li>
+                <li><Link to='/'>Contacts</Link></li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <span className='footer__copyright footer__sub-text'>
-                Copyright © 2019 Apple Inc. All rights reserved.
+                Copyright © 2019. All rights reserved.
         </span>
       </div>
     </footer>
