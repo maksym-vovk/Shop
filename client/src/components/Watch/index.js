@@ -13,7 +13,7 @@ export const Watch = () => {
   return (
     <div>
       <h1>Watch</h1>
-      <button onClick={postData}>Click</button>
+      {/* <button onClick={postData}>Click</button> */}
       <ProductsList path='/watch' />
     </div>
   );
