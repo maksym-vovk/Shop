@@ -1,6 +1,7 @@
 import React from "react";
-import { Field, reduxForm, SubmissionError } from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 
+import {CheckoutTitle} from "../CheckoutTitle"
 //styles
 import './index.scss';
 
@@ -13,8 +14,6 @@ const maxLength5 = maxLength(5);
 export const minLength = min => value =>
     value && value.length < min ? `Must be ${min} characters or more` : undefined;
 export const minLength2 = minLength(2);
-const number = value =>
-    value && isNaN(Number(value)) ? 'Must be a number' : undefined;
 
 const email = value =>
     value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
@@ -33,13 +32,18 @@ export const phoneNumber = value =>
         ? 'Invalid phone number, must be 10 digits'
         : undefined;
 
+const isLetter = value =>
+    value && !/[a-zA-Z]/.test(value)
+        ? 'Invalid value, must be letters only'
+        : undefined;
+
 
 const submit = (values) => {
     console.log('submit inside form');
     console.log(values);
 };
 
-const renderFieldShipping = ({ type, placeholder, input, meta: { touched, error } }) => (
+const renderFieldShipping = ({type, placeholder, input, meta: {touched, error}}) => (
     <div className="input-row">
         <input {...input} type={type} placeholder={placeholder}/>
         {touched && error &&
@@ -47,12 +51,13 @@ const renderFieldShipping = ({ type, placeholder, input, meta: { touched, error 
     </div>
 );
 
-export const ShippingDetails = reduxForm ({
+export const ShippingDetails = reduxForm({
     form: "shippingDetails"
-}) (props => {
-    const { handleSubmit } = props;
+})(props => {
+    const {handleSubmit} = props;
     return (
         <div className="shipping container">
+            <CheckoutTitle/>
             <h1 className="shipping__title">Where should we send your order?</h1>
             <h2 className="shipping__title">Enter your name and address:</h2>
 
@@ -62,7 +67,7 @@ export const ShippingDetails = reduxForm ({
                     component={renderFieldShipping}
                     type="text"
                     placeholder="First Name"
-                    validate={[required, maxLength15, minLength2]}
+                    validate={[required, isLetter, maxLength15, minLength2]}
                     warn={alphaNumeric}
                 />
                 <Field
@@ -70,7 +75,7 @@ export const ShippingDetails = reduxForm ({
                     component={renderFieldShipping}
                     type="text"
                     placeholder="Last Name"
-                    validate={[required, maxLength15, minLength2]}
+                    validate={[required, isLetter, maxLength15, minLength2]}
                     warn={alphaNumeric}
                 />
                 <Field
@@ -92,38 +97,48 @@ export const ShippingDetails = reduxForm ({
                     component={renderFieldShipping}
                     type="text"
                     placeholder="City"
+                    validate={[required, isLetter, minLength2]}
                 />
                 <Field
                     name="region"
                     component={renderFieldShipping}
                     type="text"
                     placeholder="Region"
+                    validate={[required, isLetter, minLength2]}
                 />
                 <Field
                     name="country"
                     component={renderFieldShipping}
                     type="text"
                     placeholder="Country"
+                    validate={[required, isLetter, minLength2]}
                 />
             </form>
 
-                <h2 className="shipping__title">What's your contact information?</h2>
+            <h2 className="shipping__title">What's your contact information?</h2>
             <form className="shipping__form" onSubmit={handleSubmit(submit)}>
-                <Field
-                    name="email"
-                    component={renderFieldShipping}
-                    type="email"
-                    placeholder="Email"
-                    validate={email}
-                    warn={aol}
-                />
-                <Field
-                    name="phone"
-                    component={renderFieldShipping}
-                    type="tel"
-                    placeholder="Phone Number"
-                    validate={[required, phoneNumber]}
-                />
+                <div className="shipping__form-wrapper">
+                    <Field
+                        name="email"
+                        component={renderFieldShipping}
+                        type="email"
+                        placeholder="Email"
+                        validate={email}
+                        warn={aol}
+                    />
+                    <p className="shipping__notice">We’ll email you a receipt and send order updates to your mobile
+                        phone via SMS or iMessage.</p>
+                </div>
+                <div className="shipping__form-wrapper">
+                    <Field
+                        name="phone"
+                        component={renderFieldShipping}
+                        type="tel"
+                        placeholder="Phone Number"
+                        validate={[required, phoneNumber]}
+                    />
+                    <p className="shipping__notice"> The phone number you enter can’t be changed after you place your order, so please make sure it’s correct.</p>
+                </div>
                 <button className="shipping__button" type="submit">Buy</button>
             </form>
         </div>

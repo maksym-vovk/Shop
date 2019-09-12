@@ -8,5 +8,6 @@ export { IPhone } from './IPhone';
 export { MacBook } from './MacBook';
 export { Watch } from './Watch';
 export { ProductsList } from './ProductsList';
-export { CheckoutPage } from './CheckoutPage';
-export { ShippingDetails } from './ShippingDetails';
+export { CheckoutPage } from './Checkout/CheckoutPage';
+export { ShippingDetails } from './Checkout/ShippingDetails';
+export { CheckoutItem } from './Checkout/CheckoutItem';
