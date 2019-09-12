@@ -13,7 +13,11 @@ router.post('/customers', async (req, res) => {
 
 router.post('/customers/auth', async (req, res) => {
   const answer = await User.find(req.body);
-  res.json(answer);
+  if (answer[0]) {
+    res.send({auth: true});
+  } else {
+  	res.send({auth: false})
+  }
 })
 
 module.exports = router;
