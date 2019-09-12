@@ -1,14 +1,24 @@
 import React from 'react'
+
 import { Field, reduxForm } from 'redux-form'
 import './index.scss'
+import axios from 'axios';
 
 const required = value => (value || typeof value === 'number' ? undefined : 'Required field');
+
 const maxLength = max => value =>
   value && value.length > max ? `Must be ${max} characters or less` : undefined;
 const maxLength15 = maxLength(15);
+
 export const minLength = min => value =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined;
 export const minLength2 = minLength(2);
+
+const login = value =>
+  value && !/[\w[\]`!@#$%^&*()={}:;<>+'-]*$/i.test(value)
+    ? 'Use english letters'
+    : undefined;
+
 const number = value =>
   value && isNaN(Number(value)) ? 'Must be a number' : undefined;
 const email = value =>
@@ -19,14 +29,25 @@ const aol = value =>
   value && /.+@aol\.com/.test(value)
     ? 'Really? You still use AOL for your email?'
     : undefined;
+
 const alphaNumeric = value =>
   value && /[^a-zA-Z0-9 ]/i.test(value)
     ? 'Only alphanumeric characters'
     : undefined;
+
 const match = matchName => (value, allValues) =>
   value !== allValues[matchName]
     ? `This field must be equal to ${matchName}`
     : undefined;
+
+const asyncValidate = async(value) => {
+  await axios.post(window.location.origin + '/find_user', {login: value.login ? value.login : '', email: value.email ? value.email : ''})
+    .then(res => {
+      const errs = {}
+      for (const key in res.data) { if (res.data[key]) { errs[key] = 'Already registrated' } }
+      throw errs
+    })
+};
 
 export const phoneNumber = value => {
   return value.replace(/[^\d]/g, '');
@@ -36,12 +57,12 @@ const renderField = ({
   input,
   label,
   type,
-  meta: { touched, error, warning }
+  meta: { asyncValidating, touched, error, warning }
 }) => (
   <div className="options-container">
     <div className="options-field">
       <label>{label}<span className="required-field">*</span></label>
-      <div className="input-container">
+      <div className={asyncValidating ? 'input-container async-validating' : 'input-container'}>
         {
           (type === 'password') ? <input autoComplete="off" className="input-style" {...input} type={type} />
             : <input className="input-style" {...input} type={type} />
@@ -54,7 +75,7 @@ const renderField = ({
   </div>
 );
 
-const FieldLevelValidationForm = props => {
+const RegistrationForm = props => {
   const { handleSubmit, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
@@ -63,8 +84,9 @@ const FieldLevelValidationForm = props => {
         type="text"
         component={renderField}
         label="Login"
-        validate={required}
+        validate={[required, login]}
       />
+
       <Field
         name="first_name"
         type="text"
@@ -149,7 +171,9 @@ const FieldLevelValidationForm = props => {
 };
 
 export default reduxForm({
-  form: 'fieldLevelValidation', // a unique identifier for this form
+  form: 'registrationForm', // a unique identifier for this form
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-})(FieldLevelValidationForm)
+  asyncValidate,
+  asyncBlurFields: ['login', 'email']
+})(RegistrationForm)
