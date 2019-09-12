@@ -1,11 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-
-import './App.scss';
 import { Header, Footer } from './commons';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import store from './store';
-import { HomePage, IMac, MacBook, IPad, IPhone, Watch, CheckoutPage, ShippingDetails, CheckoutItem } from './components';
+import { HomePage, IMac, MacBook, IPad, IPhone, Watch, CheckoutPage, ShippingDetails, CheckoutItem, RegisterForm, Cart } from './components';
+
+import './App.scss';
+
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
             <Route exact path="/checkout" component={CheckoutPage} />
             <Route path="/checkout/details" component={ShippingDetails} />
             <Route path="/checkout/checkoutitem" component={CheckoutItem} />
+            <Route path="/cart" component={Cart} />
+            <Route path="/sign_up" component={RegisterForm} />
           </Switch>
           <Footer />
         </div>

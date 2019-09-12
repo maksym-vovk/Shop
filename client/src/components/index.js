@@ -11,3 +11,6 @@ export { ProductsList } from './ProductsList';
 export { CheckoutPage } from './Checkout/CheckoutPage';
 export { ShippingDetails } from './Checkout/ShippingDetails';
 export { CheckoutItem } from './Checkout/CheckoutItem';
+export {Cart} from './Cart';
+export {EmptyCart} from './EmptyCart';
+export {FullCart} from './FullCart';

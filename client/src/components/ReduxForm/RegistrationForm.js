@@ -1,55 +1,72 @@
 import React from 'react'
+
 import { Field, reduxForm } from 'redux-form'
 import './index.scss'
+import axios from 'axios';
 
-const required = value => (value || typeof value === 'number' ? undefined : 'Required');
+const required = value => (value || typeof value === 'number' ? undefined : 'Required field');
+
 const maxLength = max => value =>
   value && value.length > max ? `Must be ${max} characters or less` : undefined;
 const maxLength15 = maxLength(15);
+
 export const minLength = min => value =>
   value && value.length < min ? `Must be ${min} characters or more` : undefined;
 export const minLength2 = minLength(2);
+
+const login = value =>
+  value && !/[\w[\]`!@#$%^&*()={}:;<>+'-]*$/i.test(value)
+    ? 'Use english letters'
+    : undefined;
+
 const number = value =>
   value && isNaN(Number(value)) ? 'Must be a number' : undefined;
-const minValue = min => value =>
-  value && value < min ? `Must be at least ${min} years` : undefined;
-const minValue10 = minValue(10);
 const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? 'Invalid email address'
     : undefined;
-const tooYoung = value =>
-  value && value < 13
-    ? 'You do not meet the minimum age requirement!'
-    : undefined
 const aol = value =>
   value && /.+@aol\.com/.test(value)
     ? 'Really? You still use AOL for your email?'
     : undefined;
+
 const alphaNumeric = value =>
   value && /[^a-zA-Z0-9 ]/i.test(value)
     ? 'Only alphanumeric characters'
     : undefined;
+
 const match = matchName => (value, allValues) =>
   value !== allValues[matchName]
     ? `This field must be equal to ${matchName}`
     : undefined;
-export const phoneNumber = value =>
-  value && !/^([0-9][0-9]{9})$/i.test(value)
-    ? 'Invalid phone number, must be 10 digits'
-    : undefined;
+
+const asyncValidate = async(value) => {
+  await axios.post(window.location.origin + '/find_user', {login: value.login ? value.login : '', email: value.email ? value.email : ''})
+    .then(res => {
+      const errs = {}
+      for (const key in res.data) { if (res.data[key]) { errs[key] = 'Already registrated' } }
+      throw errs
+    })
+};
+
+export const phoneNumber = value => {
+  return value.replace(/[^\d]/g, '');
+};
 
 const renderField = ({
   input,
   label,
   type,
-  meta: { touched, error, warning }
+  meta: { asyncValidating, touched, error, warning }
 }) => (
   <div className="options-container">
     <div className="options-field">
-      <label>{label}</label>
-      <div className="input-container">
-        <input className="input-style" {...input} type={type} />
+      <label>{label}<span className="required-field">*</span></label>
+      <div className={asyncValidating ? 'input-container async-validating' : 'input-container'}>
+        {
+          (type === 'password') ? <input autoComplete="off" className="input-style" {...input} type={type} />
+            : <input className="input-style" {...input} type={type} />
+        }
       </div>
     </div>
     {touched &&
@@ -58,12 +75,20 @@ const renderField = ({
   </div>
 );
 
-const FieldLevelValidationForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props;
+const RegistrationForm = props => {
+  const { handleSubmit, submitting } = props;
   return (
     <form onSubmit={handleSubmit}>
       <Field
-        name="username"
+        name="login"
+        type="text"
+        component={renderField}
+        label="Login"
+        validate={[required, login]}
+      />
+
+      <Field
+        name="first_name"
         type="text"
         component={renderField}
         label="Name"
@@ -71,10 +96,10 @@ const FieldLevelValidationForm = props => {
         warn={alphaNumeric}
       />
       <Field
-        name="userSurname"
+        name="last_name"
         type="text"
         component={renderField}
-        label="Surname:"
+        label="Surname"
         validate={[required, maxLength15, minLength2]}
         warn={alphaNumeric}
       />
@@ -119,22 +144,26 @@ const FieldLevelValidationForm = props => {
         type="number"
         component={renderField}
         label="Age"
-        validate={[required, number, minValue10]}
-        warn={tooYoung}
+        validate={[required, number]}
+      />
+      <Field
+        name="address"
+        type="text"
+        component={renderField}
+        label="Address"
+        validate={required}
       />
       <Field
         name="phone"
-        type="number"
+        type="text"
         component={renderField}
         label="Phone number"
-        validate={[required, phoneNumber]}
+        validate={[required, minLength(7)]}
+        normalize={phoneNumber}
       />
       <div>
-        <button className="" type="submit" disabled={submitting}>
-                    Submit
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-                    Clear Values
+        <button className="sign-up-btn" type="submit" disabled={submitting}>
+          sign up
         </button>
       </div>
     </form>
@@ -142,7 +171,9 @@ const FieldLevelValidationForm = props => {
 };
 
 export default reduxForm({
-  form: 'fieldLevelValidation', // a unique identifier for this form
+  form: 'registrationForm', // a unique identifier for this form
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-})(FieldLevelValidationForm)
+  asyncValidate,
+  asyncBlurFields: ['login', 'email']
+})(RegistrationForm)
