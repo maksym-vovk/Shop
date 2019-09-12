@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setAuthState } from '../../store';
 
 import axios from 'axios';
 
+import { ModalLogin } from './ModalLogin';
+
 import './index.scss';
 
-export const Login = (props) => {
+export const Login = connect(null, {setAuthState})((props) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -15,35 +18,23 @@ export const Login = (props) => {
     await axios.post(window.location.origin + '/customers/auth', {login, password})
       .then(res => {
         if (res.data.auth) {
-          setError(false)
+          setError(false);
+          props.setAuthState(true);
+          props.openModal(false);
         } else {
-          setError(true)
+          setError(true);
+          setLogin('');
+          setPassword('');
         }
       });
   }
 
-  const el = <div className="outer" onClick={(e) => { if (e.target.className === 'outer') props.openModal(false) }}>
-    <div className="modal">
-      <span className="modal__close" onClick={() => props.openModal(false) }>&times;</span>
-      <h2>Enter your account</h2>
-      {error
-        ? <div className="err-popup"><p>Wrong login or password</p></div>
-        : null}
-      <div className="modal__field">
-        <label htmlFor="login">Login:</label>
-        <input type="text" name="login" className="modal__input" onChange={ e => setLogin(e.target.value) } value={ login } />
-      </div>
-      <div className="modal__field">
-        <label htmlFor="password">Password:</label>
-        <input type="password" name="password" className="modal__input" onChange={ e => setPassword(e.target.value) } value={ password } />
-      </div>
-      <div className="modal__field">
-        <button className="modal__submit" onClick={ () => submitHandler() }>Login</button>
-      </div>
-      <span>or</span>
-      <Link to="/sign_up" onClick={() => props.openModal(false) }>Sign up</Link>
-    </div>
-  </div>
-
-  return ReactDOM.createPortal(el, document.body)
-}
+  return ReactDOM.createPortal(
+    <ModalLogin
+      openModal={props.openModal}
+      login={{login, setLogin}}
+      password={{password, setPassword}}
+      submitHandler={submitHandler}
+      error={error}
+    />, document.body)
+})
