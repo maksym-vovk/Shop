@@ -1,7 +1,7 @@
 .footer {
   color: #888888;
   background-color: #F2F2F2;
-  & .container{
+  &__container {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -22,6 +22,7 @@
     grid-template-columns: 1fr 1fr 1fr ;
     width: 100%;
     padding: 3vh 0;
+    border-top: 1px solid #D6D6D6;
     &__item {
       padding-left: 35%;
       text-align: left;
