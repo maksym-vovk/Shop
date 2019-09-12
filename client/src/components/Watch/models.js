@@ -1,4 +1,4 @@
-const pathBand = `/static/img/watch/Apple_Watch_Series_5/Space_Black_Stainless_Steel_Case_with_Leather_Loop`;
+const pathBand = '/static/img/watch/Apple_Watch_Series_5/Space_Black_Stainless_Steel_Case_with_Leather_Loop';
 const pathColors = `${pathBand}/colors`;
 // const path3 = `Space_Black_Stainless_Steel_Case_with_Space_Black_Milanese_Loop`;
 // const path4 = `Space_Black_Stainless_Steel_Case_with_Space_Black_Milanese_Loop`;
