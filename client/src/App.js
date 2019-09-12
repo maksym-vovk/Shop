@@ -12,7 +12,8 @@ import {
   IPhone,
   Watch,
   RegisterForm,
-  Cart
+  Cart,
+  UserCabinet
 } from './components';
 import { ProductViewPage } from './components/ProductViewPage';
 import './App.scss';
@@ -34,6 +35,7 @@ function App() {
               <Route path="/watch/:id" component={ProductViewPage} />
               <Route path="/sign_up" component={RegisterForm} />
               <Route path="/cart" component={Cart} />
+              <Route path="/user_cabinet" component={UserCabinet} />
             </Switch>
           </main>
           <Footer />
