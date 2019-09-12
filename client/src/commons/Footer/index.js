@@ -16,10 +16,8 @@ export const Footer = () => {
                 saving this information). Additional terms from Apple or Apple’s trade‑in partners may apply. Full terms
                 apply.
         </p>
-        <span className='footer__retailer footer__sub-text'>
-                More ways to shop: Find an Apple Store or other retailer near you. Or call 1-800-MY-APPLE.
-        </span>
         <div className='section'>
+
           <div className='section__item'>
             <h4 className='section__item--title'>Help</h4>
             <ul>
@@ -31,13 +29,12 @@ export const Footer = () => {
             </ul>
           </div>
           <div className='section__item section__product'>
-            <h4 className='section__item--title'>Help</h4>
+            <h4 className='section__item--title'>Information about the company</h4>
             <ul>
-              <li><Link to='/'>Shipping and payment</Link></li>
-              <li><Link to='/'>Warranty</Link></li>
-              <li><Link to='/'>Purchase returns</Link></li>
-              <li><Link to='/'>Service centres</Link></li>
-              <li><Link to='/'>Questions and answers</Link></li>
+              <li><Link to='/'>About Us</Link></li>
+              <li><Link to='/'>Website Terms of Use</Link></li>
+              <li><Link to='/'>Jobs</Link></li>
+              <li><Link to='/'>Contacts</Link></li>
             </ul>
           </div>
           <div className='section__item'>
@@ -51,6 +48,9 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
+        <span className='footer__retailer footer__sub-text'>
+                More ways to shop: Find an Apple Store or other retailer near you. Or call 1-800-MY-APPLE.
+        </span>
         <span className='footer__copyright footer__sub-text'>
                 Copyright © 2019 Apple Inc. All rights reserved.
         </span>
