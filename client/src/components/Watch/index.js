@@ -5,7 +5,7 @@ import { models } from './models';
 import { ProductsList } from '../';
 
 export const Watch = () => {
-  const postData = async () => {
+  const postData = async() => {
     await axios.post('/cards', models.model);
     // setFlag(!flag);
     console.log('posted');

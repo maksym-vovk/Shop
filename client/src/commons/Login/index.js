@@ -14,7 +14,8 @@ export const Login = connect(null, {setAuthState})((props) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
-  const submitHandler = async() => {
+  const submitHandler = async(e) => {
+    e.preventDefault();
     await axios.post(window.location.origin + '/customers/auth', {login, password})
       .then(res => {
         if (res.data.auth) {

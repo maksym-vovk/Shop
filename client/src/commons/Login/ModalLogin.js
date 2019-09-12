@@ -10,7 +10,7 @@ export const ModalLogin = (props) => {
         {props.error
           ? <div className="err-popup"><p>Wrong login or password</p></div>
           : null}
-        <form className="modal__form">
+        <form className="modal__form" onSubmit={ props.submitHandler }>
           <div className="modal__field">
             <label htmlFor="login">Login:</label>
             <input type="text" name="login" className="modal__input" onChange={ e => props.login.setLogin(e.target.value) } value={ props.login.login } />
@@ -20,7 +20,7 @@ export const ModalLogin = (props) => {
             <input type="password" name="password" className="modal__input" onChange={ e => props.password.setPassword(e.target.value) } value={ props.password.password } />
           </div>
           <div className="modal__field">
-            <button className="modal__submit" onClick={ () => props.submitHandler() }>Login</button>
+            <button className="modal__submit">Login</button>
           </div>
         </form>
         <span>or</span>
