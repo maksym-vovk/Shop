@@ -4,7 +4,17 @@ import { Header, Footer } from './commons';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import store from './store';
-import { HomePage, IMac, MacBook, IPad, IPhone, Watch, RegisterForm, Cart } from './components';
+import {
+  HomePage,
+  IMac,
+  MacBook,
+  IPad,
+  IPhone,
+  Watch,
+  RegisterForm,
+  Cart
+} from './components';
+import { ProductViewPage } from './components/ProductViewPage';
 import './App.scss';
 
 function App() {
@@ -13,16 +23,19 @@ function App() {
       <Router>
         <div className="App">
           <Header />
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/imac" component={IMac} />
-            <Route path="/macbook" component={MacBook} />
-            <Route path="/ipad" component={IPad} />
-            <Route path="/iphone" component={IPhone} />
-            <Route path="/watch" component={Watch} />
-            <Route path="/cart" component={Cart} />
-            <Route path="/sign_up" component={RegisterForm} />
-          </Switch>
+          <main className="main-content">
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/imac" component={IMac} />
+              <Route path="/macbook" component={MacBook} />
+              <Route path="/ipad" component={IPad} />
+              <Route path="/iphone" component={IPhone} />
+              <Route exact path="/watch" component={Watch} />
+              <Route path="/watch/:id" component={ProductViewPage} />
+              <Route path="/sign_up" component={RegisterForm} />
+              <Route path="/cart" component={Cart} />
+            </Switch>
+          </main>
           <Footer />
         </div>
       </Router>
