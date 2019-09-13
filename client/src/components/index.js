@@ -11,3 +11,4 @@ export { ProductsList } from './ProductsList';
 export {Cart} from './Cart';
 export {EmptyCart} from './EmptyCart';
 export {FullCart} from './FullCart';
+export {UserCabinet} from './UserCabinet';
