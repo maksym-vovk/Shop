@@ -5,23 +5,23 @@ import { reducer as reduxFormReducer } from 'redux-form';
 const SET_AUTHORIZED = 'SET_AUTHORIZED';
 
 // Search
-const SET_SEARCH_STATUS = 'SET_SEARCH_STATUS'
+const SET_SEARCH_STATUS = 'SET_SEARCH_STATUS';
 
 // getters
 export const getAuthState = state => {
   return state.authorized
-}
+};
 
 // actions
 export const setAuthState = authorized => ({
   type: SET_AUTHORIZED,
   payload: authorized
-})
+});
 // Search
 export const setSearchStatus = status => ({
   type: SET_SEARCH_STATUS,
   payload: status
-})
+});
 
 // state for start
 const initialState = {
@@ -33,7 +33,7 @@ const initialState = {
   searchStatus: {
     status: false
   }
-}
+};
 
 function authReducer(state = initialState.authData, action) {
   const {type, payload} = action;

@@ -6,7 +6,7 @@ import store, {getLoginState} from '../../store';
 
 const mapStateToProps = (state) => ({
   status: state.searchStatus.status
-})
+});
 
 export const Header = connect(mapStateToProps)((props) => {
   return (
