@@ -79,7 +79,19 @@ function searchReducer(state = initialState.searchStatus, action) {
   }
 }
 // Fetch
-function fetchReducer(state = initialState) {}
+function fetchReducer(state = initialState.allCards, action) {
+  const { type, payload } = action;
+  switch (type) {
+    case FETCH_CARDS:
+      return {
+        ...state,
+        allCards: payload
+      };
+
+    default:
+      return state;
+  }
+}
 const reducer = combineReducers({
   form: reduxFormReducer, // mounted under "form"
   authorization: authReducer,
