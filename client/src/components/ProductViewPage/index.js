@@ -44,7 +44,8 @@ export const ProductViewPage = props => {
       <div className="tabs-images">
         {data.images.tabsImages.map((item, index) => {
           return (
-            <img key={index}
+            <img
+              key={index}
               alt={data.model}
               onMouseEnter={tabsHandler}
               data-src={item}
