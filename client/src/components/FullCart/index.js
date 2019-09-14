@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 import './index.scss';
 
@@ -42,9 +43,9 @@ export const FullCart = () => {
         <h3> Total </h3>
         <h3> 588.00 </h3>
       </div>
-      <div className='wrap__buy-btn'>
-        <span className='buy-btn'> Buy / Check Out</span>
-      </div>
+      <Link to="/checkout" className='wrap__buy-btn'>
+        <button className='buy-btn' type="submit">Check Out</button>
+      </Link>
     </div>
   )
 };

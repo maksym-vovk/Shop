@@ -1,5 +1,6 @@
 import React from "react";
 import {Field, reduxForm} from 'redux-form';
+import {Link} from "react-router-dom";
 
 import {CheckoutTitle} from "../CheckoutTitle"
 //styles
@@ -27,10 +28,9 @@ const alphaNumeric = value =>
     value && /[^a-zA-Z0-9 ]/i.test(value)
         ? 'Only alphanumeric characters'
         : undefined;
-export const phoneNumber = value =>
-    value && !/^([0-9][0-9]{9})$/i.test(value)
-        ? 'Invalid phone number, must be 10 digits'
-        : undefined;
+export const phoneNumber = value => {
+    return value.replace(/[^\d]/g, '');
+};
 
 const isLetter = value =>
     value && !/[a-zA-Z]/.test(value)
@@ -135,11 +135,15 @@ export const ShippingDetails = reduxForm({
                         component={renderFieldShipping}
                         type="tel"
                         placeholder="Phone Number"
-                        validate={[required, phoneNumber]}
+                        validate={[required, minLength(7)]}
+                        normalize={phoneNumber}
                     />
-                    <p className="shipping__notice"> The phone number you enter can’t be changed after you place your order, so please make sure it’s correct.</p>
+                    <p className="shipping__notice"> The phone number you enter can’t be changed after you place your
+                        order, so please make sure it’s correct.</p>
                 </div>
-                <button className="shipping__button" type="submit">Buy</button>
+                <Link to="/checkout/checkout-purchased">
+                    <button className="shipping__button" type="submit">Buy</button>
+                </Link>
             </form>
         </div>
     );

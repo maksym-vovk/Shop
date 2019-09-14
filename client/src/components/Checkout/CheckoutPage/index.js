@@ -1,26 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
+import {Link} from "react-router-dom";
 import {CheckoutTitle} from "../CheckoutTitle"
+import {CheckoutItem} from "../CheckoutItem";
 
 //styles
 import './index.scss';
 
 export const CheckoutPage = () => {
-
     return (
         <div className="container">
             <CheckoutTitle/>
 
             <h2 className="check-out-subtitle">In stock and ready to ship</h2>
-            <div className="product">
-                <div className="product__item">
-                    <img className="product__image" src="static/img/watches/series-4/1.jpg" alt="watch"/>
-                </div>
-                <div className="product__description">
-                    <p className="product__text">21.5-inch iMac with Retina 4K display</p>
-                    <span className="product__quantity">Quantity: NR</span>
-                    <a href="#" className="product__details-link">View details</a>
-                </div>
-            </div>
+
+            <CheckoutItem/>
+
             <div className="delivery-block">
                 <div className="delivery">
                     <p className="delivery__subtitle">Select your delivery method:</p>
@@ -54,7 +48,9 @@ export const CheckoutPage = () => {
                     </ul>
                 </div>
             </div>
-            <button type="submit" className="continue-button">Continue to Shipping Address</button>
+            <Link to="/checkout/shipping">
+                <button type="submit" className="continue-button">Continue to Shipping Address</button>
+            </Link>
         </div>
     )
 };

@@ -23,7 +23,7 @@ export const CheckoutSummary = ({removeSummary}) => {
                         <h3 className="total__title">Your Oder Total</h3>
                         <div className="total__items-section">
                             <span className="total__quantity">Quantity:___items</span>
-                            <Link className="total__edit" to="">Edit bag</Link>
+                            <Link className="total__edit" to="/cart">Edit bag</Link>
                         </div>
                         <div className="total__price">
                             <div className="total__price-item">

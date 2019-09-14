@@ -6,6 +6,10 @@ input {
   border-radius: 5px;
 }
 
+form {
+  width: 100%;
+}
+
 .error {
   color: red;
   font-size: 16px;
@@ -44,7 +48,7 @@ input {
 
   &__button {
     margin: 20px 0;
-    padding: 17px 165px;
+    padding: 17px 233px;
     color: white;
     font-size: 18px;
     text-align: center;
