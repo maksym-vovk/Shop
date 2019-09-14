@@ -6,5 +6,6 @@ export {Search} from './Search';
 export {Cart} from './Cart';
 export {Auth} from './Auth';
 export {Footer} from './Footer';
+export {Login} from './Login'
 export {SearchInput} from './SearchInput'
 export {SearchInputButton} from './SearchInput/SearchInputButton'

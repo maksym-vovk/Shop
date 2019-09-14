@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.scss';
+import axios from 'axios';
 
-export const ProductsList = () => {
+import { ProductCard } from '../';
+
+export const ProductsList = props => {
+  console.log('props', props);
+  const [data, setData] = useState([]);
+  const path = '/cards';
+  useEffect(() => {
+    fetchData(path);
+  }, [path]);
+  const fetchData = async path => {
+    const result = await axios(path);
+    console.log(result.data);
+    setData(result.data);
+  };
+
   return (
-    <div>
-      <h1>ProductsList</h1>
-    </div>
+    <section className="product-list-wrapper container">
+      {data.map((item, index) => {
+        console.log(item);
+        return <ProductCard state={item} key={index}/>
+      })}
+    </section>
   );
 };

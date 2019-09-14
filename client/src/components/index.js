@@ -12,8 +12,9 @@ export { CheckoutPage } from './Checkout/CheckoutPage';
 export { ShippingDetails } from './Checkout/ShippingDetails';
 export { CheckoutItemDetails } from './Checkout/CheckoutItemDetails';
 export { CheckoutItem } from './Checkout/CheckoutItem';
-
 export {Cart} from './Cart';
 export {EmptyCart} from './EmptyCart';
 export {FullCart} from './FullCart';
 export {CheckoutPurchased} from './Checkout/CheckoutPurchased'
+export {UserCabinet} from './UserCabinet';
+
