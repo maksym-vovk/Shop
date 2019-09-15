@@ -24,17 +24,15 @@ function* fetchCardsSaga() {
   while (true) {
     yield take(ATYPES.FETCH_CARDS);
     const response = yield axios.get('/cards');
-    const payload = response.data;
+    // const payload = response.data;
     yield put({
       type: ATYPES.SET_CARDS,
-      payload
-    })
+      payload: response.data
+    });
   }
 }
 
 export function* rootSaga() {
-  yield all([
-    fetchCardsSaga()
-  ])
+  yield all([fetchCardsSaga()]);
 }
 /* eslint-enable */
