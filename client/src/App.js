@@ -13,7 +13,10 @@ import {
   Watch,
   RegisterForm,
   Cart,
-  UserCabinet
+  UserCabinet,
+  ChangeUserInfo,
+  ChangeUserPassword,
+
 } from './components';
 import { ProductViewPage } from './components/ProductViewPage';
 import './App.scss';
@@ -36,6 +39,8 @@ function App() {
               <Route path="/sign_up" component={RegisterForm} />
               <Route path="/cart" component={Cart} />
               <Route path="/user_cabinet" component={UserCabinet} />
+              <Route path="/edit_account_password" component={ChangeUserPassword} />
+              <Route path="/edit_account_information" component={ChangeUserInfo} />
             </Switch>
           </main>
           <Footer />

@@ -11,13 +11,14 @@ const mapStateToProps = state => ({
 
 export const RegisterForm = connect(mapStateToProps)(props => {
   return (
-    <div style={{ padding: 15, minWidth: '270px'}}>
-      
-      {props.auth ? <Redirect to="/" /> : null}
-      
-      <h2>Registration</h2>
+    <div className="container">
+      <div className="registration-form">
+        {props.auth ? <Redirect to="/" /> : null}
 
-      <RegistrationForm onSubmit={regSubmit} />
+        <h2>Registration</h2>
+        <RegistrationForm onSubmit={regSubmit} />
+
+      </div>
     </div>
   )
 });

@@ -1,8 +1,7 @@
-.registration-form {
+.change-information-form {
   min-width: 270px;
   max-width: 800px;
   margin: auto;
-  padding: 15px 0;
 }
 
 h2 {
@@ -90,16 +89,21 @@ form {
   -webkit-appearance: none;
 }
 
-.sign-up-btn {
+.button {
   min-width: 120px;
-  margin-top: 10px;
+  margin: 10px 10px 0;
   padding: 10px 30px;
   color: #eee;
   text-transform: uppercase;
-  background-color: black;
   border: none;
   cursor: pointer;
 }
+.edit-btn {
+  background-color: black;
+}
+.go-back-btn {
+   background-color: #F2F2F2;
+ }
 
 .err-popup {
   margin: 5px;
