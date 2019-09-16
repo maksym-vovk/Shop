@@ -27,6 +27,7 @@ export const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? 'Invalid email address'
     : undefined;
+
 export const aol = value =>
   value && /.+@aol\.com/.test(value)
     ? 'Really? You still use AOL for your email?'
@@ -43,10 +44,15 @@ export const match = matchName => (value, allValues) =>
     : undefined;
 
 export const asyncValidate = async(value) => {
-  await axios.post(window.location.origin + '/find_user', {login: value.login ? value.login : '', email: value.email ? value.email : ''})
+  await axios.post('/find_user', {login: value.login ? value.login : '', email: value.email ? value.email : ''})
     .then(res => {
-      const errs = {}
-      for (const key in res.data) { if (res.data[key]) { errs[key] = 'Already registrated' } }
+      console.log(res);
+      const errs = {};
+      for (const key in res.data) {
+        if (res.data[key]) {
+          errs[key] = 'Already registred ' + key
+        }
+      }
       throw errs
     })
 };
@@ -71,7 +77,6 @@ export const renderField = ({
   input,
   label,
   type,
-  userValue,
   meta: { asyncValidating, touched, error, warning }
 }) => (
   <div className="options-container">

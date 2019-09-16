@@ -5,6 +5,7 @@ import {Field, reduxForm} from 'redux-form';
 import {ShoppingInfoContainer} from '../ShoppingInfo/ShoppingInfoContainer';
 
 import './index.scss'
+import axios from 'axios'
 import {
   required,
   renderField,
@@ -24,8 +25,23 @@ const mapStateToProps = state => ({
   test_pass: 'testpass'
 });
 
+const asyncValidateEdit = async(value) => {
+  await axios.post('/find_user', {_id: '5d74f594a35f5f4c9414bcb5', login: value.login ? value.login : '', email: value.email ? value.email : ''})
+    .then(res => {
+      const errs = {};
+      for (const key in res.data) {
+        if (res.data.login && res.data.login_id) {
+          errs.login = 'This login is already registred'
+        }
+        if (res.data.email && res.data.email_id) {
+          errs.email = 'This email is already registred'
+        }
+      }
+      throw errs
+    })
+};
+
 const EditUserInfo = connect(mapStateToProps)(props => {
-  console.log(props);
   return (
     <React.Fragment>
       <div className="container">
@@ -132,4 +148,6 @@ export const ChangeUserInfo = reduxForm({
   form: 'userInfoEditForm',
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+  asyncValidateEdit,
+  asyncBlurFields: ['login', 'email']
 })(EditUserInfo);
