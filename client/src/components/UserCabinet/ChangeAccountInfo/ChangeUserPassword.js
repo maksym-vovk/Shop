@@ -62,7 +62,7 @@ const EditPassword = connect(mapStateToProps)(props => {
                 console.log('submit');
                 e.preventDefault()
               }}>
-                    Edit password
+                    Save
               </button>
               <button className="button go-back-btn" onClick={(e) => {
                 props.history.goBack();

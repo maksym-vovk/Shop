@@ -71,6 +71,7 @@ export const renderField = ({
   input,
   label,
   type,
+  userValue,
   meta: { asyncValidating, touched, error, warning }
 }) => (
   <div className="options-container">

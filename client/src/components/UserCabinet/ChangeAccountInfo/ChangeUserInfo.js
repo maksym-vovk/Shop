@@ -24,11 +24,6 @@ const mapStateToProps = state => ({
   test_pass: 'testpass'
 });
 
-const lastPassword = props => value =>
-  (value !== props)
-    ? 'Your password is invalid'
-    : undefined;
-
 const EditUserInfo = connect(mapStateToProps)(props => {
   console.log(props);
   return (
