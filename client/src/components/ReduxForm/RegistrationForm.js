@@ -16,7 +16,7 @@ export const minLength = min => value =>
 export const minLength2 = minLength(2);
 
 export const login = value =>
-  value && !/[\w[\]`!@#$%^&*()={}:;<>+'-]*$/i.test(value)
+  value && !/^[\w[\]`!@#$%^&*()={}:;<>+'-]*$/i.test(value)
     ? 'Use english letters'
     : undefined;
 
@@ -46,7 +46,6 @@ export const match = matchName => (value, allValues) =>
 export const asyncValidate = async(value) => {
   await axios.post('/find_user', {login: value.login ? value.login : '', email: value.email ? value.email : ''})
     .then(res => {
-      console.log(res);
       const errs = {};
       for (const key in res.data) {
         if (res.data[key]) {
@@ -107,7 +106,8 @@ const RegistrationForm = props => {
           type="text"
           component={renderField}
           label="Login"
-          validate={[required('Login'), login]}
+          validate={required('Login')}
+          warn={login}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
         />
