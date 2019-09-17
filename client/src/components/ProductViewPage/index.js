@@ -20,7 +20,7 @@ export const ProductViewPage = connect(
   useEffect(() => {
     fetchCard(props.match.params.id);
     setLoading(false);
-  }, [fetchCard, props.match.params.id]);
+  }, [fetchCard]);
   console.log('card', card);
   const Card = () => {
     return card ? <img
