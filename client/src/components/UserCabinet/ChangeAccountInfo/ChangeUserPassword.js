@@ -57,7 +57,7 @@ const EditPassword = connect(mapStateToProps)(props => {
                 onBlur={inputFocusBlur}
               />
             </div>
-            <div>
+            <div className="buttons-container">
               <button className="button edit-btn" type="submit" onClick={(e) => {
                 console.log('submit');
                 e.preventDefault()

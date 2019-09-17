@@ -76,12 +76,16 @@ export const renderField = ({
   input,
   label,
   type,
+  editing,
+  hide_id_field,
   meta: { asyncValidating, touched, error, warning }
 }) => (
-  <div className="options-container">
-
+  <div className={ hide_id_field ? 'hidden-field' : 'options-container'}>
     <div className={asyncValidating ? 'input-container async-validating' : 'input-container'}>
-      <label htmlFor={label} className="label-text">{label}</label>
+      {editing
+        ? <label htmlFor={label} className="label-text label-active">{label}</label>
+        : <label htmlFor={label} className="label-text">{label}</label>
+      }
       {
         (type === 'password')
           ? <input id={label} autoComplete="off" className="input-style" {...input} type={type} />

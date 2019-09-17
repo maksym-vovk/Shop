@@ -55,6 +55,10 @@ form {
   font-weight: 700;
 }
 
+.hidden-field {
+  display: none;
+}
+
 .options-container {
   width: 70%;
   min-width: 270px;
@@ -87,6 +91,10 @@ form {
 .input-style[type=number]::-webkit-outer-spin-button {
   margin: 0;
   -webkit-appearance: none;
+}
+
+.buttons-container {
+  min-width: 300px;
 }
 
 .button {
