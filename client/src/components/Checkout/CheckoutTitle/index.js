@@ -21,7 +21,7 @@ export const CheckoutTitle = () => {
             <div className="check-out container">
                 <div className="check-out__title-block">
                     <h1 className="check-out__title">Checkout</h1>
-                    <a onClick={() => setSummary(true)} href="/#" className="check-out__summary">Show Order Summary:
+                    <a onClick={() => setSummary(true)} href="#" className="check-out__summary">Show Order Summary:
                         PRICE</a>
                 </div>
             </div>

@@ -1,11 +1,14 @@
-import { createStore, combineReducers } from 'redux';
-import { reducer as reduxFormReducer } from 'redux-form';
+import {createStore, combineReducers} from 'redux';
+import {reducer as reduxFormReducer} from 'redux-form';
 
 // ActionTypes Constants
 const SET_AUTHORIZED = 'SET_AUTHORIZED';
 
 // Search
-const SET_SEARCH_STATUS = 'SET_SEARCH_STATUS'
+const SET_SEARCH_STATUS = 'SET_SEARCH_STATUS';
+
+// submit shipping details
+const SET_SHIPPING_DETAILS_STATUS = 'SET_SHIPPING_DETAILS_STATUS';
 
 // getters
 export const getAuthState = state => {
@@ -16,12 +19,18 @@ export const getAuthState = state => {
 export const setAuthState = authorized => ({
   type: SET_AUTHORIZED,
   payload: authorized
-})
+});
+
+export const setShippingDetails = status => ({
+  type: SET_SHIPPING_DETAILS_STATUS,
+  payload: status
+});
+
 // Search
 export const setSearchStatus = status => ({
   type: SET_SEARCH_STATUS,
   payload: status
-})
+});
 
 // state for start
 const initialState = {
@@ -32,8 +41,12 @@ const initialState = {
   // Search
   searchStatus: {
     status: false
+  },
+  // Shipping details status
+  shippingDetailsStatus: {
+    status: false
   }
-}
+};
 
 function authReducer(state = initialState.authData, action) {
   const {type, payload} = action;
@@ -47,6 +60,7 @@ function authReducer(state = initialState.authData, action) {
       return state;
   }
 }
+
 // Search
 function searchReducer(state = initialState.searchStatus, action) {
   const {type, payload} = action;
@@ -61,10 +75,25 @@ function searchReducer(state = initialState.searchStatus, action) {
   }
 }
 
+// Shipping details status
+function shippingDetailsReducer(state = initialState.shippingDetailsStatus, action) {
+  const {type, payload} = action;
+  switch (type) {
+    case SET_SHIPPING_DETAILS_STATUS:
+      return {
+        ...state,
+        status: payload
+      };
+    default:
+      return state
+  }
+}
+
 const reducer = combineReducers({
   form: reduxFormReducer, // mounted under "form"
   authorization: authReducer,
-  searchStatus: searchReducer
+  searchStatus: searchReducer,
+  shippingDetailsStatus: shippingDetailsReducer
 });
 
 const store = (window.__REDUX_DEVTOOLS_EXTENSION__

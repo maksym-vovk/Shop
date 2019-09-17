@@ -1,0 +1,35 @@
+.product-block {
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(210, 215, 211, 1);
+
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 400px;
+
+  &__item {
+    width: 200px;
+    height: 200px;
+  }
+
+  &__image {
+    width: 200px;
+    height: 200px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+  }
+  &__text {
+    font-weight: bold;
+    line-height: 1.6;
+  }
+
+  &__details-link {
+    margin-top: 2px;
+  }
+}

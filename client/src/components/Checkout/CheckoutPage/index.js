@@ -1,10 +1,17 @@
-import React, {useState} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 import {CheckoutTitle} from "../CheckoutTitle"
 import {CheckoutItem} from "../CheckoutItem";
+import {connect} from 'react-redux'
 
 //styles
 import './index.scss';
+
+const mapStateToProps = state => {
+    return {
+        ...state
+    }
+};
 
 export const CheckoutPage = () => {
     return (

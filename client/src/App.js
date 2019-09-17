@@ -15,12 +15,13 @@ import {
   RegisterForm,
   Cart,
   UserCabinet,
+
     CheckoutPage,
-    ShippingDetails,
-    CheckoutItemDetails,
+    ShippingDetailsForm,
     CheckoutItem,
     CheckoutPurchased,
 } from './components';
+
 import { ProductViewPage } from './components/ProductViewPage';
 
 import './App.scss';
@@ -45,10 +46,10 @@ function App() {
               <Route path="/sign_up" component={RegisterForm} />
               <Route path="/cart" component={Cart} />
               <Route path="/user_cabinet" component={UserCabinet} />
+
             <Route exact path="/checkout" component={CheckoutPage} />
-            <Route path="/checkout/shipping" component={ShippingDetails} />
-            <Route path="/checkout/checkout_item_details" component={CheckoutItemDetails} />
-            <Route path="/checkout/checkout-purchased" component={CheckoutPurchased} />
+            <Route path="/checkout/shipping" component={ShippingDetailsForm} />
+            <Route path="/checkout/purchased" component={CheckoutPurchased} />
             <Route path="/checkout/checkout_item" component={CheckoutItem} />
             </Switch>
           </main>

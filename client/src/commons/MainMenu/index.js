@@ -11,7 +11,6 @@ export const MainMenu = () => {
             <NavLink className='main-menu__item' to="/nike">Nike Watch</NavLink>
             <NavLink className='main-menu__item' to="/hermes">Hermès Watch</NavLink>
             <NavLink className='main-menu__item' to="/edition">Edition Watch</NavLink>
-            <NavLink className='main-menu__item' to="/checkout">Checkout</NavLink>
         </nav>
     );
 };

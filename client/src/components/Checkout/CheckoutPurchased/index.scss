@@ -4,10 +4,14 @@
   border-right: 1px solid rgba(210, 215, 211, .7);
   border-left: 1px solid rgba(210, 215, 211, .7);
 
-  &__test {
+  &__block {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
+  }
+  &__logo {
+    width: 300px;
+    height: 300px;
   }
 }
