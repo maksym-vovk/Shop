@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 
 export const ProductCard = props => {
-  console.log('props', props.state);
+  // console.log('props', props.state);
   const state = props.state;
   return (
-    <Link to={`/${state.category}/${state._id}`}>
+    <Link to={`/watch/${state._id}`}>
       <article className="product-card">
         <div className="product-card__image-wrapper">
-          {console.log(Object.entries(state.colors.bandImagesByColor)[0][1][0])}
+          {/* {console.log(Object.entries(state.colors.bandImagesByColor)[0][1][0])} */}
           <img
             className="product-card__image"
             src={Object.entries(state.colors.bandImagesByColor)[0][1][0]}
             alt="apple-watch"
           />
         </div>
-        <p className="product-card__description">{
-          state.description.length > 40
+        <p className="product-card__description">
+          {state.description.length > 40
             ? state.description.slice(0, 40).trim() + '...'
             : state.description}
         </p>

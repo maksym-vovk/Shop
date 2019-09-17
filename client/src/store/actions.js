@@ -7,6 +7,10 @@ import axios from 'axios';
 export const fetchCards = () => ({
   type: ATYPES.FETCH_CARDS
 });
+export const fetchCard = id => ({
+  type: ATYPES.FETCH_CARD,
+  id
+});
 
 export const setAuthState = authorized => ({
   type: ATYPES.SET_AUTHORIZED,
@@ -24,7 +28,6 @@ function* fetchCardsSaga() {
   while (true) {
     yield take(ATYPES.FETCH_CARDS);
     const response = yield axios.get('/cards');
-    // const payload = response.data;
     yield put({
       type: ATYPES.SET_CARDS,
       payload: response.data
@@ -32,7 +35,18 @@ function* fetchCardsSaga() {
   }
 }
 
+function* fetchCardSaga() {
+  while (true) {
+    const { id } = yield take(ATYPES.FETCH_CARD);
+    const response = yield axios.get('/cards/' + id);
+    yield put({
+      type: ATYPES.SET_CARD,
+      payload: response.data
+    });
+  }
+}
+
 export function* rootSaga() {
-  yield all([fetchCardsSaga()]);
+  yield all([fetchCardsSaga(), fetchCardSaga()]);
 }
 /* eslint-enable */

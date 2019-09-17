@@ -53,6 +53,11 @@ function fetchReducer(state = initialState.products, action) {
         ...state,
         cards: payload
       };
+    case ATYPES.SET_CARD:
+      return {
+        ...state,
+        card: payload
+      };
     default:
       return state;
   }
