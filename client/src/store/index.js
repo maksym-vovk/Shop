@@ -1,73 +1,19 @@
-import { createStore, combineReducers } from 'redux';
-import { reducer as reduxFormReducer } from 'redux-form';
+import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-// ActionTypes Constants
-const SET_AUTHORIZED = 'SET_AUTHORIZED';
-
-// Search
-const SET_SEARCH_STATUS = 'SET_SEARCH_STATUS'
-
+import { reducer } from './reducers.js';
+import { rootSaga } from './actions.js';
 // getters
 export const getAuthState = state => {
-  return state.authorized
-}
+  return state.authorized;
+};
 
-// actions
-export const setAuthState = authorized => ({
-  type: SET_AUTHORIZED,
-  payload: authorized
-})
-// Search
-export const setSearchStatus = status => ({
-  type: SET_SEARCH_STATUS,
-  payload: status
-})
+const saga = createSagaMiddleware();
 
-// state for start
-const initialState = {
-  authData: {
-    authorized: false
-  },
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, composeEnhancers(applyMiddleware(saga)));
 
-  // Search
-  searchStatus: {
-    status: false
-  }
-}
-
-function authReducer(state = initialState.authData, action) {
-  const {type, payload} = action;
-  switch (type) {
-    case SET_AUTHORIZED:
-      return {
-        ...state,
-        authorized: payload
-      }
-    default:
-      return state;
-  }
-}
-// Search
-function searchReducer(state = initialState.searchStatus, action) {
-  const {type, payload} = action;
-  switch (type) {
-    case SET_SEARCH_STATUS:
-      return {
-        ...state,
-        status: payload
-      };
-    default:
-      return state
-  }
-}
-
-const reducer = combineReducers({
-  form: reduxFormReducer, // mounted under "form"
-  authorization: authReducer,
-  searchStatus: searchReducer
-});
-const store = (window.__REDUX_DEVTOOLS_EXTENSION__
-  ? window.__REDUX_DEVTOOLS_EXTENSION__()(createStore)
-  : createStore)(reducer);
+saga.run(rootSaga);
 
 export default store;
+export * from './actions.js';

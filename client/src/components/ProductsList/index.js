@@ -1,28 +1,53 @@
 import React, { useState, useEffect } from 'react';
-import './index.scss';
-import axios from 'axios';
-
+import { Lines } from 'react-preloaders';
+import { connect } from 'react-redux';
+import { fetchCards } from '../../store/actions';
 import { ProductCard } from '../';
+import './index.scss';
 
-export const ProductsList = props => {
-  console.log('props', props);
-  const [data, setData] = useState([]);
-  const path = '/cards';
+const mapStateToProps = state => {
+  return {
+    cards: state.products.cards
+  };
+};
+
+export const ProductsList = connect(
+  // const res = {
+  //   params: {
+  //     // 'filter.category': 'watch',
+  //     // 'filter.size': '40mm',
+  //     // 'filter.bandType': 'Sport',
+  //     // 'filter.bandColor': 'white',
+  //     // 'filter.caseMaterial': 'Aluminium',
+  //   }
+  // };
+  mapStateToProps,
+  { fetchCards }
+)(props => {
+  const { cards, fetchCards } = props;
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetchData(path);
-  }, [path]);
-  const fetchData = async path => {
-    const result = await axios(path);
-    console.log(result.data);
-    setData(result.data);
+    fetchCards();
+    setLoading(false);
+  }, [fetchCards]);
+
+  // console.log(props);
+  // console.log('cards', cards);
+
+  const CardsList = () => {
+    return cards.length
+      ? cards.map(item => {
+          return <ProductCard state={item} key={item._id}/>;
+        })
+      : null;
   };
 
   return (
-    <section className="product-list-wrapper container">
-      {data.map((item, index) => {
-        console.log(item);
-        return <ProductCard state={item} key={index}/>
-      })}
-    </section>
+    <React.Fragment>
+      <section className="product-list-wrapper container">
+        <CardsList />
+      </section>
+      <Lines customLoading={loading} time={500} />;
+    </React.Fragment>
   );
-};
+});
