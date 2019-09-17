@@ -43,9 +43,15 @@ const match = matchName => (value, allValues) =>
 const asyncValidate = async(value) => {
   await axios.post(window.location.origin + '/find_user', {login: value.login ? value.login : '', email: value.email ? value.email : ''})
     .then(res => {
-      const errs = {}
-      for (const key in res.data) { if (res.data[key]) { errs[key] = 'Already registrated' } }
-      throw errs
+      const errs = {};
+      let show = false;
+      for (const key in res.data) {
+        if (res.data[key]) {
+          show = true;
+          errs[key] = 'Already registrated'
+        }
+      }
+      if (show) { throw errs }
     })
 };
 
@@ -175,5 +181,5 @@ export default reduxForm({
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   asyncValidate,
-  asyncBlurFields: ['login', 'email']
+  asyncChangeFields: ['login', 'email']
 })(RegistrationForm)
