@@ -13,12 +13,11 @@ router.post('/find_user',  async (req, res) => {
 })
 
 router.post('/customers', async (req, res) => {
-	console.log("here")
   try{
     const user = await new User(req.body).save();
-    res.send(user);
+    res.send({res: true});
   }catch(e){
-  	res.send(e);
+  	res.send({res: false});
   }
 });
 
