@@ -6,7 +6,7 @@ import regSubmit from './regSubmit';
 import RegistrationForm from './RegistrationForm';
 
 const mapStateToProps = state => ({
-  auth: state.authorization.authorized
+  auth: state.user.authorized
 });
 
 export const RegisterForm = connect(mapStateToProps)(props => {

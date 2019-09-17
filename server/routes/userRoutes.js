@@ -13,6 +13,7 @@ router.post('/find_user',  async (req, res) => {
 })
 
 router.post('/customers', async (req, res) => {
+	console.log("here")
   try{
     const user = await new User(req.body).save();
     res.send(user);
@@ -24,9 +25,9 @@ router.post('/customers', async (req, res) => {
 router.post('/customers/auth', async (req, res) => {
   const answer = await User.find(req.body);
   if (answer[0]) {
-    res.send({auth: true});
+    res.send(answer[0]);
   } else {
-  	res.send({auth: false})
+  	res.send({err: true})
   }
 })
 

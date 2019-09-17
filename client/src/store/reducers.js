@@ -3,7 +3,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import * as ATYPES from './constants.js';
 // state for start
 const initialState = {
-  authData: {
+  userData: {
     authorized: false
   },
 
@@ -19,7 +19,7 @@ const initialState = {
   }
 };
 
-function authReducer(state = initialState.authData, action) {
+function userReducer(state = initialState.userData, action) {
   const { type, payload } = action;
   switch (type) {
     case ATYPES.SET_AUTHORIZED:
@@ -27,6 +27,11 @@ function authReducer(state = initialState.authData, action) {
         ...state,
         authorized: payload
       };
+    case ATYPES.SET_USER:
+      return {
+        ...state,
+        userData: payload
+      }
     default:
       return state;
   }
@@ -65,7 +70,7 @@ function fetchReducer(state = initialState.products, action) {
 
 export const reducer = combineReducers({
   form: reduxFormReducer, // mounted under "form"
-  authorization: authReducer,
+  user: userReducer,
   searchStatus: searchReducer,
   products: fetchReducer
 });
