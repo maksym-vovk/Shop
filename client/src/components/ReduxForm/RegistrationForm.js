@@ -43,16 +43,18 @@ export const match = matchName => (value, allValues) =>
     ? `This field must be equal to ${matchName}`
     : undefined;
 
-export const asyncValidate = async(value) => {
-  await axios.post('/find_user', {login: value.login ? value.login : '', email: value.email ? value.email : ''})
+const asyncValidate = async(value) => {
+  await axios.post(window.location.origin + '/find_user', {login: value.login ? value.login : '', email: value.email ? value.email : ''})
     .then(res => {
       const errs = {};
+      let show = false;
       for (const key in res.data) {
         if (res.data[key]) {
-          errs[key] = 'Already registred ' + key
+          show = true;
+          errs[key] = 'Already registrated'
         }
       }
-      throw errs
+      if (show) { throw errs }
     })
 };
 
@@ -91,7 +93,7 @@ export const renderField = ({
           ? <input id={label} autoComplete="off" className="input-style" {...input} type={type} />
           : <input id={label} className="input-style" {...input} type={type} />
       }
-    
+
     </div>
     {touched &&
     ((error && <div className="error-message">&#9432; {error}</div>) ||

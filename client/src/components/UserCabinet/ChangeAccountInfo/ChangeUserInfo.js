@@ -34,7 +34,7 @@ const mapStateToProps = state => ({
   }
 });
 
-const asyncValidate = async(value) => {
+const shouldAsyncValidate = async(value) => {
   await axios.post('/find_user', {_id: value.user_id, login: value.login ? value.login : '', email: value.email ? value.email : ''})
     .then(res => {
       const errs = {};
@@ -160,6 +160,6 @@ export const ChangeUserInfo = connect(mapStateToProps)(reduxForm({
   form: 'userInfoEditForm',
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-  asyncValidate,
+  shouldAsyncValidate,
   asyncBlurFields: ['email']
 })(EditUserInfo));

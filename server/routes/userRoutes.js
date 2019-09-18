@@ -5,15 +5,18 @@ const User = require('../models/User');
 router.post('/find_user',  async (req, res) => {
   const userByLogin = await User.find({login: req.body.login});
   const userByEmail = await User.find({email: req.body.email});
+  console.log(req.body)
+  let idEmailStatus, user_email_id;
 
-  let user_email_id = userByEmail[0]._id;
-  let idEmailStatus;
+  if (userByEmail[0]) {
+    user_email_id = userByEmail[0]._id;
 
-  if(user_email_id === req.body._id ) {
+    if(user_email_id === req.body._id ) {
       idEmailStatus = false;
     } else {
       idEmailStatus = true;
     }
+  }
 
   const answer = {
     email_id: idEmailStatus,
