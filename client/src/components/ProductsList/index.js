@@ -37,8 +37,8 @@ export const ProductsList = connect(
   const CardsList = () => {
     return cards.length
       ? cards.map(item => {
-          return <ProductCard state={item} key={item._id}/>;
-        })
+        return <ProductCard state={item} key={item._id}/>;
+      })
       : null;
   };
 
