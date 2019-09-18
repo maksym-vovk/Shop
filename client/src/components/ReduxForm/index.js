@@ -1,24 +1,24 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
-import regSubmit from './regSubmit';
+import axios from 'axios';
 import RegistrationForm from './RegistrationForm';
 
-const mapStateToProps = state => ({
-  auth: state.authorization.authorized
-});
+export const RegisterForm = () => {
+  const [redirect, setRedirect] = useState(false);
+  async function regSubmit(values) {
+    console.log(window.location.origin + '/customers');
+    await axios.post(window.location.origin + '/customers', values)
+      .then(res => { if (res.data.res) setRedirect(true) })
+  }
 
-export const RegisterForm = connect(mapStateToProps)(props => {
   return (
     <div className="container">
       <div className="registration-form">
-        {props.auth ? <Redirect to="/" /> : null}
-
+        {redirect ? <Redirect to="/" /> : null}
         <h2>Registration</h2>
         <RegistrationForm onSubmit={regSubmit} />
-
       </div>
     </div>
   )
-});
+};

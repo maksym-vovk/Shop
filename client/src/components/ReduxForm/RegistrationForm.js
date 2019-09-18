@@ -216,5 +216,5 @@ export default reduxForm({
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   asyncValidate,
-  asyncBlurFields: ['login', 'email']
+  asyncChangeFields: ['login', 'email']
 })(RegistrationForm)

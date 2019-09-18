@@ -12,6 +12,11 @@ export const fetchCard = id => ({
   id
 });
 
+export const setUser = payload => ({
+  type: ATYPES.SET_USER,
+  payload
+})
+
 export const setAuthState = authorized => ({
   type: ATYPES.SET_AUTHORIZED,
   payload: authorized
