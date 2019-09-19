@@ -42,9 +42,9 @@ const EditUserInfo = props => {
   const { handleSubmit, submitting } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="change-information-form-wrap" onSubmit={handleSubmit}>
       <div className="form-group">
-        <h3>User details</h3>
+        <h3 className="change-information-title">User details</h3>
         <Field
           name="first_name"
           type="text"
@@ -80,7 +80,7 @@ const EditUserInfo = props => {
       </div>
 
       <div className="form-group">
-        <h3>Contact information</h3>
+        <h3 className="change-information-title">Contact information</h3>
         <Field
           name="email"
           type="email"
