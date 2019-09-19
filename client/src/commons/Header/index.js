@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {Logo, MainMenu, Extras, SearchInput, } from '../';
 import './index.scss';
-import store, {getLoginState} from '../../store';
 
 const mapStateToProps = (state) => ({
   status: state.searchStatus.status
