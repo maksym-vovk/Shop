@@ -2,29 +2,20 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 import {connect} from 'react-redux';
-import {setUser} from '../../../store'
+import {updateUser} from '../../../store'
 import { ChangeUserInfo } from './ChangeUserInfo';
 import {ShoppingInfoContainer} from '../ShoppingInfo/ShoppingInfoContainer'
 import { ChangeUserPassword } from './ChangeUserPassword';
 
 import './index.scss';
 
-export const ChangeUserInfoPage = connect(null, {setUser})(props => {
+export const ChangeUserInfoPage = connect(null, {updateUser})(props => {
   const history = props.history;
   const [message, setMessage] = useState('');
   const [messageStatus, setMessageStatus] = useState(false);
 
-  async function editUserSubmit(values) {
-    await axios.put(window.location.origin + '/customers/' + values._id, values)
-      .then(res => {
-        if (res.data.updated) {
-          props.setUser(res.data.user);
-          setMessage('Your personal information changed');
-        } else {
-          setMessage(res.data.error_message);
-        }
-        setMessageStatus(true);
-      })
+  function editUserSubmit(values) {
+    props.updateUser(values);
   }
 
   return (
