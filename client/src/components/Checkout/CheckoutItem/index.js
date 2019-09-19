@@ -6,12 +6,6 @@ import {CheckoutItemDetails} from "../CheckoutItemDetails";
 import './index.scss';
 
 
-// const mapStateToProps = state => {
-//     return {
-//         checkoutItems: state.addToBag.items
-//     }
-// };
-
 export const CheckoutItem = ({data})=> {
 
     const [productDetails, setProductDetails] = useState(false);

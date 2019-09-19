@@ -21,7 +21,6 @@ import {
     CheckoutItem,
     CheckoutPurchased,
 
-  UserCabinet,
   ChangeUserInfoPage,
   ChangeUserPasswordPage,
 

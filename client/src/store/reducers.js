@@ -24,6 +24,9 @@ const initialState = {
 
   // products in the cart
   cartItems: {
+    totalItems: 3,
+    totalPrice: 800,
+    grandTotalPrice: 2000,
     items: [
       {
         id: 1,
@@ -38,22 +41,22 @@ const initialState = {
       },
       {
         id: 2,
-        name: 'Apple Watch Series 5',
+        name: 'Apple Watch Series 5_1',
         details: 'Aluminum Case with Alaskan Blue Sport Loop',
         image: '/static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Alaskan_Blue/2.jpg',
         quantity: 1,
-        color: 'blue',
+        color: 'red',
         // size: 40,
         // connectivity: 'GPS',
         price: '500'
       },
       {
         id: 3,
-        name: 'Apple Watch Series 5',
+        name: 'Apple Watch Series 5_2',
         details: 'Aluminum Case with Alaskan Blue Sport Loop',
         image: '/static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Alaskan_Blue/3.jpg',
         quantity: 1,
-        color: 'blue',
+        color: 'yellow',
         // size: 40,
         // connectivity: 'GPS',
         price: '600'

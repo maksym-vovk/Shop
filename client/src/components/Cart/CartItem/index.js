@@ -28,7 +28,7 @@ export const CartItem = ({quantity, color, connectivity, size, image, price, nam
             </div>
             <div className="cart-item__price-block">
                 <span className="cart-item__price">${price}</span>
-                <span className="cart-item__remove-link">Remove</span>
+                <button className="cart-item__remove-link">Remove</button>
             </div>
         </div>
     )
