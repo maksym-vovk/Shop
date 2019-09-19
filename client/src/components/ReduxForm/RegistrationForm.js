@@ -109,9 +109,9 @@ export const renderField = ({
 const RegistrationForm = props => {
   const { handleSubmit, submitting } = props;
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="registration-form-wrap" onSubmit={handleSubmit}>
       <div className="form-group">
-        <h3>User details</h3>
+        <h3 className="registration-title">User details</h3>
         <Field
           name="login"
           type="text"
@@ -155,7 +155,7 @@ const RegistrationForm = props => {
       </div>
 
       <div className="form-group">
-        <h3>Enter password</h3>
+        <h3 className="registration-title">Enter password</h3>
         <Field
           type="password"
           name="password"
@@ -178,7 +178,7 @@ const RegistrationForm = props => {
         />
       </div>
       <div className="form-group">
-        <h3>Contact information</h3>
+        <h3 className="registration-title">Contact information</h3>
         <Field
           name="email"
           type="email"

@@ -19,9 +19,9 @@ const EditPassword = connect(mapStateToProps)(props => {
   const { handleSubmit, submitting } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="change-information-form-wrap" onSubmit={handleSubmit}>
       <div className="form-group">
-        <h3>Enter last password</h3>
+        <h3 className="change-information-title">Enter last password</h3>
         <Field
           type="password"
           name="LastPassword"
@@ -34,7 +34,7 @@ const EditPassword = connect(mapStateToProps)(props => {
       </div>
 
       <div className="form-group">
-        <h3>Enter new password</h3>
+        <h3 className="change-information-title">Enter new password</h3>
         <Field
           type="password"
           name="password"
