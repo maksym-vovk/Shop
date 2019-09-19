@@ -3,6 +3,7 @@ export const SET_AUTHORIZED = 'SET_AUTHORIZED';
 
 // Search
 export const SET_SEARCH_STATUS = 'SET_SEARCH_STATUS';
+export const SET_INPUT_VALUE = 'SET_INPUT_VALUE';
 
 // Fetch
 export const FETCH_CARDS = 'FETCH_CARDS';

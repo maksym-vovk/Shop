@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
 import * as ATYPES from './constants.js';
+import {default} from "react-redux/lib/utils/Subscription";
 // state for start
 const initialState = {
   userData: {
@@ -16,6 +17,10 @@ const initialState = {
 
   products: {
     cards: []
+  },
+
+  searchInput: {
+    value: ''
   }
 };
 
@@ -49,6 +54,20 @@ function searchReducer(state = initialState.searchStatus, action) {
       return state;
   }
 }
+
+function searchInputReducer(state = initialState, action) {
+  const { type, payload } = action;
+  switch (type) {
+    case ATYPES.SET_INPUT_VALUE:
+      return {
+        ...state,
+        value: payload
+      };
+    default:
+      return state
+  }
+}
+
 // Fetch
 function fetchReducer(state = initialState.products, action) {
   const { type, payload } = action;

@@ -2,6 +2,7 @@ import * as ATYPES from './constants.js';
 import { take, put, all } from 'redux-saga/effects';
 
 import axios from 'axios';
+import {SET_INPUT_VALUE} from './constants';
 
 // actions
 export const fetchCards = () => ({
@@ -26,6 +27,11 @@ export const setSearchStatus = status => ({
   type: ATYPES.SET_SEARCH_STATUS,
   payload: status
 });
+
+export const setInputValue = value => ({
+  type: SET_INPUT_VALUE,
+  payload: value
+})
 
 // Sagas
 /* eslint-disable */

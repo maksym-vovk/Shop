@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './style.scss'
 import { SearchInputButton } from './SearchInputButton';
+import { connect } from 'react-redux'
 
-export const SearchInput = () => {
+const mapStateToProps = (state) => {
+    value: state.
+}
+
+export const SearchInput = (props) => {
   return (
     <div className='search'>
       <SearchInputButton/>
