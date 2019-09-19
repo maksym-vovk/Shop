@@ -29,15 +29,9 @@
     "build": "npm run stylelint-build && npm run eslint && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-<<<<<<< .merge_file_TBhUg0
     "stylelint-dev": "stylelint src/**/*.scss --fix --cache --cache-location .stylelintcache",
     "stylelint-build": "stylelint src/**/*.scss --fix",
     "eslint": "eslint src/**/*.js --fix",
-=======
-    "stylelint-dev": "stylelint src/**/*.scss --cache --cache-location .stylelintcache",
-    "stylelint-build": "stylelint src/**/*.scss",
-    "eslint": "eslint src/**/*.js",
->>>>>>> .merge_file_kKoF30
     "watch-sass-js": "npm-watch"
   },
   "eslintConfig": {
