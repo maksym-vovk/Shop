@@ -12,11 +12,11 @@ export const Footer = () => {
             <div>
               <h4 className='section__item--title'>Menu</h4>
               <ul>
-                <li><Link to="/all">All Watch</Link></li>
-                <li><Link to="/origin">Origin Watch</Link></li>
-                <li><Link to="/nike">Nike Watch</Link></li>
-                <li><Link to="/hermes">Hermès Watch</Link></li>
-                <li><Link to="/edition">Edition Watch</Link></li>
+                <li><Link to="/all_watch">All Watch</Link></li>
+                <li><Link to="/origin_watch">Origin Watch</Link></li>
+                <li><Link to="/nike_watch">Nike Watch</Link></li>
+                <li><Link to="/hermes_watch">Hermès Watch</Link></li>
+                <li><Link to="/edition_watch">Edition Watch</Link></li>
               </ul>
             </div>
           </div>

@@ -1,10 +1,10 @@
 import React from 'react';
 import './index.scss';
 
-export const IPhone = () => {
+export const OriginWatch = () => {
   return (
     <div>
-      <h1>IPhone</h1>
+      <h1>Origin Watch</h1>
     </div>
   );
 };

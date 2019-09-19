@@ -1,10 +1,10 @@
 import React from 'react';
 import './index.scss';
 
-export const IMac = () => {
+export const EditionWatch = () => {
   return (
     <div>
-      <h1>IMac</h1>
+      <h1>Edition Watch</h1>
     </div>
   );
 };
