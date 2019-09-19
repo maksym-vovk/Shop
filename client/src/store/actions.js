@@ -12,6 +12,15 @@ export const fetchCard = id => ({
   id
 });
 
+export const updateUser = payload => ({
+  type: ATYPES.UPDATE_USER,
+  payload
+});
+export const setUser = payload => ({
+  type: ATYPES.SET_USER,
+  payload
+});
+
 export const setAuthState = authorized => ({
   type: ATYPES.SET_AUTHORIZED,
   payload: authorized
@@ -46,7 +55,23 @@ function* fetchCardSaga() {
   }
 }
 
+function* updateUserSaga() {
+  while (true) {
+    const { payload: user } = yield take(ATYPES.UPDATE_USER);
+    const response = yield axios.put('/customers/' + user._id, user);
+    if (response.data.updated) {
+      yield put({
+        type: ATYPES.SET_USER,
+        payload: response.data.user
+      })
+    } else {
+      console.log(response.data.error_message);
+    }
+
+  }
+}
+
 export function* rootSaga() {
-  yield all([fetchCardsSaga(), fetchCardSaga()]);
+  yield all([fetchCardsSaga(), fetchCardSaga(), updateUserSaga()]);
 }
 /* eslint-enable */

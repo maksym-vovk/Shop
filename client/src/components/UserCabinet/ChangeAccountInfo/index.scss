@@ -1,17 +1,16 @@
-.registration-form {
+.change-information-form {
   min-width: 270px;
   max-width: 800px;
   margin: auto;
-  padding: 15px 0;
 }
 
-.registration-title {
+.change-information-title {
   margin-bottom: 20px;
   padding: 20px;
   background-color: #F2F2F2;
 }
 
-.registration-form-wrap {
+.change-information-form-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,6 +51,10 @@
   font-weight: 700;
 }
 
+.hidden-field {
+  display: none;
+}
+
 .options-container {
   width: 70%;
   min-width: 270px;
@@ -86,16 +89,25 @@
   -webkit-appearance: none;
 }
 
-.sign-up-btn {
+.buttons-container {
+  min-width: 300px;
+}
+
+.button {
   min-width: 120px;
-  margin-top: 10px;
+  margin: 10px 10px 0;
   padding: 10px 30px;
-  color: #eee;
   text-transform: uppercase;
-  background-color: black;
   border: none;
   cursor: pointer;
 }
+.edit-btn {
+  color: #eee;
+  background-color: black;
+}
+.go-back-btn {
+   background-color: #F2F2F2;
+ }
 
 .err-popup {
   margin: 5px;
@@ -104,4 +116,34 @@
   background-color: rgb(248, 215, 218);
   border: 1px solid rgb(245, 198, 203);
   border-radius: 5px;
+}
+
+
+.message {
+
+  &__background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, .5);
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  &__result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 200px;
+    background-color: #eee;
+  }
 }
