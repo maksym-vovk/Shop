@@ -20,6 +20,11 @@ import {
     ShippingDetailsForm,
     CheckoutItem,
     CheckoutPurchased,
+
+  UserCabinet,
+  ChangeUserInfoPage,
+  ChangeUserPasswordPage,
+
 } from './components';
 
 import { ProductViewPage } from './components/ProductViewPage';
@@ -51,6 +56,10 @@ function App() {
             <Route path="/checkout/shipping" component={ShippingDetailsForm} />
             <Route path="/checkout/purchased" component={CheckoutPurchased} />
             <Route path="/checkout/checkout_item" component={CheckoutItem} />
+
+              <Route path="/edit_account_information" component={ChangeUserInfoPage} />
+              <Route path="/edit_account_password" component={ChangeUserPasswordPage} />
+
             </Switch>
           </main>
           <Footer />

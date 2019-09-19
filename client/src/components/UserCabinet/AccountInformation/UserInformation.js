@@ -5,6 +5,10 @@ export const UserInformation = ({user}) => {
     <div className="user-information-item">
 
       <div className="user-information-item__row">
+        <div className="user-information-item__user-info user-information-item__title">Login</div>
+        <div className="user-information-item__user-info">{user.login}</div>
+      </div>
+      <div className="user-information-item__row">
         <div className="user-information-item__user-info user-information-item__title">Name</div>
         <div className="user-information-item__user-info">{user.first_name}</div>
       </div>
@@ -13,8 +17,12 @@ export const UserInformation = ({user}) => {
         <div className="user-information-item__user-info">{user.last_name}</div>
       </div>
       <div className="user-information-item__row">
-        <div className="user-information-item__user-info user-information-item__title">Address</div>
-        <div className="user-information-item__user-info">{user.address}</div>
+        <div className="user-information-item__user-info user-information-item__title">Age</div>
+        <div className="user-information-item__user-info">{user.age}</div>
+      </div>
+      <div className="user-information-item__row">
+        <div className="user-information-item__user-info user-information-item__title">Country</div>
+        <div className="user-information-item__user-info">{user.country}</div>
       </div>
       <div className="user-information-item__row">
         <div className="user-information-item__user-info user-information-item__title">City</div>
@@ -23,6 +31,10 @@ export const UserInformation = ({user}) => {
       <div className="user-information-item__row">
         <div className="user-information-item__user-info user-information-item__title">Zip code</div>
         <div className="user-information-item__user-info">{user.zip_code}</div>
+      </div>
+      <div className="user-information-item__row">
+        <div className="user-information-item__user-info user-information-item__title">Address</div>
+        <div className="user-information-item__user-info">{user.address}</div>
       </div>
       <div className="user-information-item__row">
         <div className="user-information-item__user-info user-information-item__title">Email</div>

@@ -8,6 +8,7 @@ export { IPhone } from './IPhone';
 export { MacBook } from './MacBook';
 export { Watch } from './Watch';
 export { ProductsList } from './ProductsList';
+
 export {CartPage} from './Cart/CartPage';
 export {EmptyCart} from './Cart/EmptyCart';
 
@@ -20,3 +21,6 @@ export { CheckoutItemDetails } from './Checkout/CheckoutItemDetails';
 export { CheckoutTitle } from './Checkout/CheckoutTitle';
 export { CheckoutItem } from './Checkout/CheckoutItem';
 export {CheckoutPurchased} from './Checkout/CheckoutPurchased';
+
+export {ChangeUserInfoPage, ChangeUserPasswordPage} from './UserCabinet/ChangeAccountInfo';
+

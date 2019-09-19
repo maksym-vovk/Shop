@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { setAuthState } from '../../store';
+import { setAuthState, setUser } from '../../store';
 
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ import { ModalLogin } from './ModalLogin';
 
 import './index.scss';
 
-export const Login = connect(null, {setAuthState})((props) => {
+export const Login = connect(null, {setAuthState, setUser})((props) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -18,14 +18,15 @@ export const Login = connect(null, {setAuthState})((props) => {
     e.preventDefault();
     await axios.post(window.location.origin + '/customers/auth', {login, password})
       .then(res => {
-        if (res.data.auth) {
-          setError(false);
-          props.setAuthState(true);
-          props.openModal(false);
-        } else {
+        if (res.data.err) {
           setError(true);
           setLogin('');
           setPassword('');
+        } else {
+          setError(false);
+          props.setAuthState(true);
+          props.setUser(res.data);
+          props.openModal(false);
         }
       });
   }
