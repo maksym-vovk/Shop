@@ -1,0 +1,22 @@
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 65px);
+
+  &__text {
+    margin: 20px 0;
+  }
+
+  &__button {
+    align-self: flex-start;
+    margin-bottom: 20px;
+    padding: 17px 100px;
+    color: #337DFF;
+    font-size: 18px;
+    background-color: rgba(226,226,226,.7);
+    border-radius: 5px;;
+  }
+  &__image {
+    margin-top: 70px;
+  }
+}

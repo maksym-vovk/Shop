@@ -10,5 +10,8 @@ export const SET_CARDS = 'SET_CARDS';
 export const FETCH_CARD = 'FETCH_CARD';
 export const SET_CARD = 'SET_CARD';
 
+// Add to bag
+export const ADD_TO_BAG = 'ADD_TO_BAG';
+
 // submit shipping details
 export const SET_SHIPPING_DETAILS_STATUS = 'SET_SHIPPING_DETAILS_STATUS';

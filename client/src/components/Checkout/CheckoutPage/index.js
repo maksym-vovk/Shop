@@ -9,19 +9,24 @@ import './index.scss';
 
 const mapStateToProps = state => {
     return {
-        ...state
+        checkoutItems: state.addToBag.items
     }
 };
 
-export const CheckoutPage = () => {
+export const CheckoutPage = connect(mapStateToProps) (({checkoutItems})=> {
+
     return (
         <div className="container">
             <CheckoutTitle/>
 
             <h2 className="check-out-subtitle">In stock and ready to ship</h2>
 
-            <CheckoutItem/>
+            {
+                checkoutItems.map((item, index)=> {
+                return <CheckoutItem key={index} data={item}/>
+            })
 
+            }
             <div className="delivery-block">
                 <div className="delivery">
                     <p className="delivery__subtitle">Select your delivery method:</p>
@@ -60,4 +65,4 @@ export const CheckoutPage = () => {
             </Link>
         </div>
     )
-};
+});

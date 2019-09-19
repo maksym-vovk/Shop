@@ -22,10 +22,16 @@ export const setSearchStatus = status => ({
   payload: status
 });
 
-//shipping details
+// shipping details
 export const setShippingDetails = status => ({
-    type: ATYPES.SET_SHIPPING_DETAILS_STATUS,
-    payload: status
+  type: ATYPES.SET_SHIPPING_DETAILS_STATUS,
+  payload: status
+});
+
+// add-to-basket
+export const addToBag = items => ({
+  type: ATYPES.ADD_TO_BAG,
+  payload: items
 });
 
 // Sagas

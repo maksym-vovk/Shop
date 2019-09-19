@@ -3,7 +3,7 @@ import React from "react";
 //styles
 import './index.scss';
 
-export const CheckoutItemDetails = ({ removeProductDetails }) => {
+export const CheckoutItemDetails = ({ removeProductDetails, data }) => {
 
     const checkBackground = (event) => {
         const target = event.target;
@@ -11,7 +11,6 @@ export const CheckoutItemDetails = ({ removeProductDetails }) => {
             removeProductDetails()
         }
     };
-
     return (
         <div onClick={checkBackground} className="product-details background">
             <div className="product-details__item">
@@ -21,14 +20,14 @@ export const CheckoutItemDetails = ({ removeProductDetails }) => {
 
                 <div className="product-details__wrapper">
                     <div className="product-details__image-item">
-                        <img className="product-details__image" src="/static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Alaskan_Blue/1.jpg" alt="watch"/>
+                        <img className="product-details__image" src={data.image} alt={data.name}/>
                     </div>
                     <div className="product-details__summary">
-                        <h2 className="product-details__subtitle">Apple Watch Series 5</h2>
-                        <span className="product-details__quantity">Quantity: NR</span>
+                        <h2 className="product-details__subtitle">{data.name}</h2>
+                        <span className="product-details__quantity">Quantity: {data.quantity}</span>
                         <ul className="product-details__description">
-                            <li className="product-details__description-item">Aluminum Case with Alaskan Blue Sport Loop</li>
-                            <li className="product-details__description-item">GPS, 40mm Space Gray </li>
+                            <li className="product-details__description-item">{data.details}</li>
+                            <li className="product-details__description-item">Color: {data.color}</li>
                         </ul>
                     </div>
                 </div>

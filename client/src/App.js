@@ -13,7 +13,7 @@ import {
   IPhone,
   Watch,
   RegisterForm,
-  Cart,
+    CartPage,
   UserCabinet,
 
     CheckoutPage,
@@ -44,7 +44,7 @@ function App() {
               <Route exact path="/watch" component={Watch} />
               <Route path="/watch/:id" component={ProductViewPage} />
               <Route path="/sign_up" component={RegisterForm} />
-              <Route path="/cart" component={Cart} />
+              <Route path="/cart" component={CartPage} />
               <Route path="/user_cabinet" component={UserCabinet} />
 
             <Route exact path="/checkout" component={CheckoutPage} />

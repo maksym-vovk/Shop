@@ -1,10 +1,19 @@
 import React, {useState} from "react";
 import {CheckoutItemDetails} from "../CheckoutItemDetails";
+// import {connect} from 'react-redux'
 
 //styles
 import './index.scss';
 
-export const CheckoutItem = () => {
+
+// const mapStateToProps = state => {
+//     return {
+//         checkoutItems: state.addToBag.items
+//     }
+// };
+
+export const CheckoutItem = ({data})=> {
+
     const [productDetails, setProductDetails] = useState(false);
 
     const changeProductDetailsStatus = () => {
@@ -15,18 +24,17 @@ export const CheckoutItem = () => {
         <div className="product-block">
             {
                 productDetails ?
-                    <CheckoutItemDetails removeProductDetails={changeProductDetailsStatus}/>
+                    <CheckoutItemDetails removeProductDetails={changeProductDetailsStatus} data={data}/>
                     : null
             }
             <div className="product">
                 <div className="product__item">
-                    <img className="product__image" src="/static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Alaskan_Blue/1.jpg" alt="watch"/>
+                    <img className="product__image" src={data.image} alt="watch"/>
                 </div>
                 <div className="product__description">
-                    <p className="product__text">Apple Watch Series 5</p>
-                    <span className="product__quantity">Quantity: NR</span>
-                    <a onClick={() => {setProductDetails(true)}} href="#"
-                       className="product__details-link">View details</a>
+                    <p className="product__name">{data.name}</p>
+                    <span className="product__quantity">Quantity: {data.quantity}</span>
+                    <button onClick={() => {setProductDetails(true)}} className="product__details-link">View details</button>
                 </div>
             </div>
         </div>

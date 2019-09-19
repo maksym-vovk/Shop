@@ -36,9 +36,10 @@ export const isLetter = value =>
         : undefined;
 
 
-const renderFieldShipping = ({type, placeholder, input, meta: {touched, error}}) => (
+const renderFieldShipping = ({type, label, input, meta: {touched, error}}) => (
     <div className="input-row">
-        <input {...input} type={type} placeholder={placeholder}/>
+        {/*<label htmlFor={label} className="label">{label}</label>*/}
+        <input {...input} type={type} />
         {touched && error &&
         <span className="error">&#9432; {error}</span>}
     </div>
@@ -56,7 +57,7 @@ const ShippingDetailsFunction = props => {
                     name="firstName"
                     component={renderFieldShipping}
                     type="text"
-                    placeholder="First Name"
+                    label="First Name"
                     validate={[required, isLetter, maxLength15, minLength2]}
                     warn={alphaNumeric}
                 />
@@ -64,7 +65,7 @@ const ShippingDetailsFunction = props => {
                     name="lastName"
                     component={renderFieldShipping}
                     type="text"
-                    placeholder="Last Name"
+                    label="Last Name"
                     validate={[required, isLetter, maxLength15, minLength2]}
                     warn={alphaNumeric}
                 />
@@ -72,35 +73,35 @@ const ShippingDetailsFunction = props => {
                     name="address"
                     component={renderFieldShipping}
                     type="text"
-                    placeholder="Street Address"
+                    label="Street Address"
                     validate={[required, minLength2]}
                 />
                 <Field
                     name="zipCode"
                     component={renderFieldShipping}
                     type="text"
-                    placeholder="Zip Code"
+                    label="Zip Code"
                     validate={[required, maxLength5, minLength2]}
                 />
                 <Field
                     name="city"
                     component={renderFieldShipping}
                     type="text"
-                    placeholder="City"
+                    label="City"
                     validate={[required, isLetter, minLength2]}
                 />
                 <Field
                     name="region"
                     component={renderFieldShipping}
                     type="text"
-                    placeholder="Region"
+                    label="Region"
                     validate={[required, isLetter, minLength2]}
                 />
                 <Field
                     name="country"
                     component={renderFieldShipping}
                     type="text"
-                    placeholder="Country"
+                    label="Country"
                     validate={[required, isLetter, minLength2]}
                 />
 
@@ -110,7 +111,7 @@ const ShippingDetailsFunction = props => {
                         name="email"
                         component={renderFieldShipping}
                         type="email"
-                        placeholder="Email"
+                        label="Email"
                         validate={email}
                         warn={aol}
                     />
@@ -122,7 +123,7 @@ const ShippingDetailsFunction = props => {
                         name="phone"
                         component={renderFieldShipping}
                         type="tel"
-                        placeholder="Phone Number"
+                        label="Phone Number"
                         validate={[required, minLength(7)]}
                         normalize={phoneNumber}
                     />

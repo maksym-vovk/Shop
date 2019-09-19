@@ -8,9 +8,9 @@ export { IPhone } from './IPhone';
 export { MacBook } from './MacBook';
 export { Watch } from './Watch';
 export { ProductsList } from './ProductsList';
-export {Cart} from './Cart';
-export {EmptyCart} from './EmptyCart';
-export {FullCart} from './FullCart';
+export {CartPage} from './Cart/CartPage';
+export {EmptyCart} from './Cart/EmptyCart';
+
 export {UserCabinet} from './UserCabinet';
 
 export { CheckoutPage } from './Checkout/CheckoutPage';
@@ -19,4 +19,4 @@ export {CheckoutSummary} from './Checkout/CheckoutSummary'
 export { CheckoutItemDetails } from './Checkout/CheckoutItemDetails';
 export { CheckoutTitle } from './Checkout/CheckoutTitle';
 export { CheckoutItem } from './Checkout/CheckoutItem';
-export {CheckoutPurchased} from './Checkout/CheckoutPurchased'
+export {CheckoutPurchased} from './Checkout/CheckoutPurchased';
