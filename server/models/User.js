@@ -10,6 +10,9 @@ const schema = new Schema({
   email: {type: String, unique: true},
   age: Number,
   address: String,
+  country: String,
+  zip_code: String,
+  city: String,
   phone: String,
   cart_history: [{}],
   payment_history: [{}]
