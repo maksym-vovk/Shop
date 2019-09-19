@@ -6,12 +6,15 @@ import {getAuthState} from '../../store';
 import './index.scss';
 
 const mapStateToProps = (state) => ({
-  loginStatus: state.authorization.authorized
+  loginStatus: state.user.authorized,
+
 });
 
 export const Auth = connect(mapStateToProps)((props) => {
   const [modalState, setModalState] = useState(false);
   const loginStatus = props.loginStatus;
+  const stateProps = props;
+  console.log(stateProps);
 
   return (
     <div>
