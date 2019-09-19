@@ -31,7 +31,7 @@ function userReducer(state = initialState.userData, action) {
       return {
         ...state,
         userData: payload
-      }
+      };
     default:
       return state;
   }

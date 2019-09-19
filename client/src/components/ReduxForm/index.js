@@ -7,7 +7,6 @@ import RegistrationForm from './RegistrationForm';
 export const RegisterForm = () => {
   const [redirect, setRedirect] = useState(false);
   async function regSubmit(values) {
-    console.log(window.location.origin + '/customers');
     await axios.post(window.location.origin + '/customers', values)
       .then(res => { if (res.data.res) setRedirect(true) })
   }

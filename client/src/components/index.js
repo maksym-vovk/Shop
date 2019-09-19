@@ -12,5 +12,4 @@ export {Cart} from './Cart';
 export {EmptyCart} from './EmptyCart';
 export {FullCart} from './FullCart';
 export {UserCabinet} from './UserCabinet';
-export {ChangeUserInfo} from './UserCabinet/ChangeAccountInfo/ChangeUserInfo';
-export {ChangeUserPassword} from './UserCabinet/ChangeAccountInfo/ChangeUserPassword';
+export {ChangeUserInfoPage, ChangeUserPasswordPage} from './UserCabinet/ChangeAccountInfo';

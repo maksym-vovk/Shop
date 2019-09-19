@@ -58,6 +58,10 @@ const asyncValidate = async(value) => {
     })
 };
 
+export const onChangeTrimValue = value => {
+  return value.trim();
+};
+
 export const phoneNumber = value => {
   return value.replace(/[^\d]/g, '');
 };
@@ -65,6 +69,7 @@ export const phoneNumber = value => {
 export const inputFocusBlur = (event) => {
   const inputElement = event.target;
   const targetContainer = event.target.parentNode;
+
   const targetLabel = targetContainer.querySelector('.label-text');
   if (targetLabel.classList.contains('label-active')) {
     if (inputElement.value === '') {
@@ -116,6 +121,7 @@ const RegistrationForm = props => {
           warn={login}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
+          normalize={onChangeTrimValue}
         />
         <Field
           name="first_name"
@@ -158,6 +164,7 @@ const RegistrationForm = props => {
           validate={[required('Password'), minLength(6)]}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
+          normalize={onChangeTrimValue}
         />
         <Field
           type="password"
@@ -167,6 +174,7 @@ const RegistrationForm = props => {
           validate={[required('Password again'), match('password')]}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
+          normalize={onChangeTrimValue}
         />
       </div>
       <div className="form-group">
@@ -178,6 +186,36 @@ const RegistrationForm = props => {
           label="Email"
           validate={[required('Email address'), email]}
           warn={aol}
+          onFocus={inputFocusBlur}
+          onBlur={inputFocusBlur}
+        />
+
+        <Field
+          name="country"
+          type="text"
+          component={renderField}
+          label="Country"
+          validate={required('Country')}
+          onFocus={inputFocusBlur}
+          onBlur={inputFocusBlur}
+        />
+
+        <Field
+          name="city"
+          type="text"
+          component={renderField}
+          label="City"
+          validate={required('City')}
+          onFocus={inputFocusBlur}
+          onBlur={inputFocusBlur}
+        />
+
+        <Field
+          name="zip_code"
+          type="text"
+          component={renderField}
+          label="Zip code"
+          validate={required('Zip code')}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
         />

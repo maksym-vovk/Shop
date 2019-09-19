@@ -2,13 +2,12 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
-import {ShoppingInfoContainer} from '../ShoppingInfo/ShoppingInfoContainer';
 
 import './index.scss'
 import {required, renderField, inputFocusBlur, match, minLength} from '../../ReduxForm/RegistrationForm';
 
 const mapStateToProps = state => ({
-  test_pass: 'testpass'
+  user_password: state.user.userData.password,
 });
 
 const lastPassword = props => value =>
@@ -17,65 +16,56 @@ const lastPassword = props => value =>
     : undefined;
 
 const EditPassword = connect(mapStateToProps)(props => {
-  console.log(props);
-  return (
-    <React.Fragment>
-      <div className="container">
-        <div className="change-information-form">
-          <form >
-            <div className="form-group">
-              <h3>Enter last password</h3>
-              <Field
-                type="password"
-                name="LastPassword"
-                label="Last password"
-                component={renderField}
-                validate={[required('last password'), lastPassword(props.test_pass)]}
-                onFocus={inputFocusBlur}
-                onBlur={inputFocusBlur}
-              />
-            </div>
+  const { handleSubmit, submitting } = props;
 
-            <div className="form-group">
-              <h3>Enter new password</h3>
-              <Field
-                type="password"
-                name="password"
-                label="Password"
-                component={renderField}
-                validate={[required('Password'), minLength(6)]}
-                onFocus={inputFocusBlur}
-                onBlur={inputFocusBlur}
-              />
-              <Field
-                type="password"
-                name="confirmPassword"
-                label="Confirm Password"
-                component={renderField}
-                validate={[required('Password again'), match('password')]}
-                onFocus={inputFocusBlur}
-                onBlur={inputFocusBlur}
-              />
-            </div>
-            <div className="buttons-container">
-              <button className="button edit-btn" type="submit" onClick={(e) => {
-                console.log('submit');
-                e.preventDefault()
-              }}>
-                    Save
-              </button>
-              <button className="button go-back-btn" onClick={(e) => {
-                props.history.goBack();
-                e.preventDefault();
-              }}>
-                    Go back
-              </button>
-            </div>
-          </form>
-        </div>
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <h3>Enter last password</h3>
+        <Field
+          type="password"
+          name="LastPassword"
+          label="Last password"
+          component={renderField}
+          validate={[required('last password'), lastPassword(props.user_password)]}
+          onFocus={inputFocusBlur}
+          onBlur={inputFocusBlur}
+        />
       </div>
-      <ShoppingInfoContainer />
-    </React.Fragment>
+
+      <div className="form-group">
+        <h3>Enter new password</h3>
+        <Field
+          type="password"
+          name="password"
+          label="Password"
+          component={renderField}
+          validate={[required('Password'), minLength(6)]}
+          onFocus={inputFocusBlur}
+          onBlur={inputFocusBlur}
+        />
+        <Field
+          type="password"
+          name="confirmPassword"
+          label="Confirm Password"
+          component={renderField}
+          validate={[required('Password again'), match('password')]}
+          onFocus={inputFocusBlur}
+          onBlur={inputFocusBlur}
+        />
+      </div>
+      <div className="buttons-container">
+        <button className="button edit-btn" type="submit" disabled={submitting}>
+                    Save
+        </button>
+        <button className="button go-back-btn" onClick={(e) => {
+          props.history.goBack();
+          e.preventDefault();
+        }}>
+                    Go back
+        </button>
+      </div>
+    </form>
   )
 });
 

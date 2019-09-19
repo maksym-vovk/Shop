@@ -14,8 +14,8 @@ import {
   RegisterForm,
   Cart,
   UserCabinet,
-  ChangeUserInfo,
-  ChangeUserPassword,
+  ChangeUserInfoPage,
+  ChangeUserPasswordPage,
 
 } from './components';
 import { ProductViewPage } from './components/ProductViewPage';
@@ -39,8 +39,8 @@ function App() {
               <Route path="/sign_up" component={RegisterForm} />
               <Route path="/cart" component={Cart} />
               <Route path="/user_cabinet" component={UserCabinet} />
-              <Route path="/edit_account_password" component={ChangeUserPassword} />
-              <Route path="/edit_account_information" component={ChangeUserInfo} />
+              <Route path="/edit_account_information" component={ChangeUserInfoPage} />
+              <Route path="/edit_account_password" component={ChangeUserPasswordPage} />
             </Switch>
           </main>
           <Footer />
