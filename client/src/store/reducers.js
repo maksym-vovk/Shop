@@ -25,7 +25,9 @@ const initialState = {
   // products in the cart
   cartItems: {
     totalItems: 3,
-    totalPrice: 800,
+    totalPrice: function() {
+      return this.items.reduce((acc, el) => acc += el.price)
+    },
     grandTotalPrice: 2000,
     items: [
       {
@@ -37,7 +39,7 @@ const initialState = {
         color: 'blue',
         // size: 40,
         // connectivity: 'GPS',
-        price: '400'
+        price: 400
       },
       {
         id: 2,
@@ -48,7 +50,7 @@ const initialState = {
         color: 'red',
         // size: 40,
         // connectivity: 'GPS',
-        price: '500'
+        price: 500
       },
       {
         id: 3,
@@ -59,7 +61,7 @@ const initialState = {
         color: 'yellow',
         // size: 40,
         // connectivity: 'GPS',
-        price: '600'
+        price: 600
       }
     ]
   }
@@ -124,6 +126,15 @@ function addToBagReducer(state = initialState.cartItems, action) {
       return {
         ...state,
         items: payload
+      };
+    case ATYPES.CHANGE_QUANTITY:
+      state.items.forEach((element, index) => {
+        if (element.id === payload.id) {
+          element.quantity = payload.quantity
+        }
+      });
+      return {
+        ...state
       };
     default:
       return state

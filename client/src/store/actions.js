@@ -43,6 +43,14 @@ export const addToBag = items => ({
   payload: items
 });
 
+export const changeQuantity = (quantity, id) => ({
+  type: ATYPES.CHANGE_QUANTITY,
+  payload: {
+    id,
+    quantity
+  }
+});
+
 // Sagas
 /* eslint-disable */
 function* fetchCardsSaga() {

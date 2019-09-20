@@ -2,6 +2,8 @@ import React from 'react';
 import {CartItem} from "../CartItem";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
+import {changeQuantity} from "../../../store";
+
 //styles
 import './index.scss'
 
@@ -12,10 +14,10 @@ const mapStateToProps = state => {
     }
 };
 
-export const CartList = connect(mapStateToProps)(({cartItems}) => {
-    // console.log(cartItems);
+export const CartList = connect(mapStateToProps, {changeQuantity})((props) => {
 
-    const List = cartItems.map((item, index) => {
+
+    const List = props.cartItems.map((item, index) => {
         // const pathname = "/cart-items/" + index;
         // return  (<Link to={pathname}  key={item.id}>
         //     <CartItem quantity={itemsQuantity} />
@@ -32,7 +34,9 @@ export const CartList = connect(mapStateToProps)(({cartItems}) => {
                 quantity={item.quantity}
                 price={item.price}
                 name={item.name}
-                details={item.details}/>
+                details={item.details}
+                changeQuantity={props.changeQuantity}
+            />
         )
     });
     return (
