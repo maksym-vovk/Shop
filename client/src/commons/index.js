@@ -10,3 +10,4 @@ export {Login} from './Login'
 export {SearchInput} from './SearchInput'
 export {SearchInputButton} from './SearchInput/SearchInputButton';
 export {UserIcon} from './UserIcon';
+export {UserPanel} from './UserPanel';
