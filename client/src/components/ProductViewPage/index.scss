@@ -49,10 +49,15 @@
   font-size: 18px;
   letter-spacing: 1px;
   background-color: #00a9ec;
-  border: none;
+  border: 1px solid #00a9ec;
   border-radius: 5px;
   outline: none;
   cursor: pointer;
+  transition: all ease .3s;
+  &:hover {
+    color: #00a9ec;
+    background-color: #fff;
+  }
 }
 
 .product-view__carousel {
