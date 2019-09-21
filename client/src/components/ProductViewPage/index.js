@@ -104,7 +104,7 @@ export const ProductViewPage = connect(
               <p>${card[0].minPrice}</p>
               <p>Band colors</p>
               <ColorTabs />
-              {/* <DemoCarousel/> */}
+              <DemoCarousel/>
             </div>
           </article>
         </section>
