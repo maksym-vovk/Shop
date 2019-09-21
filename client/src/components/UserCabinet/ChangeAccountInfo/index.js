@@ -1,7 +1,8 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {updateUser, updateUserPassword, setMessageUser} from '../../../store'
+
+import {updateUser, updateUserPassword, setMessageUser} from '../../../store';
 import { ChangeUserInfo } from './ChangeUserInfo';
 import {ShoppingInfoContainer} from '../ShoppingInfo/ShoppingInfoContainer'
 import { ChangeUserPassword } from './ChangeUserPassword';

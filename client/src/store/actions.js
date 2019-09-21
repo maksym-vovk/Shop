@@ -12,6 +12,7 @@ export const fetchCard = id => ({
   id
 });
 
+// user
 export const updateUser = payload => ({
   type: ATYPES.UPDATE_USER,
   payload
@@ -36,6 +37,7 @@ export const setAuthState = authorized => ({
   type: ATYPES.SET_AUTHORIZED,
   payload: authorized
 });
+
 // Search
 export const setSearchStatus = status => ({
   type: ATYPES.SET_SEARCH_STATUS,
