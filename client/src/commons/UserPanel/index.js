@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { UserPanelModal } from './UserPanelModal';
 
 const mapStateToProps = state => ({
-  name: state.user.userData.first_name,
-  surname: state.user.userData.last_name
+  // name: state.user.userData.first_name,
+  // surname: state.user.userData.last_name
 })
 
 export const UserPanel = connect(mapStateToProps)(props => {
   return (
-    <UserPanelModal name={props.name} surname={props.surname} logout={''} />
+    <UserPanelModal name={'Ivan'} surname={'Kravchenko'} logout={''} />
   )
 })

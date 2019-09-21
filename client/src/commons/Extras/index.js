@@ -16,7 +16,7 @@ export const Extras = connect(mapStateToProps)((props) => {
       <Link to="/cart">
         <Cart />
       </Link>
-      { loginStatus
+      { !loginStatus
         ? <UserIcon/>
         : <Auth/>
       }
