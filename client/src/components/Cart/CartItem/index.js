@@ -1,31 +1,20 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 //styles
 import './index.scss'
 
 
-export const CartItem = ({quantity, color, connectivity, size, image, price, name, details, id, changeQuantity}) => {
+export const CartItem = (props) => {
+    console.log(props);
+    const {quantity, color, connectivity, size, image, price, name, details, id, changeQuantity, total, setTotal} = props;
     const [count, setCount] = useState(quantity);
-    console.log(count);
+    // console.log(count);
 
     const onchangeHandler = (event) => {
-        setCount(event.target.value);
+        setCount(+event.target.value);
         changeQuantity(+count);
     };
 
-    function incrementValue(id) {
-        let value = document.getElementById(id).value;
-        value++;
-        document.getElementById(id).value = value
-    }
-
-    function decrementValue(id) {
-        let value = document.getElementById(id).value;
-        if (value > 1) {
-            value--;
-            document.getElementById(id).value = value
-        }
-    }
 
     return (
         <div className="cart-item">
@@ -41,14 +30,20 @@ export const CartItem = ({quantity, color, connectivity, size, image, price, nam
                 <p className="cart-item__details">Connectivity: {connectivity}</p>
             </div>
             <div className="cart-item__input-group">
-                <input className="cart-item__input-button" type="button" onClick={()=>{setCount(count-1)}}
-                       defaultValue="-"/>
-                <input className="cart-item__input-value" min="1" id={id} value={count} onChange={
-                    onchangeHandler
-                    }/>
+                <input className="cart-item__input-button"
+                       type="button"
+                       onClick={()=> setCount(count-1)}
+                       onBlur={() => setTotal(total - price*count)}
+                       defaultValue="-"
+                       />
 
-                <input className="cart-item__input-button" type="button" onClick={()=> setCount(count+1)}
-                       defaultValue="+"/>
+                <input className="cart-item__input-value" min={0} id={id} value={count} onChange={onchangeHandler} />
+                <input className="cart-item__input-button"
+                       type="button"
+                       onClick={()=> setCount(count+1)}
+                       onBlur={() => setTotal(total + price*count)}
+                       defaultValue="+"
+                       />
             </div>
             <div className="cart-item__price-block">
                 <span className="cart-item__price">${price*count}</span>

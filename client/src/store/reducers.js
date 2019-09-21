@@ -25,9 +25,7 @@ const initialState = {
   // products in the cart
   cartItems: {
     totalItems: 3,
-    totalPrice: function() {
-      return this.items.reduce((acc, el) => acc += el.price)
-    },
+    totalPrice: 400,
     grandTotalPrice: 2000,
     items: [
       {

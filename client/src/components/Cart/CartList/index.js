@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {CartItem} from "../CartItem";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
@@ -11,10 +11,29 @@ import './index.scss'
 const mapStateToProps = state => {
     return {
         cartItems: state.addToBag.items,
+        totalPrice: state.addToBag.totalPrice,
     }
 };
 
 export const CartList = connect(mapStateToProps, {changeQuantity})((props) => {
+
+    // console.log(props);
+
+    const [total, setTotal]= useState(props.totalPrice);
+
+
+    // const priceValues = document.getElementsByClassName('cart-item__price');
+
+    // useEffect(()=> {
+    //     let total = [...priceValues].reduce((acc, item) => {
+    //         return acc + (+item.textContent.slice(1))
+    //     }, 0);
+    //
+    //     console.log(total);
+    //
+    // }, [total]);
+
+    // console.log(total);
 
 
     const List = props.cartItems.map((item, index) => {
@@ -36,6 +55,8 @@ export const CartList = connect(mapStateToProps, {changeQuantity})((props) => {
                 name={item.name}
                 details={item.details}
                 changeQuantity={props.changeQuantity}
+                total={total}
+                setTotal={setTotal}
             />
         )
     });
@@ -51,7 +72,7 @@ export const CartList = connect(mapStateToProps, {changeQuantity})((props) => {
 
             <div className="cart-list__total-block">
                 <h2 className="cart-list__total">Total:</h2>
-                <span className="cart-list__total-price">$400</span>
+                <span className="cart-list__total-price">${total}</span>
             </div>
             <Link to="/checkout">
                 <button className="cart-list__button">Check Out</button>
