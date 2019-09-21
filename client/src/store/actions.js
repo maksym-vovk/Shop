@@ -4,8 +4,9 @@ import { take, put, all } from 'redux-saga/effects';
 import axios from 'axios';
 
 // actions
-export const fetchCards = () => ({
-  type: ATYPES.FETCH_CARDS
+export const fetchCards = query => ({
+  type: ATYPES.FETCH_CARDS,
+  query
 });
 export const fetchCard = id => ({
   type: ATYPES.FETCH_CARD,
@@ -35,8 +36,8 @@ export const setSearchStatus = status => ({
 /* eslint-disable */
 function* fetchCardsSaga() {
   while (true) {
-    yield take(ATYPES.FETCH_CARDS);
-    const response = yield axios.get('/cards');
+    const { query } = yield take(ATYPES.FETCH_CARDS);
+    const response = yield axios.get('/cards', query);
     yield put({
       type: ATYPES.SET_CARDS,
       payload: response.data
@@ -63,11 +64,10 @@ function* updateUserSaga() {
       yield put({
         type: ATYPES.SET_USER,
         payload: response.data.user
-      })
+      });
     } else {
       console.log(response.data.error_message);
     }
-
   }
 }
 

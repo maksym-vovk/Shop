@@ -1,7 +1,29 @@
-.product-view__item {
+.product-view__wrapper {
   display: grid;
+  grid-gap: 10px;
   grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
   min-height: 100vh;
 }
+.thumbs.animated {
+  display: flex;
+  justify-content: center;
+}
 
+.carousel .slide{
+  background: #fff;
+}
 
+.carousel .control-next.control-arrow,
+.carousel .control-prev.control-arrow {
+  top: 50%;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background: #000;
+  transform: translateY(-50%);
+}
+
+.carousel .thumb{
+  width: 20%;
+}
