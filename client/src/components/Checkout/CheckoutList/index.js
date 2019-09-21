@@ -1,32 +1,31 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React from 'react';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
-import {CheckoutItem} from "../CheckoutItem";
+import {CheckoutItem} from '../CheckoutItem';
 
-//styles
+// styles
 import './index.scss';
 
 const mapStateToProps = state => {
-    return {
-        checkoutItems: state.addToBag.items
-    }
+  return {
+    checkoutItems: state.addToBag.items
+  }
 };
 
 export const CheckoutList = connect(mapStateToProps)(({checkoutItems}) => {
-    return (
-        <div>
-            <h2 className="check-out-subtitle">In stock and ready to ship</h2>
+  return (
+    <div>
+      <h2 className="check-out-subtitle">In stock and ready to ship</h2>
 
-            {
-                checkoutItems.map((item, index) => {
-                    return <CheckoutItem key={index} data={item}/>
-                })
+      {
+        checkoutItems.map((item, index) => {
+          return <CheckoutItem key={index} data={item}/>
+        })
 
-            }
-            <Link to="/checkout/shipping">
-                <button type="submit" className="continue-button">Continue to Shipping Address</button>
-            </Link>
-        </div>
-    )
-
+      }
+      <Link to="/checkout/shipping">
+        <button type="submit" className="continue-button">Continue to Shipping Address</button>
+      </Link>
+    </div>
+  )
 });

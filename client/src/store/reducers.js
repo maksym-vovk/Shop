@@ -25,7 +25,7 @@ const initialState = {
   // products in the cart
   cartItems: {
     totalItems: 3,
-    totalPrice: 400,
+    totalPrice: 1500,
     grandTotalPrice: 2000,
     items: [
       {

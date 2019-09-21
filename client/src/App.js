@@ -13,13 +13,13 @@ import {
   IPhone,
   Watch,
   RegisterForm,
-    CartPage,
+  CartPage,
   UserCabinet,
 
-    CheckoutPage,
-    ShippingDetailsForm,
-    CheckoutItem,
-    CheckoutPurchased,
+  CheckoutPage,
+  ShippingDetailsForm,
+  CheckoutItem,
+  CheckoutPurchased,
 
   ChangeUserInfoPage,
   ChangeUserPasswordPage,
@@ -29,7 +29,6 @@ import {
 import { ProductViewPage } from './components/ProductViewPage';
 
 import './App.scss';
-
 
 function App() {
   return (
@@ -51,10 +50,10 @@ function App() {
               <Route path="/cart" component={CartPage} />
               <Route path="/user_cabinet" component={UserCabinet} />
 
-            <Route exact path="/checkout" component={CheckoutPage} />
-            <Route path="/checkout/shipping" component={ShippingDetailsForm} />
-            <Route path="/checkout/purchased" component={CheckoutPurchased} />
-            <Route path="/checkout/checkout_item" component={CheckoutItem} />
+              <Route exact path="/checkout" component={CheckoutPage} />
+              <Route path="/checkout/shipping" component={ShippingDetailsForm} />
+              <Route path="/checkout/purchased" component={CheckoutPurchased} />
+              <Route path="/checkout/checkout_item" component={CheckoutItem} />
 
               <Route path="/edit_account_information" component={ChangeUserInfoPage} />
               <Route path="/edit_account_password" component={ChangeUserPasswordPage} />

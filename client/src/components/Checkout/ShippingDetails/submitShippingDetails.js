@@ -1,7 +1,6 @@
 // import axios from "axios";
-import store, {setShippingDetails} from "../../../store";
-
+import store, {setShippingDetails} from '../../../store';
 
 export default function submitShippingDetails() {
-            store.dispatch(setShippingDetails(true))
+  store.dispatch(setShippingDetails(true))
 }
