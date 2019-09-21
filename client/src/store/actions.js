@@ -12,10 +12,22 @@ export const fetchCard = id => ({
   id
 });
 
+// user
 export const updateUser = payload => ({
   type: ATYPES.UPDATE_USER,
   payload
 });
+
+export const updateUserPassword = payload => ({
+  type: ATYPES.UPDATE_USER_PASSWORD,
+  payload
+});
+
+export const setMessageUser = update_message_status => ({
+  type: ATYPES.SET_MESSAGE_USER,
+  payload: update_message_status
+});
+
 export const setUser = payload => ({
   type: ATYPES.SET_USER,
   payload
@@ -25,6 +37,7 @@ export const setAuthState = authorized => ({
   type: ATYPES.SET_AUTHORIZED,
   payload: authorized
 });
+
 // Search
 export const setSearchStatus = status => ({
   type: ATYPES.SET_SEARCH_STATUS,
@@ -61,17 +74,37 @@ function* updateUserSaga() {
     const response = yield axios.put('/customers/' + user._id, user);
     if (response.data.updated) {
       yield put({
-        type: ATYPES.SET_USER,
-        payload: response.data.user
+        type: ATYPES.UPDATE_USER,
+        payload: { user: response.data.user, update_message: { correct: 'Personal information updated' } }
       })
     } else {
-      console.log(response.data.error_message);
+      yield put({
+        type: ATYPES.UPDATE_USER,
+        payload: { update_message: { error: 'Personal information not updated try again!' } }
+      })
     }
+  }
+}
 
+function* updateUserPasswordSaga() {
+  while (true) {
+    const { payload: user } = yield take(ATYPES.UPDATE_USER_PASSWORD);
+    const response = yield axios.put('/customers/' + user._id, {password: user.password});
+    if (response.data.updated) {
+      yield put({
+        type: ATYPES.UPDATE_USER_PASSWORD,
+        payload: { user: response.data.user, update_message: { correct: 'Your password updated' } }
+      })
+    } else {
+      yield put({
+        type: ATYPES.UPDATE_USER_PASSWORD,
+        payload: { update_message: { error: 'Your password not updated try again!' } }
+      })
+    }
   }
 }
 
 export function* rootSaga() {
-  yield all([fetchCardsSaga(), fetchCardSaga(), updateUserSaga()]);
+  yield all([fetchCardsSaga(), fetchCardSaga(), updateUserSaga(), updateUserPasswordSaga()]);
 }
 /* eslint-enable */
