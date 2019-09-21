@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
+import { Lines } from 'react-preloaders';
+
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './index.scss';
 
 export const ProductViewPage = props => {
   const { state } = props.location;
-  console.log(state);
   const [slides, setSlides] = useState(
     Object.entries(state.colors.bandImagesByColor)[0][1]
   );
-
   const [colorTitle, setColorTitle] = useState(
     Object.entries(state.colors.bandImagesByColor)[0][0]
       .split('_')
       .join(' ')
   );
-  console.log(slides);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   const sliderImages = slides.map((item, key) => {
     return (
@@ -38,10 +42,10 @@ export const ProductViewPage = props => {
 
   const ColorTabs = () => {
     return (
-      <div className='tabs-wrapper'>
+      <div className="tabs-wrapper">
         {state.colors.allColors.map((item, index) => {
           return (
-            <span key={index} onClick={tabClickHandler} className='tabs'>
+            <span key={index} onClick={tabClickHandler} className="tabs">
               <img
                 src={item.icon}
                 alt={item.name}
@@ -60,11 +64,11 @@ export const ProductViewPage = props => {
     for (const key in object) {
       if (object.hasOwnProperty(key)) {
         info.push(
-          <div>
+          <div key={key}>
             <h3>{object[key].title}</h3>
-            <ul className='tech-info'>
-              {object[key].body.map(item => {
-                return <li>{item}</li>;
+            <ul className="tech-info">
+              {object[key].body.map((item, key) => {
+                return <li key={key}>{item}</li>;
               })}
             </ul>
           </div>
@@ -74,31 +78,30 @@ export const ProductViewPage = props => {
     return info;
   };
 
-  console.log(techInfo(state.techSpecs));
-
   return (
     <section className="product-view">
       <article className="container">
-        <h2 className='page-title'>Apple Watch Series 5</h2>
+        <h2 className="page-title">Apple Watch Series 5</h2>
         <div className="product-view__wrapper">
           <div className="product-view__carousel">
             <PreviewCarousel />
           </div>
           <div className="product-view__info">
-            <h3 className='category-title'>{state.filter.model}</h3>
-            <h2 className='product-title'>{state.description}</h2>
-            <h4 className='product-price'>
-              <span className='product-price-span'>Price: </span>${state.minPrice}
+            <h3 className="category-title">{state.filter.model}</h3>
+            <h2 className="product-title">{state.description}</h2>
+            <h4 className="product-price">
+              <span className="product-price-span">Price: </span>$
+              {state.minPrice}
             </h4>
-            <h4 className='tabs-title'>Band Colors</h4>
-            <p className='color-title'>{colorTitle}</p>
+            <h4 className="tabs-title">Band Colors</h4>
+            <p className="color-title">{colorTitle}</p>
             <ColorTabs />
-            <button className='buy-btn'>Add to cart</button>
+            <button className="buy-btn">Add to cart</button>
           </div>
         </div>
         <div className="tech-info-wrapper">{techInfo(state.techSpecs)}</div>
       </article>
+      <Lines customLoading={loading} time={300} />
     </section>
   );
 };
-
