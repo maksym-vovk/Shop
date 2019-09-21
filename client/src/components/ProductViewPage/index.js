@@ -93,6 +93,7 @@ export const ProductViewPage = props => {
             <h4 className='tabs-title'>Band Colors</h4>
             <p className='color-title'>{colorTitle}</p>
             <ColorTabs />
+            <button className='buy-btn'>Add to cart</button>
           </div>
         </div>
         <div className="tech-info-wrapper">{techInfo(state.techSpecs)}</div>
