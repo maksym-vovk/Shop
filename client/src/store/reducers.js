@@ -4,7 +4,7 @@ import * as ATYPES from './constants.js';
 // state for start
 const initialState = {
   userData: {
-    authorized: false
+    authorized: false,
   },
 
   // Search
@@ -26,6 +26,23 @@ function userReducer(state = initialState.userData, action) {
       return {
         ...state,
         authorized: payload
+      };
+    case ATYPES.SET_MESSAGE_USER:
+      return {
+        ...state,
+        update_message: payload
+      };
+    case ATYPES.UPDATE_USER:
+      return {
+        ...state,
+        update_message: payload.update_message,
+        userData: payload.user ? payload.user : state.userData
+      };
+    case ATYPES.UPDATE_USER_PASSWORD:
+      return {
+        ...state,
+        update_message: payload.update_message,
+        userData: payload.user ? payload.user : state.userData
       };
     case ATYPES.SET_USER:
       return {
