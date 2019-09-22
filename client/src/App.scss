@@ -4,6 +4,7 @@
 }
 
 body {
+  height: 100%;
   margin: 0;
   padding-top: 65px;
   font-family: 'SF UI Text', serif;
@@ -14,4 +15,9 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+}
+.page-title {
+  margin: 10px 0 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgb(134, 134, 134);
 }

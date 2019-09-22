@@ -1,26 +1,18 @@
-import React from 'react';
-// import { connect } from 'react-redux';
-import { HomePageSlider, ProductsList } from '../';
-
-// import { fetchCards } from '../../store';
+import React, { useState, useEffect }  from 'react';
+import { Lines } from 'react-preloaders';
+import { HomePageSlider } from '../';
 
 import './style.scss';
 
-export const HomePage = props => {
+export const HomePage = () => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
+  }, []);
   return (
     <div>
       <HomePageSlider />
-      <ProductsList />
+      <Lines customLoading={loading} time={300} />
     </div>
   );
 };
-
-// export const HomePage = connect(null, { fetchCards })(props => {
-//   props.fetchCards();
-//   return (
-//     <div>
-//       <HomePageSlider />
-//       <ProductsList  />
-//     </div>
-//   );
-// });
