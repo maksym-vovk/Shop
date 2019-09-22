@@ -18,6 +18,7 @@ export const ProductViewPage = props => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = state.filter.model;
     setLoading(false);
   }, []);
   const sliderImages = slides.map((item, key) => {
