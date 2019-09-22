@@ -25,6 +25,10 @@ export const setAuthState = authorized => ({
   type: ATYPES.SET_AUTHORIZED,
   payload: authorized
 });
+
+export const logoutUser = () => ({
+  type: ATYPES.LOGOUT_USER
+})
 // Search
 export const setSearchStatus = status => ({
   type: ATYPES.SET_SEARCH_STATUS,

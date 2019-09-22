@@ -3,17 +3,30 @@
 	top: 75px;
 	background-color: #fff;
 	border-radius: 5px;
-	overflow: hidden;
+	box-shadow: 0 5px 10px #000;
+
+	&::before {
+		content: "";
+		display: inline-block;
+		position: absolute;
+		border: 10px solid transparent;
+		border-bottom-color: #000;
+		top: -20px;
+		right: 10%;
+	}
 	
+	&__link-block,
+	&__name-block,
+	&__logout-block {
+		padding: 10px;
+	}
+
 	&__name-block {
 		font-weight: bold;
 		background-color: #000;
 		color: #fff;
-		padding: 10px;
-	}
-
-	&__link-block {
-		padding: 10px;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
 	}
 
 	&__link {
@@ -23,7 +36,23 @@
 
 		&:hover {
 			text-shadow: 0 0 10px #000;
-			color: blue;
+			color: #00f;
+		}
+	}
+
+	&__logout-block {
+		border-top: 1px solid #000;
+	}
+
+	&__logout {
+		border: none;
+		background: none;
+		cursor: pointer;
+		color: #f00;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
 		}
 	}
 
