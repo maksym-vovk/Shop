@@ -79,7 +79,9 @@ export const ProductViewPage = props => {
         <h2 className="page-title">Apple Watch Series 5</h2>
         <div className="product-view__wrapper">
           <div className="product-view__carousel">
-            <Carousel showIndicators={false}>{sliderImages}</Carousel>
+            <Carousel showIndicators={false} showThumbs={false}>
+              {sliderImages}
+            </Carousel>
           </div>
           <div className="product-view__info">
             <h3 className="category-title">{state.filter.model}</h3>
