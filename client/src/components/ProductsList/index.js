@@ -15,7 +15,6 @@ export const ProductsList = connect(
   mapStateToProps,
   { fetchCards }
 )(props => {
-  console.log(props);
   const { model } = props;
   const res =
     {
@@ -27,9 +26,10 @@ export const ProductsList = connect(
   const { cards, fetchCards } = props;
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    document.title = props.model
     fetchCards(res);
     setLoading(false);
-  }, [fetchCards]);
+  }, [fetchCards, props.model]);
 
   const CardsList = () => {
     return cards.length

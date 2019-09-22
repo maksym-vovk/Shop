@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Login } from '../';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import './index.scss';
 
 export const Auth = () => {
