@@ -17,7 +17,6 @@ export const ProductsList = connect(
   { fetchCards }
 )(props => {
   const { params } = props;
-
   const res = {
     params
   };
