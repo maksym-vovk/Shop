@@ -31,11 +31,12 @@ export const ProductsList = connect(
     setLoading(false);
   }, [fetchCards, props.model]);
 
+
   const CardsList = () => {
     return cards.length
       ? cards.map(item => {
-          return <ProductCard state={item} key={item._id} />;
-        })
+        return <ProductCard state={item} key={item._id} />;
+      })
       : null;
   };
 

@@ -1,5 +1,6 @@
 // Auth
 export const SET_AUTHORIZED = 'SET_AUTHORIZED';
+export const LOGOUT_USER = 'LOGOUT_USER';
 
 // Search
 export const SET_SEARCH_STATUS = 'SET_SEARCH_STATUS';

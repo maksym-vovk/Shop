@@ -49,6 +49,12 @@ function userReducer(state = initialState.userData, action) {
         ...state,
         userData: payload
       };
+    case ATYPES.LOGOUT_USER:
+      return {
+        ...state,
+        authorized: false,
+        userData: null
+      };
     default:
       return state;
   }
