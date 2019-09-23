@@ -29,13 +29,13 @@ export const ProductsList = connect(
   useEffect(() => {
     fetchCards(res);
     setLoading(false);
-  }, [fetchCards]);
+  }, [fetchCards, res]);
 
   const CardsList = () => {
     return cards.length
       ? cards.map(item => {
-          return <ProductCard state={item} key={item._id} />;
-        })
+        return <ProductCard state={item} key={item._id} />;
+      })
       : null;
   };
 
