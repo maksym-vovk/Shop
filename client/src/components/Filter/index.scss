@@ -1,18 +1,56 @@
-.filter-wrapper {
+.filter {
   display: grid;
+  grid-gap: 5px;
   grid-template-columns: .5fr repeat(4, 1fr);
+  align-items: start;
+  &__reset-btn {
+    width: fit-content;
+    padding: 5px 10px;
+    color: #000000b3;
+    background: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s ease;
+    &:hover {
+      color: #000;
+    }
+  }
+  &__block {
+    padding: 5px;
+  }
+  &__title {
+    margin: 0 0 10px;
+    font-weight: 400;
+  }
+  &__items-wrapper {
+    display: flex;flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__item{
+    padding: 2px 0;
+    color: #000000b3;
+    cursor: pointer;
+    transition: all .3s ease;
+    &:hover {
+      color: #000;
+    }
+    &.active {
+      color: #000;
+      font-weight: 500;
+    }
+  }
 }
 
 .Collapsible {
   margin-bottom: 30px;
-}
-
-.Collapsible__trigger {
-  cursor: pointer;
-}
-
-.Collapsible__contentInner {
+  &__trigger {
+    cursor: pointer;
+  }
+  &__contentInner {
     padding: 10px;
-  background-color: #eee;
-
+    background-color: #eee;
+  }
 }
