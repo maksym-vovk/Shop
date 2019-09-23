@@ -7,7 +7,6 @@ import './index.scss';
 
 export const ProductViewPage = props => {
   const { state } = props.location;
-  console.log(state)
   const [slides, setSlides] = useState(
     Object.entries(state.colors.bandImagesByColor)[0][1]
   );
