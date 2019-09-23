@@ -3,6 +3,7 @@ import { Lines } from 'react-preloaders';
 import { connect } from 'react-redux';
 import { fetchCards } from '../../store/actions';
 import { ProductCard } from '../';
+
 import './index.scss';
 
 const mapStateToProps = state => {
@@ -15,28 +16,28 @@ export const ProductsList = connect(
   mapStateToProps,
   { fetchCards }
 )(props => {
-  const { model } = props;
-  const res =
-    {
-      params: {
-        'filter.model': model
-      }
-    } || {};
+  const { params } = props;
+
+  const res = {
+    params
+  };
 
   const { cards, fetchCards } = props;
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    document.title = props.model
+    document.title = params['filter.model'];
     fetchCards(res);
     setLoading(false);
   }, [fetchCards, props.model]);
 
   const CardsList = () => {
-    return cards.length
-      ? cards.map(item => {
+    return cards.length ? (
+      cards.map(item => {
         return <ProductCard state={item} key={item._id} />;
       })
-      : null;
+    ) : (
+      <h2>Nothing found</h2>
+    );
   };
 
   return (
@@ -44,7 +45,7 @@ export const ProductsList = connect(
       <section className="product-list-wrapper">
         <CardsList />
       </section>
-      <Lines customLoading={loading} time={300}/>
+      <Lines customLoading={loading} time={300} />
     </React.Fragment>
   );
 });

@@ -1,0 +1,18 @@
+.filter-wrapper {
+  display: grid;
+  grid-template-columns: .5fr repeat(4, 1fr);
+}
+
+.Collapsible {
+  margin-bottom: 30px;
+}
+
+.Collapsible__trigger {
+  cursor: pointer;
+}
+
+.Collapsible__contentInner {
+    padding: 10px;
+  background-color: #eee;
+
+}
