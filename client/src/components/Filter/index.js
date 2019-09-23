@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Collapsible from 'react-collapsible';
 import { ProductsList } from '../';
 
@@ -6,23 +6,44 @@ import './index.scss';
 
 export const Filter = () => {
   const [params, setParams] = useState({});
+  const [key, setKey] = useState(true);
 
   const filterHandler = e => {
     const name = e.target.dataset.name;
     const text = e.target.innerText;
-    setParams({ ...params, [name]: text });
+    if (e.target.dataset.status === 'true') {
+      e.target.classList.remove('active');
+      setParams(() => {
+        delete params[name];
+        return params;
+      });
+      e.target.dataset.status = 'false';
+    } else {
+      e.currentTarget.childNodes.forEach(element => {
+        element.classList.remove('active');
+        element.dataset.status = 'false';
+      });
+      e.target.classList.add('active');
+      setParams({ ...params, [name]: text });
+      e.target.dataset.status = 'true';
+    }
+
+    setKey(!key);
   };
 
   const resetHandler = () => {
     setParams({});
+    setKey(!key);
+    const elements = document.querySelectorAll('.filter__item');
+    elements.forEach(item => {
+      item.classList.remove('active');
+      item.dataset.status = 'false';
+    });
   };
 
-  useEffect(() => {
-    console.log(params);
-  }, [params]);
   return (
     <React.Fragment>
-      <Collapsible trigger="Filter" open={true}>
+      <Collapsible trigger="Filter">
         <section className="filter">
           <button className="filter__reset-btn" onClick={resetHandler}>
             Reset
@@ -30,8 +51,8 @@ export const Filter = () => {
           <article className="filter__block">
             <h3 className="filter__title">Model</h3>
             <ul className="filter__items-wrapper" onClick={filterHandler}>
-              <li data-name="filter.model" className="filter__item active">
-                Apple Watch
+              <li data-name="filter.model" className="filter__item">
+                Apple Watch Origin
               </li>
               <li data-name="filter.model" className="filter__item">
                 Apple Watch Nike
@@ -100,7 +121,7 @@ export const Filter = () => {
           </article>
         </section>
       </Collapsible>
-      <ProductsList params={params} />
+      <ProductsList params={params} key={key} />
     </React.Fragment>
   );
 };

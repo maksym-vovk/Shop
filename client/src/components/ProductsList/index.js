@@ -24,10 +24,10 @@ export const ProductsList = connect(
   const { cards, fetchCards } = props;
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    document.title = params['filter.model'];
+    document.title = params['filter.model'] || 'Apple Watch Series 5';
     fetchCards(res);
     setLoading(false);
-  }, [fetchCards, props.model]);
+  }, [fetchCards, params]);
 
   const CardsList = () => {
     return cards.length ? (

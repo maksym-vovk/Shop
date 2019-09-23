@@ -21,7 +21,7 @@ export const ProductViewPage = props => {
   useEffect(() => {
     document.title = state.filter.model;
     setLoading(false);
-  }, []);
+  }, [state.filter.model]);
   const sliderImages = slides.map((item, key) => {
     return (
       <div key={key}>
