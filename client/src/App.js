@@ -16,6 +16,7 @@ import {
   UserCabinet,
   ChangeUserInfoPage,
   ChangeUserPasswordPage,
+  SearchResult
 
 } from './components';
 import { ProductViewPage } from './components/ProductViewPage';
@@ -41,6 +42,7 @@ function App() {
               <Route path="/user_cabinet" component={UserCabinet} />
               <Route path="/edit_account_information" component={ChangeUserInfoPage} />
               <Route path="/edit_account_password" component={ChangeUserPasswordPage} />
+              <Route path='/search_result' component={SearchResult}/>
             </Switch>
           </main>
           <Footer />

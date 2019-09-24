@@ -13,3 +13,4 @@ export {EmptyCart} from './EmptyCart';
 export {FullCart} from './FullCart';
 export {UserCabinet} from './UserCabinet';
 export {ChangeUserInfoPage, ChangeUserPasswordPage} from './UserCabinet/ChangeAccountInfo';
+export {SearchResult} from './SearchResult'
