@@ -6,7 +6,7 @@ import './index.scss';
 
 const mapStateToProps = (state) => ({
   status: state.searchStatus.status
-})
+});
 
 export const Header = connect(mapStateToProps, {fetchCards})((props) => {
   useEffect(() => {

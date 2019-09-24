@@ -8,13 +8,11 @@ import axios from 'axios';
 import {
   required,
   renderField,
-  inputFocusBlur,
   minLength,
   minLength2,
   maxLength,
   alphaNumeric,
   aol,
-  number,
   email,
   phoneNumber
 } from '../../ReduxForm/RegistrationForm';
@@ -22,6 +20,25 @@ import {
 const mapStateToProps = state => ({
   initialValues: state.user.userData,
 });
+
+export const inputFocus = (event) => {
+  const targetContainer = event.target.parentNode;
+
+  const targetLabel = targetContainer.querySelector('.label-text');
+  return targetLabel.classList.add('label-active')
+};
+
+export const inputBlur = (event) => {
+  const inputElement = event.target;
+  const targetContainer = event.target.parentNode;
+  const targetLabel = targetContainer.querySelector('.label-text');
+
+  if (targetLabel.classList.contains('label-active')) {
+    if (inputElement.value === '') {
+      return targetLabel.classList.remove('label-active')
+    } else return true
+  }
+};
 
 const asyncValidate = async(value) => {
   await axios.post('/find_user', {_id: value._id, login: value.login ? value.login : '', email: value.email ? value.email : ''})
@@ -31,7 +48,7 @@ const asyncValidate = async(value) => {
       for (const key in res.data) {
         if (res.data.email && res.data.email_id) {
           show = true;
-          errs.email = 'This email is already registred'
+          errs.email = 'This email is already registered'
         }
       }
       if (show) throw errs
@@ -52,8 +69,8 @@ const EditUserInfo = props => {
           label="Name"
           validate={[required('Name'), maxLength(15), minLength2]}
           warn={alphaNumeric}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
+          onFocus={inputFocus}
+          onBlur={inputBlur}
           editing={true}
         />
         <Field
@@ -63,8 +80,8 @@ const EditUserInfo = props => {
           label="Surname"
           validate={[required('Surname'), maxLength(15), minLength2]}
           warn={alphaNumeric}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
+          onFocus={inputFocus}
+          onBlur={inputBlur}
           editing={true}
         />
         <Field
@@ -72,9 +89,8 @@ const EditUserInfo = props => {
           type="number"
           component={renderField}
           label="Age"
-          validate={number}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
+          onFocus={inputFocus}
+          onBlur={inputBlur}
           editing={true}
         />
       </div>
@@ -88,8 +104,8 @@ const EditUserInfo = props => {
           label="Email"
           validate={[required('Email address'), email]}
           warn={aol}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
+          onFocus={inputFocus}
+          onBlur={inputBlur}
           editing={true}
         />
 
@@ -98,9 +114,8 @@ const EditUserInfo = props => {
           type="text"
           component={renderField}
           label="Country"
-          validate={required('Country')}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
+          onFocus={inputFocus}
+          onBlur={inputBlur}
           editing={true}
         />
 
@@ -109,9 +124,8 @@ const EditUserInfo = props => {
           type="text"
           component={renderField}
           label="City"
-          validate={required('City')}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
+          onFocus={inputFocus}
+          onBlur={inputBlur}
           editing={true}
         />
 
@@ -120,9 +134,8 @@ const EditUserInfo = props => {
           type="text"
           component={renderField}
           label="Zip code"
-          validate={required('Zip code')}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
+          onFocus={inputFocus}
+          onBlur={inputBlur}
           editing={true}
         />
 
@@ -131,9 +144,8 @@ const EditUserInfo = props => {
           type="text"
           component={renderField}
           label="Address"
-          validate={required('Address')}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
+          onFocus={inputFocus}
+          onBlur={inputBlur}
           editing={true}
         />
         <Field
@@ -143,19 +155,11 @@ const EditUserInfo = props => {
           label="Phone number"
           validate={[required('Phone number'), minLength(7)]}
           normalize={phoneNumber}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
+          onFocus={inputFocus}
+          onBlur={inputBlur}
           editing={true}
         />
-        <Field
-          name="_id"
-          type="text"
-          component={renderField}
-          label="id"
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-          hide_id_field={true}
-        />
+
       </div>
       <div className="buttons-container">
         <button className="button edit-btn" type="submit" disabled={submitting}>

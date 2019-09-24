@@ -146,4 +146,11 @@
     height: 200px;
     background-color: #eee;
   }
+
+  &__updated-user {
+    color: green;
+  }
+  &__error-update-user {
+    color: #ac313a;
+  }
 }
