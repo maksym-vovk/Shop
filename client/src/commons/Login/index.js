@@ -24,9 +24,9 @@ export const Login = connect(null, {setAuthState, setUser})((props) => {
           setPassword('');
         } else {
           setError(false);
+          props.openModal(false);
           props.setAuthState(true);
           props.setUser(res.data);
-          props.openModal(false);
         }
       });
   }
