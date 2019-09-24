@@ -55,6 +55,11 @@ export const addToCart = itemData => ({
   payload: itemData
 })
 
+export const removeFromCart = id => ({
+  type: ATYPES.REMOVE_FROM_CART,
+  payload: id
+})
+
 // Sagas
 /* eslint-disable */
 function* fetchCardsSaga() {

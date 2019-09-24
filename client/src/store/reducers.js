@@ -96,6 +96,7 @@ function fetchReducer(state = initialState.products, action) {
   }
 }
 // Cart
+/* eslint-disable */
 function cartReducer(state = initialState.cart, action) {
   const { type, payload } = action;
   switch (type) {
@@ -108,12 +109,23 @@ function cartReducer(state = initialState.cart, action) {
           payload
         ]
       }
+    case ATYPES.REMOVE_FROM_CART:
+      const item = state.items.find(el => el.id === payload)
+      return {
+        ...state,
+        totalPrice: state.totalPrice - item.price * item.quantity,
+        items: state.items.filter(el => el.id !== payload)
+      }
+    default:
+      return state;
   }
 }
+/* eslint-enable */
 
 export const reducer = combineReducers({
   form: reduxFormReducer, // mounted under "form"
   user: userReducer,
   searchStatus: searchReducer,
-  products: fetchReducer
+  products: fetchReducer,
+  cart: cartReducer
 });

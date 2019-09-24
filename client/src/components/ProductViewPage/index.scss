@@ -58,6 +58,14 @@
     color: #00a9ec;
     background-color: #fff;
   }
+  &--remove {
+    background-color: #f00;
+    border: 1px solid #f00;
+    &:hover {
+      color: #f00;
+      background-color: #fff;
+    }
+  }
 }
 
 .product-view__carousel {

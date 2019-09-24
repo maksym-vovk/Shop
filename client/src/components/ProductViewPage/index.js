@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { Lines } from 'react-preloaders';
+import { connect } from 'react-redux';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './index.scss';
+import { addToCart, removeFromCart } from '../../store';
 
-export const ProductViewPage = props => {
+const mapStateToProps = state => ({
+  cartItems: state.cart.items
+})
+
+export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCart})(props => {
   const { state } = props.location;
+  console.log(state)
   const [slides, setSlides] = useState(
     Object.entries(state.colors.bandImagesByColor)[0][1]
   );
@@ -97,7 +104,18 @@ export const ProductViewPage = props => {
             <h4 className="tabs-title">Band Colors</h4>
             <p className="color-title">{colorTitle}</p>
             <ColorTabs />
-            <button className="buy-btn">Add to cart</button>
+            {props.cartItems.find(el => el.id === state._id)
+              ? <button className="buy-btn buy-btn--remove" onClick={() => props.removeFromCart(state._id)}>Remove from cart</button>
+              : <button className="buy-btn" onClick={() => props.addToCart({
+                id: state._id,
+                name: state.filter.model,
+                details: state.description,
+                img: slides[0],
+                quantity: 1,
+                color: colorTitle,
+                price: +state.minPrice
+              })}>Add to cart</button>
+            }
           </div>
         </div>
         <div className="tech-info-wrapper">{techInfo(state.techSpecs)}</div>
@@ -105,4 +123,4 @@ export const ProductViewPage = props => {
       <Lines customLoading={loading} time={300} />
     </section>
   );
-};
+});
