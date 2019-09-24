@@ -4,7 +4,7 @@ import * as ATYPES from './constants.js';
 // state for start
 const initialState = {
   userData: {
-    authorized: false,
+    authorized: false
   },
 
   // Search
@@ -13,9 +13,14 @@ const initialState = {
   },
 
   // Fetch
-
   products: {
     cards: []
+  },
+
+  // Cart
+  cart: {
+    totalPrice: 0,
+    items: []
   }
 };
 
@@ -88,6 +93,21 @@ function fetchReducer(state = initialState.products, action) {
       };
     default:
       return state;
+  }
+}
+// Cart
+function cartReducer(state = initialState.cart, action) {
+  const { type, payload } = action;
+  switch (type) {
+    case ATYPES.ADD_TO_CART:
+      return {
+        ...state,
+        totalPrice: state.totalPrice + payload.price,
+        items: [
+          ...state.items,
+          payload
+        ]
+      }
   }
 }
 

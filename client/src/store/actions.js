@@ -49,6 +49,12 @@ export const setSearchStatus = status => ({
   payload: status
 });
 
+// Cart
+export const addToCart = itemData => ({
+  type: ATYPES.ADD_TO_CART,
+  payload: itemData
+})
+
 // Sagas
 /* eslint-disable */
 function* fetchCardsSaga() {

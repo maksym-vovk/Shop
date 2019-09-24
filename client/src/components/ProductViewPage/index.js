@@ -51,6 +51,7 @@ export const ProductViewPage = props => {
                 alt={item.name}
                 title={item.name}
                 data-name={item.dataName}
+                className={colorTitle === item.name ? 'active' : null}
               />
             </span>
           );
