@@ -44,7 +44,7 @@ export const ProductsList = connect(
       <section className="product-list-wrapper">
         <CardsList />
       </section>
-      <Lines customLoading={loading} time={300}/>
+      <Lines customLoading={loading} time={300} />
     </React.Fragment>
   );
 });
