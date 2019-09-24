@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Collapsible from 'react-collapsible';
 import { ProductsList } from '../';
+import { filterParams } from './filterParams';
 
 import './index.scss';
 
@@ -11,6 +12,7 @@ export const Filter = () => {
   const filterHandler = e => {
     const name = e.target.dataset.name;
     const text = e.target.innerText;
+    console.log(e.target);
     if (e.target.dataset.status === 'true') {
       e.target.classList.remove('active');
       setParams(() => {
@@ -27,7 +29,6 @@ export const Filter = () => {
       setParams({ ...params, [name]: text });
       e.target.dataset.status = 'true';
     }
-
     setKey(!key);
   };
 
@@ -37,9 +38,30 @@ export const Filter = () => {
     const elements = document.querySelectorAll('.filter__item');
     elements.forEach(item => {
       item.classList.remove('active');
-      item.dataset.status = 'false';
     });
   };
+
+  const filterTabs = filterParams.map((item, index) => {
+    return (
+      <article className="filter__block" key={index}>
+        <h3 className="filter__title">{item.title}</h3>
+        <ul className="filter__items-wrapper" onClick={filterHandler}>
+          {item.body.map((elem, index) => {
+            return (
+              <li
+                data-name={item.dataName}
+                data-status="false"
+                className="filter__item"
+                key={index}
+              >
+                {elem}
+              </li>
+            );
+          })}
+        </ul>
+      </article>
+    );
+  });
 
   return (
     <React.Fragment>
@@ -48,77 +70,7 @@ export const Filter = () => {
           <button className="filter__reset-btn" onClick={resetHandler}>
             Reset
           </button>
-          <article className="filter__block">
-            <h3 className="filter__title">Model</h3>
-            <ul className="filter__items-wrapper" onClick={filterHandler}>
-              <li data-name="filter.model" className="filter__item">
-                Apple Watch Origin
-              </li>
-              <li data-name="filter.model" className="filter__item">
-                Apple Watch Nike
-              </li>
-              <li data-name="filter.model" className="filter__item">
-                Apple Watch Hermes
-              </li>
-              <li data-name="filter.model" className="filter__item">
-                Apple Watch Edition
-              </li>
-            </ul>
-          </article>
-          <article className="filter__block">
-            <h3 className="filter__title">Case Material</h3>
-            <ul className="filter__items-wrapper" onClick={filterHandler}>
-              <li data-name="filter.caseMaterial" className="filter__item">
-                Aluminum
-              </li>
-              <li data-name="filter.caseMaterial" className="filter__item">
-                Stainless Steel
-              </li>
-              <li data-name="filter.caseMaterial" className="filter__item">
-                Titanium
-              </li>
-              <li data-name="filter.caseMaterial" className="filter__item">
-                Ceramic
-              </li>
-            </ul>
-          </article>
-          <article className="filter__block">
-            <h3 className="filter__title">Case Finish</h3>
-            <ul className="filter__items-wrapper" onClick={filterHandler}>
-              <li data-name="filter.caseFinish" className="filter__item">
-                Space Gray
-              </li>
-              <li data-name="filter.caseFinish" className="filter__item">
-                Silver
-              </li>
-              <li data-name="filter.caseFinish" className="filter__item">
-                Gold
-              </li>
-              <li data-name="filter.caseFinish" className="filter__item">
-                Space Black
-              </li>
-              <li data-name="filter.caseFinish" className="filter__item">
-                White
-              </li>
-            </ul>
-          </article>
-          <article className="filter__block">
-            <h3 className="filter__title">Band Type</h3>
-            <ul className="filter__items-wrapper" onClick={filterHandler}>
-              <li data-name="filter.bandType" className="filter__item">
-                Sport Band
-              </li>
-              <li data-name="filter.bandType" className="filter__item">
-                Sport Loop
-              </li>
-              <li data-name="filter.bandType" className="filter__item">
-                Leather
-              </li>
-              <li data-name="filter.bandType" className="filter__item">
-                Stainless Steel
-              </li>
-            </ul>
-          </article>
+          {filterTabs}
         </section>
       </Collapsible>
       <ProductsList params={params} key={key} />
