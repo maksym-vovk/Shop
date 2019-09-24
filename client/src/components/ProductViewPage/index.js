@@ -27,7 +27,6 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
   useEffect(() => {
     setLoading(false);
   }, []);
-
   const sliderImages = slides.map((item, key) => {
     return (
       <div key={key}>
@@ -35,10 +34,6 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
       </div>
     );
   });
-
-  const PreviewCarousel = () => {
-    return <Carousel showIndicators={false}>{sliderImages}</Carousel>;
-  };
 
   const tabClickHandler = e => {
     const images = state.colors.bandImagesByColor;
@@ -92,7 +87,9 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
         <h2 className="page-title">Apple Watch Series 5</h2>
         <div className="product-view__wrapper">
           <div className="product-view__carousel">
-            <PreviewCarousel />
+            <Carousel showIndicators={false} showThumbs={false}>
+              {sliderImages}
+            </Carousel>
           </div>
           <div className="product-view__info">
             <h3 className="category-title">{state.filter.model}</h3>

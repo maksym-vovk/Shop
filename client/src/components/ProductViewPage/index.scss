@@ -42,7 +42,7 @@
 }
 
 .buy-btn {
-  margin: 30px 0 220px;
+  margin: 30px 0;
   padding: 15px 30px;
   color: #fff;
   font-weight: bold;
@@ -70,7 +70,8 @@
 
 .product-view__carousel {
   position: relative;
-  width: 70%;
+  width: 80%;
+  margin-bottom: 50px;
 }
 
 .tech-info-wrapper {

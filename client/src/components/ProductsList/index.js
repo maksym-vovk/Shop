@@ -15,7 +15,6 @@ export const ProductsList = connect(
   mapStateToProps,
   { fetchCards }
 )(props => {
-  console.log(props);
   const { model } = props;
   const res =
     {
@@ -27,9 +26,11 @@ export const ProductsList = connect(
   const { cards, fetchCards } = props;
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    document.title = props.model
     fetchCards(res);
     setLoading(false);
-  }, [fetchCards, res]);
+  }, [fetchCards, props.model]);
+
 
   const CardsList = () => {
     return cards.length
@@ -44,7 +45,7 @@ export const ProductsList = connect(
       <section className="product-list-wrapper">
         <CardsList />
       </section>
-      <Lines customLoading={loading} time={300} />
+      <Lines customLoading={loading} time={300}/>
     </React.Fragment>
   );
 });

@@ -15,7 +15,8 @@ import {
   Cart,
   UserCabinet,
   ChangeUserInfoPage,
-  ChangeUserPasswordPage
+  ChangeUserPasswordPage,
+  Page404
 } from './components';
 import { ProductViewPage } from './components/ProductViewPage';
 import './App.scss';
@@ -46,6 +47,7 @@ function App() {
                 path="/edit_account_password"
                 component={ChangeUserPasswordPage}
               />
+              <Route component={Page404} />
             </Switch>
           </main>
           <Footer />
