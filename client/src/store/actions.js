@@ -1,6 +1,5 @@
 import * as ATYPES from './constants.js';
 import { take, put, all } from 'redux-saga/effects';
-
 import axios from 'axios';
 
 // actions
@@ -48,6 +47,11 @@ export const setSearchStatus = status => ({
   type: ATYPES.SET_SEARCH_STATUS,
   payload: status
 });
+
+export const setInputValue = value => ({
+  type: ATYPES.SET_INPUT_VALUE,
+  payload: value
+})
 
 // Cart
 export const addToCart = itemData => ({

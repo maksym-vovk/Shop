@@ -21,6 +21,10 @@ const initialState = {
   cart: {
     totalPrice: 0,
     items: []
+  },
+
+  searchInput: {
+    value: ''
   }
 };
 
@@ -77,6 +81,20 @@ function searchReducer(state = initialState.searchStatus, action) {
       return state;
   }
 }
+
+function searchInputReducer(state = initialState.searchInput, action) {
+  const { type, payload } = action;
+  switch (type) {
+    case ATYPES.SET_INPUT_VALUE:
+      return {
+        ...state,
+        value: payload
+      };
+    default:
+      return state
+  }
+}
+
 // Fetch
 function fetchReducer(state = initialState.products, action) {
   const { type, payload } = action;
@@ -127,5 +145,6 @@ export const reducer = combineReducers({
   user: userReducer,
   searchStatus: searchReducer,
   products: fetchReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  searchInputValue: searchInputReducer
 });

@@ -29,8 +29,7 @@ export const ProductsList = connect(
     document.title = props.model
     fetchCards(res);
     setLoading(false);
-  }, [fetchCards, props.model]);
-
+  }, [fetchCards, props.model, res]);
 
   const CardsList = () => {
     return cards.length
