@@ -7,7 +7,11 @@ import './style.scss';
 export const HomePage = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+<<<<<<< HEAD
     document.title = 'Apple Watch';
+=======
+    document.title = 'Apple';
+>>>>>>> development
     setLoading(false);
   }, []);
   return (
