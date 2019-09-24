@@ -1,0 +1,13 @@
+.logo {
+  display: block;
+  text-decoration: none;
+  &__image {
+    width: 33px;
+    height: auto;
+    transition: all .3s;
+    fill: #fff;
+    &:hover {
+      fill: #979797;
+    }
+  }
+}

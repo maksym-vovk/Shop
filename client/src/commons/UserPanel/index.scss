@@ -1,0 +1,58 @@
+.user-modal {
+	position: absolute;
+	top: 75px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 5px 10px #000;
+
+	&::before {
+		content: "";
+		display: inline-block;
+		position: absolute;
+		border: 10px solid transparent;
+		border-bottom-color: #000;
+		top: -20px;
+		right: 10%;
+	}
+	
+	&__link-block,
+	&__name-block,
+	&__logout-block {
+		padding: 10px;
+	}
+
+	&__name-block {
+		font-weight: bold;
+		background-color: #000;
+		color: #fff;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+	}
+
+	&__link {
+		display: block;
+		margin-bottom: 5px;
+		color: #000;
+
+		&:hover {
+			text-shadow: 0 0 10px #000;
+			color: #00f;
+		}
+	}
+
+	&__logout-block {
+		border-top: 1px solid #000;
+	}
+
+	&__logout {
+		border: none;
+		background: none;
+		cursor: pointer;
+		color: #f00;
+		text-decoration: underline;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}

@@ -1,0 +1,19 @@
+.extras {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  &__image {
+    width: 22px;
+    height: auto;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: all .3s;
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: 15;
+    &:hover {
+      fill: #979797;
+      stroke: #979797;
+    }
+  }
+}
