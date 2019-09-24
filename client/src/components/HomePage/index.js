@@ -7,6 +7,7 @@ import './style.scss';
 export const HomePage = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    document.title = 'Apple';
     setLoading(false);
   }, []);
   return (
