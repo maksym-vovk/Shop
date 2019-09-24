@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
 
 export const SearchResult = connect(mapStateToProps)((props) => {
   const { cards } = props
+
   const searchArray = []
 
   cards.map((object, index) => {
