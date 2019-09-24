@@ -14,6 +14,7 @@ export { FullCart } from './FullCart';
 export { UserCabinet } from './UserCabinet';
 export { Page404 } from './Page404';
 export { Filter } from './Filter';
+export { SearchResult } from './SearchResult';
 export {
   ChangeUserInfoPage,
   ChangeUserPasswordPage

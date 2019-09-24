@@ -16,7 +16,8 @@ import {
   UserCabinet,
   ChangeUserInfoPage,
   ChangeUserPasswordPage,
-  Page404
+  Page404,
+  SearchResult
 } from './components';
 import { ProductViewPage } from './components/ProductViewPage';
 import './App.scss';
@@ -39,6 +40,7 @@ function App() {
               <Route path="/sign_up" component={RegisterForm} />
               <Route path="/cart" component={Cart} />
               <Route path="/user_cabinet" component={UserCabinet} />
+              <Route path="/search_result" component={SearchResult} />
               <Route
                 path="/edit_account_information"
                 component={ChangeUserInfoPage}
