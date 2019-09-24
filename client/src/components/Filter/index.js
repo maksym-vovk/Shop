@@ -38,6 +38,7 @@ export const Filter = () => {
     const elements = document.querySelectorAll('.filter__item');
     elements.forEach(item => {
       item.classList.remove('active');
+      item.dataset.status = 'false';
     });
   };
 
