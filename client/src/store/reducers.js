@@ -16,6 +16,10 @@ const initialState = {
 
   products: {
     cards: []
+  },
+
+  searchInput: {
+    value: ''
   }
 };
 
@@ -72,6 +76,20 @@ function searchReducer(state = initialState.searchStatus, action) {
       return state;
   }
 }
+
+function searchInputReducer(state = initialState.searchInput, action) {
+  const { type, payload } = action;
+  switch (type) {
+    case ATYPES.SET_INPUT_VALUE:
+      return {
+        ...state,
+        value: payload
+      };
+    default:
+      return state
+  }
+}
+
 // Fetch
 function fetchReducer(state = initialState.products, action) {
   const { type, payload } = action;
@@ -95,5 +113,6 @@ export const reducer = combineReducers({
   form: reduxFormReducer, // mounted under "form"
   user: userReducer,
   searchStatus: searchReducer,
-  products: fetchReducer
+  products: fetchReducer,
+  searchInputValue: searchInputReducer
 });
