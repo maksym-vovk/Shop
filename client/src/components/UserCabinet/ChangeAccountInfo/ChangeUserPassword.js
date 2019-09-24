@@ -4,10 +4,13 @@ import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 
 import './index.scss'
-import {required, renderField, inputFocusBlur, match, minLength} from '../../ReduxForm/RegistrationForm';
+import {required, renderField, inputFocusBlur, match, minLength, onChangeTrimValue} from '../../ReduxForm/RegistrationForm';
 
 const mapStateToProps = state => ({
-  user_password: state.user.userData.password,
+  initialValues: {
+    _id: state.user.userData._id,
+    last_password: state.user.userData.password,
+  }
 });
 
 const lastPassword = props => value =>
@@ -15,7 +18,13 @@ const lastPassword = props => value =>
     ? 'Your password is invalid'
     : undefined;
 
-const EditPassword = connect(mapStateToProps)(props => {
+const notMatch = matchName => (value, allValues) =>
+  value === allValues[matchName]
+    ? `This field must be not equal to ${matchName}`
+    : undefined;
+
+const EditPassword = props => {
+  console.log(props)
   const { handleSubmit, submitting } = props;
 
   return (
@@ -24,12 +33,13 @@ const EditPassword = connect(mapStateToProps)(props => {
         <h3 className="change-information-title">Enter last password</h3>
         <Field
           type="password"
-          name="LastPassword"
+          name="Last password"
           label="Last password"
           component={renderField}
-          validate={[required('last password'), lastPassword(props.user_password)]}
+          validate={[required('last password'), lastPassword(props.initialValues.last_password)]}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
+          normalize={onChangeTrimValue}
         />
       </div>
 
@@ -40,9 +50,10 @@ const EditPassword = connect(mapStateToProps)(props => {
           name="password"
           label="Password"
           component={renderField}
-          validate={[required('Password'), minLength(6)]}
+          validate={[required('Password'), notMatch('Last password'), minLength(6)]}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
+          normalize={onChangeTrimValue}
         />
         <Field
           type="password"
@@ -52,6 +63,7 @@ const EditPassword = connect(mapStateToProps)(props => {
           validate={[required('Password again'), match('password')]}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
+          normalize={onChangeTrimValue}
         />
       </div>
       <div className="buttons-container">
@@ -67,10 +79,10 @@ const EditPassword = connect(mapStateToProps)(props => {
       </div>
     </form>
   )
-});
+};
 
-export const ChangeUserPassword = reduxForm({
+export const ChangeUserPassword = connect(mapStateToProps)(reduxForm({
   form: 'passwordEditForm',
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
-})(EditPassword);
+})(EditPassword));

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-export const UserSettings = () => {
+export const UserSettings = ({logout}) => {
   return (
     <ul className="user-settings">
       <li className="user-settings__item">
@@ -15,7 +15,7 @@ export const UserSettings = () => {
         </Link>
       </li>
       <li className="user-settings__item">
-        <Link to="/" className="user-settings__item__link user-settings__item__link--exit">
+        <Link to="/" className="user-settings__item__link user-settings__item__link--exit" onClick={logout}>
             Log out
         </Link>
       </li>

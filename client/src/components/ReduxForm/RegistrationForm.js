@@ -51,7 +51,7 @@ const asyncValidate = async(value) => {
       for (const key in res.data) {
         if (res.data[key]) {
           show = true;
-          errs[key] = 'Already registrated'
+          errs[key] = 'Already registered'
         }
       }
       if (show) { throw errs }
@@ -117,7 +117,7 @@ const RegistrationForm = props => {
           type="text"
           component={renderField}
           label="Login"
-          validate={required('Login')}
+          validate={[required('Login'), minLength(4)]}
           warn={login}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
@@ -148,7 +148,6 @@ const RegistrationForm = props => {
           type="number"
           component={renderField}
           label="Age"
-          validate={number}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
         />
@@ -195,7 +194,6 @@ const RegistrationForm = props => {
           type="text"
           component={renderField}
           label="Country"
-          validate={required('Country')}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
         />
@@ -205,7 +203,6 @@ const RegistrationForm = props => {
           type="text"
           component={renderField}
           label="City"
-          validate={required('City')}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
         />
@@ -215,7 +212,6 @@ const RegistrationForm = props => {
           type="text"
           component={renderField}
           label="Zip code"
-          validate={required('Zip code')}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
         />
@@ -225,7 +221,6 @@ const RegistrationForm = props => {
           type="text"
           component={renderField}
           label="Address"
-          validate={required('Address')}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
         />
