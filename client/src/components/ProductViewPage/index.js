@@ -13,7 +13,6 @@ const mapStateToProps = state => ({
 
 export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCart})(props => {
   const { state } = props.location;
-  console.log(state)
   const [slides, setSlides] = useState(
     Object.entries(state.colors.bandImagesByColor)[0][1]
   );
