@@ -1,13 +1,11 @@
 .product-block {
   padding-bottom: 30px;
   border-bottom: 1px solid rgba(210, 215, 211, 1);
-
 }
 
 .product {
   display: flex;
   align-items: center;
-
 
   &__item {
     width: 250px;
@@ -28,12 +26,102 @@
     font-weight: bold;
     line-height: 1.6;
   }
-
+  &__description-items {
+    display: none;
+  }
   &__details-link {
     color: #721c24;
     font-size: 16px;
     text-align: left;
     text-decoration: underline;
     border: none;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .product {
+    &__item {
+      width: 200px;
+      height: 200px;
+    }
+    &__name {
+      font-size: 21px;
+    }
+  }
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .product {
+    &__name {
+      font-size: 20px;
+    }
+    &__details-link {
+      display: none;
+    }
+    &__item {
+      width: 200px;
+      height: 200px;
+    }
+    &__description-items {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+/*
+//  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+//  ##Screen = B/w 481px to 767px
+//*/
+@media (min-width: 481px) and (max-width: 767px) {
+  .product {
+    &__name {
+      font-size: 20px;
+    }
+    &__quantity {
+      font-size: 16px;
+    }
+    &__details-link {
+      display: none;
+    }
+    &__description-items {
+      display: flex;
+      flex-direction: column;
+    }
+    &__item {
+      width: 150px;
+      height: 150px;
+    }
+  }
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {
+  .product {
+    flex-direction: column;
+    &__name {
+      font-size: 20px;
+    }
+    &__quantity {
+      font-size: 16px;
+    }
+    &__details-link {
+      display: none;
+    }
+    &__description-items {
+      display: flex;
+      flex-direction: column;
+    }
+    &__item {
+      width: 200px;
+      height: 200px;
+    }
   }
 }

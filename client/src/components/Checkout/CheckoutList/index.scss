@@ -4,3 +4,75 @@
   text-align: left;
 }
 
+.continue-button {
+  width: 270px;
+  padding: 15px 0;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  background-image: linear-gradient(156.8deg, rgba(30, 144, 231, 1) 27.1%, rgba(67, 101, 225, 1) 77.8%);
+  border-radius: 5px;
+}
+
+.continue-button-wrapper {
+  margin: 20px 0;
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .check-out-subtitle {
+    margin: 30px 0;
+    font-size: 25px;
+  }
+}
+
+///*
+//  ##Device = Tablets, Ipads (portrait)
+//  ##Screen = B/w 768px to 1024px
+//*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .check-out-subtitle {
+    margin: 30px 0;
+    font-size: 25px;
+  }
+  .continue-button {
+    text-align: center;
+  }
+  .continue-link {
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+///*
+//  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+//  ##Screen = B/w 481px to 767px
+//*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .check-out-subtitle {
+    margin: 40px 0;
+    font-size: 24px;
+  }
+  .continue-button-wrapper {
+    text-align: center;
+  }
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {
+  .check-out-subtitle {
+    margin: 30px 0;
+    font-size: 22px;
+  }
+  .continue-button {
+    font-size: 18px;
+  }
+  .continue-button-wrapper {
+    text-align: center;
+  }
+}
+

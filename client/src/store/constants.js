@@ -13,6 +13,7 @@ export const SET_CARD = 'SET_CARD';
 // Add to bag
 export const ADD_TO_BAG = 'ADD_TO_BAG';
 export const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
+export const CHANGE_TOTAL_PRICE = 'CHANGE_TOTAL_PRICE';
 
 // submit shipping details
 export const SET_SHIPPING_DETAILS_STATUS = 'SET_SHIPPING_DETAILS_STATUS';

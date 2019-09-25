@@ -26,6 +26,7 @@ const initialState = {
   cartItems: {
     totalItems: 3,
     totalPrice: 1500,
+    editTotalPrice: false,
     grandTotalPrice: 2000,
     items: [
       {
@@ -37,7 +38,8 @@ const initialState = {
         color: 'blue',
         // size: 40,
         // connectivity: 'GPS',
-        price: 400
+        price: 400,
+        totalItemPrice: 400
       },
       {
         id: 2,
@@ -48,7 +50,8 @@ const initialState = {
         color: 'red',
         // size: 40,
         // connectivity: 'GPS',
-        price: 500
+        price: 500,
+        totalItemPrice: 500
       },
       {
         id: 3,
@@ -59,14 +62,15 @@ const initialState = {
         color: 'yellow',
         // size: 40,
         // connectivity: 'GPS',
-        price: 600
+        price: 600,
+        totalItemPrice: 600
       }
     ]
   }
 };
 
 function userReducer(state = initialState.userData, action) {
-  const { type, payload } = action;
+  const {type, payload} = action;
   switch (type) {
     case ATYPES.SET_AUTHORIZED:
       return {
@@ -119,6 +123,7 @@ function fetchReducer(state = initialState.products, action) {
 // Add_to_bag
 function addToBagReducer(state = initialState.cartItems, action) {
   const {type, payload} = action;
+
   switch (type) {
     case ATYPES.ADD_TO_BAG:
       return {
@@ -126,13 +131,21 @@ function addToBagReducer(state = initialState.cartItems, action) {
         items: payload
       };
     case ATYPES.CHANGE_QUANTITY:
-      state.items.forEach((element, index) => {
-        if (element.id === payload.id) {
-          element.quantity = payload.quantity
-        }
-      });
       return {
-        ...state
+        ...state,
+        items: state.items.map(item => item.id === payload.id ? {
+          ...item,
+          quantity: payload.newQuantity,
+          totalItemPrice: payload.newTotalItemPrice
+        } : {...item}
+        ),
+        editTotalPrice: true
+      };
+    case ATYPES.CHANGE_TOTAL_PRICE:
+      return {
+        ...state,
+        totalPrice: payload.totalPrice,
+        editTotalPrice: false,
       };
     default:
       return state

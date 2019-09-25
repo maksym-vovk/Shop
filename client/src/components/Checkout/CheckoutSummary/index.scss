@@ -4,6 +4,7 @@
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 10;
   display: flex;
   justify-content: flex-end;
   height: 100%;
@@ -101,6 +102,42 @@
     padding: 30px 0;
     color: darkgrey;
     border-bottom: 1px solid rgba(210, 215, 211, 1);
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .summary {
+    width: 40vw;
+    .total {
+      &__title {
+        margin-top: 30px;
+      }
+    }
+    .details {
+      margin-top: 0;
+
+      &__item {
+        padding: 20px 0;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .summary {
+    width: 40vw;
+    .total {
+      &__title {
+        margin-top: 30px;
+      }
+    }
+    .details {
+      margin-top: 0;
+
+      &__item {
+        padding: 20px 0;
+      }
+    }
   }
 }
 

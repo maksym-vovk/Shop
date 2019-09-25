@@ -35,7 +35,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <div className="App">
-          <Header />
+          {/*<Header />*/}
 
           <main className="main-content">
             <Switch>

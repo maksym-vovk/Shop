@@ -4,8 +4,6 @@ import {CheckoutList} from '../CheckoutList';
 // import {DeliveryMethod} from "../DeliveryMethod";
 import {connect} from 'react-redux'
 
-// styles
-import './index.scss';
 
 const mapStateToProps = state => {
   return {

@@ -15,3 +15,45 @@
     height: 300px;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .purchase {
+    &__logo {
+      width: 250px;
+      height: 250px;
+    }
+    &__text {
+      font-size: 26px;
+    }
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .purchase {
+    &__block {
+      flex-direction: column;
+    }
+    &__logo {
+      width: 200px;
+      height: 200px;
+    }
+    &__text {
+      font-size: 24px;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .purchase {
+    &__block {
+      flex-direction: column;
+    }
+    &__logo {
+      width: 150px;
+      height: 150px;
+    }
+    &__text {
+      font-size: 22px;
+    }
+  }
+}
