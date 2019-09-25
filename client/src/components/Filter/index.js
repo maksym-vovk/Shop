@@ -12,7 +12,7 @@ export const Filter = () => {
   const filterHandler = e => {
     const name = e.target.dataset.name;
     const text = e.target.innerText;
-    console.log(e.target);
+
     if (e.target.dataset.status === 'true') {
       e.target.classList.remove('active');
       setParams(() => {
