@@ -32,6 +32,7 @@ export const ProductsList = connect(
     setLoading(false);
   }, [fetchCards, props.model]);
   /* eslint-enable */
+
   const CardsList = () => {
     return cards.length
       ? cards.map(item => {
