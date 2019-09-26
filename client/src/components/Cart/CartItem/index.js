@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import './index.scss'
 
 export const CartItem = (props) => {
-    const {quantity, color, connectivity, size, image, price, totalItemPrice, name, details, id, changeQuantity, changeTotalItems} = props;
+    const {quantity, color, connectivity, size, image, price, totalItemPrice, name, details, id, changeQuantity} = props;
     let [count, setCount] = useState(quantity);
     let [totalPrice, setTotalPrice] = useState(totalItemPrice);
 
