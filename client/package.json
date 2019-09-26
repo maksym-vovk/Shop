@@ -32,7 +32,7 @@
     "eject": "react-scripts eject",
     "stylelint-dev": "stylelint src/**/*.scss --fix --cache --cache-location .stylelintcache",
     "stylelint-build": "stylelint src/**/*.scss --fix",
-    "eslint": "eslint src/**/*.js --fix",
+    "eslint": "eslint src/**/*.js --fix --fix-type [layout]",
     "watch-sass-js": "npm-watch"
   },
   "eslintConfig": {

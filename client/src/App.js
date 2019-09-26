@@ -40,7 +40,7 @@ function App() {
               <Route path="/sign_up" component={RegisterForm} />
               <Route path="/cart" component={Cart} />
               <Route path="/user_cabinet" component={UserCabinet} />
-              <Route path="/search_result" component={SearchResult} />
+              <Route path="/search_result" component={SearchResult}/>
               <Route
                 path="/edit_account_information"
                 component={ChangeUserInfoPage}
