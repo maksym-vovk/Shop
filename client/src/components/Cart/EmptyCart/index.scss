@@ -1,0 +1,44 @@
+.empty-cart {
+  &__text {
+    margin: 20px 0;
+  }
+
+  &__button {
+    align-self: flex-start;
+    width: 260px;
+    margin-bottom: 20px;
+    padding: 15px 0;
+    color: #337DFF;
+    font-size: 18px;
+    background-color: rgba(226,226,226,.7);
+    border-radius: 5px;
+  }
+  &__image {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .empty-cart {
+    height: fit-content;
+    &__text {
+      font-size: 22px;
+    }
+    &__button {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .empty-cart {
+    height: fit-content;
+    &__text {
+      font-size: 22px;
+    }
+    &__button {
+      font-size: 16px;
+    }
+  }
+}

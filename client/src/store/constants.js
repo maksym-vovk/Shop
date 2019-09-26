@@ -12,9 +12,19 @@ export const SET_CARDS = 'SET_CARDS';
 export const FETCH_CARD = 'FETCH_CARD';
 export const SET_CARD = 'SET_CARD';
 
+// Add to bag
+export const ADD_TO_BAG = 'ADD_TO_BAG';
+export const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
+export const CHANGE_TOTAL_PRICE = 'CHANGE_TOTAL_PRICE';
+export const CHANGE_TOTAL_ITEMS = 'CHANGE_TOTAL_ITEMS';
+
+// submit shipping details
+export const SET_SHIPPING_DETAILS_STATUS = 'SET_SHIPPING_DETAILS_STATUS';
+
 // User
 export const SET_USER = 'SET_USER';
 export const UPDATE_USER = 'UPDATE_USER';
+
 export const UPDATE_USER_PASSWORD = 'UPDATE_USER_PASSWORD';
 export const SET_MESSAGE_USER = 'UPDATE_MESSAGE_USER';
 
