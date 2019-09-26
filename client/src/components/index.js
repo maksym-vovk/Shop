@@ -8,19 +8,6 @@ export { Nike } from './Nike';
 export { Hermes } from './Hermes';
 export { Edition } from './Edition';
 export { ProductsList } from './ProductsList';
-<<<<<<< HEAD
-export { Cart } from './Cart';
-export { EmptyCart } from './EmptyCart';
-export { FullCart } from './FullCart';
-export { UserCabinet } from './UserCabinet';
-export { Page404 } from './Page404';
-export { Filter } from './Filter';
-export { SearchResult } from './SearchResult';
-export {
-  ChangeUserInfoPage,
-  ChangeUserPasswordPage
-} from './UserCabinet/ChangeAccountInfo';
-=======
 
 export {CartPage} from './Cart/CartPage';
 export {EmptyCart} from './Cart/EmptyCart';
@@ -36,8 +23,7 @@ export { CheckoutTitle } from './Checkout/CheckoutTitle';
 export { CheckoutItem } from './Checkout/CheckoutItem';
 export {CheckoutPurchased} from './Checkout/CheckoutPurchased';
 // export {DeliveryMethod} from './Checkout/DeliveryMethod';
-
+export { Filter } from './Filter';
 export {Page404} from './Page404';
 export {ChangeUserInfoPage, ChangeUserPasswordPage} from './UserCabinet/ChangeAccountInfo';
 export {SearchResult} from './SearchResult'
->>>>>>> development
