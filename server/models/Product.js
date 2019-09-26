@@ -26,4 +26,4 @@ const schema = new Schema({
   status: Boolean
 });
 
-module.exports = model('Product', schema);
+module.exports = model('Product', schema.index({'$**' : 'text'}));
