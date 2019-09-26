@@ -125,11 +125,6 @@ function addToBagReducer(state = initialState.cartItems, action) {
   const {type, payload} = action;
 
   switch (type) {
-    case ATYPES.ADD_TO_BAG:
-      return {
-        ...state,
-        items: payload
-      };
     case ATYPES.CHANGE_QUANTITY:
       return {
         ...state,
@@ -139,13 +134,16 @@ function addToBagReducer(state = initialState.cartItems, action) {
           totalItemPrice: payload.newTotalItemPrice
         } : {...item}
         ),
-        editTotalPrice: true
       };
     case ATYPES.CHANGE_TOTAL_PRICE:
       return {
         ...state,
         totalPrice: payload.totalPrice,
-        editTotalPrice: false,
+      };
+    case ATYPES.CHANGE_TOTAL_ITEMS:
+      return {
+        ...state,
+        totalItems: payload.totalItems,
       };
     default:
       return state

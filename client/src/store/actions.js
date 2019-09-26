@@ -59,6 +59,13 @@ export const changeTotalPrice = (totalPrice) => ({
   }
 });
 
+export const changeTotalItems = (totalItems) => ({
+  type: ATYPES.CHANGE_TOTAL_ITEMS,
+  payload: {
+    totalItems,
+  }
+});
+
 // Sagas
 /* eslint-disable */
 function* fetchCardsSaga() {

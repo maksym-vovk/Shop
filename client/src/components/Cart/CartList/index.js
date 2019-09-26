@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {CartItem} from '../CartItem';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {changeQuantity, changeTotalPrice, addToBag} from '../../../store/actions';
+import {changeQuantity, changeTotalPrice, changeTotalItems} from '../../../store/actions';
 
 // styles
 import './index.scss'
@@ -14,22 +14,28 @@ const mapStateToProps = state => {
     }
 };
 
-export const CartList = connect(mapStateToProps, {changeQuantity, changeTotalPrice})(props => {
+export const CartList = connect(mapStateToProps, {changeQuantity, changeTotalPrice, changeTotalItems})(props => {
 
-    const {cartItems, changeTotalPrice, editTotalPrice, changeQuantity} = props;
+    const {cartItems, changeTotalPrice, changeQuantity, changeTotalItems} = props;
 
     let total = 0;
     cartItems.forEach(item => total += item.totalItemPrice);
 
     useEffect(() => {
-        console.log("useEff!!!!");
         changeTotalPrice(total)
-    }, [editTotalPrice]);
+    }, [cartItems]);
+
+
+    const changeTotalQuantity =()=> {
+        let totalItems = 0;
+        cartItems.forEach(item => totalItems += item.quantity);
+        changeTotalItems(totalItems);
+    };
 
     const List = cartItems.map((item, index) => {
-        // const pathname = "/cart-items/" + index;
+        // const pathname = "/cart/" + index;
         // return  (<Link to={pathname}  key={item.id}>
-        //     <CartItem quantity={itemsQuantity} />
+        //     <CartItem />
         // </Link>)
 
         return (
@@ -50,6 +56,7 @@ export const CartList = connect(mapStateToProps, {changeQuantity, changeTotalPri
             />
         )
     });
+
     return (
         <div className="cart-list">
             <div className="cart-list__title-block">
@@ -66,7 +73,7 @@ export const CartList = connect(mapStateToProps, {changeQuantity, changeTotalPri
             </div>
             <div className="cart-list__button-wrapper">
                 <Link to="/checkout" className="cart-list__link">
-                    <button className="cart-list__button">Check Out</button>
+                    <button onClick={()=>changeTotalQuantity()} className="cart-list__button">Check Out</button>
                 </Link>
             </div>
         </div>
