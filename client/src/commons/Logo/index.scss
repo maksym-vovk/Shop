@@ -1,20 +1,19 @@
-@media (max-width: 1024px) {
-  .logo {
-    display: block;
-    text-decoration: none;
+.logo {
+  display: block;
+  text-decoration: none;
 
-    &__image {
-      width: 33px;
-      height: auto;
-      transition: all .3s;
-      fill: #fff;
+  &__image {
+    width: 33px;
+    height: auto;
+    transition: all .3s;
+    fill: #fff;
 
-      &:hover {
-        fill: #979797;
-      }
+    &:hover {
+      fill: #979797;
     }
   }
 }
+
 
 
 @media (min-width: 481px) and (max-width: 767px) {
