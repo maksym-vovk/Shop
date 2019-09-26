@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Header, Footer } from './commons';
+import {Header, Footer, HamburgerMenu, SecondaryMenu} from './commons';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import store from './store';
@@ -26,6 +26,7 @@ function App() {
       <Router>
         <div className="App">
           <Header />
+          <SecondaryMenu/>
           <main className="main-content">
             <Switch>
               <Route exact path="/" component={HomePage} />

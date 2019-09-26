@@ -1,0 +1,38 @@
+@media (max-width: 1024px) {
+  .secondary-menu {
+    display: none;
+  }
+
+}
+
+@media (max-width: 767px) {
+  .secondary-menu {
+    position: absolute;
+    top: 65px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: black;
+
+    &__item {
+      margin: 0 auto;
+      padding: 15px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: all .3s;
+
+      &:hover {
+        color: #979797;
+      }
+
+      &.active {
+        color: #979797;
+      }
+    }
+  }
+}
+
+.not-active {
+  display: none;
+}

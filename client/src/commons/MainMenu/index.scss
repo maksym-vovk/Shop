@@ -1,19 +1,31 @@
-.main-menu {
-  display: flex;
-  height: 7vh;
-  &__item {
+@media (min-width: 767px) {
+  .main-menu {
     display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 0 20px;
-    color: #fff;
-    text-decoration: none;
-    transition: all .3s;
-    &:hover {
-      color: #979797;
+    height: 65px;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: all .3s;
+
+      &:hover {
+        color: #979797;
+      }
+
+      &.active {
+        color: #979797;
+      }
     }
-    &.active {
-      color: #979797;
-    }
+  }
+}
+
+
+@media (max-width: 767px) {
+  .main-menu {
+    display: none;
   }
 }
