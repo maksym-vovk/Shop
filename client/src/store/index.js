@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { reducer } from './reducers.js';
 import { rootSaga } from './actions.js';
+
 // getters
 export const getAuthState = state => {
   return state.authorized;

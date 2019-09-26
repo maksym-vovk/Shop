@@ -4,6 +4,7 @@ import { Header, Footer } from './commons';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import store from './store';
+
 import {
   HomePage,
   All,
@@ -12,14 +13,23 @@ import {
   Nike,
   Edition,
   RegisterForm,
-  Cart,
+  CartPage,
   UserCabinet,
+
+  CheckoutPage,
+  ShippingDetailsForm,
+  CheckoutItem,
+  CheckoutPurchased,
+
   ChangeUserInfoPage,
   ChangeUserPasswordPage,
   PaymentStory,
-  Page404
+  Page404,
+  SearchResult
 } from './components';
+
 import { ProductViewPage } from './components/ProductViewPage';
+
 import './App.scss';
 
 function App() {
@@ -28,6 +38,7 @@ function App() {
       <Router>
         <div className="App">
           <Header />
+
           <main className="main-content">
             <Switch>
               <Route exact path="/" component={HomePage} />
@@ -38,8 +49,18 @@ function App() {
               <Route path="/edition" component={Edition} />
               <Route path="/all/:id" component={ProductViewPage} />
               <Route path="/sign_up" component={RegisterForm} />
-              <Route path="/cart" component={Cart} />
+              <Route path="/cart" component={CartPage} />
               <Route path="/user_cabinet" component={UserCabinet} />
+
+              <Route exact path="/checkout" component={CheckoutPage} />
+              <Route path="/checkout/shipping" component={ShippingDetailsForm} />
+              <Route path="/checkout/purchased" component={CheckoutPurchased} />
+              <Route path="/checkout/checkout_item" component={CheckoutItem} />
+
+              <Route path="/edit_account_information" component={ChangeUserInfoPage} />
+              <Route path="/edit_account_password" component={ChangeUserPasswordPage} />
+
+              <Route path="/search_result" component={SearchResult}/>
               <Route
                 path="/edit_account_information"
                 component={ChangeUserInfoPage}
@@ -50,6 +71,7 @@ function App() {
               />
               <Route path="/user_payment_story" component={PaymentStory} />
               <Route component={Page404} />
+
             </Switch>
           </main>
           <Footer />
