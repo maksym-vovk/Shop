@@ -4,7 +4,7 @@ import * as ATYPES from './constants.js';
 // state for start
 const initialState = {
   userData: {
-    authorized: false,
+    authorized: false
   },
 
   // Search
@@ -13,9 +13,14 @@ const initialState = {
   },
 
   // Fetch
-
   products: {
     cards: []
+  },
+
+  // Cart
+  cart: {
+    totalPrice: 0,
+    items: []
   },
 
   searchInput: {
@@ -108,11 +113,38 @@ function fetchReducer(state = initialState.products, action) {
       return state;
   }
 }
+// Cart
+/* eslint-disable */
+function cartReducer(state = initialState.cart, action) {
+  const { type, payload } = action;
+  switch (type) {
+    case ATYPES.ADD_TO_CART:
+      return {
+        ...state,
+        totalPrice: state.totalPrice + payload.price,
+        items: [
+          ...state.items,
+          payload
+        ]
+      }
+    case ATYPES.REMOVE_FROM_CART:
+      const item = state.items.find(el => el.id === payload)
+      return {
+        ...state,
+        totalPrice: state.totalPrice - item.price * item.quantity,
+        items: state.items.filter(el => el.id !== payload)
+      }
+    default:
+      return state;
+  }
+}
+/* eslint-enable */
 
 export const reducer = combineReducers({
   form: reduxFormReducer, // mounted under "form"
   user: userReducer,
   searchStatus: searchReducer,
   products: fetchReducer,
+  cart: cartReducer,
   searchInputValue: searchInputReducer
 });

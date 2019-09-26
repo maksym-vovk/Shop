@@ -25,11 +25,13 @@ export const ProductsList = connect(
 
   const { cards, fetchCards } = props;
   const [loading, setLoading] = useState(true);
+  /* eslint-disable */
   useEffect(() => {
     document.title = props.model
     fetchCards(res);
     setLoading(false);
-  }, [fetchCards, props.model, res]);
+  }, [fetchCards, props.model]);
+  /* eslint-enable */
 
   const CardsList = () => {
     return cards.length
