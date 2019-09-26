@@ -2,11 +2,11 @@ export { HomePageSlider } from './Slider';
 export { ProductCard } from './ProductCard';
 export { HomePage } from './HomePage';
 export { RegisterForm } from './ReduxForm';
-export { IMac } from './IMac';
-export { IPad } from './IPad';
-export { IPhone } from './IPhone';
-export { MacBook } from './MacBook';
-export { Watch } from './Watch';
+export { All } from './All';
+export { Origin } from './Origin';
+export { Nike } from './Nike';
+export { Hermes } from './Hermes';
+export { Edition } from './Edition';
 export { ProductsList } from './ProductsList';
 
 export {CartPage} from './Cart/CartPage';
@@ -24,4 +24,6 @@ export { CheckoutItem } from './Checkout/CheckoutItem';
 export {CheckoutPurchased} from './Checkout/CheckoutPurchased';
 // export {DeliveryMethod} from './Checkout/DeliveryMethod';
 
+export {Page404} from './Page404';
 export {ChangeUserInfoPage, ChangeUserPasswordPage} from './UserCabinet/ChangeAccountInfo';
+export {SearchResult} from './SearchResult'

@@ -1,5 +1,6 @@
 .product-list-wrapper{
     display: grid;
     grid-gap:10px;
-    grid-template-columns: repeat(4, 1fr) 
+    grid-template-columns: repeat(4, 1fr);
+    padding-bottom: 30px;
 }

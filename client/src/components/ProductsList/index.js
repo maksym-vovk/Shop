@@ -12,42 +12,41 @@ const mapStateToProps = state => {
 };
 
 export const ProductsList = connect(
-  // const res = {
-  //   params: {
-  //     // 'filter.category': 'watch',
-  //     // 'filter.size': '40mm',
-  //     // 'filter.bandType': 'Sport',
-  //     // 'filter.bandColor': 'white',
-  //     // 'filter.caseMaterial': 'Aluminium',
-  //   }
-  // };
   mapStateToProps,
   { fetchCards }
 )(props => {
+  const { model } = props;
+  const res =
+    {
+      params: {
+        'filter.model': model
+      }
+    } || {};
+
   const { cards, fetchCards } = props;
   const [loading, setLoading] = useState(true);
+  /* eslint-disable */
   useEffect(() => {
-    fetchCards();
+    document.title = props.model
+    fetchCards(res);
     setLoading(false);
-  }, [fetchCards]);
-
-  // console.log(props);
-  // console.log('cards', cards);
+  }, [fetchCards, props.model]);
+  /* eslint-enable */
 
   const CardsList = () => {
     return cards.length
       ? cards.map(item => {
-        return <ProductCard state={item} key={item._id}/>;
+        return <ProductCard state={item} key={item._id} />;
       })
       : null;
   };
 
   return (
     <React.Fragment>
-      <section className="product-list-wrapper container">
+      <section className="product-list-wrapper">
         <CardsList />
       </section>
-      <Lines customLoading={loading} time={500} />;
+      <Lines customLoading={loading} time={300}/>
     </React.Fragment>
   );
 });

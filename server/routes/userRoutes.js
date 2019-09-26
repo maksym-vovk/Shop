@@ -26,11 +26,13 @@ router.post('/find_user',  async (req, res) => {
 router.put('/customers/:id', async (req, res) => {
   const user = req.body;
 
-    await User.updateOne({_id: req.params.id}, user,
-    (err) => {
-    if (err) res.send({error_message: 'Failed try later'});
-    res.send({updated: true, user: user});
-    })
+  try {
+    const dataUpdated = await User.findOneAndUpdate({_id: req.params.id}, user, {new: true});
+    res.send({ user: dataUpdated, updated: true });
+  } catch (e) {
+    res.send({updated: false});
+  }
+
 });
 
 router.post('/customers', async (req, res) => {

@@ -7,11 +7,11 @@ import store from './store';
 
 import {
   HomePage,
-  IMac,
-  MacBook,
-  IPad,
-  IPhone,
-  Watch,
+  All,
+  Hermes,
+  Origin,
+  Nike,
+  Edition,
   RegisterForm,
   CartPage,
   UserCabinet,
@@ -23,7 +23,8 @@ import {
 
   ChangeUserInfoPage,
   ChangeUserPasswordPage,
-
+  Page404,
+  SearchResult
 } from './components';
 
 import { ProductViewPage } from './components/ProductViewPage';
@@ -40,12 +41,12 @@ function App() {
           <main className="main-content">
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route path="/imac" component={IMac} />
-              <Route path="/macbook" component={MacBook} />
-              <Route path="/ipad" component={IPad} />
-              <Route path="/iphone" component={IPhone} />
-              <Route exact path="/watch" component={Watch} />
-              <Route path="/watch/:id" component={ProductViewPage} />
+              <Route exact path="/all" component={All} />
+              <Route path="/origin" component={Origin} />
+              <Route path="/nike" component={Nike} />
+              <Route path="/hermes" component={Hermes} />
+              <Route path="/edition" component={Edition} />
+              <Route path="/all/:id" component={ProductViewPage} />
               <Route path="/sign_up" component={RegisterForm} />
               <Route path="/cart" component={CartPage} />
               <Route path="/user_cabinet" component={UserCabinet} />
@@ -57,6 +58,17 @@ function App() {
 
               <Route path="/edit_account_information" component={ChangeUserInfoPage} />
               <Route path="/edit_account_password" component={ChangeUserPasswordPage} />
+
+              <Route path="/search_result" component={SearchResult}/>
+              <Route
+                path="/edit_account_information"
+                component={ChangeUserInfoPage}
+              />
+              <Route
+                path="/edit_account_password"
+                component={ChangeUserPasswordPage}
+              />
+              <Route component={Page404} />
 
             </Switch>
           </main>

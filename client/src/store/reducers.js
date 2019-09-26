@@ -13,10 +13,10 @@ const initialState = {
   },
 
   // Fetch
-
   products: {
     cards: []
   },
+
   // Shipping details status
   shippingDetailsStatus: {
     status: false
@@ -66,6 +66,16 @@ const initialState = {
         totalItemPrice: 600
       }
     ]
+  },
+
+  // Cart
+  cart: {
+    totalPrice: 0,
+    items: []
+  },
+
+  searchInput: {
+    value: ''
   }
 };
 
@@ -77,10 +87,33 @@ function userReducer(state = initialState.userData, action) {
         ...state,
         authorized: payload
       };
+    case ATYPES.SET_MESSAGE_USER:
+      return {
+        ...state,
+        update_message: payload
+      };
+    case ATYPES.UPDATE_USER:
+      return {
+        ...state,
+        update_message: payload.update_message,
+        userData: payload.user ? payload.user : state.userData
+      };
+    case ATYPES.UPDATE_USER_PASSWORD:
+      return {
+        ...state,
+        update_message: payload.update_message,
+        userData: payload.user ? payload.user : state.userData
+      };
     case ATYPES.SET_USER:
       return {
         ...state,
         userData: payload
+      };
+    case ATYPES.LOGOUT_USER:
+      return {
+        ...state,
+        authorized: false,
+        userData: null
       };
     default:
       return state;
@@ -98,6 +131,19 @@ function searchReducer(state = initialState.searchStatus, action) {
       };
     default:
       return state;
+  }
+}
+
+function searchInputReducer(state = initialState.searchInput, action) {
+  const { type, payload } = action;
+  switch (type) {
+    case ATYPES.SET_INPUT_VALUE:
+      return {
+        ...state,
+        value: payload
+      };
+    default:
+      return state
   }
 }
 
@@ -119,6 +165,32 @@ function fetchReducer(state = initialState.products, action) {
       return state;
   }
 }
+// Cart
+/* eslint-disable */
+function cartReducer(state = initialState.cart, action) {
+  const { type, payload } = action;
+  switch (type) {
+    case ATYPES.ADD_TO_CART:
+      return {
+        ...state,
+        totalPrice: state.totalPrice + payload.price,
+        items: [
+          ...state.items,
+          payload
+        ]
+      }
+    case ATYPES.REMOVE_FROM_CART:
+      const item = state.items.find(el => el.id === payload)
+      return {
+        ...state,
+        totalPrice: state.totalPrice - item.price * item.quantity,
+        items: state.items.filter(el => el.id !== payload)
+      }
+    default:
+      return state;
+  }
+}
+/* eslint-enable */
 
 // Add_to_bag
 function addToBagReducer(state = initialState.cartItems, action) {
@@ -170,5 +242,7 @@ export const reducer = combineReducers({
   searchStatus: searchReducer,
   products: fetchReducer,
   shippingDetailsStatus: shippingDetailsReducer,
-  addToBag: addToBagReducer
+  addToBag: addToBagReducer,
+  cart: cartReducer,
+  searchInputValue: searchInputReducer
 });

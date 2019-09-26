@@ -4,13 +4,11 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 
 export const ProductCard = props => {
-  // console.log('props', props.state);
-  const state = props.state;
+  const { state } = props;
   return (
-    <Link to={`/watch/${state._id}`}>
+    <Link to={{ pathname: `/all/${state._id}`, state }}>
       <article className="product-card">
         <div className="product-card__image-wrapper">
-          {/* {console.log(Object.entries(state.colors.bandImagesByColor)[0][1][0])} */}
           <img
             className="product-card__image"
             src={Object.entries(state.colors.bandImagesByColor)[0][1][0]}
@@ -27,7 +25,7 @@ export const ProductCard = props => {
           {state.minPrice}
         </h3>
         <div className="product-card__colors-wrapper">
-          {state.colors.allColors.slice(0, 5).map((item, index) => {
+          {state.colors.allColors.slice(0, 4).map((item, index) => {
             return (
               <img
                 key={index}
