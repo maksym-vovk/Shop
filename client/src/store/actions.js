@@ -53,6 +53,17 @@ export const setInputValue = value => ({
   payload: value
 })
 
+// Cart
+export const addToCart = itemData => ({
+  type: ATYPES.ADD_TO_CART,
+  payload: itemData
+})
+
+export const removeFromCart = id => ({
+  type: ATYPES.REMOVE_FROM_CART,
+  payload: id
+})
+
 // Sagas
 /* eslint-disable */
 function* fetchCardsSaga() {
