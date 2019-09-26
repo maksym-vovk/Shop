@@ -1,4 +1,5 @@
 import * as ATYPES from './constants.js';
+
 import { take, put, all } from 'redux-saga/effects';
 
 import axios from 'axios';
@@ -49,6 +50,57 @@ export const setSearchStatus = status => ({
   payload: status
 });
 
+// shipping details
+export const setShippingDetails = status => ({
+  type: ATYPES.SET_SHIPPING_DETAILS_STATUS,
+  payload: status
+});
+
+// add-to-basket
+export const addToBag = items => ({
+  type: ATYPES.ADD_TO_BAG,
+  payload: items
+});
+
+export const changeQuantity = (newQuantity, newTotalItemPrice, id) => ({
+  type: ATYPES.CHANGE_QUANTITY,
+  payload: {
+    id,
+    newQuantity,
+    newTotalItemPrice
+  }
+});
+
+export const changeTotalPrice = (totalPrice) => ({
+  type: ATYPES.CHANGE_TOTAL_PRICE,
+  payload: {
+    totalPrice,
+  }
+});
+
+export const changeTotalItems = (totalItems) => ({
+  type: ATYPES.CHANGE_TOTAL_ITEMS,
+  payload: {
+    totalItems,
+  }
+});
+
+export const setInputValue = value => ({
+  type: ATYPES.SET_INPUT_VALUE,
+  payload: value
+})
+
+// Cart
+export const addToCart = itemData => ({
+  type: ATYPES.ADD_TO_CART,
+  payload: itemData
+})
+
+export const removeFromCart = id => ({
+  type: ATYPES.REMOVE_FROM_CART,
+  payload: id
+})
+
 // Sagas
 /* eslint-disable */
 function* fetchCardsSaga() {
@@ -63,14 +115,14 @@ function* fetchCardsSaga() {
 }
 
 function* fetchCardSaga() {
-  while (true) {
-    const { id } = yield take(ATYPES.FETCH_CARD);
-    const response = yield axios.get('/cards/' + id);
-    yield put({
-      type: ATYPES.SET_CARD,
-      payload: response.data
-    });
-  }
+    while (true) {
+        const {id} = yield take(ATYPES.FETCH_CARD);
+        const response = yield axios.get('/cards/' + id);
+        yield put({
+            type: ATYPES.SET_CARD,
+            payload: response.data
+        });
+    }
 }
 
 function* updateUserSaga() {
@@ -112,4 +164,5 @@ function* updateUserPasswordSaga() {
 export function* rootSaga() {
   yield all([fetchCardsSaga(), fetchCardSaga(), updateUserSaga(), updateUserPasswordSaga()]);
 }
+
 /* eslint-enable */

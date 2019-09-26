@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Login } from '../';
+
 import './index.scss';
 
 export const Auth = () => {

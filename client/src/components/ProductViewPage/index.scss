@@ -42,7 +42,7 @@
 }
 
 .buy-btn {
-  margin: 30px 0 220px;
+  margin: 30px 0;
   padding: 15px 30px;
   color: #fff;
   font-weight: bold;
@@ -58,11 +58,20 @@
     color: #00a9ec;
     background-color: #fff;
   }
+  &--remove {
+    background-color: #f00;
+    border: 1px solid #f00;
+    &:hover {
+      color: #f00;
+      background-color: #fff;
+    }
+  }
 }
 
 .product-view__carousel {
   position: relative;
-  width: 70%;
+  width: 80%;
+  margin-bottom: 50px;
 }
 
 .tech-info-wrapper {
@@ -98,4 +107,9 @@
 
 .carousel .thumb {
   width: 20%;
+}
+
+.tabs .active {
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px #09a;
 }
