@@ -8,6 +8,7 @@ import './index.scss';
 export const Filter = () => {
   const [params, setParams] = useState({});
   const [key, setKey] = useState(true);
+  const res = { params };
 
   const filterHandler = e => {
     const name = e.target.dataset.name;
@@ -74,7 +75,7 @@ export const Filter = () => {
           {filterTabs}
         </section>
       </Collapsible>
-      <ProductsList params={params} key={key} />
+      <ProductsList params={res} key={key} />
     </React.Fragment>
   );
 };

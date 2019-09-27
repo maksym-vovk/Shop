@@ -24,6 +24,7 @@ const schema = new Schema({
   techSpecs: {},
   warehouseCount: Number,
   status: Boolean
-});
+}).index({'$**' : 'text'})
 
-module.exports = model('Product', schema.index({'$**' : 'text'}));
+
+module.exports = model('Product', schema);
