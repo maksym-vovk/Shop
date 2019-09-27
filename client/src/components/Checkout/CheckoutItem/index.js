@@ -21,15 +21,15 @@ export const CheckoutItem = ({data}) => {
       }
       <div className="product">
         <div className="product__item">
-          <img className="product__image" src={data.image} alt="watch"/>
+          <img className="product__image" src={data.img} alt="watch"/>
         </div>
         <div className="product__description">
-            <p className="product__name">{data.name}</p>
-            <span className="product__quantity">Quantity: {data.quantity}</span>
-            <div className="product__description-items">
-                <span className="product__description-item">{data.details}</span>
-                <span className="product__description-item">Color: {data.color}</span>
-            </div>
+          <p className="product__name">{data.name}</p>
+          <span className="product__quantity">Quantity: {data.quantity}</span>
+          <div className="product__description-items">
+            <span className="product__description-item">{data.details}</span>
+            <span className="product__description-item">Color: {data.color}</span>
+          </div>
           <button onClick={() => { setProductDetails(true) }} className="product__details-link">View details</button>
         </div>
       </div>

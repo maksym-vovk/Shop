@@ -7,10 +7,10 @@ import submitShippingDetails from './submitShippingDetails';
 
 const mapStateToProps = state => ({
   shippingDetails: state.shippingDetailsStatus.status,
-  checkoutItems: state.addToBag.items,
-  checkoutTotalPrice: state.addToBag.totalPrice,
-  checkoutTotalItems: state.addToBag.totalItems,
-  checkoutGrandTotalPrice: state.addToBag.grandTotalPrice
+  checkoutItems: state.cart.items,
+  checkoutTotalPrice: state.cart.totalPrice,
+  checkoutTotalItems: state.cart.totalItems,
+  checkoutGrandTotalPrice: state.cart.grandTotalPrice
 });
 
 export const ShippingDetailsForm = connect(mapStateToProps)(({checkoutTotalPrice, checkoutItems, checkoutTotalItems, checkoutGrandTotalPrice, shippingDetails}) => {
