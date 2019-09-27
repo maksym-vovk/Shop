@@ -36,8 +36,6 @@ const initialState = {
         image: '/static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Alaskan_Blue/1.jpg',
         quantity: 1,
         color: 'blue',
-        // size: 40,
-        // connectivity: 'GPS',
         price: 400,
         totalItemPrice: 400
       },
@@ -48,8 +46,6 @@ const initialState = {
         image: '/static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Alaskan_Blue/2.jpg',
         quantity: 1,
         color: 'red',
-        // size: 40,
-        // connectivity: 'GPS',
         price: 500,
         totalItemPrice: 500
       },
@@ -60,8 +56,6 @@ const initialState = {
         image: '/static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Alaskan_Blue/3.jpg',
         quantity: 1,
         color: 'yellow',
-        // size: 40,
-        // connectivity: 'GPS',
         price: 600,
         totalItemPrice: 600
       }
