@@ -23,7 +23,7 @@ export { CheckoutTitle } from './Checkout/CheckoutTitle';
 export { CheckoutItem } from './Checkout/CheckoutItem';
 export {CheckoutPurchased} from './Checkout/CheckoutPurchased';
 // export {DeliveryMethod} from './Checkout/DeliveryMethod';
-
+export { Filter } from './Filter';
 export {Page404} from './Page404';
 export {ChangeUserInfoPage, ChangeUserPasswordPage} from './UserCabinet/ChangeAccountInfo';
 export {SearchResult} from './SearchResult'

@@ -24,8 +24,9 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    document.title = state.filter.model;
     setLoading(false);
-  }, []);
+  }, [state.filter.model]);
   const sliderImages = slides.map((item, key) => {
     return (
       <div key={key}>
