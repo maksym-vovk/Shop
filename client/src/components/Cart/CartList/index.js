@@ -21,7 +21,7 @@ const mapDispatchToProps = {
 }
 
 export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
-  const {cartItems, changeTotalPrice, changeQuantity, changeTotalItems} = props;
+  const {cartItems, changeTotalPrice, changeQuantity, changeTotalItems, removeFromCart} = props;
 
   let total = 0;
   cartItems.forEach(item => total += item.totalItemPrice);
