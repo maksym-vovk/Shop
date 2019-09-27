@@ -146,6 +146,7 @@ function cartReducer(state = initialState.cart, action) {
         totalItems: payload.totalItems,
       };
     case ATYPES.REMOVE_FROM_CART:
+    // Rework?
       const item = state.items.find(el => el.id === payload)
       return {
         ...state,

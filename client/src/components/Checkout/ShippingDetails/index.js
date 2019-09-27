@@ -10,10 +10,11 @@ const mapStateToProps = state => ({
   checkoutItems: state.cart.items,
   checkoutTotalPrice: state.cart.totalPrice,
   checkoutTotalItems: state.cart.totalItems,
-  checkoutGrandTotalPrice: state.cart.grandTotalPrice
+  checkoutGrandTotalPrice: state.cart.grandTotalPrice,
+  authorized: state.user.authorized
 });
 
-export const ShippingDetailsForm = connect(mapStateToProps)(({checkoutTotalPrice, checkoutItems, checkoutTotalItems, checkoutGrandTotalPrice, shippingDetails}) => {
+export const ShippingDetailsForm = connect(mapStateToProps)(({checkoutTotalPrice, checkoutItems, checkoutTotalItems, checkoutGrandTotalPrice, shippingDetails, authorized}) => {
   return (
     <div className="container">
       <CheckoutTitle
@@ -23,7 +24,7 @@ export const ShippingDetailsForm = connect(mapStateToProps)(({checkoutTotalPrice
         grandTotalPrice={checkoutGrandTotalPrice}
       />
       {shippingDetails ? <Redirect to='/checkout/purchased'/> : null }
-      <ShippingDetails onSubmit={submitShippingDetails}/>
+      <ShippingDetails authorized={authorized} onSubmit={submitShippingDetails}/>
     </div>
   )
 });
