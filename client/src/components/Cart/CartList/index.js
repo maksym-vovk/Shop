@@ -45,7 +45,7 @@ export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
     return (
       <CartItem
         key={index}
-        id={item.id}
+        id={item.cartId}
         color={item.color}
         size={item.size}
         connectivity={item.connectivity}
