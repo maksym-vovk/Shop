@@ -128,7 +128,7 @@ function cartReducer(state = initialState.cart, action) {
     case ATYPES.CHANGE_QUANTITY:
       return {
         ...state,
-        items: state.items.map(item => item.id === payload.id ? {
+        items: state.items.map(item => item.cartId === payload.id ? {
           ...item,
           quantity: payload.newQuantity,
           totalItemPrice: payload.newTotalItemPrice
@@ -147,11 +147,11 @@ function cartReducer(state = initialState.cart, action) {
       };
     case ATYPES.REMOVE_FROM_CART:
     // Rework?
-      const item = state.items.find(el => el.id === payload)
+      const item = state.items.find(el => el.cartId === payload)
       return {
         ...state,
         totalPrice: state.totalPrice - item.price * item.quantity,
-        items: state.items.filter(el => el.id !== payload)
+        items: state.items.filter(el => el.cartId !== payload)
       }
     default:
       return state;

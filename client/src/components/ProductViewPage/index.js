@@ -101,10 +101,11 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
             <h4 className="tabs-title">Band Colors</h4>
             <p className="color-title">{colorTitle}</p>
             <ColorTabs />
-            {props.cartItems.find(el => el.id === state._id)
+            {props.cartItems.find(el => el.cartId === state._id + colorTitle)
               ? <button className="buy-btn buy-btn--remove" onClick={() => props.removeFromCart(state._id)}>Remove from cart</button>
               : <button className="buy-btn" onClick={() => props.addToCart({
                 id: state._id,
+                cartId: state._id + colorTitle,
                 name: state.filter.model,
                 details: state.description,
                 img: slides[0],
