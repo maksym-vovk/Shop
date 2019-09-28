@@ -24,9 +24,9 @@ export const CheckoutList = connect(mapStateToProps)(({checkoutItems}) => {
 
       }
       <div className="continue-button-wrapper">
-      <Link to="/checkout/shipping" className="continue-link">
-        <button type="submit" className="continue-button">Continue to Shipping Address</button>
-      </Link>
+        <Link to="/checkout/shipping" className="continue-link">
+          <button type="submit" className="continue-button">Continue to Shipping Address</button>
+        </Link>
       </div>
     </div>
   )

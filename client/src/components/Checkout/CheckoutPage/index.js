@@ -4,7 +4,6 @@ import {CheckoutList} from '../CheckoutList';
 // import {DeliveryMethod} from "../DeliveryMethod";
 import {connect} from 'react-redux'
 
-
 const mapStateToProps = state => {
   return {
     checkoutItems: state.addToBag.items,
