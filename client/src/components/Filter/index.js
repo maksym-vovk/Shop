@@ -10,8 +10,6 @@ export const Filter = () => {
   const [key, setKey] = useState(true);
 
   const res = Object.entries(params).map(item => `"${item[1]}"`).join(' ') || 'Apple';
-  console.log(res);
-  console.log(key)
 
   const filterHandler = e => {
     const name = e.target.dataset.name;
@@ -32,10 +30,6 @@ export const Filter = () => {
       e.target.classList.add('active');
       setParams({ ...params, [name]: text });
       e.target.dataset.status = 'true';
-      for (const key in params) {
-        res.push(params[key])
-        console.log('key', res);
-      }
     }
     setKey(!key);
   };
