@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import './index.scss'
 
 export const CartItem = (props) => {
-    const {quantity, color, connectivity, size, image, price, totalItemPrice, name, details, id, changeQuantity} = props;
+    const {quantity, color, image, price, totalItemPrice, name, details, id, changeQuantity} = props;
     let [count, setCount] = useState(quantity);
     let [totalPrice, setTotalPrice] = useState(totalItemPrice);
 
@@ -39,8 +39,6 @@ export const CartItem = (props) => {
                 <p className="cart-item__name">{name}</p>
                 <p className="cart-item__details">{details}</p>
                 <p className="cart-item__details">Color: {color}</p>
-                <p className="cart-item__details">Size: {size}</p>
-                <p className="cart-item__details">Connectivity: {connectivity}</p>
             </div>
             <div className="cart-item__price-wrapper">
                 <div className="cart-item__input-group">

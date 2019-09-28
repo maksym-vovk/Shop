@@ -5,6 +5,7 @@ import {CheckoutItem} from '../CheckoutItem';
 
 // styles
 import './index.scss';
+import {CartButton} from "../../Cart/CartButton";
 
 const mapStateToProps = state => {
   return {
@@ -14,8 +15,8 @@ const mapStateToProps = state => {
 
 export const CheckoutList = connect(mapStateToProps)(({checkoutItems}) => {
   return (
-    <div>
-      <h2 className="check-out-subtitle">In stock and ready to ship</h2>
+    <div className="check-out">
+      <h2 className="check-out__subtitle">In stock and ready to ship</h2>
 
       {
         checkoutItems.map((item, index) => {
@@ -25,7 +26,7 @@ export const CheckoutList = connect(mapStateToProps)(({checkoutItems}) => {
       }
       <div className="continue-button-wrapper">
       <Link to="/checkout/shipping" className="continue-link">
-        <button type="submit" className="continue-button">Continue to Shipping Address</button>
+          <CartButton state="Continue to Shipping Address"/>
       </Link>
       </div>
     </div>

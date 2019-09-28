@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
+import {CartButton} from '../../Cart/CartButton';
 
 // styles
 import './index.scss';
@@ -292,7 +293,7 @@ const ShippingDetailsFunction = props => {
                                 order, so please make sure it’s correct.</p>
                         </div>
                         <div className="shipping__button-wrapper">
-                            <button className="shipping__button" type="submit" disabled={submitting}>Buy</button>
+                            <CartButton disabled={submitting} state="Buy"/>
                         </div>
                     </form>
             }

@@ -6,6 +6,7 @@ import {changeQuantity, changeTotalPrice, changeTotalItems} from '../../../store
 
 // styles
 import './index.scss'
+import {CartButton} from "../CartButton";
 
 const mapStateToProps = state => {
     return {
@@ -43,8 +44,6 @@ export const CartList = connect(mapStateToProps, {changeQuantity, changeTotalPri
                 key={index}
                 id={item.id}
                 color={item.color}
-                size={item.size}
-                connectivity={item.connectivity}
                 image={item.image}
                 quantity={item.quantity}
                 price={item.price}
@@ -73,7 +72,7 @@ export const CartList = connect(mapStateToProps, {changeQuantity, changeTotalPri
             </div>
             <div className="cart-list__button-wrapper">
                 <Link to="/checkout" className="cart-list__link">
-                    <button onClick={()=>changeTotalQuantity()} className="cart-list__button">Check Out</button>
+                    <CartButton onClick={()=>changeTotalQuantity()} state="Check out"/>
                 </Link>
             </div>
         </div>

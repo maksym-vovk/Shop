@@ -26,8 +26,6 @@ const initialState = {
   cartItems: {
     totalItems: 3,
     totalPrice: 1500,
-    editTotalPrice: false,
-    grandTotalPrice: 2000,
     items: [
       {
         id: 1,

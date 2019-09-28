@@ -11,6 +11,7 @@ export { ProductsList } from './ProductsList';
 
 export {CartPage} from './Cart/CartPage';
 export {EmptyCart} from './Cart/EmptyCart';
+export {CartButton} from './Cart/CartButton';
 
 export {UserCabinet} from './UserCabinet';
 
