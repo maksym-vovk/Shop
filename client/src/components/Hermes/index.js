@@ -2,9 +2,7 @@ import React from 'react';
 import { ProductsList } from '../ProductsList';
 
 export const Hermes = () => {
-  const res = {
-    params: {'filter.model': 'Apple Watch Hermes'}
-  };
+  const res = '"Apple Watch Hermes"';
 
   return (
     <section className="container">

@@ -8,8 +8,9 @@ import './index.scss';
 export const Filter = () => {
   const [params, setParams] = useState({});
   const [key, setKey] = useState(true);
-  const res = { params };
-
+  const res = Object.entries(params).map(item => `"${item[1]}"`).join(' ') || 'Apple';
+  console.log(res);
+  console.log(key)
   const filterHandler = e => {
     const name = e.target.dataset.name;
     const text = e.target.innerText;
