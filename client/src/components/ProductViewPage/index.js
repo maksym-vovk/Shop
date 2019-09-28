@@ -110,7 +110,8 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
                 img: slides[0],
                 quantity: 1,
                 color: colorTitle,
-                price: +state.minPrice
+                price: +state.minPrice,
+                totalItemPrice: +state.minPrice
               })}>Add to cart</button>
             }
           </div>

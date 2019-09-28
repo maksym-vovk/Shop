@@ -8,8 +8,9 @@ const initialState = {
   },
 
   // Search
-  searchStatus: {
-    status: false
+  search: {
+    searchStatus: false,
+    searchInput: ''
   },
 
   // Fetch
@@ -22,55 +23,14 @@ const initialState = {
     status: false
   },
 
-  // products in the cart
-  cartItems: {
-    totalItems: 3,
-    totalPrice: 1500,
-    editTotalPrice: false,
-    grandTotalPrice: 2000,
-    items: [
-      {
-        id: 1,
-        name: 'Apple Watch Series 5',
-        details: 'Aluminum Case with Alaskan Blue Sport Loop',
-        image: '/static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Alaskan_Blue/1.jpg',
-        quantity: 1,
-        color: 'blue',
-        price: 400,
-        totalItemPrice: 400
-      },
-      {
-        id: 2,
-        name: 'Apple Watch Series 5_1',
-        details: 'Aluminum Case with Alaskan Blue Sport Loop',
-        image: '/static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Alaskan_Blue/2.jpg',
-        quantity: 1,
-        color: 'red',
-        price: 500,
-        totalItemPrice: 500
-      },
-      {
-        id: 3,
-        name: 'Apple Watch Series 5_2',
-        details: 'Aluminum Case with Alaskan Blue Sport Loop',
-        image: '/static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Alaskan_Blue/3.jpg',
-        quantity: 1,
-        color: 'yellow',
-        price: 600,
-        totalItemPrice: 600
-      }
-    ]
-  },
-
   // Cart
   cart: {
     totalPrice: 0,
+    totalItems: 0,
+    grandTotalPrice: 0,
     items: []
   },
 
-  searchInput: {
-    value: ''
-  }
 };
 
 function userReducer(state = initialState.userData, action) {
@@ -115,29 +75,21 @@ function userReducer(state = initialState.userData, action) {
 }
 
 // Search
-function searchReducer(state = initialState.searchStatus, action) {
+function searchReducer(state = initialState.search, action) {
   const {type, payload} = action;
   switch (type) {
     case ATYPES.SET_SEARCH_STATUS:
       return {
         ...state,
-        status: payload
+        searchStatus: payload
       };
-    default:
-      return state;
-  }
-}
-
-function searchInputReducer(state = initialState.searchInput, action) {
-  const { type, payload } = action;
-  switch (type) {
     case ATYPES.SET_INPUT_VALUE:
       return {
         ...state,
-        value: payload
+        searchInput: payload
       };
     default:
-      return state
+      return state;
   }
 }
 
@@ -172,25 +124,7 @@ function cartReducer(state = initialState.cart, action) {
           ...state.items,
           payload
         ]
-      }
-    case ATYPES.REMOVE_FROM_CART:
-      const item = state.items.find(el => el.id === payload)
-      return {
-        ...state,
-        totalPrice: state.totalPrice - item.price * item.quantity,
-        items: state.items.filter(el => el.id !== payload)
-      }
-    default:
-      return state;
-  }
-}
-/* eslint-enable */
-
-// Add_to_bag
-function addToBagReducer(state = initialState.cartItems, action) {
-  const {type, payload} = action;
-
-  switch (type) {
+      };
     case ATYPES.CHANGE_QUANTITY:
       return {
         ...state,
@@ -211,10 +145,19 @@ function addToBagReducer(state = initialState.cartItems, action) {
         ...state,
         totalItems: payload.totalItems,
       };
+    case ATYPES.REMOVE_FROM_CART:
+    // Rework?
+      const item = state.items.find(el => el.id === payload)
+      return {
+        ...state,
+        totalPrice: state.totalPrice - item.price * item.quantity,
+        items: state.items.filter(el => el.id !== payload)
+      }
     default:
-      return state
+      return state;
   }
 }
+/* eslint-enable */
 
 // Shipping details status
 function shippingDetailsReducer(state = initialState.shippingDetailsStatus, action) {
@@ -233,10 +176,8 @@ function shippingDetailsReducer(state = initialState.shippingDetailsStatus, acti
 export const reducer = combineReducers({
   form: reduxFormReducer, // mounted under "form"
   user: userReducer,
-  searchStatus: searchReducer,
+  search: searchReducer,
   products: fetchReducer,
   shippingDetailsStatus: shippingDetailsReducer,
-  addToBag: addToBagReducer,
-  cart: cartReducer,
-  searchInputValue: searchInputReducer
+  cart: cartReducer
 });
