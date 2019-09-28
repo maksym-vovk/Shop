@@ -57,11 +57,6 @@ export const setShippingDetails = status => ({
 });
 
 // add-to-basket
-export const addToBag = items => ({
-  type: ATYPES.ADD_TO_BAG,
-  payload: items
-});
-
 export const changeQuantity = (newQuantity, newTotalItemPrice, id) => ({
   type: ATYPES.CHANGE_QUANTITY,
   payload: {

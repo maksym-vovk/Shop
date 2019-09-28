@@ -19,7 +19,7 @@ export const CheckoutItemDetails = ({ removeProductDetails, data }) => {
 
         <div className="product-details__wrapper">
           <div className="product-details__image-item">
-            <img className="product-details__image" src={data.image} alt={data.name}/>
+            <img className="product-details__image" src={data.img} alt={data.name}/>
           </div>
           <div className="product-details__summary">
             <h2 className="product-details__subtitle">{data.name}</h2>

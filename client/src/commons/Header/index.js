@@ -5,7 +5,7 @@ import { fetchCards } from '../../store';
 import './index.scss';
 
 const mapStateToProps = state => ({
-  status: state.searchStatus.status
+  status: state.search.searchStatus
 });
 
 export const Header = connect(

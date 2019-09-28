@@ -5,7 +5,8 @@ import { Lines } from 'react-preloaders';
 
 const mapStateToProps = (state) => {
   return {
-    inputValue: state.searchInputValue.value
+    cards: state.products.cards,
+    inputValue: state.search.searchInput
   }
 }
 
