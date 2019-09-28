@@ -6,7 +6,8 @@ import { ProductsList } from '../';
 
 const mapStateToProps = (state) => {
   return {
-    inputValue: state.searchInputValue.value
+    cards: state.products.cards,
+    inputValue: state.search.searchInput
   }
 }
 

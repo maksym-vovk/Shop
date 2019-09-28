@@ -21,7 +21,7 @@ export const CheckoutItem = ({data}) => {
       }
       <div className="product">
         <div className="product__item">
-          <img className="product__image" src={data.image} alt="watch"/>
+          <img className="product__image" src={data.img} alt="watch"/>
         </div>
         <div className="product__description">
           <p className="product__name">{data.name}</p>

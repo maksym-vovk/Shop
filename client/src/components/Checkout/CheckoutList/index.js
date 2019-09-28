@@ -8,7 +8,7 @@ import './index.scss';
 
 const mapStateToProps = state => {
   return {
-    checkoutItems: state.addToBag.items
+    checkoutItems: state.cart.items
   }
 };
 
