@@ -18,7 +18,7 @@ export const ProductsList = connect(
   { fetchCards }
 )(props => {
   const { params } = props;
-  console.log(params);
+
   // const res = {
   //   params
   // };
@@ -27,7 +27,7 @@ export const ProductsList = connect(
   const [loading, setLoading] = useState(true);
   /* eslint-disable */
   useEffect(() => {
-    document.title = params['filter.model'] || 'Apple Watch Series 5';
+    document.title = 'Apple Watch Series 5';
     console.log(params);
     fetchCards(params);
     setLoading(false);

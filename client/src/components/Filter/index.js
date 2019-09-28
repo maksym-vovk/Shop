@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Collapsible from 'react-collapsible';
 import { ProductsList } from '../';
 import { filterParams } from './filterParams';
@@ -8,7 +8,7 @@ import './index.scss';
 export const Filter = () => {
   const [params, setParams] = useState({});
   const [key, setKey] = useState(true);
-  const res = { params };
+  let res;
 
   const filterHandler = e => {
     const name = e.target.dataset.name;
@@ -29,6 +29,10 @@ export const Filter = () => {
       e.target.classList.add('active');
       setParams({ ...params, [name]: text });
       e.target.dataset.status = 'true';
+      for (const key in params) {
+        res.push(params[key])
+        console.log('key', res);
+      }
     }
     setKey(!key);
   };
