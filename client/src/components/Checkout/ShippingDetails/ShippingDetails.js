@@ -197,6 +197,7 @@ const ShippingDetailsFunction = props => {
     <div className="shipping container">
       <h1 className="shipping__title">Where should we send your order?</h1>
       <h2 className="shipping__subtitle">Enter your name and address:</h2>
+
       {
         authorized
           ? authorizedShippingDetailsForm(props)
