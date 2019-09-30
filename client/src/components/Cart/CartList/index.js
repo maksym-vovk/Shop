@@ -2,20 +2,26 @@ import React, {useEffect} from 'react';
 import {CartItem} from '../CartItem';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {changeQuantity, changeTotalPrice, changeTotalItems} from '../../../store/actions';
+import {changeQuantity, changeTotalPrice, changeTotalItems, removeFromCart} from '../../../store';
 
 // styles
 import './index.scss'
 
 const mapStateToProps = state => {
   return {
-    cartItems: state.addToBag.items,
-    editTotalPrice: state.addToBag.editTotalPrice,
+    cartItems: state.cart.items
   }
 };
 
-export const CartList = connect(mapStateToProps, {changeQuantity, changeTotalPrice, changeTotalItems})(props => {
-  const {cartItems, changeTotalPrice, changeQuantity, changeTotalItems} = props;
+const mapDispatchToProps = {
+  changeQuantity,
+  changeTotalPrice,
+  changeTotalItems,
+  removeFromCart
+}
+
+export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
+  const {cartItems, changeTotalPrice, changeQuantity, changeTotalItems, removeFromCart} = props;
 
   let total = 0;
   cartItems.forEach(item => total += item.totalItemPrice);
@@ -39,18 +45,18 @@ export const CartList = connect(mapStateToProps, {changeQuantity, changeTotalPri
     return (
       <CartItem
         key={index}
-        id={item.id}
+        id={item.cartId}
         color={item.color}
         size={item.size}
         connectivity={item.connectivity}
-        image={item.image}
+        image={item.img}
         quantity={item.quantity}
         price={item.price}
         totalItemPrice={item.totalItemPrice}
         name={item.name}
         details={item.details}
-        total={total}
         changeQuantity={changeQuantity}
+        remove={removeFromCart}
       />
     )
   });

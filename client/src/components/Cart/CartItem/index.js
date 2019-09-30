@@ -3,28 +3,23 @@ import React, {useState} from 'react';
 // styles
 import './index.scss'
 
-export const CartItem = (props) => {
-  const {quantity, color, connectivity, size, image, price, totalItemPrice, name, details, id, changeQuantity, changeTotalItems} = props;
+  const {quantity, color, connectivity, size, image, price, totalItemPrice, name, details, id, changeQuantity, remove} = props;
   let [count, setCount] = useState(quantity);
-  let [totalPrice, setTotalPrice] = useState(totalItemPrice);
 
   const onchangeHandler = (event) => {
     setCount(Number(event.target.value));
-    setTotalPrice(Number(event.target.value) * price);
     changeQuantity(Number(event.target.value), Number(event.target.value * price), id);
   };
 
   const onDecrementHandler = () => {
     if (count > 1) {
       setCount(--count);
-      setTotalPrice(count * price);
       changeQuantity(count, count * price, id);
     }
   };
 
   const onIncrementHandler = () => {
     setCount(++count);
-    setTotalPrice(count * price);
     changeQuantity(count, count * price, id);
   };
 
@@ -66,7 +61,7 @@ export const CartItem = (props) => {
         </div>
         <div className="cart-item__price-block">
           <span className="cart-item__price">${totalItemPrice}</span>
-          <button className="cart-item__remove-link">Remove</button>
+          <button className="cart-item__remove-link" onClick={() => remove(id)}>Remove</button>
         </div>
       </div>
     </div>
