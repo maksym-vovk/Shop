@@ -293,7 +293,7 @@ const ShippingDetailsFunction = props => {
                                 order, so please make sure it’s correct.</p>
             </div>
             <div className="shipping__button-wrapper">
-              <button className="shipping__button" type="submit" disabled={submitting}>Buy</button>
+                <CartButton disabled={submitting} state="Buy"/>
             </div>
           </form>
       }
