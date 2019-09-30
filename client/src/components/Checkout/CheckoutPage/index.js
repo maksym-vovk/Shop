@@ -4,13 +4,12 @@ import {CheckoutList} from '../CheckoutList';
 // import {DeliveryMethod} from "../DeliveryMethod";
 import {connect} from 'react-redux'
 
-
 const mapStateToProps = state => {
   return {
-    checkoutItems: state.addToBag.items,
-    checkoutTotalPrice: state.addToBag.totalPrice,
-    checkoutTotalItems: state.addToBag.totalItems,
-    checkoutGrandTotalPrice: state.addToBag.grandTotalPrice
+    checkoutItems: state.cart.items,
+    checkoutTotalPrice: state.cart.totalPrice,
+    checkoutTotalItems: state.cart.totalItems,
+    checkoutGrandTotalPrice: state.cart.grandTotalPrice
   }
 };
 

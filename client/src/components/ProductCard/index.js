@@ -5,6 +5,7 @@ import './index.scss';
 
 export const ProductCard = props => {
   const { state } = props;
+  console.log(state);
   return (
     <Link to={{ pathname: `/all/${state._id}`, state }}>
       <article className="product-card">
