@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { setSearchStatus } from '../../store';
 
 const mapStateToProps = (state) => ({
-  status: state.searchStatus.status
+  status: state.search.searchStatus
 })
 
 export const Search = connect(mapStateToProps, {setSearchStatus})((props) => {

@@ -25,6 +25,7 @@ const run = async () => {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,
+      useUnifiedTopology: true
     });
     app.listen(config.PORT, () => {
       console.log(`Connected on port ${config.PORT}`);

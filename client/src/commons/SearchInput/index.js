@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { setInputValue } from '../../store';
 
 const mapStateToProps = (state) => ({
-  value: state.searchInputValue.value
+  value: state.search.searchInput
 })
 
 export const SearchInput = connect(mapStateToProps, {setInputValue})((props) => {
