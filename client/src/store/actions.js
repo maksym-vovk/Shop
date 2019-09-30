@@ -101,7 +101,8 @@ export const removeFromCart = id => ({
 function* fetchCardsSaga() {
   while (true) {
     const { query } = yield take(ATYPES.FETCH_CARDS);
-    const response = yield axios.get('/cards', query);
+    console.log('query', query);
+    const response = yield axios.get(`/cards/${query}`);
     yield put({
       type: ATYPES.SET_CARDS,
       payload: response.data

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Collapsible from 'react-collapsible';
 import { ProductsList } from '../';
 import { filterParams } from './filterParams';
@@ -8,6 +8,8 @@ import './index.scss';
 export const Filter = () => {
   const [params, setParams] = useState({});
   const [key, setKey] = useState(true);
+
+  const res = Object.entries(params).map(item => `"${item[1]}"`).join(' ') || 'Apple';
 
   const filterHandler = e => {
     const name = e.target.dataset.name;
@@ -74,7 +76,7 @@ export const Filter = () => {
           {filterTabs}
         </section>
       </Collapsible>
-      <ProductsList params={params} key={key} />
+      <ProductsList params={res} key={key} />
     </React.Fragment>
   );
 };
