@@ -10,7 +10,7 @@ import {CartButton} from "../CartButton";
 
 const mapStateToProps = state => {
   return {
-    cartItems: state.cart.items
+    cartItems: state.cart.items,
   }
 };
 

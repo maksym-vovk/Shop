@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 import {CartButton} from '../../Cart/CartButton';
+import { sendOrder } from '../../../store';
 
 // styles
 import './index.scss';
 
 const mapStateToProps = state => ({
-  initialValues: state.user.userData,
+    initialValues: state.user.userData,
+    cart: state.cart
 });
+
 
 export const required = value => (value || typeof value === 'number' ? undefined : 'Required');
 export const maxLength = max => value =>
@@ -39,6 +42,7 @@ export const isLetter = value =>
   value && !/[a-zA-Z]/.test(value)
     ? 'Invalid value, must be letters only'
     : undefined;
+
 
 const inputFocusBlurShipping = (event) => {
   const inputElement = event.target;
@@ -84,11 +88,144 @@ const renderFieldShipping = ({type, editing, label, input, meta: {touched, error
   </div>
 );
 
-const authorizedShippingDetailsForm = props => {
-  const {handleSubmit, submitting} = props;
-  return (
+const userData = (values, cart) => {
+    const xxx = {values, cart}
+    console.log(xxx);
+    console.log(values);
+    console.log(cart);
+    return xxx
+};
 
-    <form className="shipping__form" onSubmit={handleSubmit}>
+const ShippingDetailsFunction = props => {
+    const {handleSubmit, submitting, authorized, cart, initialValues} = props;
+    // const [delivery, setDelivery] = useState({});
+    // const userData = values => {
+    //     setDelivery(values)
+    // };
+    // const confirmedOrder = {cart, delivery};
+    // console.log(confirmedOrder);
+    //
+    return (
+        <div className="shipping container">
+            <h1 className="shipping__title">Where should we send your order?</h1>
+            <h2 className="shipping__subtitle">Enter your name and address:</h2>
+
+            {
+                authorized
+                    ? authorizedShippingDetailsForm(props)
+                    : <form className="shipping__form" onSubmit={(event)=> {
+                        event.preventDefault();
+                        return userData(initialValues, cart)
+                    }}>
+                        <Field
+                            name="first_name"
+                            component={renderFieldShipping}
+                            type="text"
+                            label="First Name"
+                            validate={[required, isLetter, maxLength15, minLength2]}
+                            warn={alphaNumeric}
+                            onFocus={inputFocusBlurShipping}
+                            onBlur={inputFocusBlurShipping}
+                        />
+                        <Field
+                            name="last_name"
+                            component={renderFieldShipping}
+                            type="text"
+                            label="Last Name"
+                            validate={[required, isLetter, maxLength15, minLength2]}
+                            warn={alphaNumeric}
+                            onFocus={inputFocusBlurShipping}
+                            onBlur={inputFocusBlurShipping}
+                        />
+                        <Field
+                            name="address"
+                            component={renderFieldShipping}
+                            type="text"
+                            label="Street Address"
+                            validate={[required, minLength2]}
+                            onFocus={inputFocusBlurShipping}
+                            onBlur={inputFocusBlurShipping}
+                        />
+                        <Field
+                            name="zip_code"
+                            component={renderFieldShipping}
+                            type="text"
+                            label="Zip Code"
+                            validate={[required, maxLength5, minLength2]}
+                            onFocus={inputFocusBlurShipping}
+                            onBlur={inputFocusBlurShipping}
+                        />
+                        <Field
+                            name="city"
+                            component={renderFieldShipping}
+                            type="text"
+                            label="City"
+                            validate={[required, isLetter, minLength2]}
+                            onFocus={inputFocusBlurShipping}
+                            onBlur={inputFocusBlurShipping}
+                        />
+
+                        <Field
+                            name="country"
+                            component={renderFieldShipping}
+                            type="text"
+                            label="Country"
+                            validate={[required, isLetter, minLength2]}
+                            onFocus={inputFocusBlurShipping}
+                            onBlur={inputFocusBlurShipping}
+                        />
+
+                        <h2 className="shipping__subtitle">What's your contact information?</h2>
+                        <div className="shipping__form-wrapper">
+                            <Field
+                                name="email"
+                                component={renderFieldShipping}
+                                type="email"
+                                label="Email"
+                                validate={email}
+                                warn={aol}
+                                onFocus={inputFocusBlurShipping}
+                                onBlur={inputFocusBlurShipping}
+                            />
+                            <p className="shipping__notice">We’ll email you a receipt and send order updates to your
+                                mobile
+                                phone via SMS or iMessage.</p>
+                        </div>
+                        <div className="shipping__form-wrapper">
+                            <Field
+                                name="phone"
+                                component={renderFieldShipping}
+                                type="tel"
+                                label="Phone Number"
+                                validate={[required, minLength(7)]}
+                                normalize={phoneNumber}
+                                onFocus={inputFocusBlurShipping}
+                                onBlur={inputFocusBlurShipping}
+                            />
+                            <p className="shipping__notice"> The phone number you enter can’t be changed after you place
+                                your
+                                order, so please make sure it’s correct.</p>
+                        </div>
+                        <div className="shipping__button-wrapper">
+                            <CartButton disabled={submitting} state="Buy"/>
+                        </div>
+                    </form>
+            }
+        </div>
+    );
+};
+
+
+const authorizedShippingDetailsForm = props => {
+  const {handleSubmit, submitting, initialValues, cart} = props;
+    console.log(props);
+
+    return (
+
+    <form className="shipping__form" onSubmit={(event)=> {
+        event.preventDefault();
+        return userData(initialValues, cart)
+    }}>
       <Field
         name="first_name"
         component={renderFieldShipping}
@@ -185,122 +322,13 @@ const authorizedShippingDetailsForm = props => {
                     order, so please make sure it’s correct.</p>
       </div>
       <div className="shipping__button-wrapper">
-        <button className="shipping__button" type="submit" disabled={submitting}>Buy</button>
+          <CartButton disabled={submitting} state="Buy"/>
       </div>
     </form>
   )
 };
 
-const ShippingDetailsFunction = props => {
-  const {handleSubmit, submitting, authorized} = props;
 
-  return (
-    <div className="shipping container">
-      <h1 className="shipping__title">Where should we send your order?</h1>
-      <h2 className="shipping__subtitle">Enter your name and address:</h2>
-
-      {
-        authorized
-          ? authorizedShippingDetailsForm(props)
-          : <form className="shipping__form" onSubmit={handleSubmit}>
-            <Field
-              name="first_name"
-              component={renderFieldShipping}
-              type="text"
-              label="First Name"
-              validate={[required, isLetter, maxLength15, minLength2]}
-              warn={alphaNumeric}
-              onFocus={inputFocusBlurShipping}
-              onBlur={inputFocusBlurShipping}
-            />
-            <Field
-              name="last_name"
-              component={renderFieldShipping}
-              type="text"
-              label="Last Name"
-              validate={[required, isLetter, maxLength15, minLength2]}
-              warn={alphaNumeric}
-              onFocus={inputFocusBlurShipping}
-              onBlur={inputFocusBlurShipping}
-            />
-            <Field
-              name="address"
-              component={renderFieldShipping}
-              type="text"
-              label="Street Address"
-              validate={[required, minLength2]}
-              onFocus={inputFocusBlurShipping}
-              onBlur={inputFocusBlurShipping}
-            />
-            <Field
-              name="zip_code"
-              component={renderFieldShipping}
-              type="text"
-              label="Zip Code"
-              validate={[required, maxLength5, minLength2]}
-              onFocus={inputFocusBlurShipping}
-              onBlur={inputFocusBlurShipping}
-            />
-            <Field
-              name="city"
-              component={renderFieldShipping}
-              type="text"
-              label="City"
-              validate={[required, isLetter, minLength2]}
-              onFocus={inputFocusBlurShipping}
-              onBlur={inputFocusBlurShipping}
-            />
-
-            <Field
-              name="country"
-              component={renderFieldShipping}
-              type="text"
-              label="Country"
-              validate={[required, isLetter, minLength2]}
-              onFocus={inputFocusBlurShipping}
-              onBlur={inputFocusBlurShipping}
-            />
-
-            <h2 className="shipping__subtitle">What's your contact information?</h2>
-            <div className="shipping__form-wrapper">
-              <Field
-                name="email"
-                component={renderFieldShipping}
-                type="email"
-                label="Email"
-                validate={email}
-                warn={aol}
-                onFocus={inputFocusBlurShipping}
-                onBlur={inputFocusBlurShipping}
-              />
-              <p className="shipping__notice">We’ll email you a receipt and send order updates to your
-                                mobile
-                                phone via SMS or iMessage.</p>
-            </div>
-            <div className="shipping__form-wrapper">
-              <Field
-                name="phone"
-                component={renderFieldShipping}
-                type="tel"
-                label="Phone Number"
-                validate={[required, minLength(7)]}
-                normalize={phoneNumber}
-                onFocus={inputFocusBlurShipping}
-                onBlur={inputFocusBlurShipping}
-              />
-              <p className="shipping__notice"> The phone number you enter can’t be changed after you place
-                                your
-                                order, so please make sure it’s correct.</p>
-            </div>
-            <div className="shipping__button-wrapper">
-                <CartButton disabled={submitting} state="Buy"/>
-            </div>
-          </form>
-      }
-    </div>
-  );
-};
-
-export const ShippingDetails = connect(mapStateToProps)(reduxForm({
+export const ShippingDetails = connect(mapStateToProps, {sendOrder})(reduxForm({
   form: 'shippingDetails'
 })(ShippingDetailsFunction));

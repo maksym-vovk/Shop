@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 });
 
 export const ShippingDetailsForm = connect(mapStateToProps)(({checkoutTotalPrice, checkoutItems, checkoutTotalItems, checkoutGrandTotalPrice, shippingDetails, authorized}) => {
-  return (
+    return (
     <div className="container">
       <CheckoutTitle
         totalPrice={checkoutTotalPrice}
@@ -24,7 +24,7 @@ export const ShippingDetailsForm = connect(mapStateToProps)(({checkoutTotalPrice
         grandTotalPrice={checkoutGrandTotalPrice}
       />
       {shippingDetails ? <Redirect to='/checkout/purchased'/> : null }
-      <ShippingDetails authorized={authorized} onSubmit={submitShippingDetails}/>
+      <ShippingDetails authorized={authorized} />
     </div>
   )
 });

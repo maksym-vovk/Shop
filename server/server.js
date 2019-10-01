@@ -4,6 +4,7 @@ const path = require('path');
 
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 const config = require('./config');
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'static/build')));
 app.use(productRoutes);
 app.use(userRoutes);
+app.use(orderRoutes);
 // app.use('/', (req, res) => res.sendFile(path.join(__dirname, 'static/build/index.html')))
 
 const run = async () => {

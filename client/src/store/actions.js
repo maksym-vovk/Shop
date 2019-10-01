@@ -66,14 +66,14 @@ export const changeQuantity = (newQuantity, newTotalItemPrice, id) => ({
   }
 });
 
-export const changeTotalPrice = (totalPrice) => ({
+export const changeTotalPrice = totalPrice => ({
   type: ATYPES.CHANGE_TOTAL_PRICE,
   payload: {
     totalPrice,
   }
 });
 
-export const changeTotalItems = (totalItems) => ({
+export const changeTotalItems = totalItems => ({
   type: ATYPES.CHANGE_TOTAL_ITEMS,
   payload: {
     totalItems,
@@ -83,18 +83,23 @@ export const changeTotalItems = (totalItems) => ({
 export const setInputValue = value => ({
   type: ATYPES.SET_INPUT_VALUE,
   payload: value
-})
+});
 
 // Cart
 export const addToCart = itemData => ({
   type: ATYPES.ADD_TO_CART,
   payload: itemData
-})
+});
 
 export const removeFromCart = id => ({
   type: ATYPES.REMOVE_FROM_CART,
   payload: id
-})
+});
+
+export const sendOrder = order => ({
+  type: ATYPES.SEND_ORDER,
+  order
+});
 
 // Sagas
 /* eslint-disable */
@@ -157,8 +162,20 @@ function* updateUserPasswordSaga() {
   }
 }
 
+function* sendOrderSaga() {
+    while (true) {
+        const { order } = yield take(ATYPES.SEND_ORDER);
+        const result = yield axios.post('/order', order);
+        console.log(result);
+        yield put({
+            type: ATYPES.SET_ORDER,
+            payload: result.data
+        });
+    }
+}
+
 export function* rootSaga() {
-  yield all([fetchCardsSaga(), fetchCardSaga(), updateUserSaga(), updateUserPasswordSaga()]);
+  yield all([fetchCardsSaga(), fetchCardSaga(), updateUserSaga(), updateUserPasswordSaga(), sendOrderSaga()]);
 }
 
 /* eslint-enable */
