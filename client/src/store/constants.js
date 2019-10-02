@@ -13,7 +13,6 @@ export const FETCH_CARD = 'FETCH_CARD';
 export const SET_CARD = 'SET_CARD';
 
 // Add to bag
-export const ADD_TO_BAG = 'ADD_TO_BAG';
 export const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
 export const CHANGE_TOTAL_PRICE = 'CHANGE_TOTAL_PRICE';
 export const CHANGE_TOTAL_ITEMS = 'CHANGE_TOTAL_ITEMS';
@@ -31,3 +30,7 @@ export const SET_MESSAGE_USER = 'UPDATE_MESSAGE_USER';
 // cart
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+
+// order
+export const SEND_ORDER = 'SEND_ORDER';
+export const SET_ORDER = 'SET_ORDER';
