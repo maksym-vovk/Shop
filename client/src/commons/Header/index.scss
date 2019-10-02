@@ -1,24 +1,61 @@
-@media (min-width: 770px) {
-  .page-header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1000;
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  height: 45px;
+  background-color: #000;
+
+  &__wrapper {
     display: flex;
     align-items: center;
-    height: 45px;
-    background-color: #000;
-    &__wrapper{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      overflow: hidden;
-    }
+    justify-content: space-between;
+    height: 100%;
+    overflow: hidden;
   }
 }
 
-@media (max-width: 770px) {
-  .page-header {
+.test {
+display: none;
+  height: 100%;
+  color: white;
+
+}
+.logo {
+  margin: 0;
+}
+.collapse-menu {
+  display: none;
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+  .collapse-menu {
+    display: block;
   }
+  .logo {
+    margin-left: 80px;
+  }
+
+  .test {
+    display: block;
+    width: 50px;
+    background-color: #000;
+    border: none;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .logo {
+    margin-left: 80px;
+  }
+
+  .test {
+    display: block;
+    width: 50px;
+  }
+
 }
