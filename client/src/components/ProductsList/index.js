@@ -5,7 +5,6 @@ import { fetchCards } from '../../store/actions';
 import { ProductCard } from '../';
 
 import './index.scss';
-import { login } from '../ReduxForm/RegistrationForm';
 
 const mapStateToProps = state => {
   return {
@@ -19,7 +18,6 @@ export const ProductsList = connect(
 )(props => {
   const { params, title, cards, fetchCards } = props;
 
-  
   const [loading, setLoading] = useState(true);
   /* eslint-disable */
   useEffect(() => {
