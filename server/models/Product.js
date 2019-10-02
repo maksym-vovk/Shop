@@ -27,4 +27,5 @@ const schema = new Schema({
 }).index({'$**' : 'text'})
 
 
+
 module.exports = model('Product', schema);

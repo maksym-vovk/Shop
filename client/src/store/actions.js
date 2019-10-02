@@ -106,7 +106,6 @@ export const sendOrder = order => ({
 function* fetchCardsSaga() {
   while (true) {
     const { query } = yield take(ATYPES.FETCH_CARDS);
-    console.log('query', query);
     const response = yield axios.get(`/cards/${query}`);
     yield put({
       type: ATYPES.SET_CARDS,
