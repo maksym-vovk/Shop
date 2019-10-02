@@ -1,15 +1,18 @@
-import React, {useState} from 'react'
-import './style.scss'
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import SearchInputButton from './SearchInputButton';
-import { connect } from 'react-redux'
+import './style.scss';
 import { setInputValue } from '../../store';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   value: state.search.searchInput
-})
+});
 
-export const SearchInput = connect(mapStateToProps, {setInputValue})((props) => {
-  const [input, setInput] = useState('')
+export const SearchInput = connect(
+  mapStateToProps,
+  { setInputValue }
+)(props => {
+  const [input, setInput] = useState('');
   return (
     <form className='search' onSubmit={e => e.preventDefault()}>
       <SearchInputButton onClick={() => props.setInputValue(input)}/>

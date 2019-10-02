@@ -29,21 +29,15 @@ export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
 
   useEffect(() => {
     changeTotalPrice(total)
-  }, [cartItems]);
+  }, [cartItems, changeTotalPrice, total]);
 
   const changeTotalQuantity = () => {
     let totalItems = 0;
     cartItems.forEach(item => totalItems += item.quantity);
-    console.log('totalItems', totalItems);
     changeTotalItems(totalItems);
   };
 
   const List = cartItems.map((item, index) => {
-    // const pathname = "/cart/" + index;
-    // return  (<Link to={pathname}  key={item.id}>
-    //     <CartItem />
-    // </Link>)
-
     return (
       <CartItem
         key={index}
