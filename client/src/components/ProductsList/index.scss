@@ -5,19 +5,19 @@
     padding-bottom: 30px;
 }
 
-@media (max-width: 1021px) {
+@media (max-width: 1024px) {
     .product-list-wrapper {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-@media (max-width: 772px) {
+@media (max-width: 768px) {
     .product-list-wrapper {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 521px) {
+@media (max-width: 576px) {
     .product-list-wrapper {
         grid-template-columns: 1fr;
     }
