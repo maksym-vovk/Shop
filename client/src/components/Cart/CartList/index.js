@@ -34,7 +34,8 @@ export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
   const changeTotalQuantity = () => {
     let totalItems = 0;
     cartItems.forEach(item => totalItems += item.quantity);
-    changeTotalItems(totalItems);
+      console.log("totalItems", totalItems);
+      changeTotalItems(totalItems);
   };
 
   const List = cartItems.map((item, index) => {
@@ -77,7 +78,7 @@ export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
             </div>
             <div className="cart-list__button-wrapper">
                 <Link to="/checkout" className="cart-list__link">
-                    <CartButton onClick={()=>changeTotalQuantity()} state="Check out"/>
+                    <CartButton onClick = {changeTotalQuantity()} state="Check out"/>
                 </Link>
             </div>
         </div>

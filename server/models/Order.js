@@ -2,28 +2,19 @@ const mongoose = require("mongoose");
 const { Schema, model } = require('mongoose');
 
 const schema = new Schema ({
-    item: [{
-        id: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Product'
-        },
-        name: String,
-        details: String,
-        image: String,
-        quantity: Number,
-        color: String,
-        price: Number,
-    }],
+    cart: {},
     user: {
+        _id: String,
         first_name: String,
         last_name: String,
-        address: String,
+        email: String,
         country: String,
         city: String,
         zip_code: String,
-        phone: String,
+        address: String,
+        phone: String
     },
-    authorized: {Boolean, default: false}
-});
+    orderDate: {type: Date, default: Date.now}
+}).index({'$**' : 'text'});
 
 module.exports = model('Order', schema);

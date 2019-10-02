@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import {ShippingDetails} from './ShippingDetails';
 import {CheckoutTitle} from '../CheckoutTitle'
-import submitShippingDetails from './submitShippingDetails';
 
 const mapStateToProps = state => ({
   shippingDetails: state.shippingDetailsStatus.status,

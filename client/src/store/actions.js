@@ -166,7 +166,7 @@ function* sendOrderSaga() {
     while (true) {
         const { order } = yield take(ATYPES.SEND_ORDER);
         const result = yield axios.post('/order', order);
-        console.log(result);
+        console.log("result", result);
         yield put({
             type: ATYPES.SET_ORDER,
             payload: result.data
