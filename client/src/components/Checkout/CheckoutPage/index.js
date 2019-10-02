@@ -14,7 +14,8 @@ const mapStateToProps = state => {
 };
 
 export const CheckoutPage = connect(mapStateToProps)(({checkoutTotalPrice, checkoutItems, checkoutTotalItems, checkoutGrandTotalPrice}) => {
-  return (
+    console.log(checkoutTotalItems);
+    return (
     <div className="container">
       <CheckoutTitle
         totalPrice={checkoutTotalPrice}
