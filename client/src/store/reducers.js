@@ -31,6 +31,12 @@ const initialState = {
     items: []
   },
 
+  // Order
+  order: {
+    items: [],
+    user: {},
+    authorized: false
+  }
 };
 
 function userReducer(state = initialState.userData, action) {
@@ -111,52 +117,54 @@ function fetchReducer(state = initialState.products, action) {
       return state;
   }
 }
+
 // Cart
 /* eslint-disable */
 function cartReducer(state = initialState.cart, action) {
-  const { type, payload } = action;
-  switch (type) {
-    case ATYPES.ADD_TO_CART:
-      return {
-        ...state,
-        totalPrice: state.totalPrice + payload.price,
-        items: [
-          ...state.items,
-          payload
-        ]
-      };
-    case ATYPES.CHANGE_QUANTITY:
-      return {
-        ...state,
-        items: state.items.map(item => item.cartId === payload.id ? {
-          ...item,
-          quantity: payload.newQuantity,
-          totalItemPrice: payload.newTotalItemPrice
-        } : {...item}
-        ),
-      };
-    case ATYPES.CHANGE_TOTAL_PRICE:
-      return {
-        ...state,
-        totalPrice: payload.totalPrice,
-      };
-    case ATYPES.CHANGE_TOTAL_ITEMS:
-      return {
-        ...state,
-        totalItems: payload.totalItems,
-      };
-    case ATYPES.REMOVE_FROM_CART:
-    // Rework?
-      const item = state.items.find(el => el.cartId === payload)
-      return {
-        ...state,
-        totalPrice: state.totalPrice - item.price * item.quantity,
-        items: state.items.filter(el => el.cartId !== payload)
-      }
-    default:
-      return state;
-  }
+    const {type, payload} = action;
+    switch (type) {
+        case ATYPES.ADD_TO_CART:
+            return {
+                ...state,
+                totalPrice: state.totalPrice + payload.price,
+                items: [
+                    ...state.items,
+                    payload
+                ]
+            };
+        case ATYPES.CHANGE_QUANTITY:
+            return {
+                ...state,
+                items: state.items.map(item => item.cartId === payload.id ? {
+                        ...item,
+                        quantity: payload.newQuantity,
+                        totalItemPrice: payload.newTotalItemPrice
+                    } : {...item}
+                ),
+            };
+        case ATYPES.CHANGE_TOTAL_PRICE:
+            return {
+                ...state,
+                totalPrice: payload.totalPrice,
+            };
+        case ATYPES.CHANGE_TOTAL_ITEMS:
+            return {
+                ...state,
+                totalItems: payload.totalItems,
+            };
+        case ATYPES.REMOVE_FROM_CART:
+            // Rework?
+            const item = state.items.find(el => el.cartId === payload)
+            return {
+                ...state,
+                totalPrice: state.totalPrice - item.price * item.quantity,
+                items: state.items.filter(el => el.cartId !== payload)
+            }
+        default:
+            return state;
+    }
 }
+
 /* eslint-enable */
 
 // Shipping details status
@@ -173,11 +181,26 @@ function shippingDetailsReducer(state = initialState.shippingDetailsStatus, acti
   }
 }
 
+// Save the order
+function saveOrderReducer(state = initialState.order, action) {
+  const {type, payload} = action;
+  switch (type) {
+    case ATYPES.SET_ORDER:
+      return {
+        ...state,
+        order: payload
+      };
+    default:
+      return state
+  }
+}
+
 export const reducer = combineReducers({
   form: reduxFormReducer, // mounted under "form"
   user: userReducer,
   search: searchReducer,
   products: fetchReducer,
   shippingDetailsStatus: shippingDetailsReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  order: saveOrderReducer
 });

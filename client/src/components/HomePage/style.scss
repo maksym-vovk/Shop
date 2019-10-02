@@ -4,3 +4,52 @@
   grid-template-columns: repeat(5, 1fr);
   width: 100%;
 }
+
+
+.content-watch {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #eee;
+}
+
+.content-watch:nth-child(even) .img-wrap {
+  order: 2;
+}
+
+.content-watch:nth-child(even) .text-wrap {
+  order: 1;
+}
+
+.img-wrap {
+  width: 50%;
+  text-align: center;
+}
+
+.text-wrap {
+  width: 50%;
+}
+
+.text-wrap__content {
+  display: block;
+  padding: 10px 0;
+  text-align: justify;
+}
+
+
+.image {
+  width: 75%;
+}
+
+.image-link {
+  display: inline-block;
+  padding: 5px 20px;
+  color: white;
+  font-size: 12px;
+  background-color: #0071E3;
+  border-radius: 3px;
+}
+
+
+
+
