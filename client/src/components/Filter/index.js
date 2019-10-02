@@ -73,10 +73,14 @@ export const Filter = () => {
     <React.Fragment>
       <Collapsible trigger="Filter">
         <section className="filter">
-          <button className="filter__reset-btn" onClick={resetHandler}>
-            Reset
-          </button>
-          {filterTabs}
+          <div className='filter__reset'>
+            <button className="filter__reset-btn" onClick={resetHandler}>
+              Reset
+            </button>
+          </div>
+          <div className="filter__tabs">
+            {filterTabs}
+          </div>
         </section>
       </Collapsible>
       <ProductsList params={res} key={key} />
