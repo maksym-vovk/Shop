@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Collapsible from 'react-collapsible';
 import { ProductsList } from '../';
 import { filterParams } from './filterParams';
@@ -9,7 +9,10 @@ export const Filter = () => {
   const [params, setParams] = useState({});
   const [key, setKey] = useState(true);
 
-  const res = Object.entries(params).map(item => `"${item[1]}"`).join(' ') || 'Apple';
+  const res =
+    Object.entries(params)
+      .map(item => `"${item[1]}"`)
+      .join(' ') || 'Apple';
 
   const filterHandler = e => {
     const name = e.target.dataset.name;
