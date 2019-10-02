@@ -10,7 +10,6 @@ router.get('/cards/:query', async (req, res) => {
 });
 
 router.get('/cards/:id', async (req, res) => {
-  // console.log(req.params)
   const product = await Product.find({
     _id: req.params.id
   });

@@ -29,12 +29,11 @@ export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
 
   useEffect(() => {
     changeTotalPrice(total)
-  }, [cartItems]);
+  }, [cartItems, changeTotalPrice, total]);
 
   const changeTotalQuantity = () => {
     let totalItems = 0;
     cartItems.forEach(item => totalItems += item.quantity);
-      console.log("totalItems", totalItems);
       changeTotalItems(totalItems);
   };
 

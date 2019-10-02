@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Lines } from 'react-preloaders';
 import {Link} from 'react-router-dom';
-import { HomePageSlider } from '../';
 
 import './style.scss';
 
@@ -53,7 +52,6 @@ export const HomePage = () => {
           <Link className='image-link' to="/edition">Order ></Link>
         </div>
       </div>
-      {/*<HomePageSlider />*/}
       <Lines customLoading={loading} time={300}/>
     </div>
   );
