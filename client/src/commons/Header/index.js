@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import {Collapse} from 'react-collapse'
 
-import { Logo, MainMenu, Extras, SearchInput } from '../';
+import { Logo, MainMenu, Extras, SearchInput, Search } from '../';
 
 import './index.scss';
 
@@ -10,52 +10,54 @@ const mapStateToProps = state => ({
   status: state.search.searchStatus
 });
 
-// const collapse = () => {
-//     const menu = document.querySelector('.main-menu');
-//     const header = document.querySelector('.header');
-//
-//     if (menu.style.maxHeight) {
-//         menu.style.maxHeight = null;
-//         setTimeout(() => {header.style.overflow = 'hidden';}, 1000)
-//     }
-//     else {
-//         header.style.overflow = 'unset';
-//         // menu.style.maxHeight = menu.scrollHeight + 'vh';
-//         menu.style.maxHeight = 100 + 'vh';
-//         menu.style.height = 100 + 'vh';
-//     }
-// }
+const getWindowDimensions = () => {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+};
 
-const Test = () => {
+export default function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
-    return (
-        <React.Fragment>
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-        </React.Fragment>
-    )
+  return windowDimensions;
 }
+
 export const Header = connect(mapStateToProps)(props => {
-    const [isOpened, openStatus] = useState(false);
+  const { width } = useWindowDimensions();
+  const [isOpened, openStatus] = useState(false);
 
-
-    return (
+  return (
     <header className="header">
       <div className="header__wrapper container">
 
-          <button type="button" onClick={() => openStatus(!isOpened)} className="test">burger</button>
+        <button type="button" onClick={() => openStatus(!isOpened)} className="burger-button">
+          <div className="close-line"></div>
+          <div className="close-line"></div>
+        </button>
 
-          <Collapse className="collapse-menu" isOpened={isOpened}>
-              <MainMenu style={{height: '50vh'}}/>
-          </Collapse>
-          <Logo />
-          {
-              window.screen.width <= 1000 && window.screen.height <= 1000
-                  ?  null
-                  : <MainMenu/>
+        <Logo />
+        {
+          width <= 768
+            ? <Collapse className="collapse-menu" isOpened={isOpened}>
+              <MainMenu />
+              <button type="button" onClick={() => openStatus(!isOpened)} className="burger-button-close">X</button>
+            </Collapse>
+            : <React.Fragment>
 
-          }
-        {props.status ? <SearchInput /> : null}
+              {props.status ? <SearchInput /> : <MainMenu />}
+            </React.Fragment>
+        }
         <Extras />
       </div>
     </header>
