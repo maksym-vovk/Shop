@@ -4,3 +4,21 @@
     grid-template-columns: repeat(4, 1fr);
     padding-bottom: 30px;
 }
+
+@media (max-width: 1021px) {
+    .product-list-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 772px) {
+    .product-list-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 521px) {
+    .product-list-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
