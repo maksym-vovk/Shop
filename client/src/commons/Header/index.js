@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
-import {Collapse} from 'react-collapse'
+import {Collapse} from 'react-collapse';
+import { withRouter } from 'react-router-dom';
 
 import { Logo, MainMenu, Extras, SearchInput, Search } from '../';
 
@@ -33,9 +34,13 @@ export default function useWindowDimensions() {
   return windowDimensions;
 }
 
-export const Header = connect(mapStateToProps)(props => {
+export const Header = withRouter(connect(mapStateToProps)(props => {
   const { width } = useWindowDimensions();
   const [isOpened, openStatus] = useState(false);
+
+  props.history.listen((location, action) => {
+    openStatus(false);
+  })
 
   return (
     <header className="header">
@@ -61,4 +66,4 @@ export const Header = connect(mapStateToProps)(props => {
       </div>
     </header>
   );
-});
+}));
