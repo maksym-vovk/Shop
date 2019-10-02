@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 // styles
 import './index.scss';
 
-export const CheckoutSummary = ({removeSummary, totalPrice, totalItems, grandTotalPrice}) => {
+export const CheckoutSummary = ({removeSummary, totalPrice, totalItems}) => {
   const checkBackground = (event) => {
     const target = event.target;
     if (target.classList.contains('background') || target.classList.contains('summary__cancel-image')) {
@@ -24,26 +24,10 @@ export const CheckoutSummary = ({removeSummary, totalPrice, totalItems, grandTot
               <span className="total__quantity">Quantity: {totalItems} items</span>
               <Link className="total__edit" to="/cart">Edit bag</Link>
             </div>
-            <div className="total__price">
-              <div className="total__price-item">
-                <span className="total__label">Subtotal</span>
-                <span className="total__cost">{totalPrice}</span>
-              </div>
-              <div className="total__price-item">
-                <span className="total__label">Shipping</span>
-                <span className="total__cost">1000</span>
-              </div>
-            </div>
             <div className="total__sum-block">
               <span className="total__sum-label">Total</span>
-              <span className="total__sum">{grandTotalPrice}</span>
+              <span className="total__sum">{totalPrice}</span>
             </div>
-          </div>
-          <div className="details">
-            <h3 className="details__title">Your Order Details</h3>
-            <p className="details__item">Shipment method</p>
-            <p className="details__item">Delivery address</p>
-            <p className="details__item">Payment</p>
           </div>
         </div>
       </div>

@@ -12,9 +12,11 @@
 }
 
 .summary {
-  z-index: 9999;
+  position: absolute;
+  top: 25%;
+  right: 34%;
   width: 30vw;
-  height: 100vh;
+  height: 500px;
   background-color: #fff;
   border: 1px solid rgba(210, 215, 211, 1);
 
@@ -59,6 +61,7 @@
   &__edit {
     display: flex;
     align-self: flex-end;
+    background-color: inherit;
   }
 
   &__price {
