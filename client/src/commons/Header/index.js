@@ -51,7 +51,6 @@ export const Header = connect(mapStateToProps)(props => {
           width <= 768
             ? <Collapse className="collapse-menu" isOpened={isOpened}>
               <MainMenu />
-              <button type="button" onClick={() => openStatus(!isOpened)} className="burger-button-close">X</button>
             </Collapse>
             : <React.Fragment>
 
