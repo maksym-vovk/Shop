@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './style.scss';
-import { SearchInputButton } from './SearchInputButton';
 import { connect } from 'react-redux';
+import SearchInputButton from './SearchInputButton';
+import './style.scss';
 import { setInputValue } from '../../store';
 import useWindowDimensions from '../Header';
 
@@ -16,20 +16,9 @@ export const SearchInput = connect(
   const {width} = useWindowDimensions();
   const [input, setInput] = useState('');
   return (
-    <form
-      className={width < 768 ? 'search search-mobile-width' : 'search'}
-      onSubmit={e => {
-        e.preventDefault();
-      }}
-    >
-      <SearchInputButton onClick={() => props.setInputValue(input)} />
-      <input
-        defaultValue={input}
-        onInput={event => setInput(event.target.value)}
-        className={width < 768 ? 'search__input additional-border-search' : 'search__input'}
-        type="text"
-        placeholder="Search"
-      />
+    <form className='search' onSubmit={e => e.preventDefault()}>
+      <SearchInputButton onClick={() => props.setInputValue(input)}/>
+      <input defaultValue={input} onInput={event => setInput(event.target.value)} className='search__input' type="text" placeholder="Search"/>
     </form>
-  );
-});
+  )
+})
