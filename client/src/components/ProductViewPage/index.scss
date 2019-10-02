@@ -82,9 +82,12 @@
 
 .tech-info {
   display: grid;
-  grid-gap:10px;
   grid-template-columns: repeat(3, 1fr);
-  padding-bottom: 20px 
+  padding-bottom: 20px ;
+  
+  &__item {
+    margin: 5px 15px;
+  }
 }
 
 .thumbs.animated {
@@ -113,4 +116,24 @@
 .tabs .active {
   border-radius: 50%;
   box-shadow: 0px 0px 5px #00a9ec;
+}
+
+@media (max-width: 992px) {
+  .tech-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-view__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
