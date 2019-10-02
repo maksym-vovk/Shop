@@ -37,10 +37,6 @@ export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
   };
 
   const List = cartItems.map((item, index) => {
-    // const pathname = "/cart/" + index;
-    // return  (<Link to={pathname}  key={item.id}>
-    //     <CartItem />
-    // </Link>)
 
     return (
       <CartItem
