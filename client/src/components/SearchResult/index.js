@@ -20,7 +20,6 @@ export const SearchResult = connect(mapStateToProps)((props) => {
   return (
     <React.Fragment>
       <section className='search-result container'>
-        {/*<ProductsList params={{$text: {$search: props.inputValue}}}/>*/}
         <ProductsList params={props.inputValue}/>
       </section>
       <Lines customLoading={loading} time={500} />
