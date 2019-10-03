@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {reset} from 'redux-form';
 import {connect} from 'react-redux';
 
 import {updateUser, updateUserPassword, setMessageUser} from '../../../store';
@@ -57,9 +57,10 @@ export const ChangeUserInfoPage = connect(mapStateToProps, {updateUser, setMessa
 export const ChangeUserPasswordPage = connect(mapStateToProps, {updateUserPassword, setMessageUser})(props => {
   const history = props.history;
 
-  function editUserPassword(values) {
+  const editUserPassword = (values) => {
     props.updateUserPassword(values);
-  }
+    reset();
+  };
 
   return (
     <React.Fragment>

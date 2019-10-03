@@ -50,11 +50,11 @@ export const Header = withRouter(
         <div className="header__wrapper container">
           <button
             type="button"
-            onClick={() => openStatus(!isOpened)}
-            className="burger-button"
+            onClick={() => {
+              openStatus(!isOpened);
+            }}
+            className={ isOpened ? 'burger-button menu-toggle is-active' : 'burger-button menu-toggle' }
           >
-            <div className="close-line"></div>
-            <div className="close-line"></div>
           </button>
 
           <Logo />

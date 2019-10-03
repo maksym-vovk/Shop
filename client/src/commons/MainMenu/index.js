@@ -6,10 +6,10 @@ import './index.scss';
 import { SearchInput } from '../SearchInput';
 
 export const MainMenu = () => {
-  const {width} = useWindowDimensions()
+  const {width} = useWindowDimensions();
   return (
     <nav className='main-menu'>
-      {width < 768 ? <SearchInput /> : null}
+      {width <= 768 ? <SearchInput /> : null}
 
       <NavLink className='main-menu__item' to="/all">All</NavLink>
       <NavLink className='main-menu__item' to="/origin">Origin</NavLink>

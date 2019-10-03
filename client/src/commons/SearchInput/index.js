@@ -16,7 +16,7 @@ export const SearchInput = connect(
   const {width} = useWindowDimensions();
   const [input, setInput] = useState('');
   return (
-    <form className={width < 768 ? 'search search-mobile-width' : 'search'} onSubmit={e => e.preventDefault()}>
+    <form className={width <= 768 ? 'search search-mobile-width' : 'search'} onSubmit={e => e.preventDefault()}>
       <SearchInputButton onClick={() => props.setInputValue(input)}/>
       <input defaultValue={input} onInput={event => setInput(event.target.value)} className='search__input' type="text" placeholder="Search"/>
     </form>

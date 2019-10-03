@@ -131,10 +131,13 @@ function* updateUserSaga() {
     const { payload: user } = yield take(ATYPES.UPDATE_USER);
     const response = yield axios.put('/customers/' + user._id, user);
     if (response.data.updated) {
-      yield put({
-        type: ATYPES.UPDATE_USER,
-        payload: { user: response.data.user, update_message: { correct: 'Personal information updated' } }
-      })
+      yield all ([
+          put({
+            type: ATYPES.UPDATE_USER,
+            payload: { update_message: {correct: 'Personal information updated'}}
+          }),
+          put(setUser(response.data.user))
+      ])
     } else {
       yield put({
         type: ATYPES.UPDATE_USER,
@@ -149,10 +152,14 @@ function* updateUserPasswordSaga() {
     const { payload: user } = yield take(ATYPES.UPDATE_USER_PASSWORD);
     const response = yield axios.put('/customers/' + user._id, {password: user.password});
     if (response.data.updated) {
-      yield put({
-        type: ATYPES.UPDATE_USER_PASSWORD,
-        payload: { user: response.data.user, update_message: { correct: 'Your password updated' } }
-      })
+      yield all(
+          [
+              put({
+                type: ATYPES.UPDATE_USER_PASSWORD,
+                payload: { update_message: { correct: 'Your password updated' } }
+              }),
+              put(setUser(response.data.user))
+          ])
     } else {
       yield put({
         type: ATYPES.UPDATE_USER_PASSWORD,
