@@ -17,7 +17,6 @@ export const ProductsList = connect(
   { fetchCards }
 )(props => {
   const { params, title, cards, fetchCards } = props;
-
   const [loading, setLoading] = useState(true);
   /* eslint-disable */
   useEffect(() => {

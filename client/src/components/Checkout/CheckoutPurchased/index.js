@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 
-import { CartButton } from "../../Cart/CartButton";
+import { CartButton } from '../../Cart/CartButton';
 
 // styles
 import './index.scss';

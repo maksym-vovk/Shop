@@ -36,7 +36,6 @@ export const isLetter = value =>
         ? 'Invalid value, must be letters only'
         : undefined;
 
-
 const inputFocusBlurShipping = (event) => {
     const inputElement = event.target;
     const targetContainer = event.target.parentNode;
@@ -49,7 +48,6 @@ const inputFocusBlurShipping = (event) => {
     }
     return targetLabel.classList.add('label-placehold-active');
 };
-
 
 export const renderFieldShipping = ({type, editing, label, input, meta: {touched, error}}) => (
     <div className="input-row">
@@ -72,103 +70,103 @@ const UnAuthorizedForm = props => {
             <h2 className="shipping__subtitle">Enter your name and address:</h2>
 
             <form className="shipping__form" onSubmit={handleSubmit}>
-                        <Field
-                            name="first_name"
-                            component={renderFieldShipping}
-                            type="text"
-                            label="First Name"
-                            validate={[required, isLetter, maxLength15, minLength2]}
-                            warn={alphaNumeric}
-                            onFocus={inputFocusBlurShipping}
-                            onBlur={inputFocusBlurShipping}
-                        />
-                        <Field
-                            name="last_name"
-                            component={renderFieldShipping}
-                            type="text"
-                            label="Last Name"
-                            validate={[required, isLetter, maxLength15, minLength2]}
-                            warn={alphaNumeric}
-                            onFocus={inputFocusBlurShipping}
-                            onBlur={inputFocusBlurShipping}
-                        />
-                        <Field
-                            name="address"
-                            component={renderFieldShipping}
-                            type="text"
-                            label="Street Address"
-                            validate={[required, minLength2]}
-                            onFocus={inputFocusBlurShipping}
-                            onBlur={inputFocusBlurShipping}
-                        />
-                        <Field
-                            name="zip_code"
-                            component={renderFieldShipping}
-                            type="text"
-                            label="Zip Code"
-                            validate={[required, maxLength5, minLength2]}
-                            onFocus={inputFocusBlurShipping}
-                            onBlur={inputFocusBlurShipping}
-                        />
-                        <Field
-                            name="city"
-                            component={renderFieldShipping}
-                            type="text"
-                            label="City"
-                            validate={[required, isLetter, minLength2]}
-                            onFocus={inputFocusBlurShipping}
-                            onBlur={inputFocusBlurShipping}
-                        />
+                <Field
+                    name="first_name"
+                    component={renderFieldShipping}
+                    type="text"
+                    label="First Name"
+                    validate={[required, isLetter, maxLength15, minLength2]}
+                    warn={alphaNumeric}
+                    onFocus={inputFocusBlurShipping}
+                    onBlur={inputFocusBlurShipping}
+                />
+                <Field
+                    name="last_name"
+                    component={renderFieldShipping}
+                    type="text"
+                    label="Last Name"
+                    validate={[required, isLetter, maxLength15, minLength2]}
+                    warn={alphaNumeric}
+                    onFocus={inputFocusBlurShipping}
+                    onBlur={inputFocusBlurShipping}
+                />
+                <Field
+                    name="address"
+                    component={renderFieldShipping}
+                    type="text"
+                    label="Street Address"
+                    validate={[required, minLength2]}
+                    onFocus={inputFocusBlurShipping}
+                    onBlur={inputFocusBlurShipping}
+                />
+                <Field
+                    name="zip_code"
+                    component={renderFieldShipping}
+                    type="text"
+                    label="Zip Code"
+                    validate={[required, maxLength5, minLength2]}
+                    onFocus={inputFocusBlurShipping}
+                    onBlur={inputFocusBlurShipping}
+                />
+                <Field
+                    name="city"
+                    component={renderFieldShipping}
+                    type="text"
+                    label="City"
+                    validate={[required, isLetter, minLength2]}
+                    onFocus={inputFocusBlurShipping}
+                    onBlur={inputFocusBlurShipping}
+                />
 
-                        <Field
-                            name="country"
-                            component={renderFieldShipping}
-                            type="text"
-                            label="Country"
-                            validate={[required, isLetter, minLength2]}
-                            onFocus={inputFocusBlurShipping}
-                            onBlur={inputFocusBlurShipping}
-                        />
+                <Field
+                    name="country"
+                    component={renderFieldShipping}
+                    type="text"
+                    label="Country"
+                    validate={[required, isLetter, minLength2]}
+                    onFocus={inputFocusBlurShipping}
+                    onBlur={inputFocusBlurShipping}
+                />
 
-                        <h2 className="shipping__subtitle">What's your contact information?</h2>
-                        <div className="shipping__form-wrapper">
-                            <Field
-                                name="email"
-                                component={renderFieldShipping}
-                                type="email"
-                                label="Email"
-                                validate={email}
-                                warn={aol}
-                                onFocus={inputFocusBlurShipping}
-                                onBlur={inputFocusBlurShipping}
-                            />
-                            <p className="shipping__notice">We’ll email you a receipt and send order updates to your
-                                mobile
-                                phone via SMS or iMessage.</p>
-                        </div>
-                        <div className="shipping__form-wrapper">
-                            <Field
-                                name="phone"
-                                component={renderFieldShipping}
-                                type="tel"
-                                label="Phone Number"
-                                validate={[required, minLength(7)]}
-                                normalize={phoneNumber}
-                                onFocus={inputFocusBlurShipping}
-                                onBlur={inputFocusBlurShipping}
-                            />
-                            <p className="shipping__notice"> The phone number you enter can’t be changed after you place
-                                your
-                                order, so please make sure it’s correct.</p>
-                        </div>
-                        <div className="shipping__button-wrapper">
-                            <CartButton disabled={submitting} title="Buy"/>
-                        </div>
-                    </form>
+                <h2 className="shipping__subtitle">What's your contact information?</h2>
+                <div className="shipping__form-wrapper">
+                    <Field
+                        name="email"
+                        component={renderFieldShipping}
+                        type="email"
+                        label="Email"
+                        validate={email}
+                        warn={aol}
+                        onFocus={inputFocusBlurShipping}
+                        onBlur={inputFocusBlurShipping}
+                    />
+                    <p className="shipping__notice">We’ll email you a receipt and send order updates to your
+                        mobile
+                        phone via SMS or iMessage.</p>
+                </div>
+                <div className="shipping__form-wrapper">
+                    <Field
+                        name="phone"
+                        component={renderFieldShipping}
+                        type="tel"
+                        label="Phone Number"
+                        validate={[required, minLength(7)]}
+                        normalize={phoneNumber}
+                        onFocus={inputFocusBlurShipping}
+                        onBlur={inputFocusBlurShipping}
+                    />
+                    <p className="shipping__notice"> The phone number you enter can’t be changed after you place
+                        your
+                        order, so please make sure it’s correct.</p>
+
+                </div>
+                <div className="shipping__button-wrapper">
+                    <CartButton disabled={submitting} title="Buy"/>
+                </div>
+            </form>
         </div>
     );
 };
-
 
 export const UnAuthShippingDetails = reduxForm({
     form: 'UnAuthShippingDetails'

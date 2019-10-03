@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 import {CheckoutItem} from '../CheckoutItem';
-import {CartButton} from "../../Cart/CartButton";
+import {CartButton} from '../../Cart/CartButton';
 
 // styles
 import './index.scss';

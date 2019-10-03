@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
-import { sendOrder, clearOrder } from "../../../store";
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
-import { AuthShippingDetails } from './AuthorizedForm';
-import { UnAuthShippingDetails } from './UnAuthorizedForm';
-import { FailureOrder } from "../FailureOrder";
+import {sendOrder, clearOrder} from "../../../store";
 
+import {AuthShippingDetails} from './AuthorizedForm';
+import {UnAuthShippingDetails} from './UnAuthorizedForm';
+import {FailureOrder} from "../FailureOrder";
 
 const mapStateToProps = state => ({
     cart: state.cart,
@@ -22,8 +22,7 @@ export const ShippingDetails = withRouter(connect(mapStateToProps, {sendOrder, c
     }, [order.error]);
 
     useEffect(() => {
-        if(order.success)
-        {
+        if (order.success) {
             clearOrder();
             props.history.push("/checkout/purchased")
         }
@@ -40,10 +39,10 @@ export const ShippingDetails = withRouter(connect(mapStateToProps, {sendOrder, c
                     ? <AuthShippingDetails onSubmit={submitForm}/>
                     : <UnAuthShippingDetails onSubmit={submitForm}/>
             }
-
             {
-                errorMessage ? <FailureOrder removeErrorMessage = {setErrorMessage} /> : null
+                errorMessage ? <FailureOrder removeErrorMessage={setErrorMessage}/> : null
             }
         </React.Fragment>
     )
 }));
+

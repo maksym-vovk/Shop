@@ -30,19 +30,20 @@ export const setMessageUser = update_message_status => ({
   payload: update_message_status
 });
 
-export const setUser = payload => ({
-  type: ATYPES.SET_USER,
-  payload
-});
+export const setUser = payload => {
+  localStorage.setItem('userData', JSON.stringify(payload));
+  return {
+    type: ATYPES.SET_USER,
+    payload
+  }
+};
 
-export const setAuthState = authorized => ({
-  type: ATYPES.SET_AUTHORIZED,
-  payload: authorized
-});
-
-export const logoutUser = () => ({
-  type: ATYPES.LOGOUT_USER
-})
+export const logoutUser = () => {
+  localStorage.removeItem('userData');
+  return {
+    type: ATYPES.LOGOUT_USER
+  }
+}
 
 // Search
 export const setSearchStatus = status => ({
