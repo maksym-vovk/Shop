@@ -3,16 +3,19 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 import { Search, Cart, Auth, UserIcon } from '../';
 import {connect} from 'react-redux';
-
+import useWindowDimensions from '../Header'
 const mapStateToProps = (state) => ({
   loginStatus: state.user.authorized,
 });
 
 export const Extras = connect(mapStateToProps)((props) => {
+  const { width } = useWindowDimensions();
   const loginStatus = props.loginStatus;
   return (
     <div className="extras">
-      <Search />
+      {
+        width < 768 ? null : <Search />
+      }
       <Link to="/cart">
         <Cart />
       </Link>
