@@ -158,7 +158,7 @@ function* updateUserPasswordSaga() {
                 type: ATYPES.UPDATE_USER_PASSWORD,
                 payload: { update_message: { correct: 'Your password updated' } }
               }),
-                  put(setUser(response.data.user))
+              put(setUser(response.data.user))
           ])
     } else {
       yield put({
