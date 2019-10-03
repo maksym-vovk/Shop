@@ -14,7 +14,7 @@ export const Extras = connect(mapStateToProps)((props) => {
   return (
     <div className="extras">
       {
-        width < 768 ? null : <Search />
+        width <= 768 ? null : <Search />
       }
       <Link to="/cart">
         <Cart />

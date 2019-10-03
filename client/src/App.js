@@ -33,7 +33,7 @@ import './App.scss';
 
 function App() {
   if (localStorage.userData) {
-  	store.dispatch(setUser(JSON.parse(localStorage.userData)))
+    store.dispatch(setUser(JSON.parse(localStorage.userData)))
   }
   return (
     <Provider store={store}>
