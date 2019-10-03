@@ -42,11 +42,6 @@ const initialState = {
 function userReducer(state = initialState.userData, action) {
   const {type, payload} = action;
   switch (type) {
-    case ATYPES.SET_AUTHORIZED:
-      return {
-        ...state,
-        authorized: payload
-      };
     case ATYPES.SET_MESSAGE_USER:
       return {
         ...state,
@@ -67,6 +62,7 @@ function userReducer(state = initialState.userData, action) {
     case ATYPES.SET_USER:
       return {
         ...state,
+        authorized: true,
         userData: payload
       };
     case ATYPES.LOGOUT_USER:
