@@ -45,16 +45,23 @@ export const Header = withRouter(
       openStatus(false);
     });
 
+    const burgerAnimation = () => {
+      const burgerIcon = document.querySelector('.menu-toggle');
+      console.log(burgerIcon);
+      burgerIcon.classList.toggle('is-active');
+    };
+
     return (
       <header className="header">
         <div className="header__wrapper container">
           <button
             type="button"
-            onClick={() => openStatus(!isOpened)}
-            className="burger-button"
+            onClick={() => {
+              openStatus(!isOpened);
+              // burgerAnimation();
+            }}
+            className={ isOpened ? 'burger-button menu-toggle is-active' : 'burger-button menu-toggle' }
           >
-            <div className="close-line"></div>
-            <div className="close-line"></div>
           </button>
 
           <Logo />

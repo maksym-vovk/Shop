@@ -19,8 +19,6 @@
 
 .burger-button {
   display: none;
-  width: 50px;
-  height: 50%;
   color: white;
   background-color: #000;
   border: none;
@@ -52,9 +50,61 @@
   }
 
   .burger-button {
-    display: flex;
+    display: block;
     flex-direction: column;
     justify-content: space-around;
   }
 }
 
+
+
+
+
+/* icon Burger */
+$buttonWidth: 30px;
+$buttonHeight: 20px;
+$buttonColor: #fff;
+$lineThickness: 2px;
+$transitionSpeed: .25s;
+$transitionEasing: ease-in-out;
+
+// Demo
+.menu-toggle {
+  position: relative;
+  width: $buttonWidth;
+  height: $buttonHeight;
+  color: $buttonColor;
+  font-size: 0;
+  background: transparent;
+  border-top: $lineThickness solid;
+  border-bottom: $lineThickness solid;
+  transition: all $transitionSpeed $transitionEasing;
+
+  &:before,
+  &:after {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 100%;
+    height: $lineThickness;
+    background: currentColor;
+
+    transform: translate(-50%, -50%);
+    transition: transform $transitionSpeed $transitionEasing;
+    content: '';
+  }
+}
+
+.burger-button.is-active {
+  border-color: transparent;
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
