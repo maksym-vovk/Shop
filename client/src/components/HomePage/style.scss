@@ -1,15 +1,7 @@
-.home-page {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(5, 1fr);
-  width: 100%;
-}
-
-
 .content-watch {
   display: flex;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 40px;
   border-bottom: 1px solid #eee;
 }
 
@@ -33,9 +25,8 @@
 .text-wrap__content {
   display: block;
   padding: 10px 0;
-  text-align: justify;
+  text-align: left;
 }
-
 
 .image {
   width: 75%;
@@ -46,10 +37,12 @@
   padding: 5px 20px;
   color: white;
   font-size: 12px;
-  background-color: #0071E3;
+  background-color: #0071e3;
   border-radius: 3px;
 }
 
-
-
-
+@media (max-width: 768px) {
+  .text-wrap__content {
+    font-size: 12px;
+  }
+}
