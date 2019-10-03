@@ -15,7 +15,7 @@ export const HomePage = () => {
   const slides = [];
   for (let i = 2; i <= 5; i++) {
     slides.push(
-      <div key={i} style={{ height: '75vh' }}>
+      <div key={i} style={{ maxHeight: '500px' }}>
         <img src={`static/img/slider/${i}.jpg`} alt='slide' style={{ width: '100%' }} />
       </div>
     )
