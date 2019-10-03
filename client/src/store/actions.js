@@ -51,12 +51,6 @@ export const setSearchStatus = status => ({
   payload: status
 });
 
-// shipping details
-export const setShippingDetails = status => ({
-  type: ATYPES.SET_SHIPPING_DETAILS_STATUS,
-  payload: status
-});
-
 // add-to-basket
 export const changeQuantity = (newQuantity, newTotalItemPrice, id) => ({
   type: ATYPES.CHANGE_QUANTITY,
@@ -102,6 +96,10 @@ export const sendOrder = order => ({
   order
 });
 
+export const clearOrder = () => ({
+  type: ATYPES.CLEAR_ORDER
+});
+
 // Sagas
 /* eslint-disable */
 function* fetchCardsSaga() {
@@ -120,8 +118,8 @@ function* fetchCardSaga() {
         const {id} = yield take(ATYPES.FETCH_CARD);
         const response = yield axios.get('/cards/' + id);
         yield put({
-            type: ATYPES.SET_CARD,
-            payload: response.data
+          type: ATYPES.SET_CARD,
+          payload: response.data
         });
     }
 }
@@ -132,11 +130,11 @@ function* updateUserSaga() {
     const response = yield axios.put('/customers/' + user._id, user);
     if (response.data.updated) {
       yield all ([
-          put({
-            type: ATYPES.UPDATE_USER,
-            payload: { update_message: {correct: 'Personal information updated'}}
-          }),
-          put(setUser(response.data.user))
+        put({
+          type: ATYPES.UPDATE_USER,
+          payload: { update_message: {correct: 'Personal information updated'}}
+        }),
+        put(setUser(response.data.user))
       ])
     } else {
       yield put({
@@ -154,11 +152,11 @@ function* updateUserPasswordSaga() {
     if (response.data.updated) {
       yield all(
           [
-              put({
-                type: ATYPES.UPDATE_USER_PASSWORD,
-                payload: { update_message: { correct: 'Your password updated' } }
-              }),
-              put(setUser(response.data.user))
+            put({
+              type: ATYPES.UPDATE_USER_PASSWORD,
+              payload: { update_message: { correct: 'Your password updated' } }
+            }),
+            put(setUser(response.data.user))
           ])
     } else {
       yield put({
@@ -170,15 +168,14 @@ function* updateUserPasswordSaga() {
 }
 
 function* sendOrderSaga() {
-    while (true) {
-        const { order } = yield take(ATYPES.SEND_ORDER);
-        const result = yield axios.post('/order', order);
-        console.log("result", result);
-        yield put({
-            type: ATYPES.SET_ORDER,
-            payload: result.data
-        });
-    }
+  while (true) {
+    const { order } = yield take(ATYPES.SEND_ORDER);
+    const result = yield axios.post('/order', order);
+    yield put({
+      type: ATYPES.SET_ORDER,
+      payload: result.data
+    });
+  }
 }
 
 export function* rootSaga() {

@@ -141,8 +141,8 @@ const UnAuthorizedForm = props => {
             onBlur={inputFocusBlurShipping}
           />
           <p className="shipping__notice">We’ll email you a receipt and send order updates to your
-                                mobile
-                                phone via SMS or iMessage.</p>
+                        mobile
+                        phone via SMS or iMessage.</p>
         </div>
         <div className="shipping__form-wrapper">
           <Field
@@ -156,11 +156,12 @@ const UnAuthorizedForm = props => {
             onBlur={inputFocusBlurShipping}
           />
           <p className="shipping__notice"> The phone number you enter can’t be changed after you place
-                                your
-                                order, so please make sure it’s correct.</p>
+                        your
+                        order, so please make sure it’s correct.</p>
+
         </div>
         <div className="shipping__button-wrapper">
-          <CartButton disabled={submitting} state="Buy"/>
+          <CartButton disabled={submitting} title="Buy"/>
         </div>
       </form>
     </div>
