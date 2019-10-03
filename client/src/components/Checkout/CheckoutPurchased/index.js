@@ -14,7 +14,7 @@ export const CheckoutPurchased = () => {
           <img className="purchase__logo" src="/static/img/Apple_Grey_Logo.png" alt="apple-logo"/>
           <h1 className="purchase__text">Thank you for purchase</h1>
           <Link to="/all">
-            <CartButton state="Continue Shopping"/>
+            <CartButton title="Continue Shopping"/>
           </Link>
         </div>
       </div>

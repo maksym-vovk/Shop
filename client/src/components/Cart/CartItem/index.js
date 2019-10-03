@@ -34,8 +34,8 @@ export const CartItem = (props) => {
         <p className="cart-item__name">{name}</p>
         <p className="cart-item__details">{details}</p>
         <p className="cart-item__details">Color: {color}</p>
-        <p className="cart-item__details">Size: {size}</p>
-        <p className="cart-item__details">Connectivity: {connectivity}</p>
+        {/*<p className="cart-item__details">Size: {size}</p>*/}
+        {/*<p className="cart-item__details">Connectivity: {connectivity}</p>*/}
       </div>
       <div className="cart-item__price-wrapper">
         <div className="cart-item__input-group">

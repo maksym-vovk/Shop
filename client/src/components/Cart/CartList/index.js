@@ -73,7 +73,7 @@ export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
             </div>
             <div className="cart-list__button-wrapper">
                 <Link to="/checkout" className="cart-list__link">
-                    <CartButton onClick = {changeTotalQuantity()} state="Check out"/>
+                    <CartButton onClick = {changeTotalQuantity()} title="Check out"/>
                 </Link>
             </div>
         </div>

@@ -6,8 +6,8 @@ module.exports = router;
 router.post('/order', async (req, res) => {
     try {
         const order = await new Order(req.body).save();
-        res.json(order);
+        res.json({success: true});
     } catch (error) {
-        res.send(error);
+        res.send({error: true});
     }
 });

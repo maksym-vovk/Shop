@@ -50,12 +50,6 @@ export const setSearchStatus = status => ({
   payload: status
 });
 
-// shipping details
-export const setShippingDetails = status => ({
-  type: ATYPES.SET_SHIPPING_DETAILS_STATUS,
-  payload: status
-});
-
 // add-to-basket
 export const changeQuantity = (newQuantity, newTotalItemPrice, id) => ({
   type: ATYPES.CHANGE_QUANTITY,
@@ -99,6 +93,10 @@ export const removeFromCart = id => ({
 export const sendOrder = order => ({
   type: ATYPES.SEND_ORDER,
   order
+});
+
+export const clearOrder = () => ({
+  type: ATYPES.CLEAR_ORDER
 });
 
 // Sagas
@@ -166,11 +164,11 @@ function* sendOrderSaga() {
         const { order } = yield take(ATYPES.SEND_ORDER);
         const result = yield axios.post('/order', order);
         console.log("result", result);
-        yield put({
-            type: ATYPES.SET_ORDER,
-            payload: result.data
-        });
-    }
+            yield put({
+                type: ATYPES.SET_ORDER,
+                payload: result.data
+            });
+        }
 }
 
 export function* rootSaga() {
