@@ -40,7 +40,7 @@ const mapStateToProps = state => ({
 });
 
 const AuthorizedForm = props => {
-    const {handleSubmit, submitting} = props;
+  const {handleSubmit, submitting} = props;
 
   return (
 
@@ -139,12 +139,12 @@ const AuthorizedForm = props => {
         />
         <p className="shipping__notice"> The phone number you enter can’t be changed after you place your
                     order, so please make sure it’s correct.</p>
-            </div>
-            <div className="shipping__button-wrapper">
-                <CartButton disabled={submitting} title="Buy"/>
-            </div>
-        </form>
-    )
+      </div>
+      <div className="shipping__button-wrapper">
+        <CartButton disabled={submitting} title="Buy"/>
+      </div>
+    </form>
+  )
 };
 
 export const AuthShippingDetails = connect(mapStateToProps)(reduxForm({
