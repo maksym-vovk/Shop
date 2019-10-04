@@ -11,25 +11,7 @@ export const Search = connect(mapStateToProps, {setSearchStatus})((props) => {
   return (
     <div className="search">
       { props.status
-        ? <svg onClick={() => props.setSearchStatus(false)}
-          className='extras__image'
-          xmlns="http://www.w3.org/2000/svg"
-          version="1.1"
-          viewBox="0 0 16 16">
-          <g
-            strokeDasharray="none"
-            strokeLinecap="butt"
-            strokeLinejoin="miter"
-            strokeMiterlimit="4"
-            strokeOpacity="1"
-            strokeWidth="2"
-          >
-            <path
-              d="M2 1050.362l12-12M2 1038.362l12 12"
-              transform="translate(0 -1036.362)"
-            />
-          </g>
-        </svg>
+        ? null
         : <svg onClick={() => props.setSearchStatus(true)}
           className="search__image extras__image"
           xmlns="http://www.w3.org/2000/svg"
@@ -47,3 +29,23 @@ export const Search = connect(mapStateToProps, {setSearchStatus})((props) => {
     </div>
   );
 });
+
+// {/*<svg onClick={() => props.setSearchStatus(false)}*/}
+// {/*     className='extras__image'*/}
+// {/*     xmlns="http://www.w3.org/2000/svg"*/}
+// {/*     version="1.1"*/}
+// {/*     viewBox="0 0 16 16">*/}
+// {/*  <g*/}
+// {/*      strokeDasharray="none"*/}
+// {/*      strokeLinecap="butt"*/}
+// {/*      strokeLinejoin="miter"*/}
+// {/*      strokeMiterlimit="4"*/}
+// {/*      strokeOpacity="1"*/}
+// {/*      strokeWidth="2"*/}
+// {/*  >*/}
+// {/*    <path*/}
+// {/*        d="M2 1050.362l12-12M2 1038.362l12 12"*/}
+// {/*        transform="translate(0 -1036.362)"*/}
+// {/*    />*/}
+// {/*  </g>*/}
+// {/*</svg>*/}
