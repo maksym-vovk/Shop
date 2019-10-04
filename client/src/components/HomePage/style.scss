@@ -41,6 +41,20 @@
   border-radius: 3px;
 }
 
+.slider-image-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.slider-image {
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider {
+  max-height: 75vh;
+}
+
 @media (max-width: 768px) {
   .text-wrap__content {
     font-size: 12px;
