@@ -16,12 +16,20 @@ const collapse = (event) => {
 };
 
 export const OrderItem = ({cart, orderDate, orderStatus}) => {
+  const date = (dateOrder) => {
+    const newDate = new Date(dateOrder);
+    const day = newDate.getDay();
+    const year = newDate.getFullYear();
+    const month = newDate.toLocaleString('default', { month: 'long' });
+    return String(`${day} ${month} ${year}`);
+  };
+
   return (
     <React.Fragment>
       <div className="order-item">
         <button className="order-item__collapsible" onClick={(e) => collapse(e)}>
-          <span className="order-item__order-number">Open Order</span>
-          <span className="order-item__order-date">Date: { orderDate.slice(0, 10) }</span>
+          <span className="order-item__order-number">Order</span>
+          <span className="order-item__order-date">Date: { date(orderDate) }</span>
         </button>
         <div className="order-item__content">
           <div className="payment-story-product-list__item-wrapper">

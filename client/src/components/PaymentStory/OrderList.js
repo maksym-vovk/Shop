@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 import {setUserOrders} from '../../store';
 import {OrderItem} from './OrderItem';
-import {ProductCard} from '../ProductCard';
 
 const mapStateToProps = state => ({
   userOrders: state.user.userOrders,
@@ -16,14 +15,13 @@ export const OrderList = connect(mapStateToProps, {setUserOrders})(props => {
   useEffect(() => {
     setUserOrders(user_id);
   }, []);
-
+  /* eslint-enable */
   const renderOrderItems = array => {
-      return array.map(order =>
-          <OrderItem cart={order.cart} orderDate={order.orderDate} orderStatus={order.orderStatus} key={order._id}/>
-          )
+    return array.map(order =>
+      <OrderItem cart={order.cart} orderDate={order.orderDate} orderStatus={order.orderStatus} key={order._id}/>
+    )
   };
 
-    /* eslint-enable */
   return (
     userOrders
       ? renderOrderItems(userOrders)
