@@ -1,7 +1,6 @@
-export { HomePageSlider } from './Slider';
 export { ProductCard } from './ProductCard';
 export { HomePage } from './HomePage';
-export { RegisterForm } from './ReduxForm';
+export { ReduxForm } from './ReduxForm';
 export { All } from './All';
 export { Origin } from './Origin';
 export { Nike } from './Nike';
