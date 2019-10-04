@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { setAuthState, setUser } from '../../store';
+import { setUser } from '../../store';
 
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ import { ModalLogin } from './ModalLogin';
 
 import './index.scss';
 
-export const Login = connect(null, {setAuthState, setUser})((props) => {
+export const Login = connect(null, {setUser})((props) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -25,7 +25,6 @@ export const Login = connect(null, {setAuthState, setUser})((props) => {
         } else {
           setError(false);
           props.openModal(false);
-          props.setAuthState(true);
           props.setUser(res.data);
         }
       });

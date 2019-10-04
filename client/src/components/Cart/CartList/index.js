@@ -6,7 +6,7 @@ import {changeQuantity, changeTotalPrice, changeTotalItems, removeFromCart} from
 
 // styles
 import './index.scss'
-import {CartButton} from "../CartButton";
+import {CartButton} from '../CartButton';
 
 const mapStateToProps = state => {
   return {
@@ -29,21 +29,15 @@ export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
 
   useEffect(() => {
     changeTotalPrice(total)
-  }, [cartItems]);
+  }, [cartItems, changeTotalPrice, total]);
 
   const changeTotalQuantity = () => {
     let totalItems = 0;
     cartItems.forEach(item => totalItems += item.quantity);
-      console.log("totalItems", totalItems);
-      changeTotalItems(totalItems);
+    changeTotalItems(totalItems);
   };
 
   const List = cartItems.map((item, index) => {
-    // const pathname = "/cart/" + index;
-    // return  (<Link to={pathname}  key={item.id}>
-    //     <CartItem />
-    // </Link>)
-
     return (
       <CartItem
         key={index}
@@ -72,15 +66,15 @@ export const CartList = connect(mapStateToProps, mapDispatchToProps)(props => {
       <h1 className="cart-list__subtitle">Here’s what’s in your bag.</h1>
 
       {List}
-            <div className="cart-list__total-block">
-                <h2 className="cart-list__total">Total:</h2>
-                <span className="cart-list__total-price">${total}</span>
-            </div>
-            <div className="cart-list__button-wrapper">
-                <Link to="/checkout" className="cart-list__link">
-                    <CartButton onClick = {changeTotalQuantity()} state="Check out"/>
-                </Link>
-            </div>
-        </div>
-    )
+      <div className="cart-list__total-block">
+        <h2 className="cart-list__total">Total:</h2>
+        <span className="cart-list__total-price">${total}</span>
+      </div>
+      <div className="cart-list__button-wrapper">
+        <Link to="/checkout" className="cart-list__link">
+          <CartButton onClick={changeTotalQuantity()} title="Check out"/>
+        </Link>
+      </div>
+    </div>
+  )
 });

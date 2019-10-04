@@ -1,24 +1,108 @@
-@media (min-width: 770px) {
-  .page-header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1000;
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  height: 45px;
+  background-color: #000;
+
+  &__wrapper {
     display: flex;
     align-items: center;
-    height: 45px;
-    background-color: #000;
-    &__wrapper{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      overflow: hidden;
-    }
+    justify-content: space-between;
+    height: 100%;
   }
 }
 
-@media (max-width: 770px) {
-  .page-header {
+.burger-button {
+  display: none;
+  color: white;
+  background-color: #000;
+  border: none;
+  outline: none;
+}
+
+.close-line {
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.logo {
+  margin: 0;
+}
+.collapse-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .collapse-menu {
+    display: block;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .burger-button {
+    display: block;
+  }
+}
+
+
+
+
+
+/* icon Burger */
+$buttonWidth: 30px;
+$buttonHeight: 20px;
+$buttonColor: #fff;
+$lineThickness: 2px;
+$transitionSpeed: .25s;
+$transitionEasing: ease-in-out;
+
+// Demo
+.menu-toggle {
+  position: relative;
+  width: $buttonWidth;
+  height: $buttonHeight;
+  color: $buttonColor;
+  font-size: 0;
+  background: transparent;
+  border-top: $lineThickness solid;
+  border-bottom: $lineThickness solid;
+  transition: all $transitionSpeed $transitionEasing;
+
+  &:before,
+  &:after {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 100%;
+    height: $lineThickness;
+    background: currentColor;
+
+    transform: translate(-50%, -50%);
+    transition: transform $transitionSpeed $transitionEasing;
+    content: '';
+  }
+}
+
+.burger-button.is-active {
+  border-color: transparent;
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 }

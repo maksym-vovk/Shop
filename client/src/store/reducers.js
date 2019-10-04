@@ -32,21 +32,12 @@ const initialState = {
   },
 
   // Order
-  order: {
-    items: [],
-    user: {},
-    authorized: false
-  }
+  order: {}
 };
 
 function userReducer(state = initialState.userData, action) {
   const {type, payload} = action;
   switch (type) {
-    case ATYPES.SET_AUTHORIZED:
-      return {
-        ...state,
-        authorized: payload
-      };
     case ATYPES.SET_MESSAGE_USER:
       return {
         ...state,
@@ -67,6 +58,7 @@ function userReducer(state = initialState.userData, action) {
     case ATYPES.SET_USER:
       return {
         ...state,
+        authorized: true,
         userData: payload
       };
     case ATYPES.LOGOUT_USER:
@@ -167,29 +159,16 @@ function cartReducer(state = initialState.cart, action) {
 
 /* eslint-enable */
 
-// Shipping details status
-function shippingDetailsReducer(state = initialState.shippingDetailsStatus, action) {
-  const {type, payload} = action;
-  switch (type) {
-    case ATYPES.SET_SHIPPING_DETAILS_STATUS:
-      return {
-        ...state,
-        status: payload
-      };
-    default:
-      return state
-  }
-}
-
 // Save the order
 function saveOrderReducer(state = initialState.order, action) {
   const {type, payload} = action;
   switch (type) {
     case ATYPES.SET_ORDER:
       return {
-        ...state,
-        order: payload
+        ...payload
       };
+    case ATYPES.CLEAR_ORDER:
+      return {};
     default:
       return state
   }
@@ -200,7 +179,6 @@ export const reducer = combineReducers({
   user: userReducer,
   search: searchReducer,
   products: fetchReducer,
-  shippingDetailsStatus: shippingDetailsReducer,
   cart: cartReducer,
   order: saveOrderReducer
 });

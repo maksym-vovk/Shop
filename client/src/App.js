@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Header, Footer } from './commons';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import store from './store';
+import store, { setUser } from './store';
 
 import {
   HomePage,
@@ -32,6 +32,9 @@ import { ProductViewPage } from './components/ProductViewPage';
 import './App.scss';
 
 function App() {
+  if (localStorage.userData) {
+    store.dispatch(setUser(JSON.parse(localStorage.userData)))
+  }
   return (
     <Provider store={store}>
       <Router>

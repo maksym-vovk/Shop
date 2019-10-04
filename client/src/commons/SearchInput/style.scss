@@ -1,14 +1,30 @@
 .search {
   display: flex;
+  align-self: center;
   justify-content: center;
   width: 40%;
+
   &__input {
     width: 100%;
-    padding: 0 5px ;
-    color: white;
+    padding: 5px;
+    color: #000;
     font-size: 18px;
-    background: black;
+    background: #fff;
     border: none;
+    border-radius: 3px;
     outline: none;
   }
 }
+
+.additional-border-search {
+  margin: 0 20px;
+  border: 1px solid #4d4b4b;
+  border-radius: 5px;
+}
+
+.search-mobile-width {
+  width: 95%;
+  height: 40px;
+  padding-right: 15px;
+}
+

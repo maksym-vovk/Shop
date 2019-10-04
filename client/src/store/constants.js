@@ -17,9 +17,6 @@ export const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
 export const CHANGE_TOTAL_PRICE = 'CHANGE_TOTAL_PRICE';
 export const CHANGE_TOTAL_ITEMS = 'CHANGE_TOTAL_ITEMS';
 
-// submit shipping details
-export const SET_SHIPPING_DETAILS_STATUS = 'SET_SHIPPING_DETAILS_STATUS';
-
 // User
 export const SET_USER = 'SET_USER';
 export const UPDATE_USER = 'UPDATE_USER';
@@ -34,3 +31,4 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 // order
 export const SEND_ORDER = 'SEND_ORDER';
 export const SET_ORDER = 'SET_ORDER';
+export const CLEAR_ORDER = 'CLEAR_ORDER';
