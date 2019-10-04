@@ -15,21 +15,35 @@ const collapse = (event) => {
   }
 };
 
-export const OrderItem = ({cart, orderDate, orderStatus}) => {
-  const date = (dateOrder) => {
-    const newDate = new Date(dateOrder);
-    const day = newDate.getDay();
-    const year = newDate.getFullYear();
-    const month = newDate.toLocaleString('default', { month: 'long' });
-    return String(`${day} ${month} ${year}`);
-  };
+const dateFormat = (date) => {
+  const newDate = new Date(date);
+  let day = newDate.getDay();
+  switch (day) {
+    case 1 && 31:
+      day += 'st';
+      break;
+    case 2:
+      day += 'nd';
+      break;
+    case 3:
+      day += 'rd';
+      break;
 
+    default:
+      day += 'th'
+  }
+  const year = newDate.getFullYear();
+  const month = newDate.toLocaleString('default', { month: 'long' });
+  return String(`${month} ${day}, ${year}`);
+};
+
+export const OrderItem = ({cart, orderDate, orderStatus}) => {
   return (
     <React.Fragment>
       <div className="order-item">
         <button className="order-item__collapsible" onClick={(e) => collapse(e)}>
           <span className="order-item__order-number">Order</span>
-          <span className="order-item__order-date">Date: { date(orderDate) }</span>
+          <span className="order-item__order-date">Date: { dateFormat(orderDate) }</span>
         </button>
         <div className="order-item__content">
           <div className="payment-story-product-list__item-wrapper">
