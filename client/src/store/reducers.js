@@ -31,16 +31,13 @@ const initialState = {
     items: []
   },
 
+  // Order
+  order: {}
 };
 
 function userReducer(state = initialState.userData, action) {
   const {type, payload} = action;
   switch (type) {
-    case ATYPES.SET_AUTHORIZED:
-      return {
-        ...state,
-        authorized: payload
-      };
     case ATYPES.SET_MESSAGE_USER:
       return {
         ...state,
@@ -58,9 +55,15 @@ function userReducer(state = initialState.userData, action) {
         update_message: payload.update_message,
         userData: payload.user ? payload.user : state.userData
       };
+    case ATYPES.SET_USER_ORDERS:
+      return {
+        ...state,
+        userOrders: payload
+      };
     case ATYPES.SET_USER:
       return {
         ...state,
+        authorized: true,
         userData: payload
       };
     case ATYPES.LOGOUT_USER:
@@ -111,63 +114,66 @@ function fetchReducer(state = initialState.products, action) {
       return state;
   }
 }
+
 // Cart
 /* eslint-disable */
 function cartReducer(state = initialState.cart, action) {
-  const { type, payload } = action;
-  switch (type) {
-    case ATYPES.ADD_TO_CART:
-      return {
-        ...state,
-        totalPrice: state.totalPrice + payload.price,
-        items: [
-          ...state.items,
-          payload
-        ]
-      };
-    case ATYPES.CHANGE_QUANTITY:
-      return {
-        ...state,
-        items: state.items.map(item => item.cartId === payload.id ? {
-          ...item,
-          quantity: payload.newQuantity,
-          totalItemPrice: payload.newTotalItemPrice
-        } : {...item}
-        ),
-      };
-    case ATYPES.CHANGE_TOTAL_PRICE:
-      return {
-        ...state,
-        totalPrice: payload.totalPrice,
-      };
-    case ATYPES.CHANGE_TOTAL_ITEMS:
-      return {
-        ...state,
-        totalItems: payload.totalItems,
-      };
-    case ATYPES.REMOVE_FROM_CART:
-    // Rework?
-      const item = state.items.find(el => el.cartId === payload)
-      return {
-        ...state,
-        totalPrice: state.totalPrice - item.price * item.quantity,
-        items: state.items.filter(el => el.cartId !== payload)
-      }
-    default:
-      return state;
-  }
+    const {type, payload} = action;
+    switch (type) {
+        case ATYPES.ADD_TO_CART:
+            return {
+                ...state,
+                totalPrice: state.totalPrice + payload.price,
+                items: [
+                    ...state.items,
+                    payload
+                ]
+            };
+        case ATYPES.CHANGE_QUANTITY:
+            return {
+                ...state,
+                items: state.items.map(item => item.cartId === payload.id ? {
+                        ...item,
+                        quantity: payload.newQuantity,
+                        totalItemPrice: payload.newTotalItemPrice
+                    } : {...item}
+                ),
+            };
+        case ATYPES.CHANGE_TOTAL_PRICE:
+            return {
+                ...state,
+                totalPrice: payload.totalPrice,
+            };
+        case ATYPES.CHANGE_TOTAL_ITEMS:
+            return {
+                ...state,
+                totalItems: payload.totalItems,
+            };
+        case ATYPES.REMOVE_FROM_CART:
+            // Rework?
+            const item = state.items.find(el => el.cartId === payload)
+            return {
+                ...state,
+                totalPrice: state.totalPrice - item.price * item.quantity,
+                items: state.items.filter(el => el.cartId !== payload)
+            }
+        default:
+            return state;
+    }
 }
+
 /* eslint-enable */
 
-// Shipping details status
-function shippingDetailsReducer(state = initialState.shippingDetailsStatus, action) {
+// Save the order
+function saveOrderReducer(state = initialState.order, action) {
   const {type, payload} = action;
   switch (type) {
-    case ATYPES.SET_SHIPPING_DETAILS_STATUS:
+    case ATYPES.SET_ORDER:
       return {
-        ...state,
-        status: payload
+        ...payload
       };
+    case ATYPES.CLEAR_ORDER:
+      return {};
     default:
       return state
   }
@@ -178,6 +184,6 @@ export const reducer = combineReducers({
   user: userReducer,
   search: searchReducer,
   products: fetchReducer,
-  shippingDetailsStatus: shippingDetailsReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  order: saveOrderReducer
 });

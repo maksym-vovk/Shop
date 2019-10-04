@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {CheckoutItemDetails} from '../CheckoutItemDetails';
-// import {connect} from 'react-redux'
 
 // styles
 import './index.scss';

@@ -1,12 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+
 import {ShippingDetails} from './ShippingDetails';
 import {CheckoutTitle} from '../CheckoutTitle'
-import submitShippingDetails from './submitShippingDetails';
 
 const mapStateToProps = state => ({
-  shippingDetails: state.shippingDetailsStatus.status,
   checkoutItems: state.cart.items,
   checkoutTotalPrice: state.cart.totalPrice,
   checkoutTotalItems: state.cart.totalItems,
@@ -24,7 +23,7 @@ export const ShippingDetailsForm = connect(mapStateToProps)(({checkoutTotalPrice
         grandTotalPrice={checkoutGrandTotalPrice}
       />
       {shippingDetails ? <Redirect to='/checkout/purchased'/> : null }
-      <ShippingDetails authorized={authorized} onSubmit={submitShippingDetails}/>
+      <ShippingDetails authorized={authorized} />
     </div>
   )
 });

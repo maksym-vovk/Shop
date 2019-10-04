@@ -5,7 +5,6 @@ import { fetchCards } from '../../store/actions';
 import { ProductCard } from '../';
 
 import './index.scss';
-import {login} from '../ReduxForm/RegistrationForm';
 
 const mapStateToProps = state => {
   return {
@@ -17,18 +16,11 @@ export const ProductsList = connect(
   mapStateToProps,
   { fetchCards }
 )(props => {
-  const { params } = props;
-
-  // const res = {
-  //   params
-  // };
-
-  const { cards, fetchCards } = props;
+  const { params, title, cards, fetchCards } = props;
   const [loading, setLoading] = useState(true);
   /* eslint-disable */
   useEffect(() => {
-    document.title = 'Apple Watch Series 5';
-    console.log(params);
+    document.title = title || 'Apple Watch Series 5';
     fetchCards(params);
     setLoading(false);
   }, [fetchCards, params]);

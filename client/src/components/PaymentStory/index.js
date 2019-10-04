@@ -4,6 +4,9 @@ import {OrderList} from './OrderList';
 
 export const PaymentStory = () => {
   return (
-    <OrderList />
+    <div className="container">
+      <h2 className='page-title'>Your's order history</h2>
+      <OrderList />
+    </div>
   )
 };

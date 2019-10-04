@@ -4,8 +4,8 @@ import {ProductList} from './ProductList';
 import './index.scss';
 
 const collapse = (event) => {
-  const collapseBtn = event.target;
-  const orderContent = collapseBtn.nextElementSibling;
+  const collapseBtn = event.currentTarget;
+  const orderContent = collapseBtn.parentNode.querySelector('.order-item__content');
 
   collapseBtn.classList.toggle('order-item--active');
   if (orderContent.style.maxHeight) {
@@ -15,17 +15,26 @@ const collapse = (event) => {
   }
 };
 
-export const OrderItem = () => {
+export const OrderItem = ({cart, orderDate, orderStatus}) => {
   return (
     <React.Fragment>
       <div className="order-item">
-        <button className="order-item__collapsible" onClick={(e) => collapse(e)}>Open Section 1</button>
-        <div className = "order-item__content">
+        <button className="order-item__collapsible" onClick={(e) => collapse(e)}>
+          <span className="order-item__order-number">Open Order</span>
+          <span className="order-item__order-date">Date: { orderDate.slice(0, 10) }</span>
+        </button>
+        <div className="order-item__content">
           <div className="payment-story-product-list__item-wrapper">
 
-            <ProductList />
+            <ProductList cartItem={cart}/>
             <div className="payment-story-product-list-item-status">
-              <p className="">Status: <span className="payment-story-product-list-item-status__success">Success</span></p>
+              <p className="">
+                Status: {
+                  orderStatus
+                    ? <span className="payment-story-product-list-item-status__success">Success</span>
+                    : <span className="payment-story-product-list-item-status__fail">Not delivered</span>
+                }
+              </p>
             </div>
 
           </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux'
 import {CheckoutItem} from '../CheckoutItem';
+import {CartButton} from '../../Cart/CartButton';
 
 // styles
 import './index.scss';
@@ -14,8 +15,8 @@ const mapStateToProps = state => {
 
 export const CheckoutList = connect(mapStateToProps)(({checkoutItems}) => {
   return (
-    <div>
-      <h2 className="check-out-subtitle">In stock and ready to ship</h2>
+    <div className="check-out">
+      <h2 className="check-out__subtitle">In stock and ready to ship</h2>
 
       {
         checkoutItems.map((item, index) => {
@@ -25,7 +26,7 @@ export const CheckoutList = connect(mapStateToProps)(({checkoutItems}) => {
       }
       <div className="continue-button-wrapper">
         <Link to="/checkout/shipping" className="continue-link">
-          <button type="submit" className="continue-button">Continue to Shipping Address</button>
+          <CartButton title="Continue to Shipping Address"/>
         </Link>
       </div>
     </div>

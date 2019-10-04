@@ -2,27 +2,28 @@
   padding: 15px 0;
 
   &__collapsible {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     padding: 18px;
     color: #000;
-    font-size: 15px;
-    text-align: left;
     background-color: #d6d6d6;
     border: none;
     outline: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
     cursor: pointer;
   }
 
   &--active, &__collapsible:hover {
     color: #fff;
-    background-color: #555;
+    background-color: #000;
   }
 
   &__collapsible:after {
-    float: right;
     margin-left: 5px;
     color: white;
     font-weight: bold;
+    font-size: 15px;
     content: '\002B';
   }
 
@@ -40,6 +41,10 @@
 
   &__content-show {
     max-height: 300px;
+  }
+
+  &__order-number, &__order-date {
+    font-size: 18px;
   }
 }
 
@@ -81,6 +86,7 @@
 
         &__text {
           color: #3e77aa;
+          font-size: 18px;
         }
       }
 
@@ -88,17 +94,10 @@
         display: flex;
         justify-content: space-between;
 
-        &__price {
-
+        &__price, &__quantity, &__total-product-price {
+          font-size: 20px;
         }
 
-        &__quantity {
-
-        }
-
-        &__total-product-price {
-
-        }
       }
     }
 
@@ -121,5 +120,80 @@
 
   &__success {
     color: #00a046;
+  }
+
+  &__fail {
+    color: #ac313a;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .payment-story-product-list {
+
+    &__item {
+      flex-direction: column;
+
+      &__image-wrapper {
+        align-self: center;
+      }
+
+      &__details {
+
+        &__product-title {
+          align-self: center;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 481px) {
+  .order-item {
+
+    &__order-number, &__order-date {
+      font-size: 15px;
+    }
+  }
+
+    .payment-story-product-list {
+
+    &__item {
+      flex-direction: column;
+
+      &__details {
+
+        &__product-title {
+          &__text {
+
+          font-size: 16px;
+          }
+        }
+
+        &__product-detail {
+          flex-direction: column;
+
+          &__price {
+            align-self: center;
+          }
+          &__quantity, &__total-product-price {
+            align-self: flex-end;
+          }
+          &__price, &__quantity, &__total-product-price {
+            padding: 10px 0;
+            font-size: 16px;
+          }
+        }
+
+      }
+
+      &__total-wrapper {
+        justify-content: center;
+        padding: 0;
+      }
+      &__total-price {
+        margin: 0;
+        font-size: 16px;
+      }
+    }
   }
 }
