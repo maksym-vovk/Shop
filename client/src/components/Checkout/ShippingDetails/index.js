@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
+
 import {ShippingDetails} from './ShippingDetails';
 import {CheckoutTitle} from '../CheckoutTitle'
 
 const mapStateToProps = state => ({
-  shippingDetails: state.shippingDetailsStatus.status,
   checkoutItems: state.cart.items,
   checkoutTotalPrice: state.cart.totalPrice,
   checkoutTotalItems: state.cart.totalItems,
@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 });
 
 export const ShippingDetailsForm = connect(mapStateToProps)(({checkoutTotalPrice, checkoutItems, checkoutTotalItems, checkoutGrandTotalPrice, shippingDetails, authorized}) => {
-    return (
+  return (
     <div className="container">
       <CheckoutTitle
         totalPrice={checkoutTotalPrice}
