@@ -19,10 +19,10 @@ const dateFormat = (date) => {
   const newDate = new Date(date);
   let day = newDate.getDay();
   switch (day) {
-    case 1 && 31:
+    case 1 && 21 && 31:
       day += 'st';
       break;
-    case 2:
+    case 2 && 22:
       day += 'nd';
       break;
     case 3:
@@ -33,7 +33,7 @@ const dateFormat = (date) => {
       day += 'th'
   }
   const year = newDate.getFullYear();
-  const month = newDate.toLocaleString('default', { month: 'long' });
+  const month = newDate.toLocaleString('en', { month: 'long' });
   return String(`${month} ${day}, ${year}`);
 };
 

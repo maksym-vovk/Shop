@@ -1,7 +1,13 @@
 import React from 'react';
 
+const items = (number) => {
+  return (number === 1)
+    ? `${number} item`
+    : `${number} items`
+}
 export const ProductItem = ({product}) => {
-  const {name, img, price, quantity, totalItemPrice} = product
+  const {name, img, price, quantity, totalItemPrice} = product;
+
   return (
     <div className="payment-story-product-list__item">
       <figure className="payment-story-product-list__item__image-wrapper">
@@ -18,7 +24,7 @@ export const ProductItem = ({product}) => {
             {price}$
           </span>
           <span className="payment-story-product-list__item__details__product-detail__quantity">
-              qty: {quantity}
+            {items(quantity)}
           </span>
           <span className="payment-story-product-list__item__details__product-detail__total-product-price">
               Price: {totalItemPrice}$
