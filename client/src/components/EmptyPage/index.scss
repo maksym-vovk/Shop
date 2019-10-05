@@ -1,15 +1,9 @@
-.purchase {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+.empty-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-
   &__block {
     display: flex;
     align-items: center;
@@ -27,23 +21,18 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  .purchase {
+  .empty-page {
     &__text {
       font-size: 26px;
-    }
-
-    &__block {
-      padding-top: 35%;
     }
   }
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
-  .purchase {
+  .empty-page {
 
     &__block {
       flex-direction: column;
-      padding-top: 45%;
     }
 
     &__logo {
@@ -58,11 +47,10 @@
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
-  .purchase {
+  .empty-page {
 
     &__block {
       flex-direction: column;
-      padding-top: 65%;
     }
 
     &__logo {
