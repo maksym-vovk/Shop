@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { fetchCards } from '../../store/actions';
 
 import { ProductCard } from '../';
-import { EmptyPage } from '../EmptyPage';
 
 import './index.scss';
 
@@ -33,18 +32,20 @@ export const ProductsList = connect(
       });
   };
 
-  return (
-    <React.Fragment>
-        {
-            cards.length
-                ? <section className="product-list-wrapper">
-                    <CardsList />
-                </section>
-                : <EmptyPage text="Sorry, nothing found on your search!"/>
-
-        }
-
-      <Lines customLoading={loading} time={300} />
-    </React.Fragment>
+    return (
+        <React.Fragment>
+            {
+                cards.length
+                    ? <section className="product-list-wrapper">
+                        <CardsList />
+                    </section>
+                    :
+                    <div className="empty">
+                        <img className="empty__logo" src="/static/img/Apple_Grey_Logo.png" alt="apple-logo"/>
+                        <h1 className="empty__text">Sorry, nothing found on your search.</h1>
+                    </div>
+            }
+            <Lines customLoading={loading} time={300} />
+        </React.Fragment>
   );
 });
