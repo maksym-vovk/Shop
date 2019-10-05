@@ -27,4 +27,6 @@ export {CheckoutPurchased} from './Checkout/CheckoutPurchased';
 export { Filter } from './Filter';
 export {Page404} from './Page404';
 export {ChangeUserInfoPage, ChangeUserPasswordPage} from './UserCabinet/ChangeAccountInfo';
+export {PaymentStory} from './PaymentStory';
+
 export {SearchResult} from './SearchResult'
