@@ -14,6 +14,7 @@ const schema = new Schema ({
         address: String,
         phone: String
     },
+    orderStatus: {type: Boolean, default: false},
     orderDate: {type: Date, default: Date.now}
 }).index({'$**' : 'text'});
 
