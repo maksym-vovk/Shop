@@ -28,20 +28,22 @@ export const ProductsList = connect(
   }, [fetchCards, params]);
 
   const CardsList = () => {
-    return cards.length ? (
-      cards.map(item => {
+    return cards.map(item => {
         return <ProductCard state={item} key={item._id} />;
-      })
-    ) : (
-      <EmptyPage text="Sorry, nothing found on your search!"/>
-    );
+      });
   };
 
   return (
     <React.Fragment>
-      <section className="product-list-wrapper">
-        <CardsList />
-      </section>
+        {
+            cards.length
+                ? <section className="product-list-wrapper">
+                    <CardsList />
+                </section>
+                : <EmptyPage text="Sorry, nothing found on your search!"/>
+
+        }
+
       <Lines customLoading={loading} time={300} />
     </React.Fragment>
   );
