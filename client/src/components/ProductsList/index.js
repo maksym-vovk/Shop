@@ -6,6 +6,7 @@ import { fetchCards } from '../../store/actions';
 import { ProductCard } from '../';
 
 import './index.scss';
+import {EmptyPage} from "../EmptyPage";
 
 const mapStateToProps = state => {
   return {
@@ -40,10 +41,7 @@ export const ProductsList = connect(
                         <CardsList />
                     </section>
                     :
-                    <div className="empty">
-                        <img className="empty__logo" src="/static/img/Apple_Grey_Logo.png" alt="apple-logo"/>
-                        <h1 className="empty__text">Sorry, nothing found on your search.</h1>
-                    </div>
+                    <EmptyPage button={false} text="Sorry, nothing found on your search"/>
             }
             <Lines customLoading={loading} time={300} />
         </React.Fragment>
