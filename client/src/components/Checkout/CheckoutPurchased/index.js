@@ -7,15 +7,15 @@ import {CartButton} from '../../Cart/CartButton';
 import './index.scss';
 
 export const CheckoutPurchased = () => {
-    return (
-        <div className="purchase">
-            <div className="purchase__block">
-                <img className="purchase__logo" src="/static/img/Apple_Grey_Logo.png" alt="apple-logo"/>
-                <h1 className="purchase__text">Thank you for purchase</h1>
-            </div>
-            <Link to="/all">
-                <CartButton title="Continue Shopping"/>
-            </Link>
-        </div>
-    )
+  return (
+    <div className="purchase">
+      <div className="purchase__block">
+        <img className="purchase__logo" src="/static/img/Apple_Grey_Logo.png" alt="apple-logo"/>
+        <h1 className="purchase__text">Thank you for purchase</h1>
+      </div>
+      <Link to="/all">
+        <CartButton title="Continue Shopping"/>
+      </Link>
+    </div>
+  )
 };

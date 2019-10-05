@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 import {connect} from 'react-redux';
 import {setUserOrders} from '../../store';
+import {EmptyPage} from '../EmptyPage'
 import {OrderItem} from './OrderItem';
 
 const mapStateToProps = state => ({
@@ -25,6 +26,6 @@ export const OrderList = connect(mapStateToProps, {setUserOrders})(props => {
   return (
     userOrders
       ? renderOrderItems(userOrders)
-      : null
+      : <EmptyPage text="Order history is empty"/>
   )
 });

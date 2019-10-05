@@ -14,7 +14,8 @@ router.post('/order', async (req, res) => {
 router.get('/user-orders/:id', async (req, res) => {
    const user_id = { $text: { $search: req.params.id } };
    const orders = await Order.find(user_id);
-   res.send(orders)
+   if (orders.length) return res.send(orders)
+   res.send(false)
 });
 
 module.exports = router;
