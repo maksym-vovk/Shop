@@ -7,7 +7,9 @@
   display: flex;
   align-items: center;
   height: 45px;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, .8);
+  backdrop-filter: saturate(100%) blur(20px);
+  transition: .5s background-color ease-out;
 
   &__wrapper {
     display: flex;
@@ -15,14 +17,24 @@
     justify-content: space-between;
     height: 100%;
   }
+
+  &__mob-menu-open {
+    background-color: #000;
+  }
 }
 
-.burger-button {
+.burger-wrapper {
   display: none;
+  width: 20px;
+  height: 100%;
+  cursor: pointer;
+}
+.burger-button {
   color: white;
   background-color: #000;
   border: none;
   outline: none;
+  cursor: pointer;
 }
 
 .close-line {
@@ -49,24 +61,22 @@
     transform: translateX(-50%);
   }
 
-  .burger-button {
-    display: block;
+  .burger-wrapper {
+    display: flex;
+    align-items: center;
   }
 }
 
 
 
-
-
 /* icon Burger */
-$buttonWidth: 30px;
-$buttonHeight: 20px;
+$buttonWidth: 20px;
+$buttonHeight: 10px;
 $buttonColor: #fff;
-$lineThickness: 2px;
+$lineThickness: 1px;
 $transitionSpeed: .25s;
 $transitionEasing: ease-in-out;
 
-// Demo
 .menu-toggle {
   position: relative;
   width: $buttonWidth;
@@ -75,21 +85,20 @@ $transitionEasing: ease-in-out;
   font-size: 0;
   background: transparent;
   border-top: $lineThickness solid;
-  border-bottom: $lineThickness solid;
   transition: all $transitionSpeed $transitionEasing;
 
   &:before,
   &:after {
 
     position: absolute;
-    top: 50%;
+    bottom: 0;
     left: 50%;
     display: block;
     width: 100%;
     height: $lineThickness;
     background: currentColor;
 
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
     transition: transform $transitionSpeed $transitionEasing;
     content: '';
   }
@@ -97,6 +106,7 @@ $transitionEasing: ease-in-out;
 
 .burger-button.is-active {
   border-color: transparent;
+
 
   &:before {
     transform: translate(-50%, -50%) rotate(45deg);
