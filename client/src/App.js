@@ -23,6 +23,7 @@ import {
 
   ChangeUserInfoPage,
   ChangeUserPasswordPage,
+  PaymentStory,
   Page404,
   SearchResult
 } from './components';
@@ -71,6 +72,7 @@ function App() {
                 path="/edit_account_password"
                 component={ChangeUserPasswordPage}
               />
+              <Route path="/order_history" component={PaymentStory} />
               <Route component={Page404} />
 
             </Switch>
