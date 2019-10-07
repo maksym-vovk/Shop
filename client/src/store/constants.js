@@ -18,6 +18,8 @@ export const CHANGE_TOTAL_PRICE = 'CHANGE_TOTAL_PRICE';
 export const CHANGE_TOTAL_ITEMS = 'CHANGE_TOTAL_ITEMS';
 
 // User
+export const REGISTER_USER = 'REGISTER_USER';
+export const SET_REGISTRATION = 'SET_REGISTRATION';
 export const SET_USER = 'SET_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 

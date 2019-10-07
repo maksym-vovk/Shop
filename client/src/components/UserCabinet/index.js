@@ -6,6 +6,7 @@ import {AccountInformation} from './AccountInformation/AccountInformation'
 
 import './index.scss'
 import { EmptyPage } from '../EmptyPage';
+import { Preloader } from '../Preloader';
 
 const mapStateToProps = state => ({
   authorized: state.user.authorized,
@@ -14,6 +15,7 @@ const mapStateToProps = state => ({
 
 export const UserCabinet = connect(mapStateToProps)(props => {
   const {authorized, userData} = props;
+
   return (
     <React.Fragment>
       {
@@ -26,6 +28,7 @@ export const UserCabinet = connect(mapStateToProps)(props => {
 
           : <EmptyPage text="You should login to see this page"/>
       }
+      <Preloader />
     </React.Fragment>
 
   )
