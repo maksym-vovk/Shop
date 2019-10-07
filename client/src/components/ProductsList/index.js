@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { fetchCards } from '../../store/actions';
 
 import { ProductCard } from '../';
-import { EmptyPage } from '../EmptyPage';
 
 import './index.scss';
+import {EmptyPage} from "../EmptyPage";
 
 const mapStateToProps = state => {
   return {
@@ -33,18 +33,17 @@ export const ProductsList = connect(
       });
   };
 
-  return (
-    <React.Fragment>
-        {
-            cards.length
-                ? <section className="product-list-wrapper">
-                    <CardsList />
-                </section>
-                : <EmptyPage text="Sorry, nothing found on your search!"/>
-
-        }
-
-      <Lines customLoading={loading} time={300} />
-    </React.Fragment>
+    return (
+        <React.Fragment>
+            {
+                cards.length
+                    ? <section className="product-list-wrapper">
+                        <CardsList />
+                    </section>
+                    :
+                    <EmptyPage button={false} text="Sorry, nothing found on your search"/>
+            }
+            <Lines customLoading={loading} time={300} />
+        </React.Fragment>
   );
 });
