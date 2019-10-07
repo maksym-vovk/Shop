@@ -12,7 +12,7 @@ import {
   Origin,
   Nike,
   Edition,
-  RegisterForm,
+  ReduxForm,
   CartPage,
   UserCabinet,
 
@@ -51,7 +51,7 @@ function App() {
               <Route path="/hermes" component={Hermes} />
               <Route path="/edition" component={Edition} />
               <Route path="/all/:id" component={ProductViewPage} />
-              <Route path="/sign_up" component={RegisterForm} />
+              <Route path="/sign_up" component={ReduxForm} />
               <Route path="/cart" component={CartPage} />
               <Route path="/user_cabinet" component={UserCabinet} />
 

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart components CartButton component render 1`] = `ShallowWrapper {}`;
+
+exports[`Cart components CartItem component render 1`] = `ShallowWrapper {}`;
+
+exports[`Cart components EmptyCart component render 1`] = `ShallowWrapper {}`;
