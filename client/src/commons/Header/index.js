@@ -41,7 +41,7 @@ export const Header = withRouter(
     const { width } = useWindowDimensions();
     const [isOpened, openStatus] = useState(false);
 
-    props.history.listen((location, action) => {
+    props.history.listen(() => {
       openStatus(false);
     });
 
