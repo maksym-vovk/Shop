@@ -28,11 +28,12 @@ export const OrderList = connect(mapStateToProps, {setUserOrders})(props => {
 
   return (
     <React.Fragment>
-      {userOrders
-        ? renderOrderItems(userOrders)
-        : <EmptyPage text="Order history is empty"/>
+      {
+        userOrders
+          ? renderOrderItems(userOrders)
+          : <EmptyPage text="Order history is empty"/>
       }
-      <Lines customLoading={loading} time={300}/>
+      <Lines customLoading={loading} time={350}/>
     </React.Fragment>
   )
 });

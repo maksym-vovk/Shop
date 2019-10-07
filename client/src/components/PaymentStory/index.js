@@ -1,12 +1,35 @@
 import React from 'react';
 
+import { connect } from 'react-redux'
 import {OrderList} from './OrderList';
+import { EmptyPage } from '../EmptyPage';
 
-export const PaymentStory = () => {
+const mapStateToProps = state => ({
+  authorized: state.user.authorized
+});
+
+export const PaymentStory = connect(mapStateToProps)(props => {
+  const {authorized} = props;
   return (
     <div className="container">
-      <h2 className='page-title'>Your's order history</h2>
-      <OrderList />
+      {
+        authorized
+          ? <React.Fragment>
+            <div className="page-title page-title-wrapper">
+              <h2 className="">Your order history</h2>
+              <button className="button go-back-btn" onClick={(e) => {
+                props.history.goBack();
+                e.preventDefault();
+              }}>
+                Go back
+              </button>
+            </div>
+
+            <OrderList />
+          </React.Fragment>
+          : <EmptyPage text="You should login to check order history"/>
+      }
+
     </div>
   )
-};
+});
