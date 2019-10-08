@@ -55,6 +55,11 @@ function userReducer(state = initialState.userData, action) {
         update_message: payload.update_message,
         userData: payload.user ? payload.user : state.userData
       };
+    case ATYPES.SET_USER_ORDERS:
+      return {
+        ...state,
+        userOrders: payload
+      };
     case ATYPES.SET_USER:
       return {
         ...state,

@@ -1,7 +1,6 @@
 const Router = require('express');
 const router = Router();
 const Order = require('../models/Order');
-module.exports = router;
 
 router.post('/order', async (req, res) => {
     try {
@@ -11,3 +10,12 @@ router.post('/order', async (req, res) => {
         res.send({error: true});
     }
 });
+
+router.get('/user-orders/:id', async (req, res) => {
+   const user_id = { $text: { $search: req.params.id } };
+   const orders = await Order.find(user_id);
+   if (orders.length) return res.send(orders)
+   res.send(false)
+});
+
+module.exports = router;

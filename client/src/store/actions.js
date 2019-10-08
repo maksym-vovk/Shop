@@ -15,6 +15,11 @@ export const fetchCard = id => ({
 });
 
 // user
+export const setUserOrders = (user_id) => ({
+  type: ATYPES.GET_USER_ORDERS,
+  user_id
+});
+
 export const updateUser = payload => ({
   type: ATYPES.UPDATE_USER,
   payload
@@ -43,7 +48,7 @@ export const logoutUser = () => {
   return {
     type: ATYPES.LOGOUT_USER
   }
-}
+};
 
 // Search
 export const setSearchStatus = status => ({
@@ -178,8 +183,21 @@ function* sendOrderSaga() {
   }
 }
 
+function* getUserOrders() {
+  while (true) {
+    const { user_id } = yield take(ATYPES.GET_USER_ORDERS);
+    const result = yield axios.get('/user-orders/' + user_id);
+    yield put({
+      type: ATYPES.SET_USER_ORDERS,
+      payload: result.data
+    });
+  }
+}
+
 export function* rootSaga() {
-  yield all([fetchCardsSaga(), fetchCardSaga(), updateUserSaga(), updateUserPasswordSaga(), sendOrderSaga()]);
+  yield all([fetchCardsSaga(), fetchCardSaga(), updateUserSaga(), updateUserPasswordSaga(),
+    sendOrderSaga(), getUserOrders()
+  ]);
 }
 
 /* eslint-enable */

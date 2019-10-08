@@ -18,7 +18,6 @@ export const SearchInput = connect(
 
   const useOutsideClick = (ref) => {
     const clickOutside = (event) => {
-      console.log(ref.current);
       if (ref.current && !ref.current.contains(event.target)) {
         props.setSearchStatus(false)
       }
