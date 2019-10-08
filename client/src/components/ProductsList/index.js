@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Lines } from 'react-preloaders';
+import React, { useEffect } from 'react';
+import { Preloader } from '../Preloader';
 import { connect } from 'react-redux';
 import { fetchCards, setInputValue } from '../../store/actions';
 import { ProductCard } from '../';
@@ -18,7 +18,6 @@ export const ProductsList = connect(
   { fetchCards, setInputValue }
 )(props => {
   const { params, title, cards, fetchCards } = props;
-  const [loading, setLoading] = useState(true);
   /* eslint-disable */
   useEffect(() => {
     const searchPath = window.location.pathname.split('/')
@@ -26,7 +25,6 @@ export const ProductsList = connect(
     props.setInputValue(decodeURI(searchResult))
     document.title = title || 'Apple Watch Series 5';
     fetchCards(params || searchResult);
-    setLoading(false);
   }, [fetchCards, params]);
 
   const CardsList = () => {
@@ -45,7 +43,7 @@ export const ProductsList = connect(
                     :
                     <EmptyPage button={false} text="Sorry, nothing found on your search"/>
             }
-            <Lines customLoading={loading} time={300} />
+            <Preloader />
         </React.Fragment>
   );
 });

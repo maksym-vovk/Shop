@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Field, reduxForm } from 'redux-form'
+import { Field, reduxForm, reset } from 'redux-form'
 import './index.scss'
 import axios from 'axios';
 
@@ -245,8 +245,13 @@ const RegistrationForm = props => {
   )
 };
 
+const resetForm = (result, dispatch) => {
+  dispatch(reset('registrationForm'));
+};
+
 export default reduxForm({
   form: 'registrationForm', // a unique identifier for this form
+  onSubmitSuccess: resetForm,
   destroyOnUnmount: false, //        <------ preserve form data
   forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
   asyncValidate,

@@ -46,16 +46,17 @@ export const Header = withRouter(
     });
 
     return (
-      <header className="header">
+      <header className={ isOpened ? 'header header__mob-menu-open' : 'header'}>
         <div className="header__wrapper container">
-          <button
-            type="button"
-            onClick={() => {
-              openStatus(!isOpened);
-            }}
-            className={ isOpened ? 'burger-button menu-toggle is-active' : 'burger-button menu-toggle' }
-          >
-          </button>
+          <div className="burger-wrapper" onClick={() => {
+            openStatus(!isOpened);
+          }}>
+            <button
+              type="button"
+              className={ isOpened ? 'burger-button menu-toggle is-active' : 'burger-button menu-toggle' }
+            >
+            </button>
+          </div>
 
           <Logo />
           {width <= 768 ? (
