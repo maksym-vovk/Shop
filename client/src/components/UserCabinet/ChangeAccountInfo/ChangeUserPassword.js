@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {Field, reduxForm} from 'redux-form';
+import {Field, reduxForm, reset} from 'redux-form';
 
 import './index.scss'
 import {required, renderField, inputFocusBlur, match, minLength, onChangeTrimValue} from '../../ReduxForm/RegistrationForm';
@@ -24,8 +24,7 @@ const notMatch = matchName => (value, allValues) =>
     : undefined;
 
 const EditPassword = props => {
-  console.log(props)
-  const { handleSubmit, submitting } = props;
+  const { handleSubmit, submitting, reset } = props;
 
   return (
     <form className="change-information-form-wrap" onSubmit={handleSubmit}>
@@ -71,6 +70,7 @@ const EditPassword = props => {
                     Save
         </button>
         <button className="button go-back-btn" onClick={(e) => {
+          reset();
           props.history.goBack();
           e.preventDefault();
         }}>
@@ -81,8 +81,13 @@ const EditPassword = props => {
   )
 };
 
+const resetForm = (result, dispatch) => {
+  dispatch(reset('passwordEditForm'));
+};
+
 export const ChangeUserPassword = connect(mapStateToProps)(reduxForm({
   form: 'passwordEditForm',
+  onSubmitSuccess: resetForm,
   destroyOnUnmount: false, //        <------ preserve form data
-  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+  forceUnregisterOnUnmount: false, // <------ unregister fields on unmount
 })(EditPassword));

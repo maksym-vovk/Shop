@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkout components CheckoutPurchased component render 1`] = `ShallowWrapper {}`;
+
+exports[`Checkout components CheckoutSummary component render 1`] = `ShallowWrapper {}`;
+
+exports[`Checkout components CheckoutTitle component render 1`] = `ShallowWrapper {}`;
+
+exports[`Checkout components FailureOrder component render 1`] = `ShallowWrapper {}`;

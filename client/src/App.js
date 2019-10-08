@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Header, Footer } from './commons';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import store from './store';
+import store, { setUser } from './store';
 
 import {
   HomePage,
@@ -12,7 +12,7 @@ import {
   Origin,
   Nike,
   Edition,
-  RegisterForm,
+  ReduxForm,
   CartPage,
   UserCabinet,
 
@@ -23,6 +23,7 @@ import {
 
   ChangeUserInfoPage,
   ChangeUserPasswordPage,
+  PaymentStory,
   Page404,
   SearchResult
 } from './components';
@@ -32,6 +33,9 @@ import { ProductViewPage } from './components/ProductViewPage';
 import './App.scss';
 
 function App() {
+  if (localStorage.userData) {
+    store.dispatch(setUser(JSON.parse(localStorage.userData)))
+  }
   return (
     <Provider store={store}>
       <Router>
@@ -47,7 +51,7 @@ function App() {
               <Route path="/hermes" component={Hermes} />
               <Route path="/edition" component={Edition} />
               <Route path="/all/:id" component={ProductViewPage} />
-              <Route path="/sign_up" component={RegisterForm} />
+              <Route path="/sign_up" component={ReduxForm} />
               <Route path="/cart" component={CartPage} />
               <Route path="/user_cabinet" component={UserCabinet} />
 
@@ -68,6 +72,7 @@ function App() {
                 path="/edit_account_password"
                 component={ChangeUserPasswordPage}
               />
+              <Route path="/order_history" component={PaymentStory} />
               <Route component={Page404} />
 
             </Switch>

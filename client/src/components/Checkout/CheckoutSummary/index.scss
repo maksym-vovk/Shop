@@ -21,6 +21,8 @@
   border: 1px solid rgba(210, 215, 211, 1);
 
   &__cancel {
+    position: absolute;
+    right: 30px;
     width: 25px;
     height: 25px;
   }

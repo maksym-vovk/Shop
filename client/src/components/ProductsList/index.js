@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Lines } from 'react-preloaders';
 import { connect } from 'react-redux';
 import { fetchCards } from '../../store/actions';
+
 import { ProductCard } from '../';
 
 import './index.scss';
+import {EmptyPage} from '../EmptyPage';
 
 const mapStateToProps = state => {
   return {
@@ -26,21 +28,22 @@ export const ProductsList = connect(
   }, [fetchCards, params]);
 
   const CardsList = () => {
-    return cards.length ? (
-      cards.map(item => {
+    return cards.map(item => {
         return <ProductCard state={item} key={item._id} />;
-      })
-    ) : (
-      <h2>Nothing found</h2>
-    );
+      });
   };
 
-  return (
-    <React.Fragment>
-      <section className="product-list-wrapper">
-        <CardsList />
-      </section>
-      <Lines customLoading={loading} time={300} />
-    </React.Fragment>
+    return (
+        <React.Fragment>
+            {
+                cards.length
+                    ? <section className="product-list-wrapper">
+                        <CardsList />
+                    </section>
+                    :
+                    <EmptyPage button={false} text="Sorry, nothing found on your search"/>
+            }
+            <Lines customLoading={loading} time={300} />
+        </React.Fragment>
   );
 });

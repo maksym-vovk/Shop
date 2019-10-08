@@ -41,7 +41,6 @@ const mapStateToProps = state => ({
 
 const AuthorizedForm = props => {
   const {handleSubmit, submitting} = props;
-  console.log(props);
 
   return (
 
@@ -142,7 +141,7 @@ const AuthorizedForm = props => {
                     order, so please make sure it’s correct.</p>
       </div>
       <div className="shipping__button-wrapper">
-        <CartButton disabled={submitting} state="Buy"/>
+        <CartButton disabled={submitting} title="Buy"/>
       </div>
     </form>
   )

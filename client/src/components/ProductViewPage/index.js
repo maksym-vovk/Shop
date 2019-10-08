@@ -64,6 +64,7 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
 
   const techInfo = object => {
     const info = [];
+    // eslint-disable-next-line no-unused-vars
     for (const key in object) {
       if (object.hasOwnProperty(key)) {
         info.push(
@@ -102,7 +103,7 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
             <p className="color-title">{colorTitle}</p>
             <ColorTabs />
             {props.cartItems.find(el => el.cartId === state._id + colorTitle)
-              ? <button className="buy-btn buy-btn--remove" onClick={() => props.removeFromCart(state._id)}>Remove from cart</button>
+              ? <button className="buy-btn buy-btn--remove" onClick={() => props.removeFromCart(state._id + colorTitle)}>Remove from cart</button>
               : <button className="buy-btn" onClick={() => props.addToCart({
                 id: state._id,
                 cartId: state._id + colorTitle,
