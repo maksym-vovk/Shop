@@ -17,7 +17,7 @@
 
   &--active, &__collapsible:hover {
     color: #fff;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, .8);
   }
 
   &__collapsible:after {

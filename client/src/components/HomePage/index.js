@@ -33,7 +33,7 @@ export const HomePage = () => {
             <img className='image' src="static/img/watch/Apple_Watch_Series_5/Gold_Aluminum_Case_with_Sport_Band/Black/2.jpg" alt="origin watch"/>
           </div>
           <div className='text-wrap'>
-            <h2>Apple Watch Series 5</h2>
+            <h2>Apple Watch Origin</h2>
             <p className='text-wrap__content'>This watch has a display that never sleeps. With the new Always-On Retina display, you always see the time and your watch face.</p>
             <Link className='image-link' to="/origin">Order ></Link>
           </div>
