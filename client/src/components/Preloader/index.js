@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Lines } from 'react-preloaders';
 
-export const Preloader = ({time = 350}) => {
+export const Preloader = ({time = 400}) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
