@@ -8,7 +8,6 @@
   align-items: center;
   height: 45px;
   background-color: rgba(0, 0, 0, .8);
-  backdrop-filter: saturate(100%) blur(20px);
   transition: .5s background-color ease-out;
 
   &__wrapper {
@@ -16,6 +15,7 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    backdrop-filter: saturate(100%) blur(15px);
   }
 
   &__mob-menu-open {

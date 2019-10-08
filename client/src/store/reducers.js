@@ -38,11 +38,6 @@ const initialState = {
 function userReducer(state = initialState.userData, action) {
   const {type, payload} = action;
   switch (type) {
-    case ATYPES.SET_REGISTRATION:
-      return {
-        ...state,
-        registration: payload
-      };
     case ATYPES.SET_MESSAGE_USER:
       return {
         ...state,

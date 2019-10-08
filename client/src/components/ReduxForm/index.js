@@ -10,7 +10,7 @@ import { EmptyPage } from '../EmptyPage';
 
 const mapStateToProps = state => ({
   authorized: state.user.authorized,
-  registration: state.user.registration
+  update_message: state.user.update_message
 });
 
 export const ReduxForm = connect(mapStateToProps, {
@@ -19,7 +19,7 @@ export const ReduxForm = connect(mapStateToProps, {
 })(props => {
   const [redirect, setRedirect] = useState(false);
   console.log(props);
-  const { authorized, registration, registerUser, setRegister } = props;
+  const { authorized, update_message, registerUser, setRegister } = props;
   const regSubmit = (values) => {
     registerUser(values);
   };
@@ -41,7 +41,7 @@ export const ReduxForm = connect(mapStateToProps, {
               </div>
               <div className="registration-form">
                 {
-                  registration
+                  update_message
                     ? (
                       <div className="register-modal">
                         <div className="register-modal__message-wrap">

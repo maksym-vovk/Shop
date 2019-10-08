@@ -21,7 +21,7 @@ export const registerUser = (user) => ({
 });
 
 export const setRegister = payload => ({
-  type: ATYPES.SET_REGISTRATION,
+  type: ATYPES.SET_MESSAGE_USER,
   payload
 });
 
