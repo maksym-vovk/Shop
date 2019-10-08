@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Lines } from 'react-preloaders';
+import React, { useEffect } from 'react';
+import { Preloader } from '../Preloader';
 import { connect } from 'react-redux';
 import { fetchCards } from '../../store/actions';
 
 import { ProductCard } from '../';
 
 import './index.scss';
-import {EmptyPage} from "../EmptyPage";
+import {EmptyPage} from '../EmptyPage';
 
 const mapStateToProps = state => {
   return {
@@ -19,12 +19,10 @@ export const ProductsList = connect(
   { fetchCards }
 )(props => {
   const { params, title, cards, fetchCards } = props;
-  const [loading, setLoading] = useState(true);
   /* eslint-disable */
   useEffect(() => {
     document.title = title || 'Apple Watch Series 5';
     fetchCards(params);
-    setLoading(false);
   }, [fetchCards, params]);
 
   const CardsList = () => {
@@ -43,7 +41,7 @@ export const ProductsList = connect(
                     :
                     <EmptyPage button={false} text="Sorry, nothing found on your search"/>
             }
-            <Lines customLoading={loading} time={300} />
+            <Preloader />
         </React.Fragment>
   );
 });
