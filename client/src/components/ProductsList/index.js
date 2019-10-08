@@ -6,7 +6,7 @@ import { fetchCards } from '../../store/actions';
 import { ProductCard } from '../';
 
 import './index.scss';
-import {EmptyPage} from "../EmptyPage";
+import {EmptyPage} from '../EmptyPage';
 
 const mapStateToProps = state => {
   return {
