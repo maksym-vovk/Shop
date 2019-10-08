@@ -20,9 +20,9 @@ export const ProductsList = connect(
   const { params, title, cards, fetchCards } = props;
   /* eslint-disable */
   useEffect(() => {
-    const searchPath = window.location.pathname.split('/')
-    const searchResult = searchPath[searchPath.length - 1]
-    props.setInputValue(decodeURI(searchResult))
+    const searchPath = window.location.pathname.split('/');
+    const searchResult = searchPath[searchPath.length - 1];
+    props.setInputValue(decodeURI(searchResult));
     document.title = title || 'Apple Watch Series 5';
     fetchCards(params || searchResult);
   }, [fetchCards, params]);

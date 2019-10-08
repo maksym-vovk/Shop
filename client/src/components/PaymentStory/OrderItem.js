@@ -17,7 +17,7 @@ const collapse = (event) => {
 
 const dateFormat = (date) => {
   const newDate = new Date(date);
-  let day = newDate.getDay();
+  let day = Number(newDate.getDate());
   switch (day) {
     case 1 && 21 && 31:
       day += 'st';
