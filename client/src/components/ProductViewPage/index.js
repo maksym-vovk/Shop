@@ -72,7 +72,7 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
             <h3>{object[key].title}</h3>
             <ul className="tech-info">
               {object[key].body.map((item, key) => {
-                return <li key={key}>{item}</li>;
+                return <li key={key} className="tech-info__item">{item}</li>;
               })}
             </ul>
           </div>
