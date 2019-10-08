@@ -104,7 +104,7 @@ export const clearOrder = () => ({
 /* eslint-disable */
 function* fetchCardsSaga() {
   while (true) {
-    const { query } = yield take(ATYPES.FETCH_CARDS);
+    let { query } = yield take(ATYPES.FETCH_CARDS);
     const response = yield axios.get(`/cards/${query}`);
     yield put({
       type: ATYPES.SET_CARDS,

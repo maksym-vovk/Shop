@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Lines } from 'react-preloaders';
 import { connect } from 'react-redux';
-import { fetchCards } from '../../store/actions';
+import { fetchCards, setInputValue } from '../../store/actions';
 import { ProductCard } from '../';
 
 import './index.scss';
@@ -14,14 +14,17 @@ const mapStateToProps = state => {
 
 export const ProductsList = connect(
   mapStateToProps,
-  { fetchCards }
+  { fetchCards, setInputValue }
 )(props => {
   const { params, title, cards, fetchCards } = props;
   const [loading, setLoading] = useState(true);
   /* eslint-disable */
   useEffect(() => {
+    const searchPath = window.location.pathname.split('/')
+    const searchResult = searchPath[searchPath.length - 1]
+    props.setInputValue(decodeURI(searchResult))
     document.title = title || 'Apple Watch Series 5';
-    fetchCards(params);
+    fetchCards(params || searchResult);
     setLoading(false);
   }, [fetchCards, params]);
 

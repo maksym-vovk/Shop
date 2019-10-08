@@ -4,7 +4,7 @@ import './style.scss';
 
 const SearchInputButton = (props) => {
   return (
-    <button onClick={ () => { props.onClick(); props.history.push('/search_result') } } className="search-btn">
+    <button onClick={ () => { if (props.input.trim()) { props.onClick(); props.history.push(`/search_result/${props.input}`) } }} className="search-btn">
       <svg
         className="extras__image"
         xmlns="http://www.w3.org/2000/svg"

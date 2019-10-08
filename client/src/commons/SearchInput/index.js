@@ -36,7 +36,7 @@ export const SearchInput = connect(
     
   return (
     <form ref={wrapperRef} className={width <= 768 ? 'search search-mobile-width' : 'search'} onSubmit={e => e.preventDefault()}>
-      <SearchInputButton onClick={() => props.setInputValue(input)}/>
+      <SearchInputButton onClick={() => props.setInputValue(input)} input={input}/>
       <input defaultValue={input} onInput={event => setInput(event.target.value)} className='search__input' type="text" placeholder="Search"/>
       <svg onClick={() => props.setSearchStatus(false)}
         className='extras__image'
