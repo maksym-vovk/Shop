@@ -1,9 +1,11 @@
 import React from 'react';
 
+import { EmptyPage } from '../EmptyPage';
+
 export const Page404 = () => {
   return (
     <section className="container">
-      <h2 className='page-title'>404 not found</h2>
+      <EmptyPage button={true} text="404 Error"/>
     </section>
   );
 };

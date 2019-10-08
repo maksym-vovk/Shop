@@ -64,6 +64,7 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
 
   const techInfo = object => {
     const info = [];
+    // eslint-disable-next-line no-unused-vars
     for (const key in object) {
       if (object.hasOwnProperty(key)) {
         info.push(

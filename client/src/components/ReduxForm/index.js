@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import RegistrationForm from './RegistrationForm';
 
-export const RegisterForm = () => {
+export const ReduxForm = () => {
   const [redirect, setRedirect] = useState(false);
   async function regSubmit(values) {
     await axios.post(window.location.origin + '/customers', values)
