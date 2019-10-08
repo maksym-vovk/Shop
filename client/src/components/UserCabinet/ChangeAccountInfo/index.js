@@ -8,8 +8,11 @@ import {ShoppingInfoContainer} from '../ShoppingInfo/ShoppingInfoContainer'
 import { ChangeUserPassword } from './ChangeUserPassword';
 
 import './index.scss';
+import { EmptyPage } from '../../EmptyPage';
+import { Preloader } from '../../Preloader';
 
 const mapStateToProps = state => ({
+  authorized: state.user.authorized,
   user: state.user
 });
 
@@ -23,39 +26,55 @@ const modalMessage = (event, props) => {
 };
 
 export const ChangeUserInfoPage = connect(mapStateToProps, {updateUser, setMessageUser})(props => {
-  const history = props.history;
+  const {history, authorized} = props;
 
-  function editUserSubmit(values) {
+  const editUserSubmit = (values) => {
     props.updateUser(values);
-  }
+  };
 
   return (
-    <React.Fragment>
-      <div className="container">
-        { props.user.update_message
-          ? <div className="message__background">
-            <div className="message__container">
-              <div className="message__result">
-                <p className={ props.user.update_message.correct ? 'message__updated-user' : 'message__error-update-user' }>
-                  { props.user.update_message.correct ? props.user.update_message.correct : props.user.update_message.error }</p>
-                <button className="button edit-btn" onClick={(e) => modalMessage(e, props)}>ok</button>
-              </div>
+    <div className="container">
+      {
+        authorized ? (
+          <React.Fragment>
+            <div className="page-title page-title-wrapper">
+              <h2 className="">Edit your personal information</h2>
+              <button className="button go-back-btn" onClick={(e) => {
+                props.history.goBack();
+                e.preventDefault();
+              }}>
+                Go back
+              </button>
             </div>
-          </div>
-          : null
-        }
 
-        <div className="change-information-form">
-          <ChangeUserInfo history={history} onSubmit={editUserSubmit}/>
-        </div>
-      </div>
-      <ShoppingInfoContainer />
-    </React.Fragment>
+            { props.user.update_message
+              ? <div className="message__background">
+                <div className="message__container">
+                  <div className="message__result">
+                    <p className={ props.user.update_message.correct ? 'message__updated-user' : 'message__error-update-user' }>
+                      { props.user.update_message.correct ? props.user.update_message.correct : props.user.update_message.error }</p>
+                    <button className="button edit-btn" onClick={(e) => modalMessage(e, props)}>ok</button>
+                  </div>
+                </div>
+              </div>
+              : null
+            }
+
+            <div className="change-information-form">
+              <ChangeUserInfo history={history} onSubmit={editUserSubmit}/>
+            </div>
+            <ShoppingInfoContainer />
+          </React.Fragment>
+        )
+          : <EmptyPage text="You should login to see this page"/>
+      }
+      <Preloader />
+    </div>
   )
 });
 
 export const ChangeUserPasswordPage = connect(mapStateToProps, {updateUserPassword, setMessageUser})(props => {
-  const history = props.history;
+  const { history, authorized } = props;
 
   const editUserPassword = (values) => {
     props.updateUserPassword(values);
@@ -63,31 +82,37 @@ export const ChangeUserPasswordPage = connect(mapStateToProps, {updateUserPasswo
   };
 
   return (
-    <React.Fragment>
-      <div className="container">
+    <div className="container">
+      {
+        authorized ? (
+          <React.Fragment>
+            <h2 className="page-title">Edit your password</h2>
 
-        { props.user.update_message
-          ? <div className="message__background">
-            <div className="message__container">
-              <div className="message__result">
-                <p className={ props.user.update_message.correct ? 'message__updated-user' : 'message__error-update-user' }>
-                  { props.user.update_message.correct ? props.user.update_message.correct : props.user.update_message.error }</p>
-                <button className="button edit-btn" onClick={(e) => modalMessage(e, props)}>ok</button>
+            { props.user.update_message
+              ? <div className="message__background">
+                <div className="message__container">
+                  <div className="message__result">
+                    <p className={ props.user.update_message.correct ? 'message__updated-user' : 'message__error-update-user' }>
+                      { props.user.update_message.correct ? props.user.update_message.correct : props.user.update_message.error }</p>
+                    <button className="button edit-btn" onClick={(e) => modalMessage(e, props)}>ok</button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          : null
-        }
+              : null
+            }
 
-        { props.user.userData
-          ? <div className="change-information-form">
-            <ChangeUserPassword history={history} onSubmit={editUserPassword}/>
-          </div>
-          : <h1 className="addition-margin">404 Error you should login</h1>
-        }
-
-      </div>
-      <ShoppingInfoContainer />
-    </React.Fragment>
+            { props.user.userData
+              ? <div className="change-information-form">
+                <ChangeUserPassword history={history} onSubmit={editUserPassword}/>
+              </div>
+              : <h1 className="addition-margin">404 Error you should login</h1>
+            }
+            <ShoppingInfoContainer />
+          </React.Fragment>
+        )
+          : <EmptyPage text="You should login to see this page"/>
+      }
+      <Preloader />
+    </div>
   )
 });
