@@ -27,7 +27,7 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
     document.title = state.filter.model;
     setLoading(false);
     setCartId(state._id + colorTitle);
-  }, [state.filter.model, colorTitle]);
+  }, [state.filter.model, colorTitle, state._id]);
   const sliderImages = slides.map((item, key) => {
     return (
       <div key={key}>
