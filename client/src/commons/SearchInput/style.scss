@@ -1,8 +1,8 @@
 .search {
   display: flex;
-  align-self: center;
+  align-items: center;
   justify-content: center;
-  width: 40%;
+  width: 75%;
 
   &__input {
     width: 100%;
@@ -22,9 +22,12 @@
   border-radius: 5px;
 }
 
-.search-mobile-width {
-  width: 95%;
-  height: 40px;
-  padding-right: 15px;
+@media (max-width: 768px) {
+  .search-mobile-width {
+    align-self: center;
+    width: 95%;
+    height: 40px;
+    padding-right: 15px;
+  }
 }
 
