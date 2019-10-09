@@ -212,11 +212,11 @@ function* sendOrderSaga() {
     const result = yield axios.post('/order', order);
     yield  all(
         [
-            yield put({
+            put({
                 type: ATYPES.SET_ORDER,
                 payload: result.data
             }),
-            yield put(clearCart())
+            put(clearCart())
         ]
     )
   }
