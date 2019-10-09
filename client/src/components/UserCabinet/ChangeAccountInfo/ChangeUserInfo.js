@@ -18,7 +18,10 @@ import {
 } from '../../ReduxForm/RegistrationForm';
 
 const mapStateToProps = state => ({
-  initialValues: state.user.userData,
+  initialValues: {
+    ...state.user.userData,
+    _id: state.user.user_id
+  },
 });
 
 export const inputFocus = (event) => {
@@ -57,6 +60,7 @@ const asyncValidate = async(value) => {
 };
 
 const EditUserInfo = props => {
+  console.log(props)
   const { handleSubmit, submitting } = props;
 
   return (

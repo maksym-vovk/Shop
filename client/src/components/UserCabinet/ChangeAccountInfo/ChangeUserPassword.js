@@ -8,8 +8,8 @@ import {required, renderField, inputFocusBlur, match, minLength, onChangeTrimVal
 
 const mapStateToProps = state => ({
   initialValues: {
-    _id: state.user.userData._id,
-    last_password: state.user.userData.password,
+    _id: state.user.user_id,
+    last_password: state.user.last_password,
   }
 });
 
@@ -24,7 +24,9 @@ const notMatch = matchName => (value, allValues) =>
     : undefined;
 
 const EditPassword = props => {
+  console.log(props);
   const { handleSubmit, submitting, reset } = props;
+  const { last_password } = props.initialValues;
 
   return (
     <form className="change-information-form-wrap" onSubmit={handleSubmit}>
@@ -35,7 +37,7 @@ const EditPassword = props => {
           name="Last password"
           label="Last password"
           component={renderField}
-          validate={[required('last password'), lastPassword(props.initialValues.last_password)]}
+          validate={[required('last password'), lastPassword(last_password)]}
           onFocus={inputFocusBlur}
           onBlur={inputFocusBlur}
           normalize={onChangeTrimValue}

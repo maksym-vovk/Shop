@@ -43,17 +43,10 @@ function userReducer(state = initialState.userData, action) {
         ...state,
         update_message: payload
       };
-    case ATYPES.UPDATE_USER:
+    case ATYPES.SET_USER_ID:
       return {
         ...state,
-        update_message: payload.update_message,
-        userData: payload.user ? payload.user : state.userData
-      };
-    case ATYPES.UPDATE_USER_PASSWORD:
-      return {
-        ...state,
-        update_message: payload.update_message,
-        userData: payload.user ? payload.user : state.userData
+        user_id: payload
       };
     case ATYPES.SET_USER_ORDERS:
       return {
@@ -66,11 +59,18 @@ function userReducer(state = initialState.userData, action) {
         authorized: true,
         userData: payload
       };
+    case ATYPES.SET_USER_PASSWORD:
+      return {
+        ...state,
+        last_password: payload
+      };
     case ATYPES.LOGOUT_USER:
       return {
         ...state,
         authorized: false,
-        userData: null
+        userData: null,
+        last_password: null,
+        user_id: null
       };
     default:
       return state;

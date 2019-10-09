@@ -21,7 +21,9 @@ export const ReduxForm = connect(mapStateToProps, {
   console.log(props);
   const { authorized, update_message, registerUser, setRegister } = props;
   const regSubmit = (values) => {
-    registerUser(values);
+    const { password, ...customer } = values;
+    const user = { password, customer };
+    registerUser(user);
   };
 
   return (

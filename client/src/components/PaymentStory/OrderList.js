@@ -7,7 +7,7 @@ import {OrderItem} from './OrderItem';
 
 const mapStateToProps = state => ({
   userOrders: state.user.userOrders,
-  user_id: state.user.userData._id
+  user_id: state.user.user_id
 });
 
 export const OrderList = connect(mapStateToProps, {setUserOrders})(props => {
