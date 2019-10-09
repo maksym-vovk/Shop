@@ -1,29 +1,31 @@
 import React from 'react';
-import {CheckoutTitle} from '../CheckoutTitle'
-import {CheckoutList} from '../CheckoutList';
-// import {DeliveryMethod} from "../DeliveryMethod";
 import {connect} from 'react-redux'
 
+//components
+import {CheckoutTitle} from '../CheckoutTitle'
+import {CheckoutList} from '../CheckoutList';
+
 const mapStateToProps = state => {
-  return {
-    checkoutItems: state.cart.items,
-    checkoutTotalPrice: state.cart.totalPrice,
-    checkoutTotalItems: state.cart.totalItems,
-    checkoutGrandTotalPrice: state.cart.grandTotalPrice
-  }
+    return {
+        checkoutItems: state.cart.items,
+        checkoutTotalPrice: state.cart.totalPrice,
+        checkoutTotalItems: state.cart.totalItems,
+        checkoutGrandTotalPrice: state.cart.grandTotalPrice,
+        deliveryPrice: state.cart.deliveryPrice
+    }
 };
 
-export const CheckoutPage = connect(mapStateToProps)(({checkoutTotalPrice, checkoutItems, checkoutTotalItems, checkoutGrandTotalPrice}) => {
-  return (
-    <div className="container">
-      <CheckoutTitle
-        totalPrice={checkoutTotalPrice}
-        data={checkoutItems}
-        totalItems={checkoutTotalItems}
-        grandTotalPrice={checkoutGrandTotalPrice}/>
-
-      <CheckoutList/>
-      {/* <DeliveryMethod/> */}
-    </div>
-  )
+export const CheckoutPage = connect(mapStateToProps)((props) => {
+    const {checkoutTotalPrice, checkoutItems, checkoutTotalItems, checkoutGrandTotalPrice, deliveryPrice} = props;
+    return (
+        <div className="container">
+            <CheckoutTitle
+                totalPrice={checkoutTotalPrice}
+                data={checkoutItems}
+                totalItems={checkoutTotalItems}
+                deliveryPrice={deliveryPrice}
+                grandTotalPrice={checkoutGrandTotalPrice}/>
+            <CheckoutList/>
+        </div>
+    )
 });

@@ -1,12 +1,13 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 
+import { required } from '../../ReduxForm/RegistrationForm';
 import {CartButton} from '../../Cart/CartButton';
 
 // styles
 import './index.scss';
 
-export const required = value => (value || typeof value === 'number' ? undefined : 'Required');
+// export const required = value => (value || typeof value === 'number' ? undefined : 'Required');
 export const maxLength = max => value =>
   value && value.length > max ? `Must be ${max} characters or less` : undefined;
 export const maxLength15 = maxLength(15);
@@ -75,7 +76,7 @@ const UnAuthorizedForm = props => {
           component={renderFieldShipping}
           type="text"
           label="First Name"
-          validate={[required, isLetter, maxLength15, minLength2]}
+          validate={[required('Name'), isLetter, maxLength15, minLength2]}
           warn={alphaNumeric}
           onFocus={inputFocusBlurShipping}
           onBlur={inputFocusBlurShipping}
@@ -85,7 +86,7 @@ const UnAuthorizedForm = props => {
           component={renderFieldShipping}
           type="text"
           label="Last Name"
-          validate={[required, isLetter, maxLength15, minLength2]}
+          validate={[required('Surname'), isLetter, maxLength15, minLength2]}
           warn={alphaNumeric}
           onFocus={inputFocusBlurShipping}
           onBlur={inputFocusBlurShipping}
@@ -95,7 +96,7 @@ const UnAuthorizedForm = props => {
           component={renderFieldShipping}
           type="text"
           label="Street Address"
-          validate={[required, minLength2]}
+          validate={[required('Address'), minLength2]}
           onFocus={inputFocusBlurShipping}
           onBlur={inputFocusBlurShipping}
         />
@@ -104,7 +105,7 @@ const UnAuthorizedForm = props => {
           component={renderFieldShipping}
           type="text"
           label="Zip Code"
-          validate={[required, maxLength5, minLength2]}
+          validate={[required('Zip code'), maxLength5, minLength2]}
           onFocus={inputFocusBlurShipping}
           onBlur={inputFocusBlurShipping}
         />
@@ -113,7 +114,7 @@ const UnAuthorizedForm = props => {
           component={renderFieldShipping}
           type="text"
           label="City"
-          validate={[required, isLetter, minLength2]}
+          validate={[required('City'), isLetter, minLength2]}
           onFocus={inputFocusBlurShipping}
           onBlur={inputFocusBlurShipping}
         />
@@ -123,7 +124,7 @@ const UnAuthorizedForm = props => {
           component={renderFieldShipping}
           type="text"
           label="Country"
-          validate={[required, isLetter, minLength2]}
+          validate={[required('Country'), isLetter, minLength2]}
           onFocus={inputFocusBlurShipping}
           onBlur={inputFocusBlurShipping}
         />
@@ -135,7 +136,7 @@ const UnAuthorizedForm = props => {
             component={renderFieldShipping}
             type="email"
             label="Email"
-            validate={email}
+            validate={[required('Email'), email]}
             warn={aol}
             onFocus={inputFocusBlurShipping}
             onBlur={inputFocusBlurShipping}
@@ -150,7 +151,7 @@ const UnAuthorizedForm = props => {
             component={renderFieldShipping}
             type="tel"
             label="Phone Number"
-            validate={[required, minLength(7)]}
+            validate={[required('Phone Nr'), minLength(7)]}
             normalize={phoneNumber}
             onFocus={inputFocusBlurShipping}
             onBlur={inputFocusBlurShipping}
@@ -169,5 +170,6 @@ const UnAuthorizedForm = props => {
 };
 
 export const UnAuthShippingDetails = reduxForm({
-  form: 'UnAuthShippingDetails'
+  form: 'UnAuthShippingDetails',
+    destroyOnUnmount: false, //        <------ preserve form data
 })(UnAuthorizedForm);

@@ -80,6 +80,16 @@ export const changeTotalItems = totalItems => ({
   }
 });
 
+export const setDeliveryPrice = deliveryPrice => ({
+  type: ATYPES.DELIVERY_PRICE,
+  payload: deliveryPrice
+});
+
+export const calcGrandTotalPrice = grandTotalPrice => ({
+  type: ATYPES.GRAND_TOTAL_PRICE,
+  payload: grandTotalPrice
+});
+
 export const setInputValue = value => ({
   type: ATYPES.SET_INPUT_VALUE,
   payload: value
@@ -94,6 +104,10 @@ export const addToCart = itemData => ({
 export const removeFromCart = id => ({
   type: ATYPES.REMOVE_FROM_CART,
   payload: id
+});
+
+export const clearCart = () => ({
+  type: ATYPES.CLEAR_CART,
 });
 
 export const sendOrder = order => ({
@@ -176,10 +190,15 @@ function* sendOrderSaga() {
   while (true) {
     const { order } = yield take(ATYPES.SEND_ORDER);
     const result = yield axios.post('/order', order);
-    yield put({
-      type: ATYPES.SET_ORDER,
-      payload: result.data
-    });
+    yield  all(
+        [
+            yield put({
+                type: ATYPES.SET_ORDER,
+                payload: result.data
+            }),
+            yield put(clearCart())
+        ]
+    )
   }
 }
 
