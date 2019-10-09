@@ -1,12 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-
 // styles
 import './index.scss';
 
 export const CheckoutSummary = ({removeSummary, totalPrice, totalItems, deliveryPrice, grandTotalPrice}) => {
-    const checkBackground = (event) => {
+  const checkBackground = (event) => {
     const target = event.target;
     if (target.classList.contains('background') || target.classList.contains('summary__cancel-image')) {
       removeSummary()
@@ -25,18 +24,18 @@ export const CheckoutSummary = ({removeSummary, totalPrice, totalItems, delivery
               <span className="total__quantity">Quantity: {totalItems} item(s)</span>
               <Link className="total__edit" to="/cart">Edit bag</Link>
             </div>
-              <div className="total__sum-block--add">
-                  <span className="total__sum-label">SubTotal</span>
-                  <span className="total__sum">${totalPrice}</span>
-              </div>
+            <div className="total__sum-block--add">
+              <span className="total__sum-label">SubTotal</span>
+              <span className="total__sum">${totalPrice}</span>
+            </div>
             <div className="total__sum-block--add">
               <span className="total__sum-label">Shipping</span>
               <span className="total__sum">${deliveryPrice}</span>
             </div>
-              <div className="total__sum-block">
-                  <span className="total__sum-label">Total</span>
-                  <span className="total__sum">${grandTotalPrice}</span>
-              </div>
+            <div className="total__sum-block">
+              <span className="total__sum-label">Total</span>
+              <span className="total__sum">${grandTotalPrice}</span>
+            </div>
           </div>
         </div>
       </div>

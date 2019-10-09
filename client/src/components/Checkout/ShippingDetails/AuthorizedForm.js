@@ -9,7 +9,7 @@ import {
   aol,
   email,
   isLetter,
-    // required,
+  // required,
   maxLength15,
   maxLength5,
   minLength,
@@ -150,5 +150,5 @@ const AuthorizedForm = props => {
 
 export const AuthShippingDetails = connect(mapStateToProps)(reduxForm({
   form: 'AuthShippingDetails',
-    destroyOnUnmount: false, //        <------ preserve form data
+  destroyOnUnmount: false, //        <------ preserve form data
 })(AuthorizedForm));

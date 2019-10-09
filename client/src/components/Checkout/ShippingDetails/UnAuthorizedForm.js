@@ -171,5 +171,5 @@ const UnAuthorizedForm = props => {
 
 export const UnAuthShippingDetails = reduxForm({
   form: 'UnAuthShippingDetails',
-    destroyOnUnmount: false, //        <------ preserve form data
+  destroyOnUnmount: false, //        <------ preserve form data
 })(UnAuthorizedForm);
