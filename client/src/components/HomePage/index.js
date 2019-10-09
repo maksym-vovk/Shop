@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Lines } from 'react-preloaders';
+import React, {  useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 
 import './style.scss';
 
 export const HomePage = () => {
-  const [loading, setLoading] = useState(true);
   useEffect(() => {
     document.title = 'Apple Watch';
-    setLoading(false);
   }, []);
 
   const slides = [];
@@ -119,7 +116,6 @@ export const HomePage = () => {
             </Link>
           </div>
         </div>
-        <Lines customLoading={loading} time={300} />
       </div>
     </React.Fragment>
   );

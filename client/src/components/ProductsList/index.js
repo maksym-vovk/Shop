@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { Preloader } from '../Preloader';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchCards, setInputValue } from '../../store/actions';
 import { ProductCard } from '../';
 
 import './index.scss';
-import {EmptyPage} from '../EmptyPage';
+import { EmptyPage } from '../EmptyPage';
+import { Preloader } from '../Preloader';
 
 const mapStateToProps = state => {
   return {
@@ -18,6 +18,7 @@ export const ProductsList = connect(
   { fetchCards, setInputValue }
 )(props => {
   const { params, title, cards, fetchCards } = props;
+  const [loading, setLoading] = useState(true);
   /* eslint-disable */
   useEffect(() => {
     const searchPath = window.location.pathname.split('/');
@@ -25,23 +26,24 @@ export const ProductsList = connect(
     props.setInputValue(decodeURI(searchResult));
     document.title = title || 'Apple Watch Series 5';
     fetchCards(params || searchResult);
+    setTimeout(() => setLoading(false), 1000);
   }, [fetchCards, params]);
 
   const сardsList = cards.map(item => {
     return <ProductCard state={item} key={item._id} />;
   });
 
-    return (
-        <React.Fragment>
-            {
-                cards.length
-                    ? <section className="product-list-wrapper">
-                        <CardsList />
-                    </section>
-                    :
-                    <EmptyPage button={false} text="Sorry, nothing found on your search"/>
-            }
-            <Preloader />
-        </React.Fragment>
+  const preloader = loading ? <Preloader /> : null;
+  const content = !loading ? (
+    <section className="product-list-wrapper">{сardsList}</section>
+  ) : null;
+  const emptyPage = !loading && !cards.length ? <EmptyPage /> : null;
+
+  return (
+    <React.Fragment>
+      {preloader}
+      {content}
+      {emptyPage}
+    </React.Fragment>
   );
 });
