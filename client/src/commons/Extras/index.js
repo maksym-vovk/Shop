@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import useWindowDimensions from '../Header'
 const mapStateToProps = (state) => ({
   loginStatus: state.user.authorized,
+  cartItems: state.cart.items
 });
 
 export const Extras = connect(mapStateToProps)((props) => {
@@ -17,7 +18,7 @@ export const Extras = connect(mapStateToProps)((props) => {
         width <= 768 ? null : <Search />
       }
       <Link to="/cart">
-        <Cart />
+        <Cart items={props.cartItems}/>
       </Link>
       { loginStatus
         ? <UserIcon/>
