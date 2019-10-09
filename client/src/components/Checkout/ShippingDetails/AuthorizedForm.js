@@ -2,17 +2,18 @@ import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 
+import { required } from '../../ReduxForm/RegistrationForm';
 import {CartButton} from '../../Cart/CartButton';
 import {
   alphaNumeric,
   aol,
   email,
   isLetter,
+  // required,
   maxLength15,
   maxLength5,
   minLength,
   minLength2, phoneNumber,
-  required,
   renderFieldShipping
 } from './UnAuthorizedForm';
 
@@ -50,7 +51,7 @@ const AuthorizedForm = props => {
         component={renderFieldShipping}
         type="text"
         label="First Name"
-        validate={[required, isLetter, maxLength15, minLength2]}
+        validate={[required('Name'), isLetter, maxLength15, minLength2]}
         warn={alphaNumeric}
         onFocus={inputFocusShipping}
         onBlur={inputBlurShipping}
@@ -61,7 +62,7 @@ const AuthorizedForm = props => {
         component={renderFieldShipping}
         type="text"
         label="Last Name"
-        validate={[required, isLetter, maxLength15, minLength2]}
+        validate={[required('Surname'), isLetter, maxLength15, minLength2]}
         warn={alphaNumeric}
         onFocus={inputFocusShipping}
         onBlur={inputBlurShipping}
@@ -72,7 +73,7 @@ const AuthorizedForm = props => {
         component={renderFieldShipping}
         type="text"
         label="Street Address"
-        validate={[required, minLength2]}
+        validate={[required('Address'), minLength2]}
         onFocus={inputFocusShipping}
         onBlur={inputBlurShipping}
         editing={true}
@@ -82,7 +83,7 @@ const AuthorizedForm = props => {
         component={renderFieldShipping}
         type="text"
         label="Zip Code"
-        validate={[required, maxLength5, minLength2]}
+        validate={[required('Zip code'), maxLength5, minLength2]}
         onFocus={inputFocusShipping}
         onBlur={inputBlurShipping}
         editing={true}
@@ -92,7 +93,7 @@ const AuthorizedForm = props => {
         component={renderFieldShipping}
         type="text"
         label="City"
-        validate={[required, isLetter, minLength2]}
+        validate={[required('City'), isLetter, minLength2]}
         onFocus={inputFocusShipping}
         onBlur={inputBlurShipping}
         editing={true}
@@ -103,7 +104,7 @@ const AuthorizedForm = props => {
         component={renderFieldShipping}
         type="text"
         label="Country"
-        validate={[required, isLetter, minLength2]}
+        validate={[required('Country'), isLetter, minLength2]}
         onFocus={inputFocusShipping}
         onBlur={inputBlurShipping}
         editing={true}
@@ -116,7 +117,7 @@ const AuthorizedForm = props => {
           component={renderFieldShipping}
           type="email"
           label="Email"
-          validate={email}
+          validate={[required('Email'), email]}
           warn={aol}
           onFocus={inputFocusShipping}
           onBlur={inputBlurShipping}
@@ -131,7 +132,7 @@ const AuthorizedForm = props => {
           component={renderFieldShipping}
           type="tel"
           label="Phone Number"
-          validate={[required, minLength(7)]}
+          validate={[required('Phone'), minLength(7)]}
           normalize={phoneNumber}
           onFocus={inputFocusShipping}
           onBlur={inputBlurShipping}
@@ -148,5 +149,6 @@ const AuthorizedForm = props => {
 };
 
 export const AuthShippingDetails = connect(mapStateToProps)(reduxForm({
-  form: 'AuthShippingDetails'
+  form: 'AuthShippingDetails',
+  destroyOnUnmount: false, //        <------ preserve form data
 })(AuthorizedForm));
