@@ -20,9 +20,10 @@ export const ProductViewPage = connect(
     Object.entries(state.colors.bandImagesByColor)[0][1]
   );
   const [colorTitle, setColorTitle] = useState(
-    Object.entries(state.colors.bandImagesByColor)[0][0]
+    state.colors.allColors[0].name
+    /* Object.entries(state.colors.bandImagesByColor)[0][0]
       .split('_')
-      .join(' ')
+      .join(' ') */
   );
   const [loading, setLoading] = useState(true);
   const [cartId, setCartId] = useState(state._id, colorTitle);
