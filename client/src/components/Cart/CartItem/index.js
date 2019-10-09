@@ -8,8 +8,18 @@ export const CartItem = (props) => {
   let [count, setCount] = useState(quantity);
 
   const onchangeHandler = (event) => {
-    setCount(Number(event.target.value));
-    changeQuantity(Number(event.target.value), Number(event.target.value * price), id);
+    const inputValue = event.target.value;
+    const max = 1000;
+    const maxLength = max.toString().length - 1;
+
+    const re = /^[0-9\b]+$/;
+
+    if (inputValue < max && (event.target.value === '' || re.test(event.target.value))) {
+      setCount(Number(inputValue));
+      changeQuantity(Number(inputValue), Number(inputValue * price), id)
+    } else {
+      parseInt(inputValue.toString().substring(0, maxLength));
+    }
   };
 
   const onDecrementHandler = () => {
@@ -20,8 +30,13 @@ export const CartItem = (props) => {
   };
 
   const onIncrementHandler = () => {
-    setCount(++count);
-    changeQuantity(count, count * price, id);
+    const max = 999;
+    if (count < max) {
+      setCount(++count);
+      changeQuantity(count, count * price, id);
+    } else {
+      parseInt(count.toString().substring(0, max))
+    }
   };
 
   return (
@@ -45,7 +60,7 @@ export const CartItem = (props) => {
             defaultValue="-"
           />
           <input className="cart-item__input-value"
-            maxLength="999"
+            type="number"
             id={id}
             value={count}
             onChange={onchangeHandler}
