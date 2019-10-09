@@ -27,7 +27,14 @@
     align-self: center;
     width: 95%;
     height: 40px;
+    margin-bottom: 40px;
     padding-right: 15px;
+  }
+  .close-btn {
+    display: none;
+  }
+  .search-btn {
+    padding-right: 10px;
   }
 }
 
