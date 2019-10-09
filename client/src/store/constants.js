@@ -16,6 +16,8 @@ export const SET_CARD = 'SET_CARD';
 export const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
 export const CHANGE_TOTAL_PRICE = 'CHANGE_TOTAL_PRICE';
 export const CHANGE_TOTAL_ITEMS = 'CHANGE_TOTAL_ITEMS';
+export const DELIVERY_PRICE = 'DELIVERY_PRICE';
+export const GRAND_TOTAL_PRICE = 'GRAND_TOTAL_PRICE';
 
 // User
 export const REGISTER_USER = 'REGISTER_USER';
@@ -31,6 +33,7 @@ export const SET_MESSAGE_USER = 'SET_MESSAGE_USER';
 // cart
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const CLEAR_CART = 'CLEAR_CART';
 
 // order
 export const SEND_ORDER = 'SEND_ORDER';
