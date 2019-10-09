@@ -23,7 +23,7 @@ export const HomePage = () => {
   }
 
   return (
-    <React.Fragment>
+    <section className='home-page-wrapper'>
       <Carousel
         showThumbs={false}
         infiniteLoop={true}
@@ -117,6 +117,6 @@ export const HomePage = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </section>
   );
 };
