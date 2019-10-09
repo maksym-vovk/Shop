@@ -16,7 +16,8 @@
     "camelcase": 0,
     "object-curly-spacing": 0,
     "comma-dangle": 0,
-    "space-before-function-paren": ["error", "never"]
+    "space-before-function-paren": ["error", "never"],
+    "no-unused-vars": [warn, {"varsIgnorePattern": "key"}]
   },
   "settings": {
     "react": {

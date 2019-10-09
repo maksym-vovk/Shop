@@ -9,7 +9,7 @@ export const UserIcon = () => {
 
   return (
     <React.Fragment>
-      <div className='auth' onClick={(e) => {
+      <div className='auth' onClick={() => {
         setModalState(!modalState)
       }}>
 

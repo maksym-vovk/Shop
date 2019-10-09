@@ -41,21 +41,22 @@ export const Header = withRouter(
     const { width } = useWindowDimensions();
     const [isOpened, openStatus] = useState(false);
 
-    props.history.listen((location, action) => {
+    props.history.listen(() => {
       openStatus(false);
     });
 
     return (
-      <header className="header">
+      <header className={ isOpened ? 'header header__mob-menu-open' : 'header'}>
         <div className="header__wrapper container">
-          <button
-            type="button"
-            onClick={() => {
-              openStatus(!isOpened);
-            }}
-            className={ isOpened ? 'burger-button menu-toggle is-active' : 'burger-button menu-toggle' }
-          >
-          </button>
+          <div className="burger-wrapper" onClick={() => {
+            openStatus(!isOpened);
+          }}>
+            <button
+              type="button"
+              className={ isOpened ? 'burger-button menu-toggle is-active' : 'burger-button menu-toggle' }
+            >
+            </button>
+          </div>
 
           <Logo />
           {width <= 768 ? (

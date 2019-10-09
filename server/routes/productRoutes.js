@@ -11,6 +11,7 @@ router.get('/cards/:query', async (req, res) => {
   res.json(products);
 });
 
+
 router.get('/cards/:id', async (req, res) => {
   const product = await Product.find({
     _id: req.params.id
