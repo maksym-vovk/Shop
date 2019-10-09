@@ -1,17 +1,8 @@
-.search-result {
-  &__items {
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: repeat(5, 1fr);
-    width: 100%;
-  }
-}
-
 .search-result-text {
-  grid-column-start: 1;
-  grid-column-end: 6;
-  font-size: 17px;
-  &__input {
+  margin: 10px 0 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #868686;
+  &__value {
     font-style: italic;
   }
 }

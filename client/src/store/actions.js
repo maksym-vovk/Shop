@@ -15,6 +15,16 @@ export const fetchCard = id => ({
 });
 
 // user
+export const registerUser = (user) => ({
+  type: ATYPES.REGISTER_USER,
+  user
+});
+
+export const setRegister = payload => ({
+  type: ATYPES.SET_MESSAGE_USER,
+  payload
+});
+
 export const setUserOrders = (user_id) => ({
   type: ATYPES.GET_USER_ORDERS,
   user_id
@@ -123,7 +133,7 @@ export const clearOrder = () => ({
 /* eslint-disable */
 function* fetchCardsSaga() {
   while (true) {
-    const { query } = yield take(ATYPES.FETCH_CARDS);
+    let { query } = yield take(ATYPES.FETCH_CARDS);
     const response = yield axios.get(`/cards/${query}`);
     yield put({
       type: ATYPES.SET_CARDS,
@@ -141,6 +151,16 @@ function* fetchCardSaga() {
           payload: response.data
         });
     }
+}
+
+function* registerUserSaga() {
+  while (true) {
+    const { user } = yield take(ATYPES.REGISTER_USER);
+    const response = yield axios.post('/customers', user);
+    if (response.data.res) {
+      yield put(setRegister(response.data.res));
+    }
+  }
 }
 
 function* updateUserSaga() {
@@ -214,7 +234,8 @@ function* getUserOrders() {
 }
 
 export function* rootSaga() {
-  yield all([fetchCardsSaga(), fetchCardSaga(), updateUserSaga(), updateUserPasswordSaga(),
+  yield all([fetchCardsSaga(), fetchCardSaga(),
+    registerUserSaga(), updateUserSaga(), updateUserPasswordSaga(),
     sendOrderSaga(), getUserOrders()
   ]);
 }
