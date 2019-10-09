@@ -90,8 +90,7 @@ export const ProductViewPage = connect(
     }
     return info;
   };
-  const Content = () => {
-    return (
+  const pageContent = 
       <section className="product-view">
         <article className="container">
           <h2 className="page-title">Apple Watch Series 5</h2>
@@ -143,11 +142,10 @@ export const ProductViewPage = connect(
           <div className="tech-info-wrapper">{techInfo(state.techSpecs)}</div>
         </article>
       </section>
-    );
-  };
+  
 
   const preloader = loading ? <Preloader /> : null;
-  const content = !loading ? <Content /> : null;
+  const content = !loading ? pageContent : null;
 
   return (
     <React.Fragment>
