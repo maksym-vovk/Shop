@@ -22,11 +22,12 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
       .join(' ')
   );
   const [loading, setLoading] = useState(true);
-
+  const [cartId, setCartId] = useState(state._id, colorTitle);
   useEffect(() => {
     document.title = state.filter.model;
     setLoading(false);
-  }, [state.filter.model]);
+    setCartId(state._id + colorTitle);
+  }, [state.filter.model, colorTitle, state._id]);
   const sliderImages = slides.map((item, key) => {
     return (
       <div key={key}>
@@ -102,11 +103,11 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
             <h4 className="tabs-title">Band Colors</h4>
             <p className="color-title">{colorTitle}</p>
             <ColorTabs />
-            {props.cartItems.find(el => el.cartId === state._id + colorTitle)
-              ? <button className="buy-btn buy-btn--remove" onClick={() => props.removeFromCart(state._id + colorTitle)}>Remove from cart</button>
+            {props.cartItems.find(el => el.cartId === cartId)
+              ? <button className="buy-btn buy-btn--remove" onClick={() => props.removeFromCart(cartId)}>Remove from cart</button>
               : <button className="buy-btn" onClick={() => props.addToCart({
                 id: state._id,
-                cartId: state._id + colorTitle,
+                cartId: cartId,
                 name: state.filter.model,
                 details: state.description,
                 img: slides[0],
