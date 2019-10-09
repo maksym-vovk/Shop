@@ -20,5 +20,7 @@
   "homepage": "https://github.com/maksym-vovk/Shop#readme",
   "dependencies": {
     "concurrently": "^4.1.2"
+  },
+  "devDependencies": {
   }
 }

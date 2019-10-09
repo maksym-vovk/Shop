@@ -20,6 +20,10 @@ export const SearchResult = connect(mapStateToProps)((props) => {
   return (
     <React.Fragment>
       <section className='search-result container'>
+        {props.cards.length
+          ? <h2 className='search-result-text'>Your search: <span className='search-result-text__value'>{props.inputValue}</span> ({props.cards.length} results found)</h2>
+          : null
+        }
         <ProductsList params={props.inputValue}/>
       </section>
       <Lines customLoading={loading} time={500} />
