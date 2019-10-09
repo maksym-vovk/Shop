@@ -27,6 +27,7 @@ const initialState = {
   cart: {
     totalPrice: 0,
     totalItems: 0,
+    deliveryPrice: 0,
     grandTotalPrice: 0,
     items: []
   },
@@ -149,6 +150,19 @@ function cartReducer(state = initialState.cart, action) {
                 ...state,
                 totalItems: payload.totalItems,
             };
+            //delivery price
+        case ATYPES.DELIVERY_PRICE:
+            return  {
+              ...state,
+              deliveryPrice: payload
+            };
+            //grandTotalPrice = total product price + delivery price
+        case ATYPES.GRAND_TOTAL_PRICE:
+            return {
+            ...state,
+                grandTotalPrice: state.deliveryPrice + state.totalPrice
+            };
+
         case ATYPES.REMOVE_FROM_CART:
             // Rework?
             const item = state.items.find(el => el.cartId === payload)
@@ -156,7 +170,12 @@ function cartReducer(state = initialState.cart, action) {
                 ...state,
                 totalPrice: state.totalPrice - item.price * item.quantity,
                 items: state.items.filter(el => el.cartId !== payload)
-            }
+            };
+            //clear the cart after the order has been sent to the DB
+            case ATYPES.CLEAR_CART:
+                return {
+                    items: []
+                };
         default:
             return state;
     }
