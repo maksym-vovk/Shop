@@ -90,59 +90,59 @@ export const ProductViewPage = connect(
     }
     return info;
   };
-  const pageContent = 
-      <section className="product-view">
-        <article className="container">
-          <h2 className="page-title">Apple Watch Series 5</h2>
-          <div className="product-view__wrapper">
-            <div className="product-view__carousel">
-              <Carousel showIndicators={false} showThumbs={false}>
-                {sliderImages}
-              </Carousel>
-            </div>
-            <div className="product-view__info">
-              <h3 className="category-title">{state.filter.model}</h3>
-              <h2 className="product-title">{state.description}</h2>
-              <h4 className="product-price">
-                <span className="product-price-span">Price: </span>$
-                {state.minPrice}
-              </h4>
-              <h4 className="tabs-title">Band Colors</h4>
-              <p className="color-title">{colorTitle}</p>
-              <ColorTabs />
-              {props.cartItems.find(el => el.cartId === cartId) ? (
-                <button
-                  className="buy-btn buy-btn--remove"
-                  onClick={() => props.removeFromCart(cartId)}
-                >
-                  Remove from cart
-                </button>
-              ) : (
-                <button
-                  className="buy-btn"
-                  onClick={() =>
-                    props.addToCart({
-                      id: state._id,
-                      cartId: cartId,
-                      name: state.filter.model,
-                      details: state.description,
-                      img: slides[0],
-                      quantity: 1,
-                      color: colorTitle,
-                      price: +state.minPrice,
-                      totalItemPrice: +state.minPrice
-                    })
-                  }
-                >
-                  Add to cart
-                </button>
-              )}
-            </div>
+  const pageContent = (
+    <section className="product-view">
+      <article className="container">
+        <h2 className="page-title">Apple Watch Series 5</h2>
+        <div className="product-view__wrapper">
+          <div className="product-view__carousel">
+            <Carousel showIndicators={false} showThumbs={false}>
+              {sliderImages}
+            </Carousel>
           </div>
-          <div className="tech-info-wrapper">{techInfo(state.techSpecs)}</div>
-        </article>
-      </section>
-  
+          <div className="product-view__info">
+            <h3 className="category-title">{state.filter.model}</h3>
+            <h2 className="product-title">{state.description}</h2>
+            <h4 className="product-price">
+              <span className="product-price-span">Price: </span>$
+              {state.minPrice}
+            </h4>
+            <h4 className="tabs-title">Band Colors</h4>
+            <p className="color-title">{colorTitle}</p>
+            <ColorTabs />
+            {props.cartItems.find(el => el.cartId === cartId) ? (
+              <button
+                className="buy-btn buy-btn--remove"
+                onClick={() => props.removeFromCart(cartId)}
+              >
+                Remove from cart
+              </button>
+            ) : (
+              <button
+                className="buy-btn"
+                onClick={() =>
+                  props.addToCart({
+                    id: state._id,
+                    cartId: cartId,
+                    name: state.filter.model,
+                    details: state.description,
+                    img: slides[0],
+                    quantity: 1,
+                    color: colorTitle,
+                    price: +state.minPrice,
+                    totalItemPrice: +state.minPrice
+                  })
+                }
+              >
+                Add to cart
+              </button>
+            )}
+          </div>
+        </div>
+        <div className="tech-info-wrapper">{techInfo(state.techSpecs)}</div>
+      </article>
+    </section>
+  );
 
   const preloader = loading ? <Preloader /> : null;
   const content = !loading ? pageContent : null;
