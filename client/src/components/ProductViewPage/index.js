@@ -21,9 +21,6 @@ export const ProductViewPage = connect(
   );
   const [colorTitle, setColorTitle] = useState(
     state.colors.allColors[0].name
-    /* Object.entries(state.colors.bandImagesByColor)[0][0]
-      .split('_')
-      .join(' ') */
   );
   const [loading, setLoading] = useState(true);
   const [cartId, setCartId] = useState(state._id, colorTitle);
@@ -72,6 +69,7 @@ export const ProductViewPage = connect(
     const info = [];
     // eslint-disable-next-line no-unused-vars
     for (const key in object) {
+    // eslint-disable-next-line no-prototype-builtins
       if (object.hasOwnProperty(key)) {
         info.push(
           <div key={key}>
