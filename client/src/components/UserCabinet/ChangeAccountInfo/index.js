@@ -33,10 +33,11 @@ export const ChangeUserInfoPage = connect(mapStateToProps, {updateUser, setMessa
 
   return (
     <React.Fragment>
-      <div className="container">
-        {
-          authorized ? (
-            <React.Fragment>
+      {
+        authorized ? (
+          <React.Fragment>
+            <div className="container">
+
               <div className="page-title page-title-wrapper">
                 <h2 className="">Edit your personal information</h2>
                 <button className="button go-back-btn" onClick={(e) => {
@@ -65,12 +66,14 @@ export const ChangeUserInfoPage = connect(mapStateToProps, {updateUser, setMessa
               <div className="change-information-form">
                 <ChangeUserInfo history={history} onSubmit={editUserSubmit}/>
               </div>
-            </React.Fragment>
-          )
-            : <EmptyPage text="You should login to see this page"/>
-        }
-      </div>
-      <ShoppingInfoContainer/>
+            </div>
+            <ShoppingInfoContainer/>
+          </React.Fragment>
+        )
+          : <div className="container">
+            <EmptyPage text="You should login to see this page"/>
+          </div>
+      }
     </React.Fragment>
   )
 });
@@ -85,10 +88,11 @@ export const ChangeUserPasswordPage = connect(mapStateToProps, {updateUserPasswo
 
   return (
     <React.Fragment>
-      <div className="container">
-        {
-          authorized ? (
-            <React.Fragment>
+      {
+        authorized ? (
+          <React.Fragment>
+            <div className="container">
+
               <h2 className="page-title">Edit your password</h2>
 
               {props.user.update_message
@@ -112,12 +116,15 @@ export const ChangeUserPasswordPage = connect(mapStateToProps, {updateUserPasswo
                 </div>
                 : <h1 className="addition-margin">404 Error you should login</h1>
               }
-            </React.Fragment>
-          )
-            : <EmptyPage text="You should login to see this page"/>
-        }
-      </div>
-      <ShoppingInfoContainer/>
+            </div>
+            <ShoppingInfoContainer/>
+
+          </React.Fragment>
+        )
+          : <div className="container">
+            <EmptyPage text="You should login to see this page"/>
+          </div>
+      }
     </React.Fragment>
   )
 });

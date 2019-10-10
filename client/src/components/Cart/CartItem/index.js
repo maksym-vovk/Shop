@@ -41,12 +41,12 @@ export const CartItem = (props) => {
 
   return (
     <div className="cart-item">
-        <div className="cart-item__image-wrapper">
-      <img className="cart-item__image"
-        src={image}
-        alt={name}
-      />
-        </div>
+      <div className="cart-item__image-wrapper">
+        <img className="cart-item__image"
+          src={image}
+          alt={name}
+        />
+      </div>
       <div className="cart-item__details-block">
         <p className="cart-item__name">{name}</p>
         <p className="cart-item__details">{details}</p>
