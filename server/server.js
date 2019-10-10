@@ -15,7 +15,7 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'static/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(productRoutes);
 app.use(userRoutes);
 app.use(orderRoutes);
