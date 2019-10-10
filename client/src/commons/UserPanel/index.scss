@@ -1,6 +1,7 @@
 .user-modal {
 	position: absolute;
 	top: 55px;
+    right: 17%;
 	background-color: #fff;
 	border-radius: 5px;
 	box-shadow: 0 5px 10px #000;
@@ -11,23 +12,28 @@
 		right: 10%;
 		display: inline-block;
 		border: 10px solid transparent;
-		border-bottom-color: #000;
+		border-bottom-color: rgba(0, 0, 0, .8);
 		content: "";
 	}
 	
 	&__link-block,
 	&__name-block,
 	&__logout-block {
-		padding: 10px;
+		padding: 40px;
 	}
 
 	&__name-block {
 		color: #fff;
 		font-weight: bold;
-		background-color: #000;
+        background-color: rgba(0, 0, 0, .7);
 		border-top-left-radius: 5px;
 		border-top-right-radius: 5px;
 	}
+
+    &__name-text {
+      padding: 5px 0;
+      font-size: 18px;
+    }
 
 	&__link {
 		display: block;
@@ -41,18 +47,79 @@
 	}
 
 	&__logout-block {
-		border-top: 1px solid #000;
+		border-top: 1px solid rgba(210, 215, 211, 1);
 	}
 
 	&__logout {
-		color: #f00;
-		text-decoration: underline;
-		background: none;
-		border: none;
+        color: darkred;
+        font-size: 16px;
+        text-decoration: underline;
+        background-color: inherit;
+        border: none;
 		cursor: pointer;
 
 		&:hover {
 			text-decoration: none;
 		}
 	}
+}
+
+@media (min-width: 1217px) and (max-width: 1280px) {
+  .user-modal {
+    right: 6px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .user-modal {
+    right: 6px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .user-modal {
+    right: 3px;
+
+    &__link-block,
+    &__name-block,
+    &__logout-block {
+      padding: 37px;
+    }
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .user-modal {
+    right: 3px;
+
+    &__link-block,
+    &__name-block,
+    &__logout-block {
+      padding: 35px;
+    }
+    &__name-text {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .user-modal {
+    right: 5px;
+
+    &__link-block,
+    &__name-block,
+    &__logout-block {
+      padding: 25px;
+    }
+    &__name-text {
+      font-size: 15px;
+    }
+    &__link {
+      font-size: 15px;
+    }
+    &__logout {
+      font-size: 15px;
+    }
+  }
 }
