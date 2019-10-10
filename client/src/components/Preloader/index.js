@@ -1,14 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Lines } from 'react-preloaders';
+import React from 'react';
+import './index.scss';
 
-export const Preloader = ({time = 400}) => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(false)
-  }, []);
-
+export const Preloader = () => {
   return (
-    <Lines customLoading={loading} time={time}/>
-  )
+    <div className="wrapper">
+      <div className="dot-wrapper">
+        <span className='spinner-dot' id="p1"></span>
+      </div>
+      <div className="dot-wrapper">
+        <span className='spinner-dot' id="p2"></span>
+      </div>
+      <div className="dot-wrapper">
+        <span className='spinner-dot' id="p3"></span>
+      </div>
+    </div>
+  );
 };

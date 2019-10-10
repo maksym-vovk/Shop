@@ -97,15 +97,12 @@
 @media (max-width: 576px) {
   .filter__block {
     width: 100%;
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 320px) {
-  .filter__tabs {
-    grid-template-columns: 1fr;
-  }
-    .filter__block {
-    margin-left: 150px;
+  .filter__block {
+    font-size: 12px;
   }
 }

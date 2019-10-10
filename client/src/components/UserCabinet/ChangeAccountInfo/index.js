@@ -9,7 +9,6 @@ import {ChangeUserPassword} from './ChangeUserPassword';
 
 import './index.scss';
 import {EmptyPage} from '../../EmptyPage';
-import {Preloader} from '../../Preloader';
 
 const mapStateToProps = state => ({
   authorized: state.user.authorized,
@@ -70,7 +69,6 @@ export const ChangeUserInfoPage = connect(mapStateToProps, {updateUser, setMessa
           )
             : <EmptyPage text="You should login to see this page"/>
         }
-        <Preloader/>
       </div>
       <ShoppingInfoContainer/>
     </React.Fragment>
@@ -118,7 +116,6 @@ export const ChangeUserPasswordPage = connect(mapStateToProps, {updateUserPasswo
           )
             : <EmptyPage text="You should login to see this page"/>
         }
-        <Preloader/>
       </div>
       <ShoppingInfoContainer/>
     </React.Fragment>
