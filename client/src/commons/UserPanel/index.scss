@@ -1,25 +1,16 @@
 .user-modal {
 	position: absolute;
 	top: 55px;
-    right: 17%;
+    right: 6px;
+    width: 200px;
 	background-color: #fff;
 	border-radius: 5px;
 	box-shadow: 0 5px 10px #000;
-
-	&::before {
-		position: absolute;
-		top: -20px;
-		right: 10%;
-		display: inline-block;
-		border: 10px solid transparent;
-		border-bottom-color: rgba(0, 0, 0, .8);
-		content: "";
-	}
 	
 	&__link-block,
 	&__name-block,
 	&__logout-block {
-		padding: 40px;
+		padding: 20px 10px;
 	}
 
 	&__name-block {
@@ -37,9 +28,12 @@
 
 	&__link {
 		display: block;
-		margin-bottom: 5px;
 		color: #000;
+        font-size: 18px;
 
+    &--margin {
+            margin-bottom: 10px;
+    }
 		&:hover {
 			color: #00f;
 			text-shadow: 0 0 10px #000;
@@ -64,62 +58,13 @@
 	}
 }
 
-@media (min-width: 1217px) and (max-width: 1280px) {
+@media (max-width: 768px) {
   .user-modal {
-    right: 6px;
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .user-modal {
-    right: 6px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .user-modal {
-    right: 3px;
-
-    &__link-block,
-    &__name-block,
-    &__logout-block {
-      padding: 37px;
-    }
-  }
-}
-
-@media (min-width: 481px) and (max-width: 767px) {
-  .user-modal {
-    right: 3px;
-
-    &__link-block,
-    &__name-block,
-    &__logout-block {
-      padding: 35px;
-    }
-    &__name-text {
-      font-size: 16px;
-    }
-  }
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .user-modal {
-    right: 5px;
 
     &__link-block,
     &__name-block,
     &__logout-block {
       padding: 25px;
-    }
-    &__name-text {
-      font-size: 15px;
-    }
-    &__link {
-      font-size: 15px;
-    }
-    &__logout {
-      font-size: 15px;
     }
   }
 }

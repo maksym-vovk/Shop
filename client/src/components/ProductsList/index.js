@@ -37,7 +37,7 @@ export const ProductsList = connect(
   const content = !loading ? (
     <section className="product-list-wrapper">{сardsList}</section>
   ) : null;
-  const emptyPage = !loading && !cards.length ? <EmptyPage text='Nothing found'/> : null;
+  const emptyPage = !loading && !cards.length ? <EmptyPage button={false} text='Nothing found'/> : null;
 
   return (
     <React.Fragment>

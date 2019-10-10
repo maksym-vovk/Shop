@@ -13,12 +13,18 @@ input[type=number] {
   align-items: center;
   justify-content: space-between;
   margin: 50px 0;
-  padding-bottom: 30px;
+  padding: 0 20px 30px 20px;
   border-bottom: 1px solid rgba(210, 215, 211, 1);
 
+  &__image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+  }
+
   &__image {
-    width: 250px;
-    height: 250px;
+    width: 80%;
   }
 
   &__name {
@@ -77,33 +83,10 @@ input[type=number] {
   }
 }
 
-@media (min-width: 1025px) and (max-width: 1280px){
-  .cart-item {
-    margin: 50px 0;
-
-    &__price-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    &__price-block {
-      margin-top: 15px;
-      margin-left: 0;
-    }
-  }
-}
-
-/*
-  ##Device = Tablets, Ipads (portrait)
-  ##Screen = B/w 768px to 1024px
-*/
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (max-width: 1024px) {
   .cart-item {
     margin: 30px 0;
-    &__image {
-      width: 230px;
-      height: 230px;
-    }
+    
     &__name {
       font-size: 21px;
     }
@@ -136,7 +119,7 @@ input[type=number] {
   }
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (max-width: 768px) {
   .cart-item {
     flex-direction: column;
     margin: 30px 0;
@@ -151,9 +134,6 @@ input[type=number] {
       margin: 15px 0;
     }
 
-    &__details {
-      font-size: 16px;
-    }
     &__input-group {
       height: 30px;
     }
@@ -166,56 +146,16 @@ input[type=number] {
       width: 30px;
       font-size: 16px;
     }
-    &__price {
-      font-size: 22px;
-    }
+
     &__price-block {
       margin-top: 15px;
       margin-left: 0;
     }
+
     &__remove-link {
       font-size: 18px;
     }
-    &__price-wrapper {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-}
 
-@media (min-width: 320px) and (max-width: 480px) {
-  .cart-item {
-    flex-direction: column;
-    margin: 20px 0;
-
-    &__name {
-      font-size: 20px;
-    }
-
-    &__details-block {
-      margin: 15px 0;
-    }
-    &__details {
-      font-size: 16px;
-    }
-    &__input-group {
-      height: 30px;
-    }
-
-    &__input-button {
-      width: 30px;
-    }
-    &__input-value {
-      width: 30px;
-      font-size: 14px;
-    }
-    &__price-block {
-      margin-top: 10px;
-      margin-left: 0;
-    }
-    &__price {
-      font-size: 22px;
-    }
     &__price-wrapper {
       flex-direction: column;
       align-items: center;
