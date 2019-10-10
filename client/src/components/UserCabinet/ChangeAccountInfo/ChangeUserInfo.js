@@ -18,7 +18,10 @@ import {
 } from '../../ReduxForm/RegistrationForm';
 
 const mapStateToProps = state => ({
-  initialValues: state.user.userData,
+  initialValues: {
+    ...state.user.userData,
+    _id: state.user.user_id
+  },
 });
 
 export const inputFocus = (event) => {
