@@ -3,7 +3,6 @@ import React from 'react';
 import { connect } from 'react-redux'
 import {OrderList} from './OrderList';
 import { EmptyPage } from '../EmptyPage';
-import { Preloader } from '../Preloader';
 
 const mapStateToProps = state => ({
   authorized: state.user.authorized
@@ -30,7 +29,6 @@ export const PaymentStory = connect(mapStateToProps)(props => {
           </React.Fragment>
           : <EmptyPage text="You should login to check order history"/>
       }
-      <Preloader />
     </div>
   )
 });

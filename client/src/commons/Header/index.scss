@@ -3,7 +3,7 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
   align-items: center;
   height: 45px;
@@ -96,7 +96,6 @@ $transitionEasing: ease-in-out;
 
   &:before,
   &:after {
-
     position: absolute;
     bottom: 0;
     left: 50%;

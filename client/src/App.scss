@@ -2,6 +2,10 @@
 * {
   box-sizing: border-box;
 }
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
 
 body {
   position: relative;
@@ -24,4 +28,3 @@ body {
   padding-bottom: 5px;
   border-bottom: 1px solid rgb(134, 134, 134);
 }
-
