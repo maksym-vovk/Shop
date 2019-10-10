@@ -19,7 +19,8 @@ app.use(express.static(path.join(__dirname, 'static/build')));
 app.use(productRoutes);
 app.use(userRoutes);
 app.use(orderRoutes);
-// app.use('/', (req, res) => res.sendFile(path.join(__dirname, 'static/build/index.html')))
+app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../client/build/index.html')))
+app.use('*', (req, res) => res.sendFile(path.join(__dirname, '../client/build/index.html')))
 
 const run = async () => {
   try {
