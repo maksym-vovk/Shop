@@ -17,7 +17,6 @@ router.get('/cards/:id', async (req, res) => {
   res.json(product);
 });
 
-
 router.post('/cards', async (req, res) => {
   try {
     const card = await new Product(req.body).save();

@@ -38,7 +38,7 @@ export const SearchInput = connect(
       <SearchInputButton onClick={() => props.setInputValue(input)} input={input}/>
       <input defaultValue={input} onInput={event => setInput(event.target.value)} className='search__input' type="text" placeholder="Search"/>
       <svg onClick={() => props.setSearchStatus(false)}
-        className='extras__image'
+        className='extras__image close-btn'
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         viewBox="0 0 16 16">

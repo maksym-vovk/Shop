@@ -24,7 +24,6 @@ const notMatch = matchName => (value, allValues) =>
     : undefined;
 
 const EditPassword = props => {
-  console.log(props);
   const { handleSubmit, submitting, reset } = props;
   const { last_password } = props.initialValues;
 

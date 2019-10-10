@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import { Lines } from 'react-preloaders';
 import { connect } from 'react-redux';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './index.scss';
+import { Preloader } from '../Preloader';
 import { addToCart, removeFromCart } from '../../store';
 
 const mapStateToProps = state => ({
   cartItems: state.cart.items
-})
+});
 
-export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCart})(props => {
+export const ProductViewPage = connect(
+  mapStateToProps,
+  { addToCart, removeFromCart }
+)(props => {
   const { state } = props.location;
   const [slides, setSlides] = useState(
     Object.entries(state.colors.bandImagesByColor)[0][1]
   );
   const [colorTitle, setColorTitle] = useState(
-    Object.entries(state.colors.bandImagesByColor)[0][0]
+    state.colors.allColors[0].name
+    /* Object.entries(state.colors.bandImagesByColor)[0][0]
       .split('_')
-      .join(' ')
+      .join(' ') */
   );
   const [loading, setLoading] = useState(true);
   const [cartId, setCartId] = useState(state._id, colorTitle);
   useEffect(() => {
     document.title = state.filter.model;
-    setLoading(false);
+    setTimeout(() => setLoading(false), 1000);
+
     setCartId(state._id + colorTitle);
   }, [state.filter.model, colorTitle, state._id]);
   const sliderImages = slides.map((item, key) => {
@@ -73,7 +78,11 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
             <h3>{object[key].title}</h3>
             <ul className="tech-info">
               {object[key].body.map((item, key) => {
-                return <li key={key} className="tech-info__item">{item}</li>;
+                return (
+                  <li key={key} className="tech-info__item">
+                    {item}
+                  </li>
+                );
               })}
             </ul>
           </div>
@@ -82,8 +91,7 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
     }
     return info;
   };
-
-  return (
+  const pageContent = (
     <section className="product-view">
       <article className="container">
         <h2 className="page-title">Apple Watch Series 5</h2>
@@ -103,25 +111,47 @@ export const ProductViewPage = connect(mapStateToProps, {addToCart, removeFromCa
             <h4 className="tabs-title">Band Colors</h4>
             <p className="color-title">{colorTitle}</p>
             <ColorTabs />
-            {props.cartItems.find(el => el.cartId === cartId)
-              ? <button className="buy-btn buy-btn--remove" onClick={() => props.removeFromCart(cartId)}>Remove from cart</button>
-              : <button className="buy-btn" onClick={() => props.addToCart({
-                id: state._id,
-                cartId: cartId,
-                name: state.filter.model,
-                details: state.description,
-                img: slides[0],
-                quantity: 1,
-                color: colorTitle,
-                price: +state.minPrice,
-                totalItemPrice: +state.minPrice
-              })}>Add to cart</button>
-            }
+            {props.cartItems.find(el => el.cartId === cartId) ? (
+              <button
+                className="buy-btn buy-btn--remove"
+                onClick={() => props.removeFromCart(cartId)}
+              >
+                Remove from cart
+              </button>
+            ) : (
+              <button
+                className="buy-btn"
+                onClick={() =>
+                  props.addToCart({
+                    id: state._id,
+                    cartId: cartId,
+                    name: state.filter.model,
+                    details: state.description,
+                    img: slides[0],
+                    quantity: 1,
+                    color: colorTitle,
+                    price: +state.minPrice,
+                    totalItemPrice: +state.minPrice
+                  })
+                }
+              >
+                Add to cart
+              </button>
+            )}
           </div>
         </div>
         <div className="tech-info-wrapper">{techInfo(state.techSpecs)}</div>
       </article>
-      <Lines customLoading={loading} time={300} />
     </section>
+  );
+
+  const preloader = loading ? <Preloader /> : null;
+  const content = !loading ? pageContent : null;
+
+  return (
+    <React.Fragment>
+      {preloader}
+      {content}
+    </React.Fragment>
   );
 });

@@ -9,10 +9,6 @@ export const fetchCards = query => ({
   type: ATYPES.FETCH_CARDS,
   query
 });
-export const fetchCard = id => ({
-  type: ATYPES.FETCH_CARD,
-  id
-});
 
 // user
 export const registerUser = (user) => ({
@@ -20,9 +16,9 @@ export const registerUser = (user) => ({
   user
 });
 
-export const setRegister = payload => ({
+export const setRegister = update_message_status => ({
   type: ATYPES.SET_MESSAGE_USER,
-  payload
+  payload: update_message_status
 });
 
 export const setUserOrders = (user_id) => ({
@@ -58,7 +54,7 @@ export const setUser = payload => {
   return {
     type: ATYPES.SET_USER,
     payload
-  }
+  };
 };
 
 export const setUserPassword = payload => {
@@ -95,15 +91,25 @@ export const changeQuantity = (newQuantity, newTotalItemPrice, id) => ({
 export const changeTotalPrice = totalPrice => ({
   type: ATYPES.CHANGE_TOTAL_PRICE,
   payload: {
-    totalPrice,
+    totalPrice
   }
 });
 
 export const changeTotalItems = totalItems => ({
   type: ATYPES.CHANGE_TOTAL_ITEMS,
   payload: {
-    totalItems,
+    totalItems
   }
+});
+
+export const setDeliveryPrice = deliveryPrice => ({
+  type: ATYPES.DELIVERY_PRICE,
+  payload: deliveryPrice
+});
+
+export const calcGrandTotalPrice = grandTotalPrice => ({
+  type: ATYPES.GRAND_TOTAL_PRICE,
+  payload: grandTotalPrice
 });
 
 export const setInputValue = value => ({
@@ -120,6 +126,10 @@ export const addToCart = itemData => ({
 export const removeFromCart = id => ({
   type: ATYPES.REMOVE_FROM_CART,
   payload: id
+});
+
+export const clearCart = () => ({
+  type: ATYPES.CLEAR_CART,
 });
 
 export const sendOrder = order => ({
@@ -145,14 +155,14 @@ function* fetchCardsSaga() {
 }
 
 function* fetchCardSaga() {
-    while (true) {
-        const {id} = yield take(ATYPES.FETCH_CARD);
-        const response = yield axios.get('/cards/' + id);
-        yield put({
-          type: ATYPES.SET_CARD,
-          payload: response.data
-        });
-    }
+  while (true) {
+    const { id } = yield take(ATYPES.FETCH_CARD);
+    const response = yield axios.get('/cards/' + id);
+    yield put({
+      type: ATYPES.SET_CARD,
+      payload: response.data
+    });
+  }
 }
 
 function* registerUserSaga() {
@@ -202,10 +212,15 @@ function* sendOrderSaga() {
   while (true) {
     const { order } = yield take(ATYPES.SEND_ORDER);
     const result = yield axios.post('/order', order);
-    yield put({
-      type: ATYPES.SET_ORDER,
-      payload: result.data
-    });
+    yield  all(
+        [
+            put({
+                type: ATYPES.SET_ORDER,
+                payload: result.data
+            }),
+            put(clearCart())
+        ]
+    )
   }
 }
 

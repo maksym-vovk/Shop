@@ -4,8 +4,8 @@ const User = require('../models/User');
 
 router.post('/find_user',  async (req, res) => {
   let idEmailStatus, user_email_id;
-  const userByLogin = await User.find({login: req.body.login});
-  const userByEmail = await User.find({email: req.body.email});
+  const userByLogin = await User.find(  {'customer.login' : req.body.login } );
+  const userByEmail = await User.find( { 'customer.email' : req.body.email } );
 
   if (userByEmail[0]) {
     user_email_id = userByEmail[0]._id.toString();
@@ -38,15 +38,12 @@ router.put('/customers/:id', async (req, res) => {
 });
 
 router.post('/customers', async (req, res) => {
-  try{
     const password = req.body.password;
     const user = req.body.customer;
     await new User({customer: user, password: password}).save();
     res.send({res: true});
-  }catch(e){
-  	res.send({res: false});
   }
-});
+);
 
 router.post('/customers/auth', async (req, res) => {
   const login = req.body.login;

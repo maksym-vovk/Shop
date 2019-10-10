@@ -60,7 +60,6 @@ const asyncValidate = async(value) => {
 };
 
 const EditUserInfo = props => {
-  console.log(props)
   const { handleSubmit, submitting } = props;
 
   return (

@@ -29,3 +29,4 @@ export {ChangeUserInfoPage, ChangeUserPasswordPage} from './UserCabinet/ChangeAc
 export {PaymentStory} from './PaymentStory';
 
 export {SearchResult} from './SearchResult'
+export {Preloader} from './Preloader'

@@ -87,8 +87,8 @@
 .tech-info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding-bottom: 20px ;
-  
+  padding-bottom: 20px;
+
   &__item {
     margin: 5px 15px;
   }
@@ -139,5 +139,20 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .product-view__carousel {
+    margin-bottom: 0px;
+  }
+  .category-title {
+    margin-bottom: 5px;
+  }
+
+  .product-title {
+    margin-bottom: 10px;
+  }
+
+  .product-price {
+    margin-bottom: 10px;
   }
 }

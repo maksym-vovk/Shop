@@ -10,7 +10,7 @@ export const ModalLogin = (props) => {
         {props.error
           ? <div className="err-popup"><p>Wrong login or password</p></div>
           : null}
-        <form className="modal__form" onSubmit={ props.submitHandler }>
+        <form className="modal__form" onSubmit={ props.submitHandler } autoComplete="off">
           <div className="modal__field">
             <label htmlFor="login">Login:</label>
             <input type="text" name="login" className="modal__input" onChange={ e => props.login.setLogin(e.target.value) } value={ props.login.login } />
