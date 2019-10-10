@@ -4,7 +4,6 @@ import { Field, reduxForm, reset } from 'redux-form'
 import './index.scss'
 import axios from 'axios';
 
-// const required = value => (value || typeof value === 'number' ? undefined : 'Required field');
 export const required = fieldName => value => (value || typeof value === 'number' ? undefined : `Please enter your ${fieldName}`);
 
 export const maxLength = max => value =>
@@ -75,9 +74,9 @@ export const inputFocusBlur = (event) => {
   if (targetLabel.classList.contains('label-active')) {
     if (inputElement.value === '') {
       return targetLabel.classList.remove('label-active')
-    } else return true
+    } else return inputElement.value
   }
-  return targetLabel.classList.add('label-active');
+  targetLabel.classList.add('label-active');
 };
 
 export const renderField = ({
@@ -108,140 +107,156 @@ export const renderField = ({
 );
 
 const RegistrationForm = props => {
-  const { handleSubmit, submitting } = props;
+  const { handleSubmit, submitting, reset} = props;
   return (
-    <form className="registration-form-wrap" onSubmit={handleSubmit}>
-      <div className="form-group">
-        <h3 className="registration-title">User details</h3>
-        <Field
-          name="login"
-          type="text"
-          component={renderField}
-          label="Login"
-          validate={[required('Login'), minLength(4)]}
-          warn={login}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-          normalize={onChangeTrimValue}
-        />
-        <Field
-          name="first_name"
-          type="text"
-          component={renderField}
-          label="Name"
-          validate={[required('Name'), maxLength15, minLength2]}
-          warn={alphaNumeric}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-        />
-        <Field
-          name="last_name"
-          type="text"
-          component={renderField}
-          label="Surname"
-          validate={[required('Surname'), maxLength15, minLength2]}
-          warn={alphaNumeric}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-        />
-        <Field
-          name="age"
-          type="number"
-          component={renderField}
-          label="Age"
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-        />
-      </div>
-
-      <div className="form-group">
-        <h3 className="registration-title">Enter password</h3>
-        <Field
-          type="password"
-          name="password"
-          label="Password"
-          component={renderField}
-          validate={[required('Password'), minLength(6)]}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-          normalize={onChangeTrimValue}
-        />
-        <Field
-          type="password"
-          name="confirmPassword"
-          label="Confirm Password"
-          component={renderField}
-          validate={[required('Password again'), match('password')]}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-          normalize={onChangeTrimValue}
-        />
-      </div>
-      <div className="form-group">
-        <h3 className="registration-title">Contact information</h3>
-        <Field
-          name="email"
-          type="email"
-          component={renderField}
-          label="Email"
-          validate={[required('Email address'), email]}
-          warn={aol}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-        />
-
-        <Field
-          name="country"
-          type="text"
-          component={renderField}
-          label="Country"
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-        />
-
-        <Field
-          name="city"
-          type="text"
-          component={renderField}
-          label="City"
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-        />
-
-        <Field
-          name="zip_code"
-          type="text"
-          component={renderField}
-          label="Zip code"
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-        />
-
-        <Field
-          name="address"
-          type="text"
-          component={renderField}
-          label="Address"
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-        />
-        <Field
-          name="phone"
-          type="text"
-          component={renderField}
-          label="Phone number"
-          validate={[required('Phone number'), minLength(7)]}
-          normalize={phoneNumber}
-          onFocus={inputFocusBlur}
-          onBlur={inputFocusBlur}
-        />
-      </div>
-      <div>
-        <button className="sign-up-btn" type="submit" disabled={submitting}>
-          sign up
+    <React.Fragment>
+      <div className="page-title page-title-wrapper">
+        <h2 className="">Registration</h2>
+        <button className="button go-back-btn" onClick={(e) => {
+          reset();
+          props.history.goBack();
+          e.preventDefault();
+        }}>
+            Go back
         </button>
       </div>
-    </form>
+      <div className="registration-form">
+
+        <form className="registration-form-wrap" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <h3 className="registration-title">User details</h3>
+            <Field
+              name="login"
+              type="text"
+              component={renderField}
+              label="Login"
+              validate={[required('Login'), minLength(4)]}
+              warn={login}
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+              normalize={onChangeTrimValue}
+            />
+            <Field
+              name="first_name"
+              type="text"
+              component={renderField}
+              label="Name"
+              validate={[required('Name'), maxLength15, minLength2]}
+              warn={alphaNumeric}
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+            />
+            <Field
+              name="last_name"
+              type="text"
+              component={renderField}
+              label="Surname"
+              validate={[required('Surname'), maxLength15, minLength2]}
+              warn={alphaNumeric}
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+            />
+            <Field
+              name="age"
+              type="number"
+              component={renderField}
+              label="Age"
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+            />
+          </div>
+
+          <div className="form-group">
+            <h3 className="registration-title">Enter password</h3>
+            <Field
+              type="password"
+              name="password"
+              label="Password"
+              component={renderField}
+              validate={[required('Password'), minLength(6)]}
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+              normalize={onChangeTrimValue}
+            />
+            <Field
+              type="password"
+              name="confirmPassword"
+              label="Confirm Password"
+              component={renderField}
+              validate={[required('Password again'), match('password')]}
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+              normalize={onChangeTrimValue}
+            />
+          </div>
+          <div className="form-group">
+            <h3 className="registration-title">Contact information</h3>
+            <Field
+              name="email"
+              type="email"
+              component={renderField}
+              label="Email"
+              validate={[required('Email address'), email]}
+              warn={aol}
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+            />
+
+            <Field
+              name="country"
+              type="text"
+              component={renderField}
+              label="Country"
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+            />
+
+            <Field
+              name="city"
+              type="text"
+              component={renderField}
+              label="City"
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+            />
+
+            <Field
+              name="zip_code"
+              type="text"
+              component={renderField}
+              validate={maxLength(5)}
+              label="Zip code"
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+            />
+
+            <Field
+              name="address"
+              type="text"
+              component={renderField}
+              label="Address"
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+            />
+            <Field
+              name="phone"
+              type="text"
+              component={renderField}
+              label="Phone number"
+              validate={[required('Phone number'), minLength(7)]}
+              normalize={phoneNumber}
+              onFocus={inputFocusBlur}
+              onBlur={inputFocusBlur}
+            />
+          </div>
+          <div>
+            <button className="sign-up-btn" type="submit" disabled={submitting}>
+          sign up
+            </button>
+          </div>
+        </form>
+      </div>
+    </React.Fragment>
   )
 };
 
@@ -253,7 +268,7 @@ export default reduxForm({
   form: 'registrationForm', // a unique identifier for this form
   onSubmitSuccess: resetForm,
   destroyOnUnmount: false, //        <------ preserve form data
-  forceUnregisterOnUnmount: true, // <------ unregister fields on unmount
+  forceUnregisterOnUnmount: false, // <------ unregister fields on unmount
   asyncValidate,
-  asyncChangeFields: ['login', 'email']
+  asyncBlurFields: ['login', 'email']
 })(RegistrationForm)

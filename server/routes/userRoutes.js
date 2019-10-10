@@ -4,8 +4,8 @@ const User = require('../models/User');
 
 router.post('/find_user',  async (req, res) => {
   let idEmailStatus, user_email_id;
-  const userByLogin = await User.find({login: req.body.login});
-  const userByEmail = await User.find({email: req.body.email});
+  const userByLogin = await User.find(  {'customer.login' : req.body.login } );
+  const userByEmail = await User.find( { 'customer.email' : req.body.email } );
 
   if (userByEmail[0]) {
     user_email_id = userByEmail[0]._id.toString();
@@ -24,11 +24,13 @@ router.post('/find_user',  async (req, res) => {
 });
 
 router.put('/customers/:id', async (req, res) => {
-  const user = req.body;
+  let key;
+  req.body.customer ? key = 'customer' : key = 'password';
+  const data = req.body[key];
 
   try {
-    const dataUpdated = await User.findOneAndUpdate({_id: req.params.id}, user, {new: true});
-    res.send({ user: dataUpdated, updated: true });
+    const dataUpdated = await User.findOneAndUpdate({_id: req.params.id}, {[key]: data}, {new: true});
+    res.send({ updatedData: dataUpdated[key], updated: true });
   } catch (e) {
     res.send({updated: false});
   }
@@ -36,16 +38,17 @@ router.put('/customers/:id', async (req, res) => {
 });
 
 router.post('/customers', async (req, res) => {
-  try{
-    const user = await new User(req.body).save();
+    const password = req.body.password;
+    const user = req.body.customer;
+    await new User({customer: user, password: password}).save();
     res.send({res: true});
-  }catch(e){
-  	res.send({res: false});
   }
-});
+);
 
 router.post('/customers/auth', async (req, res) => {
-  const answer = await User.find(req.body);
+  const login = req.body.login;
+  const password = req.body.password;
+  const answer = await User.find({password, 'customer.login': login });
   if (answer[0]) {
     res.send(answer[0]);
   } else {

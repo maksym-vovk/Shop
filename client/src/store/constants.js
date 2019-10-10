@@ -21,7 +21,9 @@ export const GRAND_TOTAL_PRICE = 'GRAND_TOTAL_PRICE';
 
 // User
 export const REGISTER_USER = 'REGISTER_USER';
+export const SET_USER_ID = 'SET_USER_ID';
 export const SET_USER = 'SET_USER';
+export const SET_USER_PASSWORD = 'SET_USER_PASSWORD';
 export const UPDATE_USER = 'UPDATE_USER';
 
 export const GET_USER_ORDERS = 'GET_USER_ORDERS';

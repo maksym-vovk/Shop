@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { Header, Footer } from './commons';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import store, { setUser } from './store';
+import store, { setUser, setUserPassword, setUserID } from './store';
 
 import {
   HomePage,
@@ -34,7 +34,9 @@ import './App.scss';
 
 function App() {
   if (localStorage.userData) {
-    store.dispatch(setUser(JSON.parse(localStorage.userData)))
+    store.dispatch(setUser(JSON.parse(localStorage.userData)));
+    store.dispatch(setUserPassword(JSON.parse(localStorage.last_password)));
+    store.dispatch(setUserID(JSON.parse(localStorage.user_id)));
   }
   return (
     <Provider store={store}>
