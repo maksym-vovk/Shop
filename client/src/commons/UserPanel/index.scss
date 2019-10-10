@@ -64,19 +64,15 @@
 	}
 }
 
-@media (min-width: 1217px) and (max-width: 1280px) {
+@media(max-width: 1280px) {
   .user-modal {
     right: 6px;
   }
 }
 
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .user-modal {
-    right: 6px;
-  }
-}
 
-@media (min-width: 768px) and (max-width: 1024px) {
+
+@media(max-width: 1024px) {
   .user-modal {
     right: 3px;
 
@@ -88,7 +84,7 @@
   }
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media(max-width: 768px) {
   .user-modal {
     right: 3px;
 
@@ -103,7 +99,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media(max-width: 480px) {
   .user-modal {
     right: 5px;
 
