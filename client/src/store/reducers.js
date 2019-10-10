@@ -174,7 +174,7 @@ function cartReducer(state = initialState.cart, action) {
             //clear the cart after the order has been sent to the DB
             case ATYPES.CLEAR_CART:
                 return {
-                    items: []
+                    ...initialState.cart
                 };
         default:
             return state;
