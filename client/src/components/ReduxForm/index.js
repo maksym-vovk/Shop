@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import RegistrationForm from './RegistrationForm';
-import { Preloader } from '../Preloader';
 import { registerUser, setRegister } from '../../store'
 import { EmptyPage } from '../EmptyPage';
 
@@ -18,10 +17,11 @@ export const ReduxForm = connect(mapStateToProps, {
   setRegister
 })(props => {
   const [redirect, setRedirect] = useState(false);
-  console.log(props);
-  const { authorized, update_message, registerUser, setRegister } = props;
+  const { authorized, update_message, registerUser, setRegister, history } = props;
   const regSubmit = (values) => {
-    registerUser(values);
+    const { password, ...customer } = values;
+    const user = { password, customer };
+    registerUser(user);
   };
 
   return (
@@ -30,42 +30,30 @@ export const ReduxForm = connect(mapStateToProps, {
         !authorized
           ? (
             <React.Fragment>
-              <div className="page-title page-title-wrapper">
-                <h2 className="">Registration</h2>
-                <button className="button go-back-btn" onClick={(e) => {
-                  props.history.goBack();
-                  e.preventDefault();
-                }}>
-                Go back
-                </button>
-              </div>
-              <div className="registration-form">
-                {
-                  update_message
-                    ? (
-                      <div className="register-modal">
-                        <div className="register-modal__message-wrap">
-                          <p>Account successfully created</p>
-                          <button className="button" onClick={(e) => {
-                            setRegister(false);
-                            setRedirect(true);
-                            e.preventDefault();
-                          }}>ok
-                          </button>
-                        </div>
+
+              {
+                update_message
+                  ? (
+                    <div className="register-modal">
+                      <div className="register-modal__message-wrap">
+                        <p>Account successfully created</p>
+                        <button className="button" onClick={(e) => {
+                          setRegister(false);
+                          setRedirect(true);
+                          e.preventDefault();
+                        }}>ok
+                        </button>
                       </div>
-                    )
-                    : null
-                }
-                {redirect ? <Redirect to="/"/> : null}
-                <RegistrationForm onSubmit={regSubmit}/>
-              </div>
+                    </div>
+                  )
+                  : null
+              }
+              {redirect ? <Redirect to="/"/> : null}
+              <RegistrationForm onSubmit={regSubmit} history={history}/>
             </React.Fragment>
           )
           : <EmptyPage text="You are already logged in"/>
       }
-
-      <Preloader/>
     </div>
   )
 });

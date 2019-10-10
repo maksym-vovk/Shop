@@ -9,10 +9,6 @@ export const fetchCards = query => ({
   type: ATYPES.FETCH_CARDS,
   query
 });
-export const fetchCard = id => ({
-  type: ATYPES.FETCH_CARD,
-  id
-});
 
 // user
 export const registerUser = (user) => ({
@@ -20,9 +16,9 @@ export const registerUser = (user) => ({
   user
 });
 
-export const setRegister = payload => ({
+export const setRegister = update_message_status => ({
   type: ATYPES.SET_MESSAGE_USER,
-  payload
+  payload: update_message_status
 });
 
 export const setUserOrders = (user_id) => ({
@@ -45,6 +41,14 @@ export const setMessageUser = update_message_status => ({
   payload: update_message_status
 });
 
+export const setUserID = payload => {
+  localStorage.setItem('user_id', JSON.stringify(payload));
+  return {
+    type: ATYPES.SET_USER_ID,
+    payload
+  }
+};
+
 export const setUser = payload => {
   localStorage.setItem('userData', JSON.stringify(payload));
   return {
@@ -53,8 +57,16 @@ export const setUser = payload => {
   };
 };
 
+export const setUserPassword = payload => {
+  localStorage.setItem('last_password', JSON.stringify(payload));
+  return {
+    type: ATYPES.SET_USER_PASSWORD,
+    payload
+  }
+};
+
 export const logoutUser = () => {
-  localStorage.removeItem('userData');
+  localStorage.clear();
   return {
     type: ATYPES.LOGOUT_USER
   }
@@ -165,27 +177,16 @@ function* registerUserSaga() {
 
 function* updateUserSaga() {
   while (true) {
-    const { payload: user } = yield take(ATYPES.UPDATE_USER);
-    const response = yield axios.put('/customers/' + user._id, user);
+    const { payload: userData } = yield take(ATYPES.UPDATE_USER);
+    const response = yield axios.put('/customers/' + userData._id, {customer: userData});
+
     if (response.data.updated) {
-      yield all([
-        put({
-          type: ATYPES.UPDATE_USER,
-          payload: {
-            update_message: { correct: 'Personal information updated' }
-          }
-        }),
-        put(setUser(response.data.user))
-      ]);
+      yield all ([
+        put(setUser(response.data.updatedData)),
+        put(setMessageUser({correct: 'Personal information updated'}))
+      ])
     } else {
-      yield put({
-        type: ATYPES.UPDATE_USER,
-        payload: {
-          update_message: {
-            error: 'Personal information not updated try again!'
-          }
-        }
-      });
+      yield put(setMessageUser( { error: 'Personal information not updated try again!' }))
     }
   }
 }
@@ -193,24 +194,16 @@ function* updateUserSaga() {
 function* updateUserPasswordSaga() {
   while (true) {
     const { payload: user } = yield take(ATYPES.UPDATE_USER_PASSWORD);
-    const response = yield axios.put('/customers/' + user._id, {
-      password: user.password
-    });
+    const response = yield axios.put('/customers/' + user._id, {password: user.password});
+
     if (response.data.updated) {
-      yield all([
-        put({
-          type: ATYPES.UPDATE_USER_PASSWORD,
-          payload: { update_message: { correct: 'Your password updated' } }
-        }),
-        put(setUser(response.data.user))
-      ]);
+      yield all(
+          [
+            put(setMessageUser({correct: 'Your password updated' })),
+            put(setUserPassword(response.data.updatedData))
+          ])
     } else {
-      yield put({
-        type: ATYPES.UPDATE_USER_PASSWORD,
-        payload: {
-          update_message: { error: 'Your password not updated try again!' }
-        }
-      });
+      yield put(setMessageUser( { error: 'Your password not updated try again!' }))
     }
   }
 }

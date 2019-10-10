@@ -4,8 +4,6 @@ const Product = require('../models/Product');
 module.exports = router;
 
 router.get('/cards/:query', async (req, res) => {
-  
-  console.log(req.params.query);
   const  query = {$text: {$search: req.params.query}};
   const products = await Product.find(query);
   res.json(products);

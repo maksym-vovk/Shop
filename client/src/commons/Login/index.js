@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { setUser } from '../../store';
+import { setUser, setUserPassword, setUserID } from '../../store';
 
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ import { ModalLogin } from './ModalLogin';
 
 import './index.scss';
 
-export const Login = connect(null, {setUser})((props) => {
+export const Login = connect(null, {setUser, setUserPassword, setUserID})((props) => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
@@ -25,10 +25,12 @@ export const Login = connect(null, {setUser})((props) => {
         } else {
           setError(false);
           props.openModal(false);
-          props.setUser(res.data);
+          props.setUser(res.data.customer);
+          props.setUserPassword(res.data.password);
+          props.setUserID(res.data._id);
         }
       });
-  }
+  };
 
   return ReactDOM.createPortal(
     <ModalLogin
