@@ -20,24 +20,14 @@
   }
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (max-width: 768px) {
   .empty-cart {
     height: fit-content;
-    &__text {
-      font-size: 22px;
-    }
-    &__button {
-      font-size: 16px;
-    }
-  }
-}
 
-@media (min-width: 320px) and (max-width: 480px) {
-  .empty-cart {
-    height: fit-content;
     &__text {
       font-size: 22px;
     }
+
     &__button {
       font-size: 16px;
     }

@@ -48,8 +48,8 @@
   display: flex;
   flex-direction: column;
   align-self: center;
-  width: 30%;
-  margin-left: 100px;
+  width: 40%;
+  margin-left: 60px;
 
   &__subtitle {
     font-size: 18px;
@@ -60,36 +60,23 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (max-width: 1024px) {
   .delivery-block {
     flex-direction: column;
   }
 
   .reference {
-    width: 100%;
-    margin-left: 40px;
+    align-self: flex-start;
+    width: 80%;
+    margin-left: 25px;
   }
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
-  .delivery-block {
-    flex-direction: column;
-  }
-
-  .reference {
-    width: 100%;
-    margin-left: 40px;
-  }
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .delivery-block {
-    flex-direction: column;
-  }
+@media (max-width: 480px) {
 
   .delivery {
     &__option {
-      width: 290px;
+      width: 90%;
     }
 
     &__method {
@@ -106,8 +93,6 @@
   }
 
   .reference {
-    width: 100%;
-    margin-left: 40px;
 
     &__list-item {
       font-size: 14px;

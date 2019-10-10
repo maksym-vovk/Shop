@@ -27,7 +27,7 @@ export const UserPanelModal = props => {
         <p className="user-modal__name-text">{props.surname}</p>
       </div>
       <div className="user-modal__link-block">
-        <Link to="/order_history" className="user-modal__link" onClick={() => props.modal(false)}>Orders history</Link>
+        <Link to="/order_history" className="user-modal__link user-modal__link--margin" onClick={() => props.modal(false)}>Orders history</Link>
         <Link to="/user_cabinet" className="user-modal__link" onClick={() => props.modal(false)}>Account</Link>
       </div>
       <div className="user-modal__logout-block">

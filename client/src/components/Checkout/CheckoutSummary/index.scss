@@ -82,14 +82,14 @@
   }
 }
 
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media (max-width: 1280px) {
   .summary {
     right: 31%;
     width: 40%;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (max-width: 1024px) {
   .summary {
     right: 28%;
     width: 45%;
@@ -101,14 +101,14 @@
   }
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (max-width: 768px) {
   .summary {
     right: 14%;
     width: 70%;
   }
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
   .summary {
     right: 0;
     width: 100%;
