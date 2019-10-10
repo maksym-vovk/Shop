@@ -43,6 +43,9 @@ input[type=number] {
   }
 
   &__input-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 50px;
     padding: 0;
     font-size: 20px;
@@ -52,6 +55,7 @@ input[type=number] {
 
   &__input-value {
     width: 50px;
+    margin: 0 5px;
     font-size: 20px;
     text-align: center;
   }
@@ -123,9 +127,12 @@ input[type=number] {
   .cart-item {
     flex-direction: column;
     margin: 30px 0;
+
+    &__image-wrapper {
+      width: 75%;
+    }
     &__image {
-      width: 250px;
-      height: 250px;
+      width: 100%;
     }
     &__name {
       font-size: 22px;
