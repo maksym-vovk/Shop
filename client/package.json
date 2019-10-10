@@ -24,7 +24,11 @@
     "slick-carousel": "^1.8.1",
     "stylelint": "^10.1.0",
     "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-order": "^3.1.0"
+    "stylelint-order": "^3.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.14.3",
+    "standard": "^14.1.0"
+
   },
   "scripts": {
     "start": "npm-run-all -p watch-sass-js start-js",
@@ -56,10 +60,7 @@
   "devDependencies": {
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "eslint": "^6.2.2",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-react": "^7.14.3",
-    "standard": "^14.1.0"
+    "eslint": "^6.2.2"
   },
   "watch": {
     "stylelint-dev": {
