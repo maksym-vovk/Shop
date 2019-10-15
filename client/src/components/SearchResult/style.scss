@@ -1,0 +1,8 @@
+.search-result-text {
+  margin: 10px 0 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #868686;
+  &__value {
+    font-style: italic;
+  }
+}

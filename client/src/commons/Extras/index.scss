@@ -1,0 +1,26 @@
+.extras {
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  &__image {
+    width: 22px;
+    height: 100%;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: all .3s;
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: 15;
+    &:hover {
+      fill: #979797;
+      stroke: #979797;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .extras__image {
+    margin: 0 5px;
+  }
+}

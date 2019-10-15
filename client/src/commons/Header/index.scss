@@ -1,0 +1,124 @@
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  height: 45px;
+  background-color: rgba(0, 0, 0, .8);
+  transition: .5s background-color ease-out;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    backdrop-filter: saturate(100%) blur(15px);
+  }
+
+  &__mob-menu-open {
+    background-color: #000;
+  }
+}
+
+.burger-wrapper {
+  display: none;
+  width: 20px;
+  height: 100%;
+  cursor: pointer;
+}
+.burger-button {
+  color: white;
+  background-color: #000;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.close-line {
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.logo {
+  margin: 0;
+}
+.collapse-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .header {
+    backdrop-filter: saturate(100%) blur(15px);
+
+    &__wrapper {
+      backdrop-filter: unset;
+    }
+  }
+  .collapse-menu {
+    display: block;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .burger-wrapper {
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+
+/* icon Burger */
+$buttonWidth: 20px;
+$buttonHeight: 10px;
+$buttonColor: #fff;
+$lineThickness: 1px;
+$transitionSpeed: .25s;
+$transitionEasing: ease-in-out;
+
+.menu-toggle {
+  position: relative;
+  width: $buttonWidth;
+  height: $buttonHeight;
+  color: $buttonColor;
+  font-size: 0;
+  background: transparent;
+  border-top: $lineThickness solid;
+  transition: all $transitionSpeed $transitionEasing;
+
+  &:before,
+  &:after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: block;
+    width: 100%;
+    height: $lineThickness;
+    background: currentColor;
+
+    transform: translate(-50%, 0%);
+    transition: transform $transitionSpeed $transitionEasing;
+    content: '';
+  }
+}
+
+.burger-button.is-active {
+  border-color: transparent;
+
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}

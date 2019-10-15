@@ -1,0 +1,159 @@
+.input-styled {
+  padding: 20px 0 10px 15px;
+  font-size: 19px;
+  border: 1px solid #d2d2d2;
+  border-radius: 4px;
+}
+
+.input-styled[type=number]::-webkit-inner-spin-button,
+.input-styled[type=number]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.label-placehold {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  z-index: 1;
+  color: #4d4b4b;
+  font-size: 17px;
+  opacity: .5;
+  -webkit-transition: top .2s ease-in-out,  font-size .2s ease-in-out;
+  transition: top .2s ease-in-out,  font-size .2s ease-in-out;
+}
+
+.label-placehold-active {
+  top: 0;
+  font-size: 15px;
+}
+
+.error {
+  color: red;
+  font-size: 16px;
+}
+
+.input-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin-top: 30px;
+}
+
+.shipping {
+  &__title {
+    margin-top: 50px;
+  }
+
+  &__subtitle {
+    margin-top: 30px;
+    text-align: left;
+  }
+
+  &__form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__notice {
+    max-width: 500px;
+    font-size: 17px;
+  }
+
+  &__button-wrapper {
+    padding: 20px 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .shipping {
+    &__title {
+      font-size: 26px;
+    }
+    &__subtitle {
+      font-size: 22px;
+    }
+
+    &__notice {
+      margin-top: 10px;
+      margin-left: 15px;
+      font-size: 14px;
+    }
+  }
+  .input-row {
+    width: 65%;
+  }
+  .input-styled {
+    padding-top: 20px;
+    font-size: 17px;
+  }
+  .error {
+    font-size: 16px;
+  }
+  .label-placehold {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .shipping {
+    &__title {
+      font-size: 24px;
+    }
+    &__subtitle {
+      font-size: 20px;
+    }
+    &__form-wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    &__notice {
+      margin-left: 0;
+      font-size: 15px;
+    }
+    &__button-wrapper {
+      text-align: center;
+    }
+  }
+  .input-row {
+    width: 80%;
+  }
+  .input-styled {
+    padding-top: 20px;
+    font-size: 14px;
+  }
+  .error {
+    font-size: 12px;
+  }
+  .label-placehold {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .shipping {
+    &__title {
+      font-size: 22px;
+    }
+
+    &__subtitle {
+      font-size: 18px;
+    }
+  }
+    .input-row {
+      width: 80%;
+      margin-top: 15px;
+    }
+  .input-styled {
+    padding: 13px 0 3px 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .input-row {
+    width: 100%;
+  }
+}
+

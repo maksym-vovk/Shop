@@ -1,0 +1,108 @@
+.filter {
+  position: relative;
+  display: flex;
+  &__reset {
+    width: 15%;
+  }
+  &__tabs {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    width: 100%;
+  }
+  &__reset-btn {
+    width: fit-content;
+    padding: 5px 10px;
+    color: #000000b3;
+    background: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s ease;
+    &:hover {
+      color: #000;
+    }
+  }
+  &__block {
+    padding: 5px;
+  }
+  &__title {
+    margin: 0 0 10px;
+    font-weight: 600;
+  }
+  &__items-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__item {
+    padding: 2px 0;
+    color: #000000b3;
+    cursor: pointer;
+    transition: all .3s ease;
+    &:hover {
+      color: #000;
+    }
+    &.active {
+      color: #000;
+      font-weight: 500;
+    }
+  }
+}
+
+.Collapsible {
+  margin-bottom: 30px;
+  &__trigger {
+    cursor: pointer;
+  }
+  &__contentInner {
+    padding: 10px;
+    background-color: #eee;
+  }
+}
+
+@media (max-width: 992px) {
+  .filter {
+    flex-direction: column;
+    align-items: center;
+    &__tabs {
+      grid-template-columns: repeat(2, 1fr);
+      align-content: center;
+      justify-items: center;
+    }
+    &__block {
+      width: 70%;
+    }
+    &__reset {
+      padding-bottom: 10px;
+      text-align: center;
+      &-btn {
+        padding: 3px 10px;
+        color: #d2d2d2;
+        background-color: #4d4b4b;
+        border: 1px solid #4d4b4b;
+        border-radius: 3px;
+        &:hover {
+          color: #4d4b4b;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .filter__block {
+    width: 100%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 320px) {
+  .filter__block {
+    font-size: 12px;
+  }
+}
